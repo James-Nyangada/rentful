@@ -7,13 +7,18 @@ import { PropertyFormData, propertySchema } from "@/lib/schemas";
 import { useCreatePropertyMutation, useGetAuthUserQuery } from "@/state/api";
 import { AmenityEnum, HighlightEnum, PropertyTypeEnum } from "@/lib/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/(auth)/authProvider";
 
 const NewProperty = () => {
-  const [createProperty] = useCreatePropertyMutation();
+  const [createProperty, { isLoading: isCreating }] = useCreatePropertyMutation();
   const { data: authUser } = useGetAuthUserQuery();
+  const { user: contextUser } = useAuth();
+  const router = useRouter();
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const form = useForm<PropertyFormData>({
     resolver: zodResolver(propertySchema),
@@ -31,36 +36,50 @@ const NewProperty = () => {
       beds: 1,
       baths: 1,
       squareFeet: 1000,
+      propertyType: PropertyTypeEnum.Apartment,
       address: "",
       city: "",
       state: "",
       country: "",
       postalCode: "",
+      latitude: "",
+      longitude: "",
     },
   });
 
   const onSubmit = async (data: PropertyFormData) => {
-    if (!authUser?.cognitoInfo?.userId) {
-      throw new Error("No manager ID found");
-    }
-
-    const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => {
-      if (key === "photoUrls") {
-        const files = value as File[];
-        files.forEach((file: File) => {
-          formData.append("photos", file);
-        });
-      } else if (Array.isArray(value)) {
-        formData.append(key, JSON.stringify(value));
-      } else {
-        formData.append(key, String(value));
+    setSubmitError(null);
+    try {
+      // Use RTK Query authUser first, fall back to auth context user
+      const managerAuthId = authUser?.userInfo?.authId || contextUser?.authId;
+      
+      if (!managerAuthId) {
+        setSubmitError("No manager ID found. Please sign in again.");
+        return;
       }
-    });
 
-    formData.append("managerCognitoId", authUser.cognitoInfo.userId);
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        if (key === "photoUrls") {
+          const files = value as File[];
+          files.forEach((file: File) => {
+            formData.append("photos", file);
+          });
+        } else if (Array.isArray(value)) {
+          formData.append(key, JSON.stringify(value));
+        } else {
+          formData.append(key, String(value));
+        }
+      });
 
-    await createProperty(formData);
+      formData.append("managerUserId", managerAuthId);
+
+      await createProperty(formData).unwrap();
+      router.push("/managers/properties");
+    } catch (error: any) {
+      console.error("Error creating property:", error);
+      setSubmitError(error?.data?.message || error?.message || "Failed to create property. Please try again.");
+    }
   };
 
   return (
@@ -223,14 +242,47 @@ const NewProperty = () => {
                 />
               </div>
               <CustomFormField name="country" label="Country" />
+              <div className="flex justify-between gap-4 mt-4">
+                <CustomFormField
+                  name="latitude"
+                  label="Latitude (Optional)"
+                  className="w-full"
+                  placeholder="e.g. -1.2921"
+                />
+                <CustomFormField
+                  name="longitude"
+                  label="Longitude (Optional)"
+                  className="w-full"
+                  placeholder="e.g. 36.8219"
+                />
+              </div>
+              <p className="text-sm text-gray-500 mt-2">
+                If provided, these coordinates will be used to pinpoint the exact location on the map. Otherwise, the address will be used to estimate the location.
+              </p>
             </div>
 
             <Button
               type="submit"
               className="bg-primary-700 text-white w-full mt-8"
+              disabled={isCreating}
             >
-              Create Property
+              {isCreating ? "Creating Property..." : "Create Property"}
             </Button>
+
+            {submitError && (
+              <p className="text-red-500 text-sm mt-2 text-center">{submitError}</p>
+            )}
+
+            {Object.keys(form.formState.errors).length > 0 && (
+              <div className="text-red-500 text-sm mt-2">
+                <p className="font-semibold">Please fix the following errors:</p>
+                <ul className="list-disc list-inside mt-1">
+                  {Object.entries(form.formState.errors).map(([field, error]) => (
+                    <li key={field}>{field}: {(error as any)?.message}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </form>
         </Form>
       </div>

@@ -14,9 +14,9 @@ import CardCompact from "@/components/CardCompact";
 const Listings = () => {
   const { data: authUser } = useGetAuthUserQuery();
   const { data: tenant } = useGetTenantQuery(
-    authUser?.cognitoInfo?.userId || "",
+    authUser?.userInfo?.authId || "",
     {
-      skip: !authUser?.cognitoInfo?.userId,
+      skip: !authUser?.userInfo?.authId,
     }
   );
   const [addFavorite] = useAddFavoritePropertyMutation();
@@ -39,12 +39,12 @@ const Listings = () => {
 
     if (isFavorite) {
       await removeFavorite({
-        cognitoId: authUser.cognitoInfo.userId,
+        authId: authUser.userInfo.authId,
         propertyId,
       });
     } else {
       await addFavorite({
-        cognitoId: authUser.cognitoInfo.userId,
+        authId: authUser.userInfo.authId,
         propertyId,
       });
     }
@@ -75,7 +75,7 @@ const Listings = () => {
                 }
                 onFavoriteToggle={() => handleFavoriteToggle(property.id)}
                 showFavoriteButton={!!authUser}
-                propertyLink={`/search/${property.id}`}
+                propertyLink={`/search/${property.slug}`}
               />
             ) : (
               <CardCompact
@@ -88,7 +88,7 @@ const Listings = () => {
                 }
                 onFavoriteToggle={() => handleFavoriteToggle(property.id)}
                 showFavoriteButton={!!authUser}
-                propertyLink={`/search/${property.id}`}
+                propertyLink={`/search/${property.slug}`}
               />
             )
           )}

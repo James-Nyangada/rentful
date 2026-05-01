@@ -3,7 +3,8 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 
 interface DecodedToken extends JwtPayload {
   sub: string;
-  "custom:role"?: string;
+  email: string;
+  role: string;
 }
 
 declare global {
@@ -27,8 +28,9 @@ export const authMiddleware = (allowedRoles: string[]) => {
     }
 
     try {
-      const decoded = jwt.decode(token) as DecodedToken;
-      const userRole = decoded["custom:role"] || "";
+      const jwtSecret = process.env.JWT_SECRET || "your-super-secret-jwt-key";
+      const decoded = jwt.verify(token, jwtSecret) as DecodedToken;
+      const userRole = decoded.role || "";
       req.user = {
         id: decoded.sub,
         role: userRole,
@@ -40,8 +42,8 @@ export const authMiddleware = (allowedRoles: string[]) => {
         return;
       }
     } catch (err) {
-      console.error("Failed to decode token:", err);
-      res.status(400).json({ message: "Invalid token" });
+      console.error("Failed to verify token:", err);
+      res.status(401).json({ message: "Invalid or expired token" });
       return;
     }
 

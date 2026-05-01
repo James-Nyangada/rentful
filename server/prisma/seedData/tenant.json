@@ -1,31 +1,40 @@
 [
   {
-    "id": 1,
-    "cognitoId": "817b3540-a061-707b-742a-a28391181149",
+    "id": 11,
+    "authId": "817b3540-a061-707b-742a-a28391181149",
     "name": "Carol White",
     "email": "carol.white@example.com",
     "phoneNumber": "+1 (555) 555-6666",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only11",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 5 }, { "id": 6 }]
     }
   },
   {
-    "id": 2,
-    "cognitoId": "us-east-2:87654321-90ab-cdef-1234-567890abcdef",
+    "id": 12,
+    "authId": "us-east-2:87654321-90ab-cdef-1234-567890abcdef",
     "name": "Bob Green",
     "email": "bob.green@example.com",
     "phoneNumber": "+1 (555) 333-4444",
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only12",
+    "role": "tenant",
+    "isVerified": true,
     "favorites": {
       "connect": [{ "id": 2 }]
     }
   },
   {
-    "id": 3,
-    "cognitoId": "us-east-2:98765432-90ab-cdef-1234-567890abcdef",
+    "id": 13,
+    "authId": "us-east-2:98765432-90ab-cdef-1234-567890abcdef",
     "name": "Alice Brown",
     "email": "alice.brown@example.com",
     "phoneNumber": "+1 (555) 111-2222",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only13",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": []
     },
     "favorites": {
@@ -33,12 +42,15 @@
     }
   },
   {
-    "id": 4,
-    "cognitoId": "us-east-2:65432109-90ab-cdef-1234-567890abcdef",
+    "id": 14,
+    "authId": "us-east-2:65432109-90ab-cdef-1234-567890abcdef",
     "name": "David Lee",
     "email": "david.lee@example.com",
     "phoneNumber": "+1 (555) 777-8888",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only14",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 4 }]
     },
     "favorites": {
@@ -46,12 +58,15 @@
     }
   },
   {
-    "id": 5,
-    "cognitoId": "us-east-2:54321098-90ab-cdef-1234-567890abcdef",
+    "id": 15,
+    "authId": "us-east-2:54321098-90ab-cdef-1234-567890abcdef",
     "name": "Emma Taylor",
     "email": "emma.taylor@example.com",
     "phoneNumber": "+1 (555) 999-0000",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only15",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 2 }, { "id": 9 }]
     },
     "favorites": {
@@ -59,22 +74,28 @@
     }
   },
   {
-    "id": 6,
-    "cognitoId": "us-east-2:43210987-90ab-cdef-1234-567890abcdef",
+    "id": 16,
+    "authId": "us-east-2:43210987-90ab-cdef-1234-567890abcdef",
     "name": "Frank Wilson",
     "email": "frank.wilson@example.com",
     "phoneNumber": "+1 (555) 222-3333",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only16",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 10 }]
     }
   },
   {
-    "id": 7,
-    "cognitoId": "us-east-2:32109876-90ab-cdef-1234-567890abcdef",
+    "id": 17,
+    "authId": "us-east-2:32109876-90ab-cdef-1234-567890abcdef",
     "name": "Grace Miller",
     "email": "grace.miller@example.com",
     "phoneNumber": "+1 (555) 444-5555",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only17",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 6 }]
     },
     "favorites": {
@@ -82,22 +103,28 @@
     }
   },
   {
-    "id": 8,
-    "cognitoId": "us-east-2:21098765-90ab-cdef-1234-567890abcdef",
+    "id": 18,
+    "authId": "us-east-2:21098765-90ab-cdef-1234-567890abcdef",
     "name": "Henry Wilson",
     "email": "henry.wilson@example.com",
     "phoneNumber": "+1 (555) 444-5555",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only18",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 3 }]
     }
   },
   {
-    "id": 9,
-    "cognitoId": "us-east-2:10987654-90ab-cdef-1234-567890abcdef",
+    "id": 19,
+    "authId": "us-east-2:10987654-90ab-cdef-1234-567890abcdef",
     "name": "Isabella Garcia",
     "email": "isabella.garcia@example.com",
     "phoneNumber": "+1 (555) 666-7777",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only19",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 7 }, { "id": 8 }]
     },
     "favorites": {
@@ -105,12 +132,15 @@
     }
   },
   {
-    "id": 10,
-    "cognitoId": "us-east-2:09876543-90ab-cdef-1234-567890abcdef",
+    "id": 20,
+    "authId": "us-east-2:09876543-90ab-cdef-1234-567890abcdef",
     "name": "Jack Thompson",
     "email": "jack.thompson@example.com",
     "phoneNumber": "+1 (555) 888-9999",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only20",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 10 }]
     },
     "favorites": {
@@ -118,12 +148,15 @@
     }
   },
   {
-    "id": 11,
-    "cognitoId": "us-east-2:a9876543-90ab-cdef-1234-567890abcdef",
+    "id": 21,
+    "authId": "us-east-2:a9876543-90ab-cdef-1234-567890abcdef",
     "name": "Karen Martinez",
     "email": "karen.martinez@example.com",
     "phoneNumber": "+1 (555) 123-4567",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only21",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 2 }]
     },
     "favorites": {
@@ -131,42 +164,54 @@
     }
   },
   {
-    "id": 12,
-    "cognitoId": "us-east-2:b9876543-90ab-cdef-1234-567890abcdef",
+    "id": 22,
+    "authId": "us-east-2:b9876543-90ab-cdef-1234-567890abcdef",
     "name": "Liam Johnson",
     "email": "liam.johnson@example.com",
     "phoneNumber": "+1 (555) 987-6543",
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only22",
+    "role": "tenant",
+    "isVerified": true,
     "favorites": {
       "connect": [{ "id": 3 }, { "id": 6 }, { "id": 9 }]
     }
   },
   {
-    "id": 13,
-    "cognitoId": "us-east-2:c9876543-90ab-cdef-1234-567890abcdef",
+    "id": 23,
+    "authId": "us-east-2:c9876543-90ab-cdef-1234-567890abcdef",
     "name": "Mia Rodriguez",
     "email": "mia.rodriguez@example.com",
     "phoneNumber": "+1 (555) 246-8135",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only23",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 4 }]
     }
   },
   {
-    "id": 14,
-    "cognitoId": "us-east-2:d9876543-90ab-cdef-1234-567890abcdef",
+    "id": 24,
+    "authId": "us-east-2:d9876543-90ab-cdef-1234-567890abcdef",
     "name": "Noah Kim",
     "email": "noah.kim@example.com",
     "phoneNumber": "+1 (555) 369-2580",
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only24",
+    "role": "tenant",
+    "isVerified": true,
     "favorites": {
       "connect": [{ "id": 1 }, { "id": 10 }]
     }
   },
   {
-    "id": 15,
-    "cognitoId": "us-east-2:e9876543-90ab-cdef-1234-567890abcdef",
+    "id": 25,
+    "authId": "us-east-2:e9876543-90ab-cdef-1234-567890abcdef",
     "name": "Olivia Chen",
     "email": "olivia.chen@example.com",
     "phoneNumber": "+1 (555) 159-7531",
-    "properties": {
+    "password": "$2a$10$dummy.hash.for.seeding.purposes.only25",
+    "role": "tenant",
+    "isVerified": true,
+    "tenantProperties": {
       "connect": [{ "id": 5 }]
     },
     "favorites": {

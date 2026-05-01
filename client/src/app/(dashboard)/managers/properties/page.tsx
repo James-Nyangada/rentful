@@ -4,16 +4,22 @@ import Card from "@/components/Card";
 import Header from "@/components/Header";
 import Loading from "@/components/Loading";
 import { useGetAuthUserQuery, useGetManagerPropertiesQuery } from "@/state/api";
+import { useAuth } from "@/app/(auth)/authProvider";
 import React from "react";
 
 const Properties = () => {
   const { data: authUser } = useGetAuthUserQuery();
+  const { user: contextUser } = useAuth();
+
+  // Use RTK Query authUser first, fall back to auth context user
+  const managerAuthId = authUser?.userInfo?.authId || contextUser?.authId || "";
+
   const {
     data: managerProperties,
     isLoading,
     error,
-  } = useGetManagerPropertiesQuery(authUser?.cognitoInfo?.userId || "", {
-    skip: !authUser?.cognitoInfo?.userId,
+  } = useGetManagerPropertiesQuery(managerAuthId, {
+    skip: !managerAuthId,
   });
 
   if (isLoading) return <Loading />;
@@ -33,7 +39,7 @@ const Properties = () => {
             isFavorite={false}
             onFavoriteToggle={() => {}}
             showFavoriteButton={false}
-            propertyLink={`/managers/properties/${property.id}`}
+            propertyLink={`/managers/properties/${property.slug}`}
           />
         ))}
       </div>

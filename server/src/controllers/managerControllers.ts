@@ -9,12 +9,12 @@ export const getManager = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
-    const manager = await prisma.manager.findUnique({
-      where: { cognitoId },
+    const { authId } = req.params;
+    const manager = await prisma.user.findUnique({
+      where: { authId },
     });
 
-    if (manager) {
+    if (manager && manager.role === "manager") {
       res.json(manager);
     } else {
       res.status(404).json({ message: "Manager not found" });
@@ -31,14 +31,17 @@ export const createManager = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId, name, email, phoneNumber } = req.body;
+    const { authId, name, email, phoneNumber } = req.body;
 
-    const manager = await prisma.manager.create({
+    const manager = await prisma.user.create({
       data: {
-        cognitoId,
+        authId,
         name,
         email,
         phoneNumber,
+        password: "",
+        role: "manager",
+        isVerified: true,
       },
     });
 
@@ -55,11 +58,11 @@ export const updateManager = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { authId } = req.params;
     const { name, email, phoneNumber } = req.body;
 
-    const updateManager = await prisma.manager.update({
-      where: { cognitoId },
+    const updateManager = await prisma.user.update({
+      where: { authId },
       data: {
         name,
         email,
@@ -80,9 +83,9 @@ export const getManagerProperties = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { authId } = req.params;
     const properties = await prisma.property.findMany({
-      where: { managerCognitoId: cognitoId },
+      where: { managerUserId: authId },
       include: {
         location: true,
       },

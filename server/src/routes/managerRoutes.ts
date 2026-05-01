@@ -8,9 +8,9 @@ import {
 
 const router = express.Router();
 
-router.get("/:cognitoId", getManager);
-router.put("/:cognitoId", updateManager);
-router.get("/:cognitoId/properties", getManagerProperties);
+router.get("/:authId", getManager);
+router.put("/:authId", updateManager);
+router.get("/:authId/properties", getManagerProperties);
 router.post("/", createManager);
 
 export default router;

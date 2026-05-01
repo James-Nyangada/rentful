@@ -23,11 +23,11 @@ const Applications = () => {
     isError,
   } = useGetApplicationsQuery(
     {
-      userId: authUser?.cognitoInfo?.userId,
+      userId: authUser?.userInfo?.authId,
       userType: "manager",
     },
     {
-      skip: !authUser?.cognitoInfo?.userId,
+      skip: !authUser?.userInfo?.authId,
     }
   );
   const [updateApplicationStatus] = useUpdateApplicationStatusMutation();

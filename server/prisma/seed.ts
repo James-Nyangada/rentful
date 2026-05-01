@@ -80,11 +80,11 @@ async function main() {
 
   const orderedFileNames = [
     "location.json", // No dependencies
-    "manager.json", // No dependencies
-    "property.json", // Depends on location and manager
-    "tenant.json", // No dependencies
-    "lease.json", // Depends on property and tenant
-    "application.json", // Depends on property and tenant
+    "manager.json", // User records with role=manager
+    "property.json", // Depends on location and manager (User)
+    "tenant.json", // User records with role=tenant
+    "lease.json", // Depends on property and tenant (User)
+    "application.json", // Depends on property and tenant (User)
     "payment.json", // Depends on lease
   ];
 
@@ -98,12 +98,23 @@ async function main() {
     const modelName = toPascalCase(
       path.basename(fileName, path.extname(fileName))
     );
-    const modelNameCamel = toCamelCase(modelName);
+
+    // Map old model names to new ones for seed
+    let modelNameCamel: string;
+    if (modelName === "Manager" || modelName === "Tenant") {
+      modelNameCamel = "user";
+    } else {
+      modelNameCamel = toCamelCase(modelName);
+    }
 
     if (modelName === "Location") {
       await insertLocationData(jsonData);
     } else {
       const model = (prisma as any)[modelNameCamel];
+      if (!model) {
+        console.error(`Model ${modelNameCamel} not found in Prisma client, skipping ${fileName}`);
+        continue;
+      }
       try {
         for (const item of jsonData) {
           await model.create({
@@ -117,7 +128,9 @@ async function main() {
     }
 
     // Reset the sequence after seeding each model
-    await resetSequence(modelName);
+    // For Manager/Tenant, use "user" model to reset sequence
+    const sequenceModel = (modelName === "Manager" || modelName === "Tenant") ? "User" : modelName;
+    await resetSequence(toCamelCase(sequenceModel));
 
     await sleep(1000);
   }

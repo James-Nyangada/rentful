@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetAuthUserQuery } from "@/state/api";
+import { useGetAuthUserQuery, useGetPropertyQuery } from "@/state/api";
 import { useParams } from "next/navigation";
 import React, { useState } from "react";
 import ImagePreviews from "./ImagePreviews";
@@ -11,25 +11,29 @@ import ContactWidget from "./ContactWidget";
 import ApplicationModal from "./ApplicationModal";
 
 const SingleListing = () => {
-  const { id } = useParams();
-  const propertyId = Number(id);
+  const { slug } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: authUser } = useGetAuthUserQuery();
+
+  const { data: property, isLoading } = useGetPropertyQuery(slug as string);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (!property) return <div>Property not found</div>;
 
   return (
     <div>
       <ImagePreviews
-        images={["/singlelisting-2.jpg", "/singlelisting-3.jpg"]}
+        images={property.photoUrls && property.photoUrls.length > 0 ? property.photoUrls : ["/singlelisting-2.jpg", "/singlelisting-3.jpg"]}
       />
       <div className="flex flex-col md:flex-row justify-center gap-10 mx-10 md:w-2/3 md:mx-auto mt-16 mb-8">
         <div className="order-2 md:order-1">
-          <PropertyOverview propertyId={propertyId} />
-          <PropertyDetails propertyId={propertyId} />
-          <PropertyLocation propertyId={propertyId} />
+          <PropertyOverview propertyId={property.id} />
+          <PropertyDetails propertyId={property.id} />
+          <PropertyLocation propertyId={property.id} />
         </div>
 
         <div className="order-1 md:order-2">
-          <ContactWidget onOpenModal={() => setIsModalOpen(true)} />
+          <ContactWidget property={property} onOpenModal={() => setIsModalOpen(true)} />
         </div>
       </div>
 
@@ -37,7 +41,7 @@ const SingleListing = () => {
         <ApplicationModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          propertyId={propertyId}
+          propertyId={property.id}
         />
       )}
     </div>

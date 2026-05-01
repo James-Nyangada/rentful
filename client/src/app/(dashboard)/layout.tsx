@@ -4,37 +4,48 @@ import Navbar from "@/components/Navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import Sidebar from "@/components/AppSidebar";
 import { NAVBAR_HEIGHT } from "@/lib/constants";
-import React, { useEffect, useState } from "react";
-import { useGetAuthUserQuery } from "@/state/api";
+import React, { useEffect, useRef, useState } from "react";
+import { useAuth } from "@/app/(auth)/authProvider";
 import { usePathname, useRouter } from "next/navigation";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const { data: authUser, isLoading: authLoading } = useGetAuthUserQuery();
+  const { user, isLoading: authLoading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
+  const hasRedirected = useRef(false);
 
   useEffect(() => {
-    if (authUser) {
-      const userRole = authUser.userRole?.toLowerCase();
+    if (authLoading) return;
+
+    if (user) {
+      const userRole = user.role.toLowerCase();
       if (
         (userRole === "manager" && pathname.startsWith("/tenants")) ||
         (userRole === "tenant" && pathname.startsWith("/managers"))
       ) {
-        router.push(
-          userRole === "manager"
-            ? "/managers/properties"
-            : "/tenants/favorites",
-          { scroll: false }
-        );
+        if (!hasRedirected.current) {
+          hasRedirected.current = true;
+          router.replace(
+            userRole === "manager"
+              ? "/managers/properties"
+              : "/tenants/favorites"
+          );
+        }
       } else {
         setIsLoading(false);
       }
+    } else {
+      // User is not authenticated, redirect to signin
+      if (!hasRedirected.current) {
+        hasRedirected.current = true;
+        router.replace("/signin");
+      }
     }
-  }, [authUser, router, pathname]);
+  }, [user, authLoading, router, pathname]);
 
   if (authLoading || isLoading) return <>Loading...</>;
-  if (!authUser?.userRole) return null;
+  if (!user) return null;
 
   return (
     <SidebarProvider>
@@ -42,7 +53,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <Navbar />
         <div style={{ marginTop: `${NAVBAR_HEIGHT}px` }}>
           <main className="flex">
-            <Sidebar userType={authUser.userRole.toLowerCase()} />
+            <Sidebar
+              userType={
+                user.role.toLowerCase() as "tenant" | "manager"
+              }
+            />
             <div className="flex-grow transition-all duration-300">
               {children}
             </div>

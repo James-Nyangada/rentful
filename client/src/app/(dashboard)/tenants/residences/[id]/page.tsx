@@ -236,8 +236,8 @@ const Residence = () => {
   } = useGetPropertyQuery(Number(id));
 
   const { data: leases, isLoading: leasesLoading } = useGetLeasesQuery(
-    parseInt(authUser?.cognitoInfo?.userId || "0"),
-    { skip: !authUser?.cognitoInfo?.userId }
+    parseInt(authUser?.userInfo?.authId || "0"),
+    { skip: !authUser?.userInfo?.authId }
   );
   const { data: payments, isLoading: paymentsLoading } = useGetPaymentsQuery(
     leases?.[0]?.id || 0,

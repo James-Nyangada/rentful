@@ -11,7 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  useGetPaymentsQuery,
+  useGetPropertyPaymentsQuery,
   useGetPropertyLeasesQuery,
   useGetPropertyQuery,
 } from "@/state/api";
@@ -22,15 +22,14 @@ import { useParams } from "next/navigation";
 import React from "react";
 
 const PropertyTenants = () => {
-  const { id } = useParams();
-  const propertyId = Number(id);
+  const { slug } = useParams();
 
   const { data: property, isLoading: propertyLoading } =
-    useGetPropertyQuery(propertyId);
+    useGetPropertyQuery(slug as string);
   const { data: leases, isLoading: leasesLoading } =
-    useGetPropertyLeasesQuery(propertyId);
+    useGetPropertyLeasesQuery(property?.id ?? 0, { skip: !property });
   const { data: payments, isLoading: paymentsLoading } =
-    useGetPaymentsQuery(propertyId);
+    useGetPropertyPaymentsQuery(property?.id ?? 0, { skip: !property });
 
   if (propertyLoading || leasesLoading || paymentsLoading) return <Loading />;
 
@@ -57,10 +56,17 @@ const PropertyTenants = () => {
         <span>Back to Properties</span>
       </Link>
 
-      <Header
-        title={property?.name || "My Property"}
-        subtitle="Manage tenants and leases for this property"
-      />
+      <div className="flex justify-between items-center w-full">
+        <Header
+          title={property?.name || "My Property"}
+          subtitle="Manage tenants and leases for this property"
+        />
+        <Link href={`/managers/properties/${property?.slug}/edit`} scroll={false}>
+          <button className="bg-primary-700 text-white px-4 py-2 rounded-md hover:bg-primary-600">
+            Edit Property
+          </button>
+        </Link>
+      </div>
 
       <div className="w-full space-y-6">
         <div className="mt-8 bg-white rounded-xl shadow-md overflow-hidden p-6">

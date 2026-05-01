@@ -6,15 +6,15 @@ const prisma = new PrismaClient();
 
 export const getTenant = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
-    const tenant = await prisma.tenant.findUnique({
-      where: { cognitoId },
+    const { authId } = req.params;
+    const tenant = await prisma.user.findUnique({
+      where: { authId },
       include: {
         favorites: true,
       },
     });
 
-    if (tenant) {
+    if (tenant && tenant.role === "tenant") {
       res.json(tenant);
     } else {
       res.status(404).json({ message: "Tenant not found" });
@@ -31,14 +31,17 @@ export const createTenant = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId, name, email, phoneNumber } = req.body;
+    const { authId, name, email, phoneNumber } = req.body;
 
-    const tenant = await prisma.tenant.create({
+    const tenant = await prisma.user.create({
       data: {
-        cognitoId,
+        authId,
         name,
         email,
         phoneNumber,
+        password: "",
+        role: "tenant",
+        isVerified: true,
       },
     });
 
@@ -55,11 +58,11 @@ export const updateTenant = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { authId } = req.params;
     const { name, email, phoneNumber } = req.body;
 
-    const updateTenant = await prisma.tenant.update({
-      where: { cognitoId },
+    const updateTenant = await prisma.user.update({
+      where: { authId },
       data: {
         name,
         email,
@@ -80,9 +83,9 @@ export const getCurrentResidences = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId } = req.params;
+    const { authId } = req.params;
     const properties = await prisma.property.findMany({
-      where: { tenants: { some: { cognitoId } } },
+      where: { tenants: { some: { authId } } },
       include: {
         location: true,
       },
@@ -123,9 +126,9 @@ export const addFavoriteProperty = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId, propertyId } = req.params;
-    const tenant = await prisma.tenant.findUnique({
-      where: { cognitoId },
+    const { authId, propertyId } = req.params;
+    const tenant = await prisma.user.findUnique({
+      where: { authId },
       include: { favorites: true },
     });
 
@@ -138,8 +141,8 @@ export const addFavoriteProperty = async (
     const existingFavorites = tenant.favorites || [];
 
     if (!existingFavorites.some((fav) => fav.id === propertyIdNumber)) {
-      const updatedTenant = await prisma.tenant.update({
-        where: { cognitoId },
+      const updatedTenant = await prisma.user.update({
+        where: { authId },
         data: {
           favorites: {
             connect: { id: propertyIdNumber },
@@ -163,11 +166,11 @@ export const removeFavoriteProperty = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { cognitoId, propertyId } = req.params;
+    const { authId, propertyId } = req.params;
     const propertyIdNumber = Number(propertyId);
 
-    const updatedTenant = await prisma.tenant.update({
-      where: { cognitoId },
+    const updatedTenant = await prisma.user.update({
+      where: { authId },
       data: {
         favorites: {
           disconnect: { id: propertyIdNumber },

@@ -3,12 +3,12 @@
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { useGetAuthUserQuery } from "@/state/api";
 import { usePathname, useRouter } from "next/navigation";
-import { signOut } from "aws-amplify/auth";
-import { Bell, MessageCircle, Plus, Search } from "lucide-react";
+import { useAuth } from "@/app/(auth)/authProvider";
+import { Bell, Menu, MessageCircle, Plus, Search, X } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,16 +20,36 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { SidebarTrigger } from "./ui/sidebar";
 
 const Navbar = () => {
-  const { data: authUser } = useGetAuthUserQuery();
+  const { data: authUser, refetch } = useGetAuthUserQuery();
+  const { user: contextUser, signOut } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About Us" },
+    { href: "/search", label: "Listings" },
+  ];
+
+  // Refetch RTK Query when auth context user changes (e.g., after login)
+  React.useEffect(() => {
+    if (contextUser && !authUser) {
+      refetch();
+    }
+  }, [contextUser, authUser, refetch]);
+
+  // Use auth context as fallback for immediate logged-in state
+  const isLoggedIn = !!authUser || !!contextUser;
+  const userRole = authUser?.userRole || contextUser?.role;
+  const userName = authUser?.userInfo?.name || contextUser?.name;
 
   const isDashboardPage =
     pathname.includes("/managers") || pathname.includes("/tenants");
 
-  const handleSignOut = async () => {
-    await signOut();
-    window.location.href = "/";
+  const handleSignOut = () => {
+    signOut();
   };
 
   return (
@@ -65,19 +85,19 @@ const Navbar = () => {
               </div>
             </div>
           </Link>
-          {isDashboardPage && authUser && (
+          {isDashboardPage && isLoggedIn && (
             <Button
               variant="secondary"
               className="md:ml-4 bg-primary-50 text-primary-700 hover:bg-secondary-500 hover:text-primary-50"
               onClick={() =>
                 router.push(
-                  authUser.userRole?.toLowerCase() === "manager"
+                  userRole?.toLowerCase() === "manager"
                     ? "/managers/newproperty"
                     : "/search"
                 )
               }
             >
-              {authUser.userRole?.toLowerCase() === "manager" ? (
+              {userRole?.toLowerCase() === "manager" ? (
                 <>
                   <Plus className="h-4 w-4" />
                   <span className="hidden md:block ml-2">Add New Property</span>
@@ -93,13 +113,20 @@ const Navbar = () => {
             </Button>
           )}
         </div>
-        {!isDashboardPage && (
-          <p className="text-primary-200 hidden md:block">
-            Discover your perfect rental apartment with our advanced search
-          </p>
-        )}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="relative text-primary-200 hover:text-white transition-colors duration-300 group font-medium capitalize"
+            >
+              {link.label}
+              <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+          ))}
+        </div>
         <div className="flex items-center gap-5">
-          {authUser ? (
+          {isLoggedIn ? (
             <>
               <div className="relative hidden md:block">
                 <MessageCircle className="w-6 h-6 cursor-pointer text-primary-200 hover:text-primary-400" />
@@ -113,13 +140,13 @@ const Navbar = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-2 focus:outline-none">
                   <Avatar>
-                    <AvatarImage src={authUser.userInfo?.image} />
+                    <AvatarImage src="" />
                     <AvatarFallback className="bg-primary-600">
-                      {authUser.userRole?.[0].toUpperCase()}
+                      {(userRole?.[0] || "U").toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                   <p className="text-primary-200 hidden md:block">
-                    {authUser.userInfo?.name}
+                    {userName}
                   </p>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white text-primary-700">
@@ -127,7 +154,7 @@ const Navbar = () => {
                     className="cursor-pointer hover:!bg-primary-700 hover:!text-primary-100 font-bold"
                     onClick={() =>
                       router.push(
-                        authUser.userRole?.toLowerCase() === "manager"
+                        userRole?.toLowerCase() === "manager"
                           ? "/managers/properties"
                           : "/tenants/favorites",
                         { scroll: false }
@@ -141,7 +168,7 @@ const Navbar = () => {
                     className="cursor-pointer hover:!bg-primary-700 hover:!text-primary-100"
                     onClick={() =>
                       router.push(
-                        `/${authUser.userRole?.toLowerCase()}s/settings`,
+                        `/${userRole?.toLowerCase()}s/settings`,
                         { scroll: false }
                       )
                     }
@@ -177,6 +204,38 @@ const Navbar = () => {
               </Link>
             </>
           )}
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden flex items-center text-primary-200 hover:text-white focus:outline-none"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-primary-700 shadow-xl overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="flex flex-col py-4 px-8 gap-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-primary-200 hover:text-white transition-colors duration-300 font-medium capitalize text-lg"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     </div>

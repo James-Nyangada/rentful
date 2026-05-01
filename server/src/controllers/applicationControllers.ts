@@ -14,11 +14,11 @@ export const listApplications = async (
 
     if (userId && userType) {
       if (userType === "tenant") {
-        whereClause = { tenantCognitoId: String(userId) };
+        whereClause = { tenantUserId: String(userId) };
       } else if (userType === "manager") {
         whereClause = {
           property: {
-            managerCognitoId: String(userId),
+            managerUserId: String(userId),
           },
         };
       }
@@ -51,7 +51,7 @@ export const listApplications = async (
         const lease = await prisma.lease.findFirst({
           where: {
             tenant: {
-              cognitoId: app.tenantCognitoId,
+              authId: app.tenantUserId,
             },
             propertyId: app.propertyId,
           },
@@ -92,7 +92,7 @@ export const createApplication = async (
       applicationDate,
       status,
       propertyId,
-      tenantCognitoId,
+      tenantUserId,
       name,
       email,
       phoneNumber,
@@ -123,7 +123,7 @@ export const createApplication = async (
             connect: { id: propertyId },
           },
           tenant: {
-            connect: { cognitoId: tenantCognitoId },
+            connect: { authId: tenantUserId },
           },
         },
       });
@@ -141,7 +141,7 @@ export const createApplication = async (
             connect: { id: propertyId },
           },
           tenant: {
-            connect: { cognitoId: tenantCognitoId },
+            connect: { authId: tenantUserId },
           },
           lease: {
             connect: { id: lease.id },
@@ -197,7 +197,7 @@ export const updateApplicationStatus = async (
           rent: application.property.pricePerMonth,
           deposit: application.property.securityDeposit,
           propertyId: application.propertyId,
-          tenantCognitoId: application.tenantCognitoId,
+          tenantUserId: application.tenantUserId,
         },
       });
 
@@ -206,7 +206,7 @@ export const updateApplicationStatus = async (
         where: { id: application.propertyId },
         data: {
           tenants: {
-            connect: { cognitoId: application.tenantCognitoId },
+            connect: { authId: application.tenantUserId },
           },
         },
       });

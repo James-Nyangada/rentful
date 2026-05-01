@@ -15,6 +15,7 @@ import {
   Heart,
   Home,
   Menu,
+  Plus,
   Settings,
   X,
 } from "lucide-react";
@@ -30,6 +31,11 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
     userType === "manager"
       ? [
           { icon: Building, label: "Properties", href: "/managers/properties" },
+          {
+            icon: Plus,
+            label: "Add New Property",
+            href: "/managers/newproperty",
+          },
           {
             icon: FileText,
             label: "Applications",

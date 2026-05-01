@@ -13,9 +13,9 @@ import React from "react";
 const Favorites = () => {
   const { data: authUser } = useGetAuthUserQuery();
   const { data: tenant } = useGetTenantQuery(
-    authUser?.cognitoInfo?.userId || "",
+    authUser?.userInfo?.authId || "",
     {
-      skip: !authUser?.cognitoInfo?.userId,
+      skip: !authUser?.userInfo?.authId,
     }
   );
 

@@ -23,9 +23,17 @@ export const propertySchema = z.object({
   state: z.string().min(1, "State is required"),
   country: z.string().min(1, "Country is required"),
   postalCode: z.string().min(1, "Postal code is required"),
+  latitude: z.string().optional(),
+  longitude: z.string().optional(),
 });
 
 export type PropertyFormData = z.infer<typeof propertySchema>;
+
+export const editPropertySchema = propertySchema.extend({
+  photoUrls: z.array(z.instanceof(File)).optional(),
+});
+
+export type EditPropertyFormData = z.infer<typeof editPropertySchema>;
 
 export const applicationSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -43,3 +51,23 @@ export const settingsSchema = z.object({
 });
 
 export type SettingsFormData = z.infer<typeof settingsSchema>;
+
+export const signinSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+export type SigninFormData = z.infer<typeof signinSchema>;
+
+export const signupSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  phoneNumber: z.string().optional(),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+  role: z.enum(["tenant", "manager"], { required_error: "Role is required" }),
+});
+export type SignupFormData = z.infer<typeof signupSchema>;
+
+export const verifySchema = z.object({
+  code: z.string().min(6, "Code must be 6 characters").max(6),
+});
+export type VerifyFormData = z.infer<typeof verifySchema>;

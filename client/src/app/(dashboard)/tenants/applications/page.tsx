@@ -14,7 +14,7 @@ const Applications = () => {
     isLoading,
     isError,
   } = useGetApplicationsQuery({
-    userId: authUser?.cognitoInfo?.userId,
+    userId: authUser?.userInfo?.authId,
     userType: "tenant",
   });
 
