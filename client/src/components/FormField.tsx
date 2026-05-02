@@ -106,7 +106,7 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
                 <SelectItem
                   key={option.value}
                   value={option.value}
-                  className={`cursor-pointer hover:!bg-gray-100 hover:!text-customgreys-darkGrey`}
+                  className={`cursor-pointer hover:!bg-primary/5 hover:!text-primary font-medium`}
                 >
                   {option.label}
                 </SelectItem>
@@ -121,7 +121,7 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
               checked={field.value}
               onCheckedChange={field.onChange}
               id={name}
-              className={`text-customgreys-dirtyGrey ${inputClassName}`}
+              className={`${inputClassName}`}
             />
             <FormLabel htmlFor={name} className={labelClassName}>
               {label}
@@ -194,7 +194,7 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
                 isIcon &&
                 type !== "file" &&
                 type !== "multi-input" && (
-                  <Edit className="size-4 text-customgreys-dirtyGrey" />
+                  <Edit className="size-4 text-primary/30" />
                 )}
             </div>
           )}
@@ -240,7 +240,7 @@ const MultiInputField: React.FC<MultiInputFieldProps> = ({
                 <Input
                   {...field}
                   placeholder={placeholder}
-                  className={`flex-1 border-none bg-customgreys-darkGrey p-4 ${inputClassName}`}
+                  className={`flex-1 border-gray-100 bg-gray-50 p-4 ${inputClassName}`}
                 />
               </FormControl>
             )}
@@ -250,7 +250,7 @@ const MultiInputField: React.FC<MultiInputFieldProps> = ({
             onClick={() => remove(index)}
             variant="ghost"
             size="icon"
-            className="text-customgreys-dirtyGrey"
+            className="text-primary/20 hover:text-red-500 transition-colors"
           >
             <X className="w-4 h-4" />
           </Button>
@@ -261,7 +261,7 @@ const MultiInputField: React.FC<MultiInputFieldProps> = ({
         onClick={() => append("")}
         variant="outline"
         size="sm"
-        className="mt-2 text-customgreys-dirtyGrey"
+        className="mt-2 text-primary border-primary/20 hover:bg-primary hover:text-white transition-all font-bold uppercase text-[10px] tracking-widest"
       >
         <Plus className="w-4 h-4 mr-2" />
         Add Item

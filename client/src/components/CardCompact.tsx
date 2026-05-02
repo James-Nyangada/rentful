@@ -41,11 +41,11 @@ const CardCompact = ({
       <div className="w-2/3 p-4 flex flex-col justify-between">
         <div>
           <div className="flex justify-between items-start">
-            <h2 className="text-xl font-bold mb-1">
+            <h2 className="text-lg font-bold mb-1 text-primary">
               {propertyLink ? (
                 <Link
                   href={propertyLink}
-                  className="hover:underline hover:text-blue-600"
+                  className="hover:underline hover:text-secondary"
                   scroll={false}
                 >
                   {property.name}
@@ -56,49 +56,49 @@ const CardCompact = ({
             </h2>
             {showFavoriteButton && (
               <button
-                className="bg-white rounded-full p-1"
+                className="bg-white rounded-full p-1 shadow-sm border border-gray-100"
                 onClick={onFavoriteToggle}
               >
                 <Heart
                   className={`w-4 h-4 ${
-                    isFavorite ? "text-red-500 fill-red-500" : "text-gray-600"
+                    isFavorite ? "text-red-500 fill-red-500" : "text-gray-400"
                   }`}
                 />
               </button>
             )}
           </div>
-          <p className="text-gray-600 mb-1 text-sm">
+          <p className="text-foreground/60 mb-1 text-xs font-medium">
             {property?.location?.address}, {property?.location?.city}
           </p>
-          <div className="flex text-sm items-center">
-            <Star className="w-3 h-3 text-yellow-400 mr-1" />
-            <span className="font-semibold">
+          <div className="flex text-xs items-center">
+            <Star className="w-3 h-3 text-secondary fill-secondary mr-1" />
+            <span className="font-bold text-primary">
               {property.averageRating.toFixed(1)}
             </span>
-            <span className="text-gray-600 ml-1">
+            <span className="text-foreground/50 ml-1">
               ({property.numberOfReviews})
             </span>
           </div>
         </div>
-        <div className="flex justify-between items-center text-sm">
-          <div className="flex gap-2 text-gray-600">
+        <div className="flex justify-between items-center text-xs">
+          <div className="flex gap-3 text-primary font-bold">
             <span className="flex items-center">
-              <Bed className="w-4 h-4 mr-1" />
+              <Bed className="w-4 h-4 mr-1 text-primary" />
               {property.beds}
             </span>
             <span className="flex items-center">
-              <Bath className="w-4 h-4 mr-1" />
+              <Bath className="w-4 h-4 mr-1 text-primary" />
               {property.baths}
             </span>
             <span className="flex items-center">
-              <House className="w-4 h-4 mr-1" />
+              <House className="w-4 h-4 mr-1 text-primary" />
               {property.squareFeet}
             </span>
           </div>
 
-          <p className="text-base font-bold">
-            ${property.pricePerMonth.toFixed(0)}
-            <span className="text-gray-600 text-xs font-normal"> /mo</span>
+          <p className="text-base font-black text-secondary tracking-tighter">
+            kes {property.pricePerMonth.toLocaleString()}
+            <span className="text-foreground/60 text-[10px] font-bold ml-1">/mo</span>
           </p>
         </div>
       </div>

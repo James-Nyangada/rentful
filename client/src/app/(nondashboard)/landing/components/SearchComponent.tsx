@@ -72,20 +72,20 @@ const SearchComponent = () => {
       <div className="flex">
         <button
           onClick={() => setSearchTab("sale")}
-          className={`px-8 py-3 rounded-tl-xl font-semibold transition-all ${
+          className={`px-10 py-4 rounded-tl-2xl font-bold uppercase tracking-wider transition-all ${
             searchTab === "sale"
-              ? "bg-[#D2E030] text-black"
-              : "bg-white/90 text-gray-700 hover:bg-white"
+              ? "bg-primary text-secondary"
+              : "bg-white/80 text-primary hover:bg-white"
           }`}
         >
           For Sale
         </button>
         <button
           onClick={() => setSearchTab("rent")}
-          className={`px-8 py-3 rounded-tr-xl font-semibold transition-all ${
+          className={`px-10 py-4 rounded-tr-2xl font-bold uppercase tracking-wider transition-all ${
             searchTab === "rent"
-              ? "bg-[#D2E030] text-black"
-              : "bg-white/90 text-gray-700 hover:bg-white"
+              ? "bg-primary text-secondary"
+              : "bg-white/80 text-primary hover:bg-white"
           }`}
         >
           For Rent
@@ -93,36 +93,36 @@ const SearchComponent = () => {
       </div>
 
       {/* Main Search Bar */}
-      <div className="bg-white rounded-b-xl rounded-tr-xl p-4 md:p-6 shadow-2xl flex flex-col md:flex-row items-end gap-4 w-full">
+      <div className="bg-white rounded-b-2xl rounded-tr-2xl p-6 md:p-8 shadow-2xl flex flex-col md:flex-row items-end gap-6 w-full border border-gray-100">
         {/* Location */}
         <div className="flex-1 w-full">
-          <label className="block text-sm font-bold text-gray-800 mb-2 text-left">
+          <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 text-left">
             Location
           </label>
           <div className="relative">
-            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
             <Input
-              placeholder="Enter location..."
+              placeholder="Where are you looking?"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="pl-10 bg-gray-50 border-gray-100 h-12 rounded-lg"
+              className="pl-12 bg-gray-50 border-gray-200 h-14 rounded-xl focus:ring-secondary focus:border-secondary transition-all"
             />
           </div>
         </div>
 
         {/* Property Type */}
         <div className="flex-1 w-full">
-          <label className="block text-sm font-bold text-gray-800 mb-2 text-left">
+          <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 text-left">
             Property Type
           </label>
           <Select value={propertyType} onValueChange={setPropertyType}>
-            <SelectTrigger className="bg-gray-50 border-gray-100 h-12 rounded-lg">
-              <div className="flex items-center gap-2">
-                <Home className="w-4 h-4 text-gray-400" />
+            <SelectTrigger className="bg-gray-50 border-gray-200 h-14 rounded-xl focus:ring-secondary focus:border-secondary transition-all">
+              <div className="flex items-center gap-3">
+                <Home className="w-5 h-5 text-primary" />
                 <SelectValue placeholder="All Types" />
               </div>
             </SelectTrigger>
-            <SelectContent className="bg-white">
+            <SelectContent className="bg-white border-gray-100">
               <SelectItem value="any">All Types</SelectItem>
               {Object.values(PropertyTypeEnum).map((type) => (
                 <SelectItem key={type} value={type}>
@@ -135,17 +135,17 @@ const SearchComponent = () => {
 
         {/* Bedrooms */}
         <div className="flex-1 w-full">
-          <label className="block text-sm font-bold text-gray-800 mb-2 text-left">
+          <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 text-left">
             Bedrooms
           </label>
           <Select value={beds} onValueChange={setBeds}>
-            <SelectTrigger className="bg-gray-50 border-gray-100 h-12 rounded-lg">
-              <div className="flex items-center gap-2">
-                <BedDouble className="w-4 h-4 text-gray-400" />
+            <SelectTrigger className="bg-gray-50 border-gray-200 h-14 rounded-xl focus:ring-secondary focus:border-secondary transition-all">
+              <div className="flex items-center gap-3">
+                <BedDouble className="w-5 h-5 text-primary" />
                 <SelectValue placeholder="Any Beds" />
               </div>
             </SelectTrigger>
-            <SelectContent className="bg-white">
+            <SelectContent className="bg-white border-gray-100">
               <SelectItem value="any">Any Beds</SelectItem>
               <SelectItem value="1">1+ Bed</SelectItem>
               <SelectItem value="2">2+ Beds</SelectItem>
@@ -158,9 +158,9 @@ const SearchComponent = () => {
         {/* Search Button */}
         <Button
           onClick={handleSearch}
-          className="bg-[#D2E030] hover:bg-[#b8c52a] text-black font-bold h-12 px-10 rounded-lg w-full md:w-auto transition-all"
+          className="bg-secondary hover:bg-secondary/90 text-white font-black h-14 px-12 rounded-xl w-full md:w-auto transition-all shadow-lg hover:scale-105 active:scale-95"
         >
-          Search <Search className="w-4 h-4 ml-2" />
+          SEARCH <Search className="w-5 h-5 ml-2" />
         </Button>
       </div>
     </div>

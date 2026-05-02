@@ -21,30 +21,32 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				'50': '#fcfcfc',
-  				'100': '#f1f1f2',
-  				'200': '#e0e0e2',
-  				'300': '#c7c7cc',
-  				'400': '#a8a8af',
-  				'500': '#82828b',
-  				'600': '#57575f',
-  				'700': '#27272a',
-  				'800': '#111113',
-  				'900': '#040405',
-  				'950': '#000000'
+  				DEFAULT: '#0A1F3B',
+  				'50': '#f0f4f9',
+  				'100': '#e1e9f3',
+  				'200': '#c2d2e7',
+  				'300': '#93b1d5',
+  				'400': '#5d8abd',
+  				'500': '#0A1F3B',
+  				'600': '#081930',
+  				'700': '#061324',
+  				'800': '#040d18',
+  				'900': '#02060c',
+  				'950': '#010306'
   			},
   			secondary: {
-  				'50': '#fefcfc',
-  				'100': '#fdf2f2',
-  				'200': '#fae1e1',
-  				'300': '#f6c9c9',
-  				'400': '#f1abab',
-  				'500': '#eb8686',
-  				'600': '#e45a5a',
-  				'700': '#dc2828',
-  				'800': '#7c1414',
-  				'900': '#400a0a',
-  				'950': '#2c0707'
+  				DEFAULT: '#D4AF37',
+  				'50': '#faf7e9',
+  				'100': '#f5efd3',
+  				'200': '#ebdfa7',
+  				'300': '#e1cf7b',
+  				'400': '#d7bf4f',
+  				'500': '#D4AF37',
+  				'600': '#aa8c2c',
+  				'700': '#806921',
+  				'800': '#554616',
+  				'900': '#2b230b',
+  				'950': '#151105'
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
@@ -78,7 +80,10 @@ const config: Config = {
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
   			}
-  		}
+  		},
+  		fontFamily: {
+  			sans: ['var(--font-outfit)', 'sans-serif'],
+  		},
   	}
   },
   plugins: [require("tailwindcss-animate")],

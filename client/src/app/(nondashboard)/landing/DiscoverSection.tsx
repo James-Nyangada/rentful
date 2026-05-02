@@ -26,42 +26,36 @@ const DiscoverSection = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.8 }}
       variants={containerVariants}
-      className="py-12 bg-white mb-16"
+      className="py-24 bg-white mb-16"
     >
-      <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
-        <motion.div variants={itemVariants} className="my-12 text-center">
-          <h2 className="text-3xl font-semibold leading-tight text-gray-800">
-            Discover
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
+        <motion.div variants={itemVariants} className="mb-20">
+          <h2 className="text-4xl md:text-5xl font-black text-primary tracking-tighter uppercase mb-6">
+            The Chestone Journey
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            Find your Dream Rental Property Today!
-          </p>
-          <p className="mt-2 text-gray-500 max-w-3xl mx-auto">
-            Searching for your dream rental property has never been easier. With
-            our user-friendly search feature, you can quickly find the perfect
-            home that meets all your needs. Start your search today and discover
-            your dream rental property!
+          <p className="text-xl text-foreground/80 max-w-3xl mx-auto font-medium leading-relaxed">
+            Acquiring and managing luxury assets is a seamless experience with our structured solutions. From discovery to ownership, we guide you through every milestone.
           </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 xl:gap-16 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {[
             {
               imageSrc: "/landing-icon-wand.png",
-              title: "Search for Properties",
+              title: "Discover Excellence",
               description:
-                "Browse through our extensive collection of rental properties in your desired location.",
+                "Browse through our elite collection of properties curated for the most discerning clients.",
             },
             {
               imageSrc: "/landing-icon-calendar.png",
-              title: "Book Your Rental",
+              title: "Secure Your Asset",
               description:
-                "Once you've found the perfect rental property, easily book it online with just a few clicks.",
+                "Once you've identified the perfect property, our streamlined acquisition process ensures a smooth transition.",
             },
             {
               imageSrc: "/landing-icon-heart.png",
-              title: "Enjoy your New Home",
+              title: "Elevated Living",
               description:
-                "Move into your new rental property and start enjoying your dream home.",
+                "Step into your new home and experience a standard of living defined by prestige and stability.",
             },
           ].map((card, index) => (
             <motion.div key={index} variants={itemVariants}>
@@ -83,18 +77,18 @@ const DiscoverCard = ({
   title: string;
   description: string;
 }) => (
-  <div className="px-4 py-12 shadow-lg rounded-lg bg-primary-50 md:h-72">
-    <div className="bg-primary-700 p-[0.6rem] rounded-full mb-4 h-10 w-10 mx-auto">
+  <div className="px-8 py-16 shadow-[0_20px_50px_-12px_rgba(10,31,59,0.1)] rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+    <div className="bg-primary p-4 rounded-2xl mb-8 h-16 w-16 mx-auto group-hover:bg-secondary transition-colors duration-300">
       <Image
         src={imageSrc}
-        width={30}
-        height={30}
-        className="w-full h-full"
+        width={40}
+        height={40}
+        className="w-full h-full brightness-0 invert"
         alt={title}
       />
     </div>
-    <h3 className="mt-4 text-xl font-medium text-gray-800">{title}</h3>
-    <p className="mt-2 text-base text-gray-500">{description}</p>
+    <h3 className="text-2xl font-black text-primary uppercase tracking-tight mb-4">{title}</h3>
+    <p className="text-foreground/70 font-medium leading-relaxed">{description}</p>
   </div>
 );
 

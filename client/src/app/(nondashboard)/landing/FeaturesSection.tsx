@@ -28,32 +28,32 @@ const FeaturesSection = () => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={containerVariants}
-      className="py-24 px-6 sm:px-8 lg:px-12 xl:px-16 bg-white"
+      className="py-32 px-6 sm:px-8 lg:px-12 xl:px-16 bg-white"
     >
       <div className="max-w-4xl xl:max-w-6xl mx-auto">
         <motion.h2
           variants={itemVariants}
-          className="text-3xl font-bold text-center mb-12 w-full sm:w-2/3 mx-auto"
+          className="text-4xl md:text-5xl font-extrabold text-center mb-20 w-full sm:w-3/4 mx-auto text-primary tracking-tight"
         >
-          Quickly find the home you want using our effective search filters!
+          Discover Your Next Chapter with Our Specialized Search
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 xl:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {[0, 1, 2].map((index) => (
             <motion.div key={index} variants={itemVariants}>
               <FeatureCard
                 imageSrc={`/landing-search${3 - index}.png`}
                 title={
                   [
-                    "Trustworthy and Verified Listings",
-                    "Browse Rental Listings with Ease",
-                    "Simplify Your Rental Search with Advanced",
+                    "Verified Premium Listings",
+                    "Intuitive Browsing Experience",
+                    "Advanced Property Solutions",
                   ][index]
                 }
                 description={
                   [
-                    "Discover the best rental options with user reviews and ratings.",
-                    "Get access to user reviews and ratings for a better understanding of rental options.",
-                    "Find trustworthy and verified rental listings to ensure a hassle-free experience.",
+                    "Access a curated selection of properties verified for quality and transparency.",
+                    "Experience seamless navigation through our high-end rental and sale portfolios.",
+                    "Leverage our advanced filtering to find the exact space that meets your lifestyle.",
                   ][index]
                 }
               />
@@ -74,18 +74,18 @@ const FeatureCard = ({
   title: string;
   description: string;
 }) => (
-  <div className="text-center">
-    <div className="p-4 rounded-lg mb-4 flex items-center justify-center h-48">
+  <div className="text-center group">
+    <div className="p-8 rounded-2xl mb-6 flex items-center justify-center h-56 bg-gray-50 border border-gray-100 shadow-sm group-hover:shadow-md transition-all duration-300">
       <Image
         src={imageSrc}
         width={400}
         height={400}
-        className="w-full h-full object-contain"
+        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
         alt={title}
       />
     </div>
-    <h3 className="text-xl font-semibold mb-2">{title}</h3>
-    <p className="mb-4">{description}</p>
+    <h3 className="text-2xl font-bold mb-3 text-primary">{title}</h3>
+    <p className="text-foreground leading-relaxed font-medium">{description}</p>
   </div>
 );
 

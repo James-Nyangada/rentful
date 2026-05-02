@@ -54,10 +54,10 @@ const Navbar = () => {
 
   return (
     <div
-      className="fixed top-0 left-0 w-full z-50 shadow-xl"
+      className="fixed top-0 left-0 w-full z-50 shadow-md transition-all duration-300"
       style={{ height: `${NAVBAR_HEIGHT}px` }}
     >
-      <div className="flex justify-between items-center w-full py-3 px-8 bg-primary-700 text-white">
+      <div className="flex justify-between items-center w-full py-4 px-8 bg-white border-b border-gray-100">
         <div className="flex items-center gap-4 md:gap-6">
           {isDashboardPage && (
             <div className="md:hidden">
@@ -66,21 +66,24 @@ const Navbar = () => {
           )}
           <Link
             href="/"
-            className="cursor-pointer hover:!text-primary-300"
+            className="cursor-pointer transition-transform hover:scale-105"
             scroll={false}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Image
-                src="/logo.svg"
-                alt="Rentiful Logo"
-                width={24}
-                height={24}
-                className="w-6 h-6"
+                src="/logo-rentful.png"
+                alt="Chestone Properties Logo"
+                width={160}
+                height={160}
+                className="h-16 w-auto object-contain"
+                priority
               />
-              <div className="text-xl font-bold">
-                RENT
-                <span className="text-secondary-500 font-light hover:!text-primary-300">
-                  IFUL
+              <div className="flex flex-col">
+                <span className="text-primary font-black text-3xl leading-none tracking-tighter">
+                  Chestone Properties
+                </span>
+                <span className="text-primary/70 font-bold text-xs leading-none tracking-[0.4em] mt-1 uppercase">
+                  Premium Living
                 </span>
               </div>
             </div>
@@ -88,7 +91,7 @@ const Navbar = () => {
           {isDashboardPage && isLoggedIn && (
             <Button
               variant="secondary"
-              className="md:ml-4 bg-primary-50 text-primary-700 hover:bg-secondary-500 hover:text-primary-50"
+              className="md:ml-4 bg-primary text-secondary hover:bg-primary/90 transition-all shadow-sm"
               onClick={() =>
                 router.push(
                   userRole?.toLowerCase() === "manager"
@@ -113,45 +116,45 @@ const Navbar = () => {
             </Button>
           )}
         </div>
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="relative text-primary-200 hover:text-white transition-colors duration-300 group font-medium capitalize"
+              className="relative text-primary hover:text-secondary transition-colors duration-300 group font-semibold uppercase text-xs tracking-wider"
             >
               {link.label}
-              <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-6">
           {isLoggedIn ? (
             <>
-              <div className="relative hidden md:block">
-                <MessageCircle className="w-6 h-6 cursor-pointer text-primary-200 hover:text-primary-400" />
-                <span className="absolute top-0 right-0 w-2 h-2 bg-secondary-700 rounded-full"></span>
+              <div className="relative hidden md:block group">
+                <MessageCircle className="w-5 h-5 cursor-pointer text-primary group-hover:text-secondary transition-colors" />
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-secondary rounded-full border-2 border-white"></span>
               </div>
-              <div className="relative hidden md:block">
-                <Bell className="w-6 h-6 cursor-pointer text-primary-200 hover:text-primary-400" />
-                <span className="absolute top-0 right-0 w-2 h-2 bg-secondary-700 rounded-full"></span>
+              <div className="relative hidden md:block group">
+                <Bell className="w-5 h-5 cursor-pointer text-primary group-hover:text-secondary transition-colors" />
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-secondary rounded-full border-2 border-white"></span>
               </div>
 
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-2 focus:outline-none">
-                  <Avatar>
+                <DropdownMenuTrigger className="flex items-center gap-3 focus:outline-none group">
+                  <Avatar className="h-9 w-9 border-2 border-transparent group-hover:border-secondary transition-all">
                     <AvatarImage src="" />
-                    <AvatarFallback className="bg-primary-600">
+                    <AvatarFallback className="bg-primary text-secondary font-bold">
                       {(userRole?.[0] || "U").toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
-                  <p className="text-primary-200 hidden md:block">
+                  <p className="text-primary font-bold text-sm hidden md:block group-hover:text-secondary transition-colors">
                     {userName}
                   </p>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white text-primary-700">
+                <DropdownMenuContent className="bg-white text-primary border-gray-100 shadow-xl mt-2 w-48">
                   <DropdownMenuItem
-                    className="cursor-pointer hover:!bg-primary-700 hover:!text-primary-100 font-bold"
+                    className="cursor-pointer hover:!bg-primary hover:!text-secondary font-bold p-3"
                     onClick={() =>
                       router.push(
                         userRole?.toLowerCase() === "manager"
@@ -163,9 +166,9 @@ const Navbar = () => {
                   >
                     Go to Dashboard
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator className="bg-primary-200" />
+                  <DropdownMenuSeparator className="bg-gray-100" />
                   <DropdownMenuItem
-                    className="cursor-pointer hover:!bg-primary-700 hover:!text-primary-100"
+                    className="cursor-pointer hover:!bg-primary hover:!text-secondary p-3"
                     onClick={() =>
                       router.push(
                         `/${userRole?.toLowerCase()}s/settings`,
@@ -176,7 +179,7 @@ const Navbar = () => {
                     Settings
                   </DropdownMenuItem>
                   <DropdownMenuItem
-                    className="cursor-pointer hover:!bg-primary-700 hover:!text-primary-100"
+                    className="cursor-pointer hover:!bg-primary hover:!text-secondary p-3"
                     onClick={handleSignOut}
                   >
                     Sign out
@@ -188,16 +191,16 @@ const Navbar = () => {
             <>
               <Link href="/signin">
                 <Button
-                  variant="outline"
-                  className="text-white border-white bg-transparent hover:bg-white hover:text-primary-700 rounded-lg"
+                  variant="ghost"
+                  className="text-primary font-bold hover:text-secondary hover:bg-transparent"
                 >
                   Sign In
                 </Button>
               </Link>
               <Link href="/signup">
                 <Button
-                  variant="secondary"
-                  className="text-white bg-secondary-600 hover:bg-white hover:text-primary-700 rounded-lg"
+                  variant="default"
+                  className="bg-primary text-secondary hover:bg-primary/90 font-bold px-6 shadow-sm"
                 >
                   Sign Up
                 </Button>
@@ -207,7 +210,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden flex items-center text-primary-200 hover:text-white focus:outline-none"
+            className="md:hidden flex items-center text-primary hover:text-secondary focus:outline-none transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -221,21 +224,34 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-primary-700 shadow-xl overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl overflow-hidden transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col py-4 px-8 gap-4">
+        <div className="flex flex-col py-6 px-8 gap-5">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-primary-200 hover:text-white transition-colors duration-300 font-medium capitalize text-lg"
+              className="text-primary hover:text-secondary transition-colors duration-300 font-bold uppercase text-sm tracking-widest"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.label}
             </Link>
           ))}
+          <div className="h-px bg-gray-100 w-full my-1"></div>
+          {!isLoggedIn && (
+            <div className="flex flex-col gap-3">
+              <Link href="/signin" onClick={() => setIsMobileMenuOpen(false)}>
+                <p className="text-primary font-bold py-2">Sign In</p>
+              </Link>
+              <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button className="w-full bg-primary text-secondary font-bold">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

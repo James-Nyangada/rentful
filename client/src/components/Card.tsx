@@ -53,11 +53,11 @@ const Card = ({
         )}
       </div>
       <div className="p-4">
-        <h2 className="text-xl font-bold mb-1">
+        <h2 className="text-xl font-bold mb-1 text-primary">
           {propertyLink ? (
             <Link
               href={propertyLink}
-              className="hover:underline hover:text-blue-600"
+              className="hover:underline hover:text-secondary"
               scroll={false}
             >
               {property.name}
@@ -66,36 +66,36 @@ const Card = ({
             property.name
           )}
         </h2>
-        <p className="text-gray-600 mb-2">
+        <p className="text-foreground/70 mb-2 text-sm font-medium">
           {property?.location?.address}, {property?.location?.city}
         </p>
         <div className="flex justify-between items-center">
           <div className="flex items-center mb-2">
-            <Star className="w-4 h-4 text-yellow-400 mr-1" />
-            <span className="font-semibold">
+            <Star className="w-4 h-4 text-secondary fill-secondary mr-1" />
+            <span className="font-bold text-primary">
               {property.averageRating.toFixed(1)}
             </span>
-            <span className="text-gray-600 ml-1">
+            <span className="text-foreground/60 text-xs ml-1 font-medium">
               ({property.numberOfReviews} Reviews)
             </span>
           </div>
-          <p className="text-lg font-bold mb-3">
-            kes {property.pricePerMonth.toFixed(0)}{" "}
-            <span className="text-gray-600 text-base font-normal"> /month</span>
+          <p className="text-xl font-black text-secondary mb-3 tracking-tighter">
+            kes {property.pricePerMonth.toLocaleString()}{" "}
+            <span className="text-foreground/60 text-sm font-bold"> /month</span>
           </p>
         </div>
-        <hr />
-        <div className="flex justify-between items-center gap-4 text-gray-600 mt-5">
-          <span className="flex items-center">
-            <Bed className="w-5 h-5 mr-2" />
+        <hr className="border-gray-100" />
+        <div className="flex justify-between items-center gap-4 text-primary font-bold mt-5">
+          <span className="flex items-center text-sm">
+            <Bed className="w-5 h-5 mr-2 text-primary" />
             {property.beds} Bed
           </span>
-          <span className="flex items-center">
-            <Bath className="w-5 h-5 mr-2" />
+          <span className="flex items-center text-sm">
+            <Bath className="w-5 h-5 mr-2 text-primary" />
             {property.baths} Bath
           </span>
-          <span className="flex items-center">
-            <House className="w-5 h-5 mr-2" />
+          <span className="flex items-center text-sm">
+            <House className="w-5 h-5 mr-2 text-primary" />
             {property.squareFeet} sq ft
           </span>
         </div>

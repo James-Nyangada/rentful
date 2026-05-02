@@ -74,22 +74,22 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
             >
               {open ? (
                 <>
-                  <h1 className="text-xl font-bold text-gray-800">
-                    {userType === "manager" ? "Manager View" : "Renter View"}
+                  <h1 className="text-xl font-black text-primary tracking-tighter uppercase">
+                    {userType === "manager" ? "Manager" : "Renter"}
                   </h1>
                   <button
-                    className="hover:bg-gray-100 p-2 rounded-md"
+                    className="hover:bg-gray-50 p-2 rounded-md transition-colors"
                     onClick={() => toggleSidebar()}
                   >
-                    <X className="h-6 w-6 text-gray-600" />
+                    <X className="h-6 w-6 text-primary" />
                   </button>
                 </>
               ) : (
                 <button
-                  className="hover:bg-gray-100 p-2 rounded-md"
+                  className="hover:bg-gray-50 p-2 rounded-md transition-colors"
                   onClick={() => toggleSidebar()}
                 >
-                  <Menu className="h-6 w-6 text-gray-600" />
+                  <Menu className="h-6 w-6 text-primary" />
                 </button>
               )}
             </div>
@@ -107,24 +107,26 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
                 <SidebarMenuButton
                   asChild
                   className={cn(
-                    "flex items-center px-7 py-7",
+                    "flex items-center px-7 py-7 transition-all duration-200",
                     isActive
-                      ? "bg-gray-100"
-                      : "text-gray-600 hover:bg-gray-100",
-                    open ? "text-blue-600" : "ml-[5px]"
+                      ? "bg-primary text-secondary"
+                      : "text-primary hover:bg-gray-50 hover:text-secondary",
+                    !open && "ml-[5px]"
                   )}
                 >
                   <Link href={link.href} className="w-full" scroll={false}>
                     <div className="flex items-center gap-3">
                       <link.icon
-                        className={`h-5 w-5 ${
-                          isActive ? "text-blue-600" : "text-gray-600"
-                        }`}
+                        className={cn(
+                          "h-5 w-5 transition-colors",
+                          isActive ? "text-secondary" : "text-primary"
+                        )}
                       />
                       <span
-                        className={`font-medium ${
-                          isActive ? "text-blue-600" : "text-gray-600"
-                        }`}
+                        className={cn(
+                          "font-bold tracking-wide uppercase text-xs",
+                          isActive ? "text-secondary" : "text-primary"
+                        )}
                       >
                         {link.label}
                       </span>

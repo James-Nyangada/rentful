@@ -15,12 +15,12 @@ const HeroSection = () => {
     <div className="relative h-screen">
       <Image
         src="/landing-splash.jpg"
-        alt="Rentiful Rental Platform Hero Section"
+        alt="Chestone Properties Ltd Hero Section"
         fill
         className="object-cover object-center"
         priority
       />
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div className="absolute inset-0 bg-primary/20"></div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -28,21 +28,21 @@ const HeroSection = () => {
         className="absolute top-1/3 transform -translate-x-1/2 -translate-y-1/2 text-center w-full"
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 text-center drop-shadow-lg">
-            Rent or Buy a property in Kenya
+          <h1 className="text-6xl md:text-7xl font-extrabold text-primary mb-8 text-center drop-shadow-sm tracking-tight">
+            Elevate Your Living
           </h1>
-          <div className="flex justify-center gap-4 mb-10">
+          <div className="flex justify-center gap-6 mb-12">
             <Button
               onClick={() => router.push("/signup")}
-              className="bg-[#D2E030] hover:bg-[#b8c52a] text-black font-semibold rounded-md px-6 h-12"
+              className="bg-primary hover:bg-primary/90 text-secondary font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
             >
-              Your Dream Home Starts Here <ArrowUpRight className="w-4 h-4 ml-2" />
+              Start Your Journey <ArrowUpRight className="w-5 h-5 ml-2" />
             </Button>
             <Button
               onClick={() => router.push("/search")}
-              className="bg-white hover:bg-gray-100 text-black font-semibold rounded-md px-6 h-12"
+              className="bg-secondary hover:bg-secondary/90 text-white font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
             >
-              View Listings <ArrowUpRight className="w-4 h-4 ml-2" />
+              View Listings <ArrowUpRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
 

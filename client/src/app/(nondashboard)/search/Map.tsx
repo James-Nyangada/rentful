@@ -31,7 +31,7 @@ const Map = () => {
       const marker = createPropertyMarker(property, map);
       const markerElement = marker.getElement();
       const path = markerElement.querySelector("path[fill='#3FB1CE']");
-      if (path) path.setAttribute("fill", "#000000");
+      if (path) path.setAttribute("fill", "#0A1F3B");
     });
 
     const resizeMap = () => {
@@ -42,7 +42,7 @@ const Map = () => {
     return () => map.remove();
   }, [isLoading, isError, properties, filters.coordinates]);
 
-  if (isLoading) return <>Loading...</>;
+  if (isLoading) return <Loading />;
   if (isError || !properties) return <div>Failed to fetch properties</div>;
 
   return (
