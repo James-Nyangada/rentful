@@ -30,7 +30,7 @@ const FooterSection = () => {
                 </span>
               </div>
             </Link>
-            <p className="text-secondary font-bold text-sm tracking-widest uppercase mb-6">
+            <p className="text-white font-bold text-base tracking-widest uppercase mb-6">
               Structured Property Solutions
             </p>
             <p className="text-gray-400 text-sm leading-relaxed mb-8">
@@ -54,7 +54,7 @@ const FooterSection = () => {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
             <div>
-              <h4 className="text-secondary font-black text-xs uppercase tracking-widest mb-8">Sitemap</h4>
+              <h4 className="text-secondary font-black text-sm uppercase tracking-widest mb-8">Sitemap</h4>
               <ul className="flex flex-col space-y-4">
                 <li><Link href="/" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Home</Link></li>
                 <li><Link href="/about" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">About Us</Link></li>
@@ -63,7 +63,7 @@ const FooterSection = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-secondary font-black text-xs uppercase tracking-widest mb-8">Resources</h4>
+              <h4 className="text-secondary font-black text-sm uppercase tracking-widest mb-8">Resources</h4>
               <ul className="flex flex-col space-y-4">
                 <li><Link href="/faq" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">FAQ</Link></li>
                 <li><Link href="/terms" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Terms</Link></li>
@@ -75,12 +75,12 @@ const FooterSection = () => {
         </div>
 
         <div className="mt-20 pt-8 border-t border-secondary/30 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500 font-medium tracking-wide">
+          <p className="text-sm text-gray-400 font-medium tracking-wide">
             © 2026 Chestone Properties. ALL RIGHTS RESERVED.
           </p>
           <div className="flex gap-8">
-            <Link href="/privacy" className="text-xs text-gray-500 hover:text-secondary transition-colors uppercase font-bold tracking-tighter">Privacy Policy</Link>
-            <Link href="/terms" className="text-xs text-gray-500 hover:text-secondary transition-colors uppercase font-bold tracking-tighter">Terms of Service</Link>
+            <Link href="/privacy" className="text-sm text-gray-400 hover:text-secondary transition-colors uppercase font-bold tracking-tighter">Privacy Policy</Link>
+            <Link href="/terms" className="text-sm text-gray-400 hover:text-secondary transition-colors uppercase font-bold tracking-tighter">Terms of Service</Link>
           </div>
         </div>
       </div>

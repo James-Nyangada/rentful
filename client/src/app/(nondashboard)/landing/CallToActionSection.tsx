@@ -20,7 +20,7 @@ const CallToActionSection = () => {
         className="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-16 text-center"
       >
         <div className="flex flex-col items-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-secondary mb-6 tracking-tight uppercase">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight uppercase">
             Structured Property Solutions
           </h2>
           <p className="text-white text-xl md:text-2xl mb-12 max-w-3xl font-medium leading-relaxed">

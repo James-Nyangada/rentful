@@ -109,7 +109,7 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
                   className={cn(
                     "flex items-center px-7 py-7 transition-all duration-200",
                     isActive
-                      ? "bg-primary text-secondary"
+                      ? "bg-primary text-white"
                       : "text-primary hover:bg-gray-50 hover:text-secondary",
                     !open && "ml-[5px]"
                   )}
@@ -119,13 +119,13 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
                       <link.icon
                         className={cn(
                           "h-5 w-5 transition-colors",
-                          isActive ? "text-secondary" : "text-primary"
+                          isActive ? "text-white" : "text-primary"
                         )}
                       />
                       <span
                         className={cn(
                           "font-bold tracking-wide uppercase text-xs",
-                          isActive ? "text-secondary" : "text-primary"
+                          isActive ? "text-white" : "text-primary"
                         )}
                       >
                         {link.label}

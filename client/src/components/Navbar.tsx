@@ -82,8 +82,8 @@ const Navbar = () => {
                 <span className="text-primary font-black text-3xl leading-none tracking-tighter">
                   Chestone Properties
                 </span>
-                <span className="text-primary/70 font-bold text-xs leading-none tracking-[0.4em] mt-1 uppercase">
-                  Premium Living
+                <span className="text-primary/70 font-bold text-sm leading-none tracking-[0.4em] mt-1 uppercase">
+                  Structured Property Solutions
                 </span>
               </div>
             </div>
@@ -91,7 +91,7 @@ const Navbar = () => {
           {isDashboardPage && isLoggedIn && (
             <Button
               variant="secondary"
-              className="md:ml-4 bg-primary text-secondary hover:bg-primary/90 transition-all shadow-sm"
+              className="md:ml-4 bg-primary text-white hover:bg-primary/90 transition-all shadow-sm"
               onClick={() =>
                 router.push(
                   userRole?.toLowerCase() === "manager"
@@ -121,7 +121,7 @@ const Navbar = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="relative text-primary hover:text-secondary transition-colors duration-300 group font-semibold uppercase text-xs tracking-wider"
+              className="relative text-primary hover:text-secondary transition-colors duration-300 group font-semibold uppercase text-sm tracking-wider"
             >
               {link.label}
               <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
@@ -154,7 +154,7 @@ const Navbar = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-white text-primary border-gray-100 shadow-xl mt-2 w-48">
                   <DropdownMenuItem
-                    className="cursor-pointer hover:!bg-primary hover:!text-secondary font-bold p-3"
+                    className="cursor-pointer hover:!bg-primary hover:!text-white font-bold p-3"
                     onClick={() =>
                       router.push(
                         userRole?.toLowerCase() === "manager"
@@ -200,7 +200,7 @@ const Navbar = () => {
               <Link href="/signup">
                 <Button
                   variant="default"
-                  className="bg-primary text-secondary hover:bg-primary/90 font-bold px-6 shadow-sm"
+                  className="bg-primary text-white hover:bg-primary/90 font-bold px-6 shadow-sm"
                 >
                   Sign Up
                 </Button>

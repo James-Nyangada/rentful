@@ -74,7 +74,7 @@ const SearchComponent = () => {
           onClick={() => setSearchTab("sale")}
           className={`px-10 py-4 rounded-tl-2xl font-bold uppercase tracking-wider transition-all ${
             searchTab === "sale"
-              ? "bg-primary text-secondary"
+              ? "bg-primary text-white"
               : "bg-white/80 text-primary hover:bg-white"
           }`}
         >
@@ -84,7 +84,7 @@ const SearchComponent = () => {
           onClick={() => setSearchTab("rent")}
           className={`px-10 py-4 rounded-tr-2xl font-bold uppercase tracking-wider transition-all ${
             searchTab === "rent"
-              ? "bg-primary text-secondary"
+              ? "bg-primary text-white"
               : "bg-white/80 text-primary hover:bg-white"
           }`}
         >

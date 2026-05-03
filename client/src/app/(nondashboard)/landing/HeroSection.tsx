@@ -34,7 +34,7 @@ const HeroSection = () => {
           <div className="flex justify-center gap-6 mb-12">
             <Button
               onClick={() => router.push("/signup")}
-              className="bg-primary hover:bg-primary/90 text-secondary font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
+              className="bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
             >
               Start Your Journey <ArrowUpRight className="w-5 h-5 ml-2" />
             </Button>

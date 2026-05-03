@@ -35,18 +35,18 @@ const config: Config = {
   				'950': '#010306'
   			},
   			secondary: {
-  				DEFAULT: '#D4AF37',
-  				'50': '#faf7e9',
-  				'100': '#f5efd3',
-  				'200': '#ebdfa7',
-  				'300': '#e1cf7b',
-  				'400': '#d7bf4f',
-  				'500': '#D4AF37',
-  				'600': '#aa8c2c',
-  				'700': '#806921',
-  				'800': '#554616',
-  				'900': '#2b230b',
-  				'950': '#151105'
+  				DEFAULT: '#EFBF04',
+  				'50': '#fefce8',
+  				'100': '#fdf8c1',
+  				'200': '#fcf085',
+  				'300': '#f9e23f',
+  				'400': '#f4cd12',
+  				'500': '#EFBF04',
+  				'600': '#ca9602',
+  				'700': '#a16e03',
+  				'800': '#825607',
+  				'900': '#6b460a',
+  				'950': '#3e2501'
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
@@ -82,7 +82,7 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
-  			sans: ['var(--font-outfit)', 'sans-serif'],
+  			sans: ['var(--font-plus-jakarta-sans)', 'sans-serif'],
   		},
   	}
   },

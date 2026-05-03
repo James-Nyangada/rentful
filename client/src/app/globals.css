@@ -14,7 +14,7 @@ body,
 .app {
   height: 100%;
   width: 100%;
-  @apply text-sm;
+  @apply text-base;
   @apply bg-white;
   @apply dark:bg-black;
 }
@@ -28,12 +28,12 @@ body,
     --popover: 0 0% 100%;
     --popover-foreground: 214 71% 14%;
     --primary: 214 71% 14%; /* Chestone Navy */
-    --primary-foreground: 46 65% 52%; /* Luxury Gold */
-    --secondary: 46 65% 52%; /* Luxury Gold */
-    --secondary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 47 97% 47%; /* New Gold #EFBF04 */
+    --secondary-foreground: 0 0% 100%; /* White */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 46 65% 52%; /* Luxury Gold */
+    --accent: 47 97% 47%; /* New Gold #EFBF04 */
     --accent-foreground: 214 71% 14%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -179,7 +179,7 @@ body,
 }
 
 .auth-input {
-  @apply w-full px-4 py-3 rounded-lg border text-sm;
+  @apply w-full px-4 py-3 rounded-lg border text-base;
   border-color: hsl(var(--input));
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -191,7 +191,7 @@ body,
 }
 
 .auth-button {
-  @apply w-full py-3 rounded-lg font-medium text-sm;
+  @apply w-full py-3 rounded-lg font-medium text-base;
   background-color: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
   transition: background-color 0.2s;
