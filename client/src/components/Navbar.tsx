@@ -27,11 +27,7 @@ const Navbar = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/search", label: "Listings" },
-  ];
+
 
   // Refetch RTK Query when auth context user changes (e.g., after login)
   React.useEffect(() => {
@@ -79,7 +75,7 @@ const Navbar = () => {
                 priority
               />
               <div className="flex flex-col">
-                <span className="text-primary font-black text-3xl leading-none tracking-tighter">
+                <span className="text-primary font-black text-[15px] leading-none tracking-tighter">
                   Chestone Properties
                 </span>
                 <span className="text-primary/70 font-bold text-[10px] leading-none tracking-[0.4em] mt-1 uppercase">
@@ -116,17 +112,44 @@ const Navbar = () => {
             </Button>
           )}
         </div>
-        <div className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="relative text-primary hover:text-secondary transition-colors duration-300 group font-semibold uppercase text-sm tracking-wider"
-            >
-              {link.label}
-              <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
+        <div className="hidden md:flex items-center justify-center gap-10 font-nav tracking-[1px] text-xs flex-1 px-8">
+          {/* The Collection Dropdown */}
+          <div className="relative group">
+            <Link href="/search" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase block pb-1">
+              The Collection
             </Link>
-          ))}
+            <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
+              <Link href="/search?location=lavington" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Lavington</Link>
+              <Link href="/search?location=westlands" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Westlands</Link>
+              <Link href="/search?location=kileleshwa" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Kileleshwa</Link>
+              <Link href="/search?location=kilimani" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Kilimani</Link>
+            </div>
+          </div>
+
+          {/* Buy / Rent */}
+          <div className="flex gap-3">
+            <Link href="/search?type=buy" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">Buy</Link>
+            <span className="text-primary/30">/</span>
+            <Link href="/search?type=rent" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">Rent</Link>
+          </div>
+
+
+          {/* Structured Solutions Dropdown */}
+          <div className="relative group">
+            <button className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">
+              Structured Solutions
+            </button>
+            <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
+              <Link href="/advisory" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Advisory</Link>
+              <Link href="/derisking" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Asset De-risking</Link>
+              <Link href="/diplomacy" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Diplomacy</Link>
+            </div>
+          </div>
+
+          {/* About */}
+          <Link href="/about" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">
+            About
+          </Link>
         </div>
         <div className="flex items-center gap-6">
           {isLoggedIn ? (
@@ -188,21 +211,13 @@ const Navbar = () => {
               </DropdownMenu>
             </>
           ) : (
-            <div className="hidden md:flex items-center gap-6">
-              <Link href="/signin">
-                <Button
-                  variant="ghost"
-                  className="text-primary font-bold hover:text-secondary hover:bg-transparent"
-                >
-                  Sign In
-                </Button>
-              </Link>
+            <div className="hidden md:flex items-center gap-6 font-nav tracking-[1px]">
               <Link href="/signup">
                 <Button
                   variant="default"
-                  className="bg-primary text-white hover:bg-primary/90 font-bold px-6 shadow-sm"
+                  className="bg-secondary text-white hover:bg-secondary/90 font-bold px-6 shadow-sm uppercase text-xs rounded-md"
                 >
-                  Sign Up
+                  List With Us
                 </Button>
               </Link>
             </div>
@@ -228,17 +243,29 @@ const Navbar = () => {
           isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col py-6 px-8 gap-5">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-primary hover:text-secondary transition-colors duration-300 font-bold uppercase text-sm tracking-widest"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="flex flex-col py-6 px-8 gap-5 font-nav tracking-[1px] text-xs">
+          <Link href="/search" className="text-secondary hover:text-primary transition-colors font-bold uppercase text-[10px] tracking-[2px] mb-[-10px]" onClick={() => setIsMobileMenuOpen(false)}>The Collection</Link>
+          <Link href="/search?location=lavington" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Lavington</Link>
+          <Link href="/search?location=westlands" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Westlands</Link>
+          <Link href="/search?location=kileleshwa" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Kileleshwa</Link>
+          <Link href="/search?location=kilimani" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Kilimani</Link>
+
+          <div className="h-px bg-gray-100 w-full my-1"></div>
+          
+          <Link href="/search?type=buy" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Buy</Link>
+          <Link href="/search?type=rent" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Rent</Link>
+          <Link href="/managers/newproperty" className="text-secondary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>List With Us</Link>
+
+          <div className="h-px bg-gray-100 w-full my-1"></div>
+
+          <p className="text-secondary font-bold uppercase text-[10px] tracking-[2px] mb-[-10px]">Solutions</p>
+          <Link href="/advisory" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Advisory</Link>
+          <Link href="/derisking" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Asset De-risking</Link>
+          <Link href="/diplomacy" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Diplomacy</Link>
+          
+          <div className="h-px bg-gray-100 w-full my-1"></div>
+
+          <Link href="/about" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
           <div className="h-px bg-gray-100 w-full my-1"></div>
           {!isLoggedIn && (
             <div className="flex flex-col gap-3">

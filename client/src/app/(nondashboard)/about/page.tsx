@@ -27,6 +27,14 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Vision Statement */}
+      <section className="bg-background py-20 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-primary leading-tight font-bold">
+            &quot;To be the definitive gateway to luxury real estate and structured property solutions.&quot;
+          </h2>
+        </div>
+      </section>
       {/* Elegance Section 1 */}
       <section className="max-w-6xl mx-auto py-32 px-6 grid md:grid-cols-2 gap-20 items-center">
         <div className="relative h-[500px] w-full hidden md:block">

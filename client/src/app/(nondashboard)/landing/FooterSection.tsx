@@ -52,23 +52,35 @@ const FooterSection = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 font-inter">
+            {/* Column A: Neighborhoods */}
             <div>
-              <h4 className="text-secondary font-black text-sm uppercase tracking-widest mb-8">Sitemap</h4>
+              <h4 className="text-secondary font-black text-sm uppercase tracking-widest mb-8 font-nav">Neighborhoods</h4>
               <ul className="flex flex-col space-y-4">
-                <li><Link href="/" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Home</Link></li>
-                <li><Link href="/about" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">About Us</Link></li>
-                <li><Link href="/search" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Listings</Link></li>
-                <li><Link href="/contact" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Contact</Link></li>
+                <li><Link href="/search?location=lavington" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Lavington Residential</Link></li>
+                <li><Link href="/search?location=westlands" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Westlands Commercial & Luxury</Link></li>
+                <li><Link href="/search?location=kileleshwa" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Kileleshwa Portfolio</Link></li>
+                <li><Link href="/search?location=kilimani" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Kilimani Listings</Link></li>
               </ul>
             </div>
+            {/* Column B: For Landlords */}
             <div>
-              <h4 className="text-secondary font-black text-sm uppercase tracking-widest mb-8">Resources</h4>
+              <h4 className="text-secondary font-black text-sm uppercase tracking-widest mb-8 font-nav">For Landlords</h4>
               <ul className="flex flex-col space-y-4">
-                <li><Link href="/faq" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">FAQ</Link></li>
-                <li><Link href="/terms" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Terms</Link></li>
-                <li><Link href="/privacy" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Privacy</Link></li>
-                <li><Link href="/cookies" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Cookies</Link></li>
+                <li><Link href="/managers/onboarding" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Onboarding Process</Link></li>
+                <li><Link href="/managers/benefits" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Exclusive Listing Benefits</Link></li>
+                <li><Link href="/managers/inventory" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Inventory Management</Link></li>
+                <li><Link href="/managers/newproperty" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Submit Property</Link></li>
+              </ul>
+            </div>
+            {/* Column C: Company */}
+            <div>
+              <h4 className="text-secondary font-black text-sm uppercase tracking-widest mb-8 font-nav">Company</h4>
+              <ul className="flex flex-col space-y-4">
+                <li><Link href="/about" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Our Story</Link></li>
+                <li><Link href="/verification" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Verification Standards</Link></li>
+                <li><Link href="/contact" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Contact & Offices</Link></li>
+                <li><Link href="/terms" className="text-gray-300 hover:text-secondary transition-colors text-sm font-medium">Terms & Privacy</Link></li>
               </ul>
             </div>
           </div>

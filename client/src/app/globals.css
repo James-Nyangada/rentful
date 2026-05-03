@@ -21,62 +21,62 @@ body,
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 60 17% 95%; /* Champagne Cream #F5F5F0 */
     --foreground: 0 0% 20%; /* Dark Gray #333333 */
     --card: 0 0% 100%;
-    --card-foreground: 214 71% 14%; /* Chestone Navy */
+    --card-foreground: 226 60% 10%; /* Oxford Navy #0A1128 */
     --popover: 0 0% 100%;
-    --popover-foreground: 214 71% 14%;
-    --primary: 214 71% 14%; /* Chestone Navy */
+    --popover-foreground: 226 60% 10%;
+    --primary: 226 60% 10%; /* Oxford Navy */
     --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 47 97% 47%; /* New Gold #EFBF04 */
+    --secondary: 40 48% 56%; /* Burnished Gold #C5A059 */
     --secondary-foreground: 0 0% 100%; /* White */
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 47 97% 47%; /* New Gold #EFBF04 */
-    --accent-foreground: 214 71% 14%;
+    --muted: 60 10% 90%;
+    --muted-foreground: 0 0% 44%; /* Slate Grey #707070 */
+    --accent: 40 48% 56%; /* Burnished Gold #C5A059 */
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 88%;
-    --ring: 214 71% 14%;
+    --border: 0 0% 88%; /* #E0E0E0 */
+    --input: 0 0% 88%;
+    --ring: 226 60% 10%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 214 71% 14%;
-    --sidebar-primary-foreground: 46 65% 52%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 214 71% 14%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 214 71% 14%;
+    --sidebar-background: 60 17% 95%;
+    --sidebar-foreground: 226 60% 10%;
+    --sidebar-primary: 226 60% 10%;
+    --sidebar-primary-foreground: 40 48% 56%;
+    --sidebar-accent: 60 10% 90%;
+    --sidebar-accent-foreground: 226 60% 10%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 226 60% 10%;
 
     /* Brand Colors */
-    --chestone-navy: 214 71% 14%;
-    --luxury-gold: 46 65% 52%;
+    --chestone-navy: 226 60% 10%;
+    --luxury-gold: 40 48% 56%;
     --clean-white: 0 0% 100%;
     --dark-gray: 0 0% 20%;
   }
 
   .dark {
-    --background: 214 71% 5%;
-    --foreground: 0 0% 100%;
-    --card: 214 71% 8%;
-    --card-foreground: 0 0% 100%;
-    --popover: 214 71% 8%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 46 65% 52%;
-    --primary-foreground: 214 71% 14%;
-    --secondary: 214 71% 14%;
-    --secondary-foreground: 46 65% 52%;
-    --muted: 214 71% 15%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 214 71% 15%;
-    --accent-foreground: 46 65% 52%;
+    --background: 226 60% 5%;
+    --foreground: 60 17% 95%;
+    --card: 226 60% 8%;
+    --card-foreground: 60 17% 95%;
+    --popover: 226 60% 8%;
+    --popover-foreground: 60 17% 95%;
+    --primary: 40 48% 56%;
+    --primary-foreground: 226 60% 10%;
+    --secondary: 226 60% 10%;
+    --secondary-foreground: 40 48% 56%;
+    --muted: 226 60% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 226 60% 15%;
+    --accent-foreground: 40 48% 56%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214 71% 15%;
-    --input: 214 71% 15%;
-    --ring: 46 65% 52%;
+    --destructive-foreground: 60 17% 95%;
+    --border: 226 60% 15%;
+    --input: 226 60% 15%;
+    --ring: 40 48% 56%;
   }
 }
 
@@ -210,3 +210,23 @@ body,
 [data-close-button="true"] {
   @apply bg-background border-border text-foreground hover:bg-muted;
 }
+
+/* Custom Utilities for Typography & Images */
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+  letter-spacing: -0.02em;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
+  letter-spacing: 1px;
+}
+
+.editorial-warm {
+  filter: sepia(0.15) saturate(1.2) contrast(1.05);
+}
+
