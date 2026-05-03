@@ -82,7 +82,7 @@ const Navbar = () => {
                 <span className="text-primary font-black text-3xl leading-none tracking-tighter">
                   Chestone Properties
                 </span>
-                <span className="text-primary/70 font-bold text-sm leading-none tracking-[0.4em] mt-1 uppercase">
+                <span className="text-primary/70 font-bold text-[10px] leading-none tracking-[0.4em] mt-1 uppercase">
                   Structured Property Solutions
                 </span>
               </div>
@@ -188,7 +188,7 @@ const Navbar = () => {
               </DropdownMenu>
             </>
           ) : (
-            <>
+            <div className="hidden md:flex items-center gap-6">
               <Link href="/signin">
                 <Button
                   variant="ghost"
@@ -205,7 +205,7 @@ const Navbar = () => {
                   Sign Up
                 </Button>
               </Link>
-            </>
+            </div>
           )}
 
           {/* Mobile Menu Toggle */}
@@ -246,7 +246,7 @@ const Navbar = () => {
                 <p className="text-primary font-bold py-2">Sign In</p>
               </Link>
               <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="w-full bg-primary text-secondary font-bold">
+                <Button className="w-full bg-primary text-white font-bold">
                   Sign Up
                 </Button>
               </Link>
