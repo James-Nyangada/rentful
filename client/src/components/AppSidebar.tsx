@@ -1,8 +1,10 @@
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 import React from "react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -14,18 +16,28 @@ import {
   FileText,
   Heart,
   Home,
+  LogOut,
   Menu,
   Plus,
   Settings,
   X,
 } from "lucide-react";
-import { NAVBAR_HEIGHT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useAuth } from "@/app/(auth)/authProvider";
+import { useGetAuthUserQuery } from "@/state/api";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const AppSidebar = ({ userType }: AppSidebarProps) => {
   const pathname = usePathname();
   const { toggleSidebar, open } = useSidebar();
+  const { signOut, user: contextUser } = useAuth();
+  const { data: authUser } = useGetAuthUserQuery();
+  const router = useRouter();
+
+  const user = authUser || contextUser;
+  const userName = authUser?.userInfo?.name || contextUser?.name || "User";
+  const userRole = (authUser?.userRole || contextUser?.role || "User").toUpperCase();
 
   const navLinks =
     userType === "manager"
@@ -57,11 +69,7 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
   return (
     <Sidebar
       collapsible="icon"
-      className="fixed left-0 bg-white shadow-lg"
-      style={{
-        top: `${NAVBAR_HEIGHT}px`,
-        height: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
-      }}
+      className="fixed left-0 bg-white shadow-lg border-r border-gray-100"
     >
       <SidebarHeader>
         <SidebarMenu>
@@ -74,9 +82,20 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
             >
               {open ? (
                 <>
-                  <h1 className="text-xl font-black text-primary tracking-tighter uppercase">
-                    {userType === "manager" ? "Manager" : "Renter"}
-                  </h1>
+                  <Link href="/" className="flex items-center gap-3">
+                    <div className="bg-primary p-1.5 rounded-lg">
+                      <Image
+                        src="/logo-rentful.png"
+                        alt="Rentful"
+                        width={24}
+                        height={24}
+                        className="h-6 w-6 object-contain invert brightness-0"
+                      />
+                    </div>
+                    <h1 className="text-xl font-black text-primary tracking-tighter uppercase">
+                      Rentful
+                    </h1>
+                  </Link>
                   <button
                     className="hover:bg-gray-50 p-2 rounded-md transition-colors"
                     onClick={() => toggleSidebar()}
@@ -99,6 +118,28 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
 
       <SidebarContent>
         <SidebarMenu>
+          {/* Back to Home Link */}
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              className={cn(
+                "flex items-center px-7 py-7 transition-all duration-200 text-primary hover:bg-gray-50 hover:text-secondary",
+                !open && "ml-[5px]"
+              )}
+            >
+              <Link href="/" className="w-full">
+                <div className="flex items-center gap-3">
+                  <Home className="h-5 w-5 text-primary" />
+                  <span className="font-bold tracking-wide uppercase text-xs text-primary">
+                    Back to Home
+                  </span>
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+
+          <div className="px-7 my-4 border-t border-gray-100" />
+
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -138,6 +179,42 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
           })}
         </SidebarMenu>
       </SidebarContent>
+
+      <SidebarFooter className="p-4 border-t border-gray-100">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <div className={cn(
+              "flex items-center gap-3",
+              open ? "px-3" : "justify-center"
+            )}>
+              <Avatar className="h-9 w-9 border-2 border-primary/10">
+                <AvatarImage src="" />
+                <AvatarFallback className="bg-primary text-white font-bold">
+                  {userRole[0]}
+                </AvatarFallback>
+              </Avatar>
+              {open && (
+                <div className="flex flex-col flex-1 min-w-0">
+                  <p className="text-sm font-bold text-primary truncate">
+                    {userName}
+                  </p>
+                  <p className="text-[10px] font-medium text-primary/60 truncate uppercase tracking-wider">
+                    {userRole}
+                  </p>
+                </div>
+              )}
+              {open && (
+                <button
+                  onClick={() => signOut()}
+                  className="p-2 hover:bg-gray-50 rounded-md transition-colors text-primary/60 hover:text-secondary"
+                >
+                  <LogOut className="h-5 w-5" />
+                </button>
+              )}
+            </div>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 };

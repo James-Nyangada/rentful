@@ -50,19 +50,16 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <div className="min-h-screen w-full bg-white">
-        <Navbar />
-        <div style={{ marginTop: `${NAVBAR_HEIGHT}px` }}>
-          <main className="flex">
-            <Sidebar
-              userType={
-                user.role.toLowerCase() as "tenant" | "manager"
-              }
-            />
-            <div className="flex-grow transition-all duration-300">
-              {children}
-            </div>
-          </main>
-        </div>
+        <main className="flex">
+          <Sidebar
+            userType={
+              user.role.toLowerCase() as "tenant" | "manager"
+            }
+          />
+          <div className="flex-grow transition-all duration-300">
+            {children}
+          </div>
+        </main>
       </div>
     </SidebarProvider>
   );
