@@ -31,16 +31,16 @@ const HeroSection = () => {
           <h1 className="text-6xl md:text-7xl font-extrabold text-primary mb-8 text-center drop-shadow-sm tracking-tight">
             Elevate Your Living
           </h1>
-          <div className="flex justify-center gap-6 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 px-4">
             <Button
               onClick={() => router.push("/signup")}
-              className="bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
             >
               Start Your Journey <ArrowUpRight className="w-5 h-5 ml-2" />
             </Button>
             <Button
               onClick={() => router.push("/search")}
-              className="bg-secondary hover:bg-secondary/90 text-white font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
+              className="w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-white font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
             >
               View Listings <ArrowUpRight className="w-5 h-5 ml-2" />
             </Button>
