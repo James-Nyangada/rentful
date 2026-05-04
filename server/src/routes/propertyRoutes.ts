@@ -6,6 +6,8 @@ import {
   updateProperty,
   getPropertyLeases,
   getPropertyPayments,
+  getAvailability,
+  setAvailability,
 } from "../controllers/propertyControllers";
 import multer from "multer";
 import { authMiddleware } from "../middleware/authMiddleware";
@@ -17,6 +19,12 @@ const router = express.Router();
 
 router.get("/", getProperties);
 router.get("/:id", getProperty);
+router.get("/:id/availability", getAvailability);
+router.post(
+  "/:id/availability",
+  authMiddleware(["manager"]),
+  setAvailability
+);
 router.get("/:id/leases", getPropertyLeases);
 router.get("/:id/payments", getPropertyPayments);
 router.post(

@@ -120,6 +120,9 @@ model Property {
   applications Application[]
   favoritedBy  User[]        @relation("TenantFavorites")
   tenants      User[]        @relation("TenantProperties")
+
+  viewingAvailabilities ViewingAvailability[]
+  viewingBookings       ViewingBooking[]
 }
 
 model Location {
@@ -176,4 +179,22 @@ model Payment {
   leaseId       Int
 
   lease Lease @relation(fields: [leaseId], references: [id])
+}
+
+model ViewingAvailability {
+  id          Int      @id @default(autoincrement())
+  propertyId  Int
+  date        DateTime
+  property    Property @relation(fields: [propertyId], references: [id])
+}
+
+model ViewingBooking {
+  id          Int      @id @default(autoincrement())
+  propertyId  Int
+  name        String
+  email       String
+  phone       String
+  viewingDate DateTime
+  status      String   @default("pending")
+  property    Property @relation(fields: [propertyId], references: [id])
 }

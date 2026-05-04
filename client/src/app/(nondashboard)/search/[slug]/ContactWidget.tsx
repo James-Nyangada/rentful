@@ -2,11 +2,13 @@ import { Button } from "@/components/ui/button";
 import { useGetAuthUserQuery } from "@/state/api";
 import { Phone } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import { ViewingModal } from "./ViewingModal";
 
 const ContactWidget = ({ property, onOpenModal }: ContactWidgetProps) => {
   const { data: authUser } = useGetAuthUserQuery();
   const router = useRouter();
+  const [isViewingModalOpen, setIsViewingModalOpen] = useState(false);
 
   const handleButtonClick = () => {
     if (authUser) {
@@ -31,11 +33,23 @@ const ContactWidget = ({ property, onOpenModal }: ContactWidgetProps) => {
         </div>
       </div>
       <Button
-        className="w-full bg-primary-700 text-white hover:bg-primary-600"
+        className="w-full bg-primary-700 text-white hover:bg-primary-600 mb-2"
         onClick={handleButtonClick}
       >
-        {authUser ? "Submit Application" : "Sign In to Apply"}
+        {authUser ? "Book Appointment" : "Sign In to Book Appointment"}
       </Button>
+      <Button
+        className="w-full bg-[#EFBF04] text-white hover:bg-[#d6ab03] font-semibold"
+        onClick={() => setIsViewingModalOpen(true)}
+      >
+        Book Viewing
+      </Button>
+
+      <ViewingModal
+        propertyId={property?.id}
+        isOpen={isViewingModalOpen}
+        onClose={() => setIsViewingModalOpen(false)}
+      />
 
       <hr className="my-4" />
       <div className="text-sm">

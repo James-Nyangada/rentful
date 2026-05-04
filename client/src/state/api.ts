@@ -29,6 +29,7 @@ export const api = createApi({
     "Leases",
     "Payments",
     "Applications",
+    "Viewings",
   ],
   endpoints: (build) => ({
     getAuthUser: build.query<AuthUserType, void>({
@@ -383,6 +384,44 @@ export const api = createApi({
         });
       },
     }),
+
+    // viewing related endpoints
+    getAvailability: build.query<string[], number>({
+      query: (propertyId) => `properties/${propertyId}/availability`,
+      providesTags: ["Viewings"],
+    }),
+
+    setAvailability: build.mutation<
+      void,
+      { propertyId: number; dates: string[] }
+    >({
+      query: ({ propertyId, dates }) => ({
+        url: `properties/${propertyId}/availability`,
+        method: "POST",
+        body: { dates },
+      }),
+      invalidatesTags: ["Viewings"],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          success: "Availability updated successfully!",
+          error: "Failed to update availability.",
+        });
+      },
+    }),
+
+    createBooking: build.mutation<void, any>({
+      query: (bookingData) => ({
+        url: `viewings/book`,
+        method: "POST",
+        body: bookingData,
+      }),
+      invalidatesTags: ["Viewings"],
+    }),
+
+    getManagerViewings: build.query<any[], void>({
+      query: () => `viewings`,
+      providesTags: ["Viewings"],
+    }),
   }),
 });
 
@@ -406,4 +445,8 @@ export const {
   useGetApplicationsQuery,
   useUpdateApplicationStatusMutation,
   useCreateApplicationMutation,
+  useGetAvailabilityQuery,
+  useSetAvailabilityMutation,
+  useCreateBookingMutation,
+  useGetManagerViewingsQuery,
 } = api;

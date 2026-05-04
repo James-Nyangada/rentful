@@ -479,3 +479,59 @@ export const getPropertyPayments = async (
       .json({ message: `Error retrieving property payments: ${err.message}` });
   }
 };
+
+export const getAvailability = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const availabilities = await prisma.viewingAvailability.findMany({
+      where: { propertyId: Number(id) },
+      select: { date: true },
+    });
+
+    const dates = availabilities.map((a) => a.date);
+    res.json(dates);
+  } catch (err: any) {
+    res.status(500).json({
+      message: `Error retrieving availability: ${err.message}`,
+    });
+  }
+};
+
+export const setAvailability = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const { dates } = req.body; // Expecting an array of date strings
+
+    if (!Array.isArray(dates)) {
+      res.status(400).json({ message: "Dates must be an array" });
+      return;
+    }
+
+    // First delete all existing availabilities for this property
+    await prisma.viewingAvailability.deleteMany({
+      where: { propertyId: Number(id) },
+    });
+
+    // Then insert the new ones
+    if (dates.length > 0) {
+      await prisma.viewingAvailability.createMany({
+        data: dates.map((dateStr: string) => ({
+          propertyId: Number(id),
+          date: new Date(dateStr),
+        })),
+      });
+    }
+
+    res.json({ message: "Availability updated successfully" });
+  } catch (err: any) {
+    res.status(500).json({
+      message: `Error setting availability: ${err.message}`,
+    });
+  }
+};
