@@ -12,7 +12,7 @@ const HeroSection = () => {
   const router = useRouter();
 
   return (
-    <div className="relative h-screen">
+    <div className="relative min-h-screen flex items-center py-24 md:h-screen md:py-0">
       <Image
         src="/landing-splash.jpg"
         alt="Chestone Properties Ltd Hero Section"
@@ -25,10 +25,10 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="absolute top-1/3 transform -translate-x-1/2 -translate-y-1/2 text-center w-full"
+        className="relative w-full z-10 md:absolute md:top-1/3 md:transform md:-translate-y-1/2 text-center"
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-6xl md:text-7xl font-extrabold text-primary mb-8 text-center drop-shadow-sm tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-primary mb-8 text-center drop-shadow-sm tracking-tight">
             Elevate Your Living
           </h1>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 px-4">
