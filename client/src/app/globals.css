@@ -24,10 +24,10 @@ body,
     --background: 60 17% 95%; /* Champagne Cream #F5F5F0 */
     --foreground: 0 0% 20%; /* Dark Gray #333333 */
     --card: 0 0% 100%;
-    --card-foreground: 226 60% 10%; /* Oxford Navy #0A1128 */
+    --card-foreground: 209 74% 15%; /* #0A2742 */
     --popover: 0 0% 100%;
-    --popover-foreground: 226 60% 10%;
-    --primary: 226 60% 10%; /* Oxford Navy */
+    --popover-foreground: 209 74% 15%;
+    --primary: 209 74% 15%; /* New Navy #0A2742 */
     --primary-foreground: 0 0% 100%; /* White */
     --secondary: 40 48% 56%; /* Burnished Gold #C5A059 */
     --secondary-foreground: 0 0% 100%; /* White */
@@ -39,43 +39,43 @@ body,
     --destructive-foreground: 210 40% 98%;
     --border: 0 0% 88%; /* #E0E0E0 */
     --input: 0 0% 88%;
-    --ring: 226 60% 10%;
+    --ring: 209 74% 15%;
     --radius: 0.5rem;
     --sidebar-background: 60 17% 95%;
-    --sidebar-foreground: 226 60% 10%;
-    --sidebar-primary: 226 60% 10%;
+    --sidebar-foreground: 209 74% 15%;
+    --sidebar-primary: 209 74% 15%;
     --sidebar-primary-foreground: 40 48% 56%;
     --sidebar-accent: 60 10% 90%;
-    --sidebar-accent-foreground: 226 60% 10%;
+    --sidebar-accent-foreground: 209 74% 15%;
     --sidebar-border: 0 0% 88%;
-    --sidebar-ring: 226 60% 10%;
+    --sidebar-ring: 209 74% 15%;
 
     /* Brand Colors */
-    --chestone-navy: 226 60% 10%;
+    --chestone-navy: 209 74% 15%;
     --luxury-gold: 40 48% 56%;
     --clean-white: 0 0% 100%;
     --dark-gray: 0 0% 20%;
   }
 
   .dark {
-    --background: 226 60% 5%;
+    --background: 209 74% 5%;
     --foreground: 60 17% 95%;
-    --card: 226 60% 8%;
+    --card: 209 74% 8%;
     --card-foreground: 60 17% 95%;
-    --popover: 226 60% 8%;
+    --popover: 209 74% 8%;
     --popover-foreground: 60 17% 95%;
     --primary: 40 48% 56%;
-    --primary-foreground: 226 60% 10%;
-    --secondary: 226 60% 10%;
+    --primary-foreground: 209 74% 15%;
+    --secondary: 209 74% 15%;
     --secondary-foreground: 40 48% 56%;
-    --muted: 226 60% 15%;
+    --muted: 209 74% 15%;
     --muted-foreground: 0 0% 65%;
-    --accent: 226 60% 15%;
+    --accent: 209 74% 15%;
     --accent-foreground: 40 48% 56%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 60 17% 95%;
-    --border: 226 60% 15%;
-    --input: 226 60% 15%;
+    --border: 209 74% 15%;
+    --input: 209 74% 15%;
     --ring: 40 48% 56%;
   }
 }
@@ -229,4 +229,3 @@ body,
 .editorial-warm {
   filter: sepia(0.15) saturate(1.2) contrast(1.05);
 }
-

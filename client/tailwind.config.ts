@@ -21,13 +21,13 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: '#0A1128',
+  				DEFAULT: '#0A2742',
   				'50': '#f0f3f9',
   				'100': '#e1e7f3',
   				'200': '#c2cce7',
   				'300': '#93a6d5',
   				'400': '#5d7ebd',
-  				'500': '#0A1128',
+  				'500': '#0A2742',
   				'600': '#080d20',
   				'700': '#060a18',
   				'800': '#040610',
