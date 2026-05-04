@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const CallToActionSection = () => {
   return (
-    <div className="relative py-32 bg-primary overflow-hidden">
+    <div className="relative pt-20 pb-32 bg-primary overflow-hidden">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         {/* Placeholder for watermark/logo shield */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border-[40px] border-secondary rounded-full transform rotate-45 scale-150"></div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const MissionSection = () => {
   return (
-    <section className="bg-background py-32 px-6">
+    <section className="bg-background pt-32 pb-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Mission Statement */}
         <div className="text-center mb-24 max-w-4xl mx-auto">
