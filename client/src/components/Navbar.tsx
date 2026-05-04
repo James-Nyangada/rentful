@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 import { useGetAuthUserQuery } from "@/state/api";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/app/(auth)/authProvider";
-import { Bell, Menu, MessageCircle, Plus, Search, X } from "lucide-react";
+import { Bell, ChevronDown, ChevronUp, Menu, MessageCircle, Plus, Search, X } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,6 +26,8 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCollectionOpen, setIsCollectionOpen] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
 
 
 
@@ -242,44 +244,85 @@ const Navbar = () => {
       {/* Mobile Menu Dropdown */}
       <div
         className={`md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl overflow-hidden transition-all duration-500 ease-in-out ${
-          isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+          isMobileMenuOpen ? "max-h-[100vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col py-6 px-8 gap-5 font-nav tracking-[1px] text-xs">
-          <Link href="/search" className="text-secondary hover:text-primary transition-colors font-bold uppercase text-[10px] tracking-[2px] mb-[-10px]" onClick={() => setIsMobileMenuOpen(false)}>The Collection</Link>
-          <Link href="/search?location=lavington" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Lavington</Link>
-          <Link href="/search?location=westlands" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Westlands</Link>
-          <Link href="/search?location=kileleshwa" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Kileleshwa</Link>
-          <Link href="/search?location=kilimani" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Kilimani</Link>
-
-          <div className="h-px bg-gray-100 w-full my-1"></div>
-          
-          <Link href="/search?type=buy" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Buy</Link>
-          <Link href="/search?type=rent" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Rent</Link>
-          <Link href="/managers/newproperty" className="text-secondary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>List With Us</Link>
-
-          <div className="h-px bg-gray-100 w-full my-1"></div>
-
-          <p className="text-secondary font-bold uppercase text-[10px] tracking-[2px] mb-[-10px]">Solutions</p>
-          <Link href="/advisory" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Advisory</Link>
-          <Link href="/derisking" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Asset De-risking</Link>
-          <Link href="/diplomacy" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>Diplomacy</Link>
-          
-          <div className="h-px bg-gray-100 w-full my-1"></div>
-
-          <Link href="/about" className="text-primary font-bold uppercase" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
-          <div className="h-px bg-gray-100 w-full my-1"></div>
-          {!isLoggedIn && (
-            <div className="flex flex-col gap-3">
-              <Link href="/signin" onClick={() => setIsMobileMenuOpen(false)}>
-                <p className="text-primary font-bold py-2">Sign In</p>
-              </Link>
-              <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="w-full bg-primary text-white font-bold">
-                  Sign Up
-                </Button>
-              </Link>
+        <div className="flex flex-col py-6 px-8 gap-4 font-nav tracking-[1px] text-xs">
+          {/* Mobile The Collection */}
+          <div className="flex flex-col">
+            <button
+              className="flex justify-between items-center text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
+              onClick={() => setIsCollectionOpen(!isCollectionOpen)}
+            >
+              The Collection
+              {isCollectionOpen ? (
+                <ChevronUp className="w-3 h-3" />
+              ) : (
+                <ChevronDown className="w-3 h-3" />
+              )}
+            </button>
+            <div
+              className={`flex flex-col gap-3 pl-4 overflow-hidden transition-all duration-300 ${
+                isCollectionOpen ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"
+              }`}
+            >
+              <Link href="/search?location=lavington" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Lavington</Link>
+              <Link href="/search?location=westlands" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Westlands</Link>
+              <Link href="/search?location=kileleshwa" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Kileleshwa</Link>
+              <Link href="/search?location=kilimani" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Kilimani</Link>
             </div>
+          </div>
+
+          <div className="h-px bg-gray-100 w-full my-1"></div>
+          
+          <Link href="/search?type=buy" className="text-primary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>Buy</Link>
+          <Link href="/search?type=rent" className="text-primary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>Rent</Link>
+          <Link href="/managers/newproperty" className="text-secondary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>List With Us</Link>
+
+          <div className="h-px bg-gray-100 w-full my-1"></div>
+
+          {/* Mobile Solutions */}
+          <div className="flex flex-col">
+            <button
+              className="flex justify-between items-center text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
+              onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
+            >
+              Solutions
+              {isSolutionsOpen ? (
+                <ChevronUp className="w-3 h-3" />
+              ) : (
+                <ChevronDown className="w-3 h-3" />
+              )}
+            </button>
+            <div
+              className={`flex flex-col gap-3 pl-4 overflow-hidden transition-all duration-300 ${
+                isSolutionsOpen ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"
+              }`}
+            >
+              <Link href="/advisory" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Advisory</Link>
+              <Link href="/derisking" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Asset De-risking</Link>
+              <Link href="/diplomacy" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Diplomacy</Link>
+            </div>
+          </div>
+          
+          <div className="h-px bg-gray-100 w-full my-1"></div>
+
+          <Link href="/about" className="text-primary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
+          
+          {!isLoggedIn && (
+            <>
+              <div className="h-px bg-gray-100 w-full my-1"></div>
+              <div className="flex flex-col gap-4 mt-2">
+                <Link href="/signin" onClick={() => setIsMobileMenuOpen(false)}>
+                  <p className="text-primary font-bold py-2 uppercase">Sign In</p>
+                </Link>
+                <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button className="w-full bg-primary text-white font-bold uppercase py-6">
+                    Sign Up
+                  </Button>
+                </Link>
+              </div>
+            </>
           )}
         </div>
       </div>
