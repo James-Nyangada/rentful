@@ -11,7 +11,13 @@ const MissionSection = () => {
             Our Mission
           </span>
           <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-primary leading-tight font-bold">
-            &quot;To empower property owners and seekers with elite, structured real estate solutions.&quot;
+            &quot;To empower property owners and investors
+through a high-velocity, data-driven listing
+ecosystem. We are committed to de-risking the
+real estate journey by providing verified, elite
+property solutions that prioritize stability,
+integrity, and seamless acquisition in Nairobis
+most exclusive residential nodes.&quot;
           </h2>
         </div>
 

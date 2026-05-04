@@ -78,7 +78,7 @@ const SearchComponent = () => {
               : "bg-white/80 text-primary hover:bg-white"
           }`}
         >
-          For Sale
+          Sale
         </button>
         <button
           onClick={() => setSearchTab("rent")}
@@ -88,7 +88,7 @@ const SearchComponent = () => {
               : "bg-white/80 text-primary hover:bg-white"
           }`}
         >
-          For Rent
+          Rent
         </button>
       </div>
 

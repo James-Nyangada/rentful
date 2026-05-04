@@ -83,18 +83,22 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
               {open ? (
                 <>
                   <Link href="/" className="flex items-center gap-3">
-                    <div className="bg-primary p-1.5 rounded-lg">
-                      <Image
-                        src="/logo-rentful.png"
-                        alt="Rentful"
-                        width={24}
-                        height={24}
-                        className="h-6 w-6 object-contain invert brightness-0"
-                      />
+                    <Image
+                      src="/logo-rentful.png"
+                      alt="Rentful"
+                      width={120}
+                      height={40}
+                      className="h-9 w-auto object-contain"
+                      priority
+                    />
+                    <div className="flex flex-col">
+                      <span className="text-primary font-black text-[14px] leading-none tracking-tighter">
+                        Chestone Properties
+                      </span>
+                      <span className="text-primary/70 font-bold text-[9px] leading-none tracking-[0.2em] mt-1 uppercase">
+                        Structured Properties
+                      </span>
                     </div>
-                    <h1 className="text-xl font-black text-primary tracking-tighter uppercase">
-                      Rentful
-                    </h1>
                   </Link>
                   <button
                     className="hover:bg-gray-50 p-2 rounded-md transition-colors"
@@ -108,7 +112,13 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
                   className="hover:bg-gray-50 p-2 rounded-md transition-colors"
                   onClick={() => toggleSidebar()}
                 >
-                  <Menu className="h-6 w-6 text-primary" />
+                  <Image
+                    src="/logo-rentful.png"
+                    alt="Rentful"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 object-contain"
+                  />
                 </button>
               )}
             </div>

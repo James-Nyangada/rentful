@@ -114,14 +114,23 @@ export default function AboutPage() {
                   <div>
                     <h4 className="text-xs font-black text-secondary uppercase tracking-[0.3em] mb-3">Our Mission</h4>
                     <p className="text-primary font-bold text-lg leading-relaxed">
-                      To empower our clients to make informed real estate decisions and build lasting wealth through property ownership.
+                      To empower property owners and investors
+through a high-velocity, data-driven listing
+ecosystem. We are committed to de-risking the
+real estate journey by providing verified, elite
+property solutions that prioritize stability,
+integrity, and seamless acquisition in Nairobis
+most exclusive residential nodes.
                     </p>
                   </div>
 
                   <div>
                     <h4 className="text-xs font-black text-secondary uppercase tracking-[0.3em] mb-3">Our Vision</h4>
                     <p className="text-primary font-bold text-lg leading-relaxed">
-                      To be the leading real estate agency known for its integrity, innovation, and unwavering commitment to client success.
+                      To be the definitive gateway for structured real
+estate in East Africa, recognized for redefining
+market transparency and setting the gold
+standard in premium property inventory.
                     </p>
                   </div>
                 </div>
