@@ -277,7 +277,7 @@ const Navbar = () => {
           
           <Link href="/search?type=buy" className="text-primary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>Buy</Link>
           <Link href="/search?type=rent" className="text-primary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>Rent</Link>
-          <Link href="/managers/newproperty" className="text-secondary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>List With Us</Link>
+
 
           <div className="h-px bg-gray-100 w-full my-1"></div>
 
@@ -287,7 +287,7 @@ const Navbar = () => {
               className="flex justify-between items-center text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
               onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
             >
-              Solutions
+              Structured Solutions
               {isSolutionsOpen ? (
                 <ChevronUp className="w-3 h-3" />
               ) : (
@@ -313,12 +313,9 @@ const Navbar = () => {
             <>
               <div className="h-px bg-gray-100 w-full my-1"></div>
               <div className="flex flex-col gap-4 mt-2">
-                <Link href="/signin" onClick={() => setIsMobileMenuOpen(false)}>
-                  <p className="text-primary font-bold py-2 uppercase">Sign In</p>
-                </Link>
                 <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full bg-primary text-white font-bold uppercase py-6">
-                    Sign Up
+                  <Button className="w-full bg-primary text-white font-bold uppercase py-6 shadow-lg hover:bg-primary/90 transition-all">
+                    List With Us
                   </Button>
                 </Link>
               </div>
