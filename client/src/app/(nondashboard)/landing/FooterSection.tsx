@@ -61,7 +61,7 @@ const FooterSection = () => {
                   className="h-20 w-auto object-contain"
                 />
                 <span className="text-white font-black text-4xl tracking-tighter uppercase">
-                  Rentful
+                  CHESTONE PROPERTIES
                 </span>
               </div>
             </Link>
