@@ -66,7 +66,7 @@ const FooterSection = () => {
               </div>
             </Link>
             <p className="text-white font-bold text-base tracking-widest uppercase mb-6">
-              Elite Property Management
+              Structured Property Solutions
             </p>
             <p className="text-gray-400 text-sm leading-relaxed mb-8">
               Redefining the standard of luxury real estate and property management in Nairobi. Trust, stability, and premium quality are the pillars of our foundation.
