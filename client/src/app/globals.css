@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-size: 17px;
+}
+
 *,
 *::before,
 *::after {
@@ -161,6 +165,9 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-spectral), serif;
+  }
 }
 
 /* Auth Form Styles */
@@ -212,18 +219,15 @@ body,
 }
 
 /* Custom Utilities for Typography & Images */
-.font-playfair {
-  font-family: var(--font-playfair), serif;
+.font-heading {
+  font-family: var(--font-spectral), serif;
   letter-spacing: -0.02em;
 }
 
-.font-inter {
-  font-family: var(--font-inter), sans-serif;
-}
-
-.font-montserrat {
-  font-family: var(--font-montserrat), sans-serif;
-  letter-spacing: 1px;
+/* Legacy alias — maps old class to new font */
+.font-playfair {
+  font-family: var(--font-spectral), serif;
+  letter-spacing: -0.02em;
 }
 
 .editorial-warm {

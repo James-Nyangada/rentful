@@ -25,7 +25,7 @@ const HeroSection = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="relative min-h-screen flex items-center py-24 md:h-screen md:py-0">
+    <div ref={containerRef} className="relative min-h-screen flex items-start pt-32 md:pt-40 md:h-screen">
       <Image
         src="/landing-splash.jpg"
         alt="Chestone Properties Ltd Hero Section"

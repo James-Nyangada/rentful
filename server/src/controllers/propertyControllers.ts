@@ -38,11 +38,18 @@ export const getProperties = async (
       amenities,
       availableFrom,
       isSale,
+      location,
       latitude,
       longitude,
     } = req.query;
 
     let whereConditions: Prisma.Sql[] = [];
+
+    if (location && location !== "any") {
+      whereConditions.push(
+        Prisma.sql`(l.city ILIKE ${`%${location}%`} OR l.state ILIKE ${`%${location}%`})`
+      );
+    }
 
     if (isSale !== undefined) {
       whereConditions.push(Prisma.sql`p."isSale" = ${isSale === "true"}`);

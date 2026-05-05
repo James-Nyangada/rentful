@@ -20,14 +20,14 @@ const SearchComponent = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [searchTab, setSearchTab] = useState<"sale" | "rent">("rent");
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("any");
   const [propertyType, setPropertyType] = useState("any");
   const [beds, setBeds] = useState("any");
 
   const handleSearch = async () => {
     let coordinates: [number, number] = [36.8219, -1.2921]; // Default Nairobi
 
-    if (location.trim()) {
+    if (location.trim() && location !== "any") {
       try {
         const response = await fetch(
           `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
@@ -80,7 +80,7 @@ const SearchComponent = () => {
               : "bg-white/80 text-primary hover:bg-white"
           }`}
         >
-          Sale
+          SELL
         </button>
         <button
           onClick={() => setSearchTab("rent")}
@@ -101,15 +101,21 @@ const SearchComponent = () => {
           <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 text-left">
             Location
           </label>
-          <div className="relative">
-            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-            <Input
-              placeholder="Where are you looking?"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              className="pl-12 bg-gray-50 border-gray-200 h-14 rounded-xl focus:ring-secondary focus:border-secondary transition-all"
-            />
-          </div>
+          <Select value={location} onValueChange={setLocation}>
+            <SelectTrigger className="bg-gray-50 border-gray-200 h-14 rounded-xl focus:ring-secondary focus:border-secondary transition-all">
+              <div className="flex items-center gap-3 text-primary font-bold">
+                <MapPin className="w-5 h-5 text-primary" />
+                <SelectValue placeholder="Where are you looking?" />
+              </div>
+            </SelectTrigger>
+            <SelectContent className="bg-white border-gray-100">
+              <SelectItem value="any">All Locations</SelectItem>
+              <SelectItem value="Lavington">Lavington</SelectItem>
+              <SelectItem value="Westlands">Westlands</SelectItem>
+              <SelectItem value="Kileleshwa">Kileleshwa</SelectItem>
+              <SelectItem value="Kilimani">Kilimani</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Property Type */}

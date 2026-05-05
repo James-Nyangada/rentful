@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import { Public_Sans, Playfair_Display } from "next/font/google";
+import { Spectral } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import { Toaster } from "@/components/ui/sonner";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
-const publicSans = Public_Sans({
+const spectral = Spectral({
   subsets: ["latin"],
-  variable: "--font-public-sans",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-spectral",
 });
 
 export const metadata: Metadata = {
@@ -27,9 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${publicSans.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${spectral.variable} font-sans antialiased bg-background text-foreground`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <WhatsAppFloat />
+        </Providers>
         <Toaster closeButton />
       </body>
     </html>

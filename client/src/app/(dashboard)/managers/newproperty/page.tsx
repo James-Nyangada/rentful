@@ -240,6 +240,13 @@ const NewProperty = () => {
                   name="state"
                   label="Area Location"
                   className="w-full"
+                  type="select"
+                  options={[
+                    { value: "Lavington", label: "Lavington" },
+                    { value: "Westlands", label: "Westlands" },
+                    { value: "Kileleshwa", label: "Kileleshwa" },
+                    { value: "Kilimani", label: "Kilimani" },
+                  ]}
                 />
                 <CustomFormField
                   name="postalCode"

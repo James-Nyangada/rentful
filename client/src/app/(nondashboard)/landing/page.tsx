@@ -12,11 +12,11 @@ const Landing = () => {
   return (
     <div className="bg-background">
       <HeroSection />
-      <RecentListingsSection />
       <NeighborhoodSection />
+      <RecentListingsSection />
       <FeaturesSection />
-      <MissionSection />
-      <DiscoverSection />
+      {/* <MissionSection /> */}
+      {/* <DiscoverSection /> */}
       <CallToActionSection />
       <FooterSection />
     </div>

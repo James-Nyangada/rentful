@@ -55,6 +55,7 @@ const EditProperty = () => {
       postalCode: "",
       latitude: "",
       longitude: "",
+      isSale: false,
     },
   });
 
@@ -82,6 +83,7 @@ const EditProperty = () => {
         postalCode: property.location?.postalCode || "",
         latitude: (property.location as any)?.coordinates?.latitude?.toString() || "",
         longitude: (property.location as any)?.coordinates?.longitude?.toString() || "",
+        isSale: property.isSale,
       });
     }
   }, [property, form]);
@@ -215,6 +217,11 @@ const EditProperty = () => {
                   label="Parking Included"
                   type="switch"
                 />
+                <CustomFormField
+                  name="isSale"
+                  label={form.watch("isSale") ? "On Sale" : "For Rent"}
+                  type="switch"
+                />
               </div>
               <div className="mt-4">
                 <CustomFormField
@@ -287,8 +294,15 @@ const EditProperty = () => {
                 <CustomFormField name="city" label="City" className="w-full" />
                 <CustomFormField
                   name="state"
-                  label="State"
+                  label="Area Location"
                   className="w-full"
+                  type="select"
+                  options={[
+                    { value: "Lavington", label: "Lavington" },
+                    { value: "Westlands", label: "Westlands" },
+                    { value: "Kileleshwa", label: "Kileleshwa" },
+                    { value: "Kilimani", label: "Kilimani" },
+                  ]}
                 />
                 <CustomFormField
                   name="postalCode"

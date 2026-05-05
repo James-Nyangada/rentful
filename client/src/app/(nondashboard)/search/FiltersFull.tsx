@@ -7,7 +7,7 @@ import { debounce } from "lodash";
 import { cleanParams, cn, formatEnumString } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { MapPin, Search } from "lucide-react";
 import { AmenityIcons, PropertyTypeIcons } from "@/lib/constants";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -93,25 +93,26 @@ const FiltersFull = () => {
         {/* Location */}
         <div>
           <h4 className="font-bold mb-2">Location</h4>
-          <div className="flex items-center">
-            <Input
-              placeholder="Enter location"
-              value={filters.location}
-              onChange={(e) =>
-                setLocalFilters((prev) => ({
-                  ...prev,
-                  location: e.target.value,
-                }))
-              }
-              className="rounded-l-xl rounded-r-none border-r-0"
-            />
-            <Button
-              onClick={handleLocationSearch}
-              className="rounded-r-xl rounded-l-none border-l-none border-black shadow-none border hover:bg-primary-700 hover:text-primary-50"
-            >
-              <Search className="w-4 h-4" />
-            </Button>
-          </div>
+          <Select
+            value={localFilters.location || "any"}
+            onValueChange={(value) =>
+              setLocalFilters((prev) => ({ ...prev, location: value }))
+            }
+          >
+            <SelectTrigger className="w-full rounded-xl border-gray-200">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-primary" />
+                <SelectValue placeholder="Location" />
+              </div>
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              <SelectItem value="any">All Locations</SelectItem>
+              <SelectItem value="Lavington">Lavington</SelectItem>
+              <SelectItem value="Westlands">Westlands</SelectItem>
+              <SelectItem value="Kileleshwa">Kileleshwa</SelectItem>
+              <SelectItem value="Kilimani">Kilimani</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Property Type */}

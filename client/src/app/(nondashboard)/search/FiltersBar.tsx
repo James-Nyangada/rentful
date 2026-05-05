@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { debounce } from "lodash";
 import { cleanParams, cn, formatPriceValue } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Filter, Grid, List, Search } from "lucide-react";
+import { Filter, Grid, List, MapPin, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -114,21 +114,24 @@ const FiltersBar = () => {
         </Button>
 
         {/* Search Location */}
-        <div className="flex items-center">
-          <Input
-            placeholder="Search location"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            className="w-40 rounded-l-xl rounded-r-none border-primary-400 border-r-0"
-          />
-          <Button
-            onClick={handleLocationSearch}
-            className={`rounded-r-xl rounded-l-none border-l-none border-primary-400 shadow-none 
-              border hover:bg-primary-700 hover:text-primary-50`}
-          >
-            <Search className="w-4 h-4" />
-          </Button>
-        </div>
+        <Select
+          value={filters.location || "any"}
+          onValueChange={(value) => handleFilterChange("location", value, null)}
+        >
+          <SelectTrigger className="w-48 rounded-xl border-primary-400">
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-primary" />
+              <SelectValue placeholder="Location" />
+            </div>
+          </SelectTrigger>
+          <SelectContent className="bg-white">
+            <SelectItem value="any">All Locations</SelectItem>
+            <SelectItem value="Lavington">Lavington</SelectItem>
+            <SelectItem value="Westlands">Westlands</SelectItem>
+            <SelectItem value="Kileleshwa">Kileleshwa</SelectItem>
+            <SelectItem value="Kilimani">Kilimani</SelectItem>
+          </SelectContent>
+        </Select>
 
         {/* Price Range */}
         <div className="flex gap-1">

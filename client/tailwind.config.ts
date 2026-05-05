@@ -82,9 +82,9 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
-  			sans: ['var(--font-public-sans)', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'serif'],
-        nav: ['var(--font-public-sans)', 'sans-serif'],
+  			sans: ['ui-sans-serif', 'system-ui', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+        serif: ['var(--font-spectral)', 'serif'],
+        nav: ['ui-sans-serif', 'system-ui', 'sans-serif'],
   		},
   	}
   },

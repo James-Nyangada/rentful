@@ -32,6 +32,7 @@ export type PropertyFormData = z.infer<typeof propertySchema>;
 
 export const editPropertySchema = propertySchema.extend({
   photoUrls: z.array(z.instanceof(File)).optional(),
+  isSale: z.boolean().default(false),
 });
 
 export type EditPropertyFormData = z.infer<typeof editPropertySchema>;
