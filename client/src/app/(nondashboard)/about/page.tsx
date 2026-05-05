@@ -1,12 +1,54 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, Home, Key, Building2, UserCircle2, ArrowRight } from "lucide-react";
 import FooterSection from "../landing/FooterSection";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".about-hero-text", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+      delay: 0.2,
+      stagger: 0.2
+    });
+
+    gsap.from(".about-vision", {
+      scrollTrigger: {
+        trigger: ".about-vision",
+        start: "top 80%",
+      },
+      y: 30,
+      opacity: 0,
+      duration: 1,
+    });
+
+    gsap.utils.toArray(".scroll-animate").forEach((section: any) => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1,
+      });
+    });
+  }, { scope: containerRef });
+
   return (
-    <div className="w-full bg-white">
+    <div ref={containerRef} className="w-full bg-white">
       {/* Hero Section */}
       <section className="relative w-full h-[450px] flex items-center justify-center overflow-hidden">
         <Image
@@ -18,17 +60,17 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-primary/40"></div>
         <div className="relative z-10 text-center text-white mt-10 px-4">
-          <div className="text-xs font-black mb-6 uppercase tracking-[0.3em] text-secondary">
+          <div className="about-hero-text text-xs font-black mb-6 uppercase tracking-[0.3em] text-secondary">
             Home &gt; Pages &gt; About Us
           </div>
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase drop-shadow-2xl">
+          <h1 className="about-hero-text text-6xl md:text-8xl font-black tracking-tighter uppercase drop-shadow-2xl">
             Our Legacy
           </h1>
         </div>
       </section>
 
       {/* Vision Statement */}
-      <section className="bg-background py-20 px-6">
+      <section className="about-vision bg-background py-20 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-primary leading-tight font-bold">
             &quot;To be the definitive gateway to luxury real estate and structured property solutions.&quot;
@@ -36,7 +78,7 @@ export default function AboutPage() {
         </div>
       </section>
       {/* Elegance Section 1 */}
-      <section className="max-w-6xl mx-auto py-32 px-6 grid md:grid-cols-2 gap-20 items-center">
+      <section className="scroll-animate max-w-6xl mx-auto py-32 px-6 grid md:grid-cols-2 gap-20 items-center">
         <div className="relative h-[500px] w-full hidden md:block">
           <div className="absolute left-0 bottom-0 w-3/4 h-[75%] rounded-3xl overflow-hidden shadow-2xl">
             <Image
@@ -92,7 +134,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="bg-gray-50 py-32 px-6">
+      <section className="scroll-animate bg-gray-50 py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
              <span className="inline-block bg-primary/10 text-primary px-6 py-2 rounded-full text-xs font-black mb-6 tracking-[0.2em] uppercase border border-primary/5">
@@ -148,7 +190,7 @@ standard in premium property inventory.
       </section>
 
       {/* Elegance Section 2 */}
-      <section className="max-w-6xl mx-auto py-32 px-6 grid md:grid-cols-2 gap-20 items-center">
+      <section className="scroll-animate max-w-6xl mx-auto py-32 px-6 grid md:grid-cols-2 gap-20 items-center">
         <div className="relative h-[550px] w-full hidden md:block order-2 md:order-1">
            <div className="absolute left-0 top-0 w-[50%] h-[65%] rounded-3xl overflow-hidden shadow-2xl z-20 border-[8px] border-white">
              <Image src="/about/about_elegance_3.png" alt="Architecture" fill className="object-cover" />
@@ -220,7 +262,7 @@ standard in premium property inventory.
       </section>
 
       {/* Features Section */}
-      <section className="bg-gray-50 py-32 px-6">
+      <section className="scroll-animate bg-gray-50 py-32 px-6">
          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-20 max-w-3xl mx-auto">
               <span className="inline-block bg-primary text-secondary px-6 py-2 rounded-full text-xs font-black mb-6 tracking-[0.2em] uppercase shadow-lg">
@@ -296,7 +338,7 @@ standard in premium property inventory.
       </section>
 
       {/* Dream Team Section */}
-      <section className="py-32 px-6 bg-white">
+      <section className="scroll-animate py-32 px-6 bg-white">
          <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-5xl md:text-7xl font-black text-primary mb-24 tracking-tighter uppercase">The Chestone Properties Team</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
@@ -315,7 +357,7 @@ standard in premium property inventory.
       </section>
 
       {/* Testimonial Section */}
-      <section className="bg-gray-50 py-32 px-6">
+      <section className="scroll-animate bg-gray-50 py-32 px-6">
          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
             <div>
                <h2 className="text-5xl md:text-7xl font-black text-primary leading-[1.1] mb-12 tracking-tighter uppercase">A Legacy of Satisfaction</h2>
@@ -348,7 +390,7 @@ standard in premium property inventory.
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-white">
+      <section className="scroll-animate py-24 px-6 bg-white">
          <div className="max-w-6xl mx-auto bg-primary rounded-[3.5rem] p-16 md:p-28 relative overflow-hidden shadow-[0_50px_120px_-20px_rgba(10,31,59,0.4)]">
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary opacity-5 rounded-full transform translate-x-1/3 -translate-y-1/3 border-[60px] border-white"></div>
             <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white opacity-5 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>

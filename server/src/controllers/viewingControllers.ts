@@ -34,7 +34,7 @@ export const getManagerViewings = async (
 ): Promise<void> => {
   try {
     // authMiddleware adds authId to req.user
-    const authId = req.user?.authId;
+    const authId = req.user?.id;
 
     if (!authId) {
       res.status(401).json({ message: "Unauthorized" });

@@ -1,6 +1,8 @@
 import express from "express";
 import {
   getProperties,
+  getRecentProperties,
+  getPropertyLocations,
   getProperty,
   createProperty,
   updateProperty,
@@ -18,6 +20,8 @@ const upload = multer({ storage: storage });
 const router = express.Router();
 
 router.get("/", getProperties);
+router.get("/recent", getRecentProperties);
+router.get("/locations", getPropertyLocations);
 router.get("/:id", getProperty);
 router.get("/:id/availability", getAvailability);
 router.post(

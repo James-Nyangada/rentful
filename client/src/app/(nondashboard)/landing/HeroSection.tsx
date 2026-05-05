@@ -1,18 +1,31 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import SearchComponent from "./components/SearchComponent";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const HeroSection = () => {
   const router = useRouter();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".hero-content > *", {
+      y: 40,
+      opacity: 0,
+      duration: 1.2,
+      stagger: 0.2,
+      ease: "power3.out",
+      delay: 0.2
+    });
+  }, { scope: containerRef });
 
   return (
-    <div className="relative min-h-screen flex items-center py-24 md:h-screen md:py-0">
+    <div ref={containerRef} className="relative min-h-screen flex items-center py-24 md:h-screen md:py-0">
       <Image
         src="/landing-splash.jpg"
         alt="Chestone Properties Ltd Hero Section"
@@ -21,11 +34,8 @@ const HeroSection = () => {
         priority
       />
       <div className="absolute inset-0 bg-primary/20"></div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full z-10 md:absolute md:top-1/3 md:transform md:-translate-y-1/2 text-center"
+      <div
+        className="hero-content relative w-full z-10 text-center"
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-7xl font-extrabold text-primary mb-8 text-center drop-shadow-sm tracking-tight">
@@ -46,9 +56,11 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          <SearchComponent />
+          <div className="mt-8">
+            <SearchComponent />
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

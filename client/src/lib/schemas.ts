@@ -9,6 +9,7 @@ export const propertySchema = z.object({
   applicationFee: z.coerce.number().positive().min(0).int(),
   isPetsAllowed: z.boolean(),
   isParkingIncluded: z.boolean(),
+  isSale: z.boolean(),
   photoUrls: z
     .array(z.instanceof(File))
     .min(1, "At least one photo is required"),

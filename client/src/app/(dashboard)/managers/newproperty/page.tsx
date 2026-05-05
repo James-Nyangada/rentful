@@ -30,6 +30,7 @@ const NewProperty = () => {
       applicationFee: 100,
       isPetsAllowed: true,
       isParkingIncluded: true,
+      isSale: false,
       photoUrls: [],
       amenities: "",
       highlights: "",
@@ -164,6 +165,11 @@ const NewProperty = () => {
                   label="Parking Included"
                   type="switch"
                 />
+                <CustomFormField
+                  name="isSale"
+                  label={form.watch("isSale") ? "On Sale" : "For Rent"}
+                  type="switch"
+                />
               </div>
               <div className="mt-4">
                 <CustomFormField
@@ -232,7 +238,7 @@ const NewProperty = () => {
                 <CustomFormField name="city" label="City" className="w-full" />
                 <CustomFormField
                   name="state"
-                  label="State"
+                  label="Area Location"
                   className="w-full"
                 />
                 <CustomFormField

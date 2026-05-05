@@ -29,14 +29,21 @@ const Map = () => {
     });
 
     properties.forEach((property) => {
-      const marker = createPropertyMarker(property, map);
-      const markerElement = marker.getElement();
-      const path = markerElement.querySelector("path[fill='#3FB1CE']");
-      if (path) path.setAttribute("fill", "#0A1F3B");
+      if (property.location && property.location.coordinates) {
+        const marker = createPropertyMarker(property, map);
+        const markerElement = marker.getElement();
+        const path = markerElement.querySelector("path[fill='#3FB1CE']");
+        if (path) path.setAttribute("fill", "#0A1F3B");
+      }
     });
 
     const resizeMap = () => {
-      if (map) setTimeout(() => map.resize(), 700);
+      if (map) {
+        map.resize();
+        // Call again after a short delay to catch any late layout shifts
+        setTimeout(() => map.resize(), 300);
+        setTimeout(() => map.resize(), 1000);
+      }
     };
     resizeMap();
 
@@ -44,19 +51,13 @@ const Map = () => {
   }, [isLoading, isError, properties, filters.coordinates]);
 
   if (isLoading) return <Loading />;
-  if (isError || !properties) return <div>Failed to fetch properties</div>;
+  if (isError || !properties) return <div className="flex items-center justify-center h-full bg-gray-50 rounded-xl">Failed to fetch properties</div>;
 
   return (
-    <div className="basis-5/12 grow relative rounded-xl">
-      <div
-        className="map-container rounded-xl"
-        ref={mapContainerRef}
-        style={{
-          height: "100%",
-          width: "100%",
-        }}
-      />
-    </div>
+    <div
+      className="map-container rounded-xl h-full w-full border border-gray-100 shadow-inner"
+      ref={mapContainerRef}
+    />
   );
 };
 

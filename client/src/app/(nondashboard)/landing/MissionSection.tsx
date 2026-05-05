@@ -1,30 +1,61 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const MissionSection = () => {
+  const containerRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+      }
+    });
+
+    tl.from(".mission-heading", {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    }).from(".mission-pillar", {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out"
+    }, "-=0.4");
+  }, { scope: containerRef });
+
   return (
-    <section className="bg-background pt-32 pb-20 px-6">
+    <section ref={containerRef} className="bg-background pt-32 pb-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Mission Statement */}
-        <div className="text-center mb-24 max-w-4xl mx-auto">
+        <div className="mission-heading text-center mb-24 max-w-4xl mx-auto">
           <span className="inline-block text-secondary font-bold text-xs tracking-[0.2em] uppercase mb-6">
             Our Mission
           </span>
           <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-primary leading-tight font-bold">
             &quot;To empower property owners and investors
-through a high-velocity, data-driven listing
-ecosystem. We are committed to de-risking the
-real estate journey by providing verified, elite
-property solutions that prioritize stability,
-integrity, and seamless acquisition in Nairobis
-most exclusive residential nodes.&quot;
+            through a high-velocity, data-driven listing
+            ecosystem. We are committed to de-risking the
+            real estate journey by providing verified, elite
+            property solutions that prioritize stability,
+            integrity, and seamless acquisition in Nairobis
+            most exclusive residential nodes.&quot;
           </h2>
         </div>
 
         {/* Three Pillars */}
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
           {/* Pillar I: Market Velocity */}
-          <div className="flex flex-col items-center text-center group">
+          <div className="mission-pillar flex flex-col items-center text-center group">
             <div className="w-full aspect-square relative rounded-2xl overflow-hidden mb-8 shadow-lg">
               <Image 
                 src="/about/about_elegance_2.png" 
@@ -40,7 +71,7 @@ most exclusive residential nodes.&quot;
           </div>
 
           {/* Pillar II: Inventory Integrity */}
-          <div className="flex flex-col items-center text-center group">
+          <div className="mission-pillar flex flex-col items-center text-center group">
             <div className="w-full aspect-square relative rounded-2xl overflow-hidden mb-8 shadow-lg">
               <Image 
                 src="/about/about_family.png" 
@@ -56,7 +87,7 @@ most exclusive residential nodes.&quot;
           </div>
 
           {/* Pillar III: High-End Nodes */}
-          <div className="flex flex-col items-center text-center group">
+          <div className="mission-pillar flex flex-col items-center text-center group">
             <div className="w-full aspect-square relative rounded-2xl overflow-hidden mb-8 shadow-lg">
               <Image 
                 src="/about/about_elegance_3.png" 

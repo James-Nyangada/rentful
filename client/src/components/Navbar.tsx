@@ -3,12 +3,12 @@
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "./ui/button";
 import { useGetAuthUserQuery } from "@/state/api";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/app/(auth)/authProvider";
-import { Bell, ChevronDown, ChevronUp, Menu, MessageCircle, Plus, Search, X } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu, Plus, Search, X } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,8 +18,11 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { SidebarTrigger } from "./ui/sidebar";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Navbar = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const { data: authUser, refetch } = useGetAuthUserQuery();
   const { user: contextUser, signOut } = useAuth();
   const router = useRouter();
@@ -50,10 +53,22 @@ const Navbar = () => {
     signOut();
   };
 
+  useGSAP(() => {
+    if (!isDashboardPage) {
+      gsap.from(containerRef.current, {
+        y: -50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      });
+    }
+  }, { scope: containerRef });
+
   if (isDashboardPage) return null;
-  
+
   return (
     <div
+      ref={containerRef}
       className="fixed top-0 left-0 w-full z-50 shadow-md transition-all duration-300"
       style={{ height: `${NAVBAR_HEIGHT}px` }}
     >
@@ -79,10 +94,10 @@ const Navbar = () => {
                 priority
               />
               <div className="flex flex-col">
-                <span className="text-primary font-black text-[15px] leading-none tracking-tighter">
+                <span className="text-primary font-black text-[15px] leading-none tracking-tighter uppercase">
                   Chestone Properties
                 </span>
-                <span className="text-primary/70 font-bold text-[10px] leading-none tracking-[0.4em] mt-1 uppercase">
+                <span className="text-primary/70 font-bold text-[10px] leading-none mt-1 uppercase">
                   Structured Property Solutions
                 </span>
               </div>
@@ -132,7 +147,7 @@ const Navbar = () => {
 
           {/* Buy / Rent */}
           <div className="flex gap-3">
-            <Link href="/search?type=buy" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">Buy</Link>
+            <Link href="/search?type=buy" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">Sale</Link>
             <span className="text-primary/30">/</span>
             <Link href="/search?type=rent" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">Rent</Link>
           </div>
@@ -158,15 +173,6 @@ const Navbar = () => {
         <div className="flex items-center gap-6">
           {isLoggedIn ? (
             <>
-              <div className="relative hidden md:block group">
-                <MessageCircle className="w-5 h-5 cursor-pointer text-primary group-hover:text-secondary transition-colors" />
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-secondary rounded-full border-2 border-white"></span>
-              </div>
-              <div className="relative hidden md:block group">
-                <Bell className="w-5 h-5 cursor-pointer text-primary group-hover:text-secondary transition-colors" />
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-secondary rounded-full border-2 border-white"></span>
-              </div>
-
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-3 focus:outline-none group">
                   <Avatar className="h-9 w-9 border-2 border-transparent group-hover:border-secondary transition-all">
@@ -216,7 +222,7 @@ const Navbar = () => {
             </>
           ) : (
             <div className="hidden md:flex items-center gap-6 font-nav tracking-[1px]">
-              <Link href="/signup">
+              <Link href="/contact-us">
                 <Button
                   variant="default"
                   className="bg-secondary text-white hover:bg-secondary/90 font-bold px-6 shadow-sm uppercase text-xs rounded-md"
@@ -254,7 +260,7 @@ const Navbar = () => {
               className="flex justify-between items-center text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
               onClick={() => setIsCollectionOpen(!isCollectionOpen)}
             >
-              The Collection
+              Exclusive Areas
               {isCollectionOpen ? (
                 <ChevronUp className="w-3 h-3" />
               ) : (

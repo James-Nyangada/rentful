@@ -104,6 +104,7 @@ model Property {
   highlights        Highlight[]
   isPetsAllowed     Boolean      @default(false)
   isParkingIncluded Boolean      @default(false)
+  isSale            Boolean      @default(false)
   beds              Int
   baths             Float
   squareFeet        Int

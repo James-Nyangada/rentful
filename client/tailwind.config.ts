@@ -82,9 +82,9 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
-  			sans: ['var(--font-inter)', 'sans-serif'],
+  			sans: ['var(--font-public-sans)', 'sans-serif'],
         serif: ['var(--font-playfair)', 'serif'],
-        nav: ['var(--font-montserrat)', 'sans-serif'],
+        nav: ['var(--font-public-sans)', 'sans-serif'],
   		},
   	}
   },

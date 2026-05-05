@@ -1,5 +1,7 @@
 import React from "react";
 import HeroSection from "./HeroSection";
+import RecentListingsSection from "./RecentListingsSection";
+import NeighborhoodSection from "./NeighborhoodSection";
 import FeaturesSection from "./FeaturesSection";
 import MissionSection from "./MissionSection";
 import DiscoverSection from "./DiscoverSection";
@@ -10,6 +12,8 @@ const Landing = () => {
   return (
     <div className="bg-background">
       <HeroSection />
+      <RecentListingsSection />
+      <NeighborhoodSection />
       <FeaturesSection />
       <MissionSection />
       <DiscoverSection />

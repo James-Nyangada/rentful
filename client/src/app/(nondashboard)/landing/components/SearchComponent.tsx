@@ -19,7 +19,7 @@ import { setFilters } from "@/state";
 const SearchComponent = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [searchTab, setSearchTab] = useState<"sale" | "rent">("sale");
+  const [searchTab, setSearchTab] = useState<"sale" | "rent">("rent");
   const [location, setLocation] = useState("");
   const [propertyType, setPropertyType] = useState("any");
   const [beds, setBeds] = useState("any");
@@ -50,6 +50,7 @@ const SearchComponent = () => {
       location: location || "Nairobi",
       propertyType: propertyType === "any" ? "any" : propertyType,
       beds: beds === "any" ? "any" : beds,
+      isSale: searchTab === "sale",
       coordinates,
     };
 
@@ -59,6 +60,7 @@ const SearchComponent = () => {
       location: filters.location,
       propertyType: filters.propertyType,
       beds: filters.beds,
+      isSale: filters.isSale.toString(),
       lat: coordinates[0].toString(),
       lng: coordinates[1].toString(),
     });

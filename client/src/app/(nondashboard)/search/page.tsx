@@ -3,15 +3,18 @@
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import { useAppDispatch, useAppSelector } from "@/state/redux";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import FiltersBar from "./FiltersBar";
 import FiltersFull from "./FiltersFull";
 import { cleanParams } from "@/lib/utils";
 import { setFilters } from "@/state";
 import Map from "./Map";
 import Listings from "./Listings";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const SearchPage = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const isFiltersFullOpen = useAppSelector(
@@ -25,6 +28,8 @@ const SearchPage = () => {
           acc[key] = value.split(",").map((v) => (v === "" ? null : Number(v)));
         } else if (key === "coordinates") {
           acc[key] = value.split(",").map(Number);
+        } else if (key === "isSale") {
+          acc[key] = value === "true";
         } else {
           acc[key] = value === "any" ? null : value;
         }
@@ -38,14 +43,28 @@ const SearchPage = () => {
     dispatch(setFilters(cleanedFilters));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  useGSAP(() => {
+    gsap.from(".search-anim", {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power2.out",
+      delay: 0.1
+    });
+  }, { scope: containerRef });
+
   return (
     <div
+      ref={containerRef}
       className="w-full mx-auto px-5 flex flex-col"
       style={{
         height: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
       }}
     >
-      <FiltersBar />
+      <div className="search-anim w-full">
+        <FiltersBar />
+      </div>
       <div className="flex justify-between flex-1 overflow-hidden gap-3 mb-5">
         <div
           className={`h-full overflow-auto transition-all duration-300 ease-in-out ${
@@ -56,8 +75,10 @@ const SearchPage = () => {
         >
           <FiltersFull />
         </div>
-        <Map />
-        <div className="basis-4/12 overflow-y-auto">
+        <div className="search-anim flex-1 min-h-[400px] relative">
+          <Map />
+        </div>
+        <div className="search-anim basis-4/12 overflow-y-auto">
           <Listings />
         </div>
       </div>

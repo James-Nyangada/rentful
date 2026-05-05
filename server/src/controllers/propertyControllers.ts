@@ -37,11 +37,16 @@ export const getProperties = async (
       squareFeetMax,
       amenities,
       availableFrom,
+      isSale,
       latitude,
       longitude,
     } = req.query;
 
     let whereConditions: Prisma.Sql[] = [];
+
+    if (isSale !== undefined) {
+      whereConditions.push(Prisma.sql`p."isSale" = ${isSale === "true"}`);
+    }
 
     if (favoriteIds) {
       const favoriteIdsArray = (favoriteIds as string).split(",").map(Number);
@@ -156,6 +161,75 @@ export const getProperties = async (
     res
       .status(500)
       .json({ message: `Error retrieving properties: ${error.message}` });
+  }
+};
+
+export const getRecentProperties = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const limit = Number(req.query.limit) || 6;
+
+    const completeQuery = Prisma.sql`
+      SELECT 
+        p.*,
+        json_build_object(
+          'id', l.id,
+          'address', l.address,
+          'city', l.city,
+          'state', l.state,
+          'country', l.country,
+          'postalCode', l."postalCode",
+          'coordinates', json_build_object(
+            'longitude', ST_X(l."coordinates"::geometry),
+            'latitude', ST_Y(l."coordinates"::geometry)
+          )
+        ) as location
+      FROM "Property" p
+      JOIN "Location" l ON p."locationId" = l.id
+      ORDER BY p."postedDate" DESC
+      LIMIT ${limit}
+    `;
+
+    const properties = await prisma.$queryRaw(completeQuery);
+
+    res.json(properties);
+  } catch (error: any) {
+    res
+      .status(500)
+      .json({ message: `Error retrieving recent properties: ${error.message}` });
+  }
+};
+
+export const getPropertyLocations = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const locations: any[] = await prisma.$queryRaw`
+      SELECT 
+        l.state as city,
+        COUNT(p.id)::int as "propertyCount",
+        (
+          SELECT p2."photoUrls"[1]
+          FROM "Property" p2
+          JOIN "Location" l2 ON p2."locationId" = l2.id
+          WHERE l2.state = l.state AND array_length(p2."photoUrls", 1) > 0
+          ORDER BY p2."postedDate" DESC
+          LIMIT 1
+        ) as "coverImage"
+      FROM "Property" p
+      JOIN "Location" l ON p."locationId" = l.id
+      GROUP BY l.state
+      ORDER BY COUNT(p.id) DESC
+    `;
+
+    res.json(locations);
+  } catch (error: any) {
+    res
+      .status(500)
+      .json({ message: `Error retrieving property locations: ${error.message}` });
   }
 };
 
@@ -294,6 +368,7 @@ export const createProperty = async (
             : [],
         isPetsAllowed: propertyData.isPetsAllowed === "true",
         isParkingIncluded: propertyData.isParkingIncluded === "true",
+        isSale: propertyData.isSale === "true",
         pricePerMonth: parseFloat(propertyData.pricePerMonth),
         securityDeposit: parseFloat(propertyData.securityDeposit),
         applicationFee: parseFloat(propertyData.applicationFee),
@@ -413,9 +488,10 @@ export const updateProperty = async (
           typeof propertyData.highlights === "string"
             ? propertyData.highlights.split(",")
             : [],
-        isPetsAllowed: propertyData.isPetsAllowed === "true",
-        isParkingIncluded: propertyData.isParkingIncluded === "true",
-        pricePerMonth: parseFloat(propertyData.pricePerMonth),
+        isPetsAllowed: propertyData.isPetsAllowed ? propertyData.isPetsAllowed === "true" : undefined,
+        isParkingIncluded: propertyData.isParkingIncluded ? propertyData.isParkingIncluded === "true" : undefined,
+        isSale: propertyData.isSale ? propertyData.isSale === "true" : undefined,
+        pricePerMonth: propertyData.pricePerMonth ? parseFloat(propertyData.pricePerMonth) : undefined,
         securityDeposit: parseFloat(propertyData.securityDeposit),
         applicationFee: parseFloat(propertyData.applicationFee),
         beds: parseInt(propertyData.beds),
@@ -491,7 +567,7 @@ export const getAvailability = async (
       select: { date: true },
     });
 
-    const dates = availabilities.map((a) => a.date);
+    const dates = availabilities.map((a: { date: Date }) => a.date);
     res.json(dates);
   } catch (err: any) {
     res.status(500).json({

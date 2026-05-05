@@ -96,6 +96,7 @@ export const api = createApi({
           squareFeetMax: filters.squareFeet?.[1],
           amenities: filters.amenities?.join(","),
           availableFrom: filters.availableFrom,
+          isSale: filters.isSale,
           favoriteIds: filters.favoriteIds?.join(","),
           latitude: filters.coordinates?.[1],
           longitude: filters.coordinates?.[0],
@@ -113,6 +114,35 @@ export const api = createApi({
       async onQueryStarted(_, { queryFulfilled }) {
         await withToast(queryFulfilled, {
           error: "Failed to fetch properties.",
+        });
+      },
+    }),
+
+    getRecentProperties: build.query<Property[], number | void>({
+      query: (limit = 6) => `properties/recent?limit=${limit}`,
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "Properties" as const, id })),
+              { type: "Properties", id: "LIST" },
+            ]
+          : [{ type: "Properties", id: "LIST" }],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          error: "Failed to fetch recent properties.",
+        });
+      },
+    }),
+
+    getPropertyLocations: build.query<
+      { city: string; propertyCount: number; coverImage: string | null }[],
+      void
+    >({
+      query: () => `properties/locations`,
+      providesTags: [{ type: "Properties", id: "LOCATIONS" }],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          error: "Failed to fetch neighborhoods.",
         });
       },
     }),
@@ -430,6 +460,8 @@ export const {
   useUpdateTenantSettingsMutation,
   useUpdateManagerSettingsMutation,
   useGetPropertiesQuery,
+  useGetRecentPropertiesQuery,
+  useGetPropertyLocationsQuery,
   useGetPropertyQuery,
   useGetCurrentResidencesQuery,
   useGetManagerPropertiesQuery,

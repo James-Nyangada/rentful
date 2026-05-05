@@ -1,42 +1,52 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+gsap.registerPlugin(ScrollTrigger);
 
 const DiscoverSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+      }
+    });
+
+    tl.from(".discover-heading", {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power3.out"
+    }).from(".discover-card", {
+      y: 40,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.2,
+      ease: "power3.out"
+    }, "-=0.2");
+  }, { scope: containerRef });
+
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={containerVariants}
+    <div
+      ref={containerRef}
       className="py-20 bg-white"
     >
       <div className="max-w-6xl xl:max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
-        <motion.div variants={itemVariants} className="mb-20">
+        <div className="discover-heading mb-20">
           <h2 className="text-4xl md:text-5xl font-black text-primary tracking-tighter uppercase mb-6">
             The Chestone Journey
           </h2>
           <p className="text-xl text-foreground/80 max-w-3xl mx-auto font-medium leading-relaxed">
             Acquiring and managing luxury assets is a seamless experience with our structured solutions. From discovery to ownership, we guide you through every milestone.
           </p>
-        </motion.div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {[
             {
@@ -58,13 +68,13 @@ const DiscoverSection = () => {
                 "Step into your new home and experience a standard of living defined by prestige and stability.",
             },
           ].map((card, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <div key={index} className="discover-card">
               <DiscoverCard {...card} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
