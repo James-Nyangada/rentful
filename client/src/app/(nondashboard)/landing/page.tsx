@@ -14,7 +14,7 @@ const Landing = () => {
       <HeroSection />
       <NeighborhoodSection />
       <RecentListingsSection />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
       {/* <MissionSection /> */}
       {/* <DiscoverSection /> */}
       <CallToActionSection />
