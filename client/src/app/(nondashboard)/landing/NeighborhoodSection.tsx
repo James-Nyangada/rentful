@@ -93,7 +93,7 @@ const NeighborhoodSection = () => {
                 {/* Image */}
                 <div
                   className={`relative w-full overflow-hidden ${
-                    index === 0 && locations.length > 3
+                    index === 0 && displayedLocations.length > 3
                       ? "h-[420px] lg:h-[500px]"
                       : "h-[240px] lg:h-[280px]"
                   }`}
@@ -125,7 +125,7 @@ const NeighborhoodSection = () => {
                     </div>
                     <h3
                       className={`text-white font-black uppercase tracking-tight leading-tight ${
-                        index === 0 && locations.length > 3
+                        index === 0 && displayedLocations.length > 3
                           ? "text-3xl lg:text-4xl"
                           : "text-xl lg:text-2xl"
                       }`}
