@@ -94,10 +94,10 @@ const Navbar = () => {
                 priority
               />
               <div className="flex flex-col">
-                <span className="text-primary font-black text-[15px] leading-none tracking-tighter uppercase">
+                <span className="text-primary font-black text-[22px] md:text-[15px] leading-none tracking-tighter uppercase">
                   Chestone Properties
                 </span>
-                <span className="text-primary/70 font-bold text-[10px] leading-none mt-1 uppercase">
+                <span className="text-primary/70 font-bold text-[12px] md:text-[10px] leading-none mt-1 uppercase">
                   Structured Property Solutions
                 </span>
               </div>
@@ -163,6 +163,7 @@ const Navbar = () => {
         <div className="flex items-center gap-6">
           {isLoggedIn ? (
             <>
+            <div className="hidden md:block">
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-3 focus:outline-none group">
                   <Avatar className="h-9 w-9 border-2 border-transparent group-hover:border-secondary transition-all">
@@ -209,6 +210,7 @@ const Navbar = () => {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+            </div>
             </>
           ) : (
             <div className="hidden md:flex items-center gap-6 font-nav tracking-[1px]">
@@ -300,12 +302,58 @@ const Navbar = () => {
             </div>
           </div>
           
-          {!isLoggedIn && (
+          {isLoggedIn ? (
+            <>
+              <div className="h-px bg-gray-100 w-full my-1"></div>
+              <div className="flex items-center gap-4 py-4">
+                <Avatar className="h-12 w-12 border-2 border-secondary shadow-sm">
+                  <AvatarFallback className="bg-primary text-secondary font-bold text-xl">
+                    {(userRole?.[0] || "U").toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col">
+                  <p className="text-primary font-black text-base uppercase tracking-tighter">
+                    {userName}
+                  </p>
+                  <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">
+                    {userRole} Account
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <Link 
+                  href={userRole?.toLowerCase() === "manager" ? "/managers/properties" : "/tenants/favorites"} 
+                  className="text-primary font-bold uppercase py-3 border-b border-gray-50 flex justify-between items-center" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Go to Dashboard
+                  <ChevronDown className="w-4 h-4 -rotate-90 text-gray-300" />
+                </Link>
+                <Link 
+                  href={`/${userRole?.toLowerCase()}s/settings`} 
+                  className="text-primary font-bold uppercase py-3 border-b border-gray-50 flex justify-between items-center" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Settings
+                  <ChevronDown className="w-4 h-4 -rotate-90 text-gray-300" />
+                </Link>
+                <button 
+                  onClick={() => {
+                    handleSignOut();
+                    setIsMobileMenuOpen(false);
+                  }} 
+                  className="text-red-500 font-black uppercase py-4 text-left tracking-widest text-[10px]"
+                >
+                  Sign out
+                </button>
+              </div>
+            </>
+          ) : (
             <>
               <div className="h-px bg-gray-100 w-full my-1"></div>
               <div className="flex flex-col gap-4 mt-2">
                 <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full bg-primary text-white font-bold uppercase py-6 shadow-lg hover:bg-primary/90 transition-all">
+                  <Button className="w-full bg-secondary text-white font-bold uppercase py-6 shadow-lg hover:bg-secondary/90 transition-all">
                     List With Us
                   </Button>
                 </Link>

@@ -27,13 +27,13 @@ const HeroSection = () => {
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-start pt-32 md:pt-40 md:h-screen">
       <Image
-        src="/landing-splash.jpg"
+        src="/landing-splash-minimal.png"
         alt="Chestone Properties Ltd Hero Section"
         fill
         className="object-cover object-center"
         priority
       />
-      <div className="absolute inset-0 bg-primary/20"></div>
+      <div className="absolute inset-0 bg-white/30"></div>
       <div
         className="hero-content relative w-full z-10 text-center"
       >
