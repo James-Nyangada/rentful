@@ -56,21 +56,34 @@ const Auth = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedUser = localStorage.getItem("user");
-    if (storedToken && storedUser) {
-      try {
-        const parsedUser = JSON.parse(storedUser);
-        // Validate that the user object has the required fields
-        if (parsedUser.authId) {
-          setToken(storedToken);
-          setUser(parsedUser);
-        } else {
-          // Clear invalid session data
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
-        }
-      } catch (e) {
+    const loginTimestamp = localStorage.getItem("loginTimestamp");
+
+    if (storedToken && storedUser && loginTimestamp) {
+      const oneHour = 60 * 60 * 1000;
+      const isExpired = Date.now() - parseInt(loginTimestamp) > oneHour;
+
+      if (isExpired) {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
+        localStorage.removeItem("loginTimestamp");
+        setToken(null);
+        setUser(null);
+      } else {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          if (parsedUser.authId) {
+            setToken(storedToken);
+            setUser(parsedUser);
+          } else {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            localStorage.removeItem("loginTimestamp");
+          }
+        } catch (e) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          localStorage.removeItem("loginTimestamp");
+        }
       }
     }
     setIsLoading(false);
@@ -102,6 +115,7 @@ const Auth = ({ children }: { children: React.ReactNode }) => {
 
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("loginTimestamp", Date.now().toString());
     setToken(data.token);
     setUser(data.user);
     return data.user;
@@ -151,6 +165,7 @@ const Auth = ({ children }: { children: React.ReactNode }) => {
   const signOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("loginTimestamp");
     setToken(null);
     setUser(null);
     window.location.href = "/";

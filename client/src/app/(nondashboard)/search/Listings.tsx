@@ -54,15 +54,18 @@ const Listings = () => {
   if (isError || !properties) return <div>Failed to fetch properties</div>;
 
   return (
-    <div className="w-full">
-      <h3 className="text-sm px-4 font-bold">
-        {properties.length}{" "}
-        <span className="text-gray-700 font-normal">
-          Places in {filters.location}
-        </span>
-      </h3>
-      <div className="flex">
-        <div className="p-4 w-full">
+    <div className="w-full h-full">
+      <div className="px-4 py-4 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
+        <h3 className="text-sm font-bold">
+          {properties.length}{" "}
+          <span className="text-gray-700 font-normal">
+            Places in {filters.location || "Nairobi"}
+          </span>
+        </h3>
+      </div>
+
+      <div className="p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {properties?.map((property) =>
             viewMode === "grid" ? (
               <Card
@@ -93,6 +96,18 @@ const Listings = () => {
             )
           )}
         </div>
+        
+        {properties.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-20 text-center">
+            <div className="bg-gray-100 p-6 rounded-full mb-4">
+              <span className="text-4xl">🏠</span>
+            </div>
+            <h3 className="text-xl font-bold text-primary mb-2">No properties found</h3>
+            <p className="text-gray-500 max-w-xs">
+              We couldn&apos;t find any properties matching your current filters. Try adjusting your search.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

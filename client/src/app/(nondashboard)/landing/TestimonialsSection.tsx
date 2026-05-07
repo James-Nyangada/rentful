@@ -76,30 +76,34 @@ const TestimonialsSection = () => {
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
   useGSAP(() => {
-    const tl = gsap.timeline({
+    // Reveal header
+    gsap.from(".testimonials-heading", {
       scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
+        trigger: ".testimonials-heading",
+        start: "top bottom-=100",
       },
-    });
-
-    tl.from(".testimonials-heading", {
-      y: 40,
+      y: 30,
       opacity: 0,
       duration: 0.8,
       ease: "power3.out",
-    }).from(
-      ".testimonial-card",
-      {
-        y: 50,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: "power3.out",
+    });
+
+    // Reveal cards
+    gsap.from(".testimonial-card", {
+      scrollTrigger: {
+        trigger: "#testimonials",
+        start: "top bottom-=50",
       },
-      "-=0.4"
-    );
-  }, { scope: containerRef });
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power3.out",
+      clearProps: "all" // Clear GSAP styles after animation finishes
+    });
+
+    ScrollTrigger.refresh();
+  }, { scope: containerRef, dependencies: [activeCategory] });
 
   const filteredTestimonials =
     activeCategory === "all"
@@ -110,29 +114,29 @@ const TestimonialsSection = () => {
     <section
       id="testimonials"
       ref={containerRef}
-      className="py-24 px-6 sm:px-8 lg:px-12 xl:px-16 bg-gray-50"
+      className="py-20 md:py-24 px-4 sm:px-8 lg:px-12 bg-gray-50 overflow-hidden"
     >
       <div className="max-w-6xl xl:max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="testimonials-heading text-center mb-12">
-          <span className="inline-block text-secondary font-bold text-xs tracking-[0.2em] uppercase mb-4">
+        <div className="testimonials-heading text-center mb-10 md:mb-16 px-4">
+          <span className="inline-block text-secondary font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase mb-4">
             Client Stories
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight uppercase">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-primary tracking-tight uppercase leading-tight">
             What Our Clients Say
           </h2>
-          <p className="mt-4 text-foreground/70 max-w-2xl mx-auto font-medium text-lg">
+          <p className="mt-4 text-foreground/70 max-w-2xl mx-auto font-medium text-base md:text-lg">
             Real experiences from buyers, renters, and homeowners who trust us with their property journey.
           </p>
         </div>
 
         {/* Category Filter */}
-        <div className="testimonials-heading flex justify-center gap-3 mb-14">
+        <div className="testimonials-heading flex flex-wrap justify-center gap-2 md:gap-4 mb-12 md:mb-16 px-2">
           {["all", "buyer", "renter", "owner"].map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all border-2 ${
+              className={`px-4 md:px-8 py-2 md:py-3 rounded-xl text-[10px] md:text-xs font-black uppercase tracking-widest transition-all border-2 whitespace-nowrap ${
                 activeCategory === cat
                   ? "bg-primary border-primary text-white shadow-lg scale-105"
                   : "bg-white border-gray-200 text-gray-500 hover:border-primary hover:text-primary"
@@ -150,30 +154,30 @@ const TestimonialsSection = () => {
             return (
               <div
                 key={testimonial.name}
-                className="testimonial-card group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-primary/20 hover:-translate-y-1"
+                className="testimonial-card group relative bg-white rounded-2xl p-6 md:p-8 shadow-md hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-primary/20 hover:-translate-y-1"
               >
                 {/* Quote Icon */}
                 <div className="absolute top-6 right-6">
-                  <Quote className="w-8 h-8 text-secondary/30 group-hover:text-secondary/60 transition-colors duration-500" />
+                  <Quote className="w-6 h-6 md:w-8 md:h-8 text-secondary/30 group-hover:text-secondary/60 transition-colors duration-500" />
                 </div>
 
                 {/* Category Badge */}
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="inline-flex items-center gap-1.5 bg-primary/5 text-primary rounded-lg px-3 py-1.5 text-[10px] font-black uppercase tracking-widest">
+                <div className="flex items-center gap-2 mb-4 md:mb-6">
+                  <span className="inline-flex items-center gap-1.5 bg-primary/5 text-primary rounded-lg px-2.5 py-1 text-[9px] md:text-[10px] font-black uppercase tracking-widest">
                     <IconComponent className="w-3 h-3" />
                     {testimonial.role}
                   </span>
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                  <span className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider">
                     {testimonial.location}
                   </span>
                 </div>
 
                 {/* Stars */}
-                <div className="flex gap-1 mb-5">
+                <div className="flex gap-1 mb-4 md:mb-5">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
-                      className={`w-4 h-4 ${
+                      className={`w-3.5 h-3.5 md:w-4 md:h-4 ${
                         i < testimonial.rating
                           ? "text-secondary fill-secondary"
                           : "text-gray-200"
@@ -183,25 +187,25 @@ const TestimonialsSection = () => {
                 </div>
 
                 {/* Testimonial Text */}
-                <p className="text-foreground/70 font-medium leading-relaxed mb-8 text-[15px]">
+                <p className="text-foreground/70 font-medium leading-relaxed mb-6 md:mb-8 text-sm md:text-[15px]">
                   &ldquo;{testimonial.text}&rdquo;
                 </p>
 
                 {/* Author */}
-                <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-md">
-                    <span className="text-white font-black text-sm">
+                <div className="flex items-center gap-3 md:gap-4 pt-5 md:pt-6 border-t border-gray-100">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary flex items-center justify-center shadow-md shrink-0">
+                    <span className="text-white font-black text-xs md:text-sm">
                       {testimonial.name
                         .split(" ")
                         .map((n) => n[0])
                         .join("")}
                     </span>
                   </div>
-                  <div>
-                    <p className="text-primary font-black text-sm uppercase tracking-tight">
+                  <div className="min-w-0">
+                    <p className="text-primary font-black text-xs md:text-sm uppercase tracking-tight truncate">
                       {testimonial.name}
                     </p>
-                    <p className="text-secondary font-bold text-[10px] uppercase tracking-widest">
+                    <p className="text-secondary font-bold text-[9px] md:text-[10px] uppercase tracking-widest truncate">
                       {testimonial.role} &middot; {testimonial.location}
                     </p>
                   </div>

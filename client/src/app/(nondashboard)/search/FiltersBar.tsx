@@ -97,124 +97,107 @@ const FiltersBar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center w-full py-5">
-      {/* Filters */}
-      <div className="flex justify-between items-center gap-4 p-2">
-        {/* All Filters */}
+    <div className="flex flex-col md:flex-row justify-between items-center w-full py-4 gap-4">
+      {/* Scrollable Filters Container */}
+      <div className="flex items-center gap-3 w-full overflow-x-auto pb-2 md:pb-0 scrollbar-hide px-4 md:px-0">
+        {/* All Filters Button */}
         <Button
           variant="outline"
           className={cn(
-            "gap-2 rounded-xl border-primary-400 hover:bg-primary-500 hover:text-primary-100",
-            isFiltersFullOpen && "bg-primary-700 text-primary-100"
+            "flex-shrink-0 gap-2 rounded-xl border-gray-200 hover:bg-primary hover:text-white transition-all",
+            isFiltersFullOpen && "bg-primary text-white border-primary"
           )}
           onClick={() => dispatch(toggleFiltersFullOpen())}
         >
           <Filter className="w-4 h-4" />
-          <span>All Filters</span>
+          <span className="text-xs font-bold uppercase tracking-wider">Filters</span>
         </Button>
+
+        <div className="h-8 w-px bg-gray-100 flex-shrink-0 hidden md:block" />
 
         {/* Search Location */}
         <Select
           value={filters.location || "any"}
           onValueChange={(value) => handleFilterChange("location", value, null)}
         >
-          <SelectTrigger className="w-48 rounded-xl border-primary-400">
+          <SelectTrigger className="w-auto min-w-[140px] flex-shrink-0 rounded-xl border-gray-200 bg-gray-50/50">
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-primary" />
+              <MapPin className="w-4 h-4 text-secondary" />
               <SelectValue placeholder="Location" />
             </div>
           </SelectTrigger>
-          <SelectContent className="bg-white">
+          <SelectContent className="bg-white border-gray-100 shadow-xl">
             <SelectItem value="any">All Locations</SelectItem>
-            <SelectItem value="Lavington">Lavington</SelectItem>
-            <SelectItem value="Westlands">Westlands</SelectItem>
-            <SelectItem value="Kileleshwa">Kileleshwa</SelectItem>
             <SelectItem value="Kilimani">Kilimani</SelectItem>
+            <SelectItem value="Kileleshwa">Kileleshwa</SelectItem>
+            <SelectItem value="Westlands">Westlands</SelectItem>
+            <SelectItem value="Lavington">Lavington</SelectItem>
+            <SelectItem value="Karen">Karen</SelectItem>
+            <SelectItem value="Riverside Drive">Riverside Drive</SelectItem>
           </SelectContent>
         </Select>
 
-        {/* Price Range */}
-        <div className="flex gap-1">
-          {/* Minimum Price Selector */}
+        {/* Price Range Group */}
+        <div className="flex items-center gap-1 flex-shrink-0">
           <Select
             value={filters.priceRange[0]?.toString() || "any"}
             onValueChange={(value) =>
               handleFilterChange("priceRange", value, true)
             }
           >
-            <SelectTrigger className="w-22 rounded-xl border-primary-400">
+            <SelectTrigger className="w-auto min-w-[110px] rounded-xl border-gray-200 bg-gray-50/50">
               <SelectValue>
                 {formatPriceValue(filters.priceRange[0], true)}
               </SelectValue>
             </SelectTrigger>
-            <SelectContent className="bg-white">
-              <SelectItem value="any">Any Min Price</SelectItem>
-              {[500, 1000, 1500, 2000, 3000, 5000, 10000].map((price) => (
+            <SelectContent className="bg-white border-gray-100 shadow-xl">
+              <SelectItem value="any">Min Price</SelectItem>
+              {[50000, 100000, 150000, 200000, 300000, 500000].map((price) => (
                 <SelectItem key={price} value={price.toString()}>
-                  ${price / 1000}k+
+                  KSh {price.toLocaleString()}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-
-          {/* Maximum Price Selector */}
+          <span className="text-gray-300 mx-1">-</span>
           <Select
             value={filters.priceRange[1]?.toString() || "any"}
             onValueChange={(value) =>
               handleFilterChange("priceRange", value, false)
             }
           >
-            <SelectTrigger className="w-22 rounded-xl border-primary-400">
+            <SelectTrigger className="w-auto min-w-[110px] rounded-xl border-gray-200 bg-gray-50/50">
               <SelectValue>
                 {formatPriceValue(filters.priceRange[1], false)}
               </SelectValue>
             </SelectTrigger>
-            <SelectContent className="bg-white">
-              <SelectItem value="any">Any Max Price</SelectItem>
-              {[1000, 2000, 3000, 5000, 10000].map((price) => (
+            <SelectContent className="bg-white border-gray-100 shadow-xl">
+              <SelectItem value="any">Max Price</SelectItem>
+              {[100000, 200000, 300000, 500000, 1000000].map((price) => (
                 <SelectItem key={price} value={price.toString()}>
-                  &lt;${price / 1000}k
+                  KSh {price.toLocaleString()}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
 
-        {/* Beds and Baths */}
-        <div className="flex gap-1">
-          {/* Beds */}
-          <Select
-            value={filters.beds}
-            onValueChange={(value) => handleFilterChange("beds", value, null)}
-          >
-            <SelectTrigger className="w-26 rounded-xl border-primary-400">
-              <SelectValue placeholder="Beds" />
-            </SelectTrigger>
-            <SelectContent className="bg-white">
-              <SelectItem value="any">Any Beds</SelectItem>
-              <SelectItem value="1">1+ bed</SelectItem>
-              <SelectItem value="2">2+ beds</SelectItem>
-              <SelectItem value="3">3+ beds</SelectItem>
-              <SelectItem value="4">4+ beds</SelectItem>
-            </SelectContent>
-          </Select>
-
-          {/* Baths */}
-          <Select
-            value={filters.baths}
-            onValueChange={(value) => handleFilterChange("baths", value, null)}
-          >
-            <SelectTrigger className="w-26 rounded-xl border-primary-400">
-              <SelectValue placeholder="Baths" />
-            </SelectTrigger>
-            <SelectContent className="bg-white">
-              <SelectItem value="any">Any Baths</SelectItem>
-              <SelectItem value="1">1+ bath</SelectItem>
-              <SelectItem value="2">2+ baths</SelectItem>
-              <SelectItem value="3">3+ baths</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+        {/* Beds */}
+        <Select
+          value={filters.beds}
+          onValueChange={(value) => handleFilterChange("beds", value, null)}
+        >
+          <SelectTrigger className="w-auto min-w-[100px] flex-shrink-0 rounded-xl border-gray-200 bg-gray-50/50">
+            <SelectValue placeholder="Beds" />
+          </SelectTrigger>
+          <SelectContent className="bg-white border-gray-100 shadow-xl">
+            <SelectItem value="any">Any Beds</SelectItem>
+            <SelectItem value="1">1+ Bed</SelectItem>
+            <SelectItem value="2">2+ Beds</SelectItem>
+            <SelectItem value="3">3+ Beds</SelectItem>
+            <SelectItem value="4">4+ Beds</SelectItem>
+          </SelectContent>
+        </Select>
 
         {/* Property Type */}
         <Select
@@ -223,16 +206,16 @@ const FiltersBar = () => {
             handleFilterChange("propertyType", value, null)
           }
         >
-          <SelectTrigger className="w-32 rounded-xl border-primary-400">
+          <SelectTrigger className="w-auto min-w-[130px] flex-shrink-0 rounded-xl border-gray-200 bg-gray-50/50">
             <SelectValue placeholder="Home Type" />
           </SelectTrigger>
-          <SelectContent className="bg-white">
-            <SelectItem value="any">Any Property Type</SelectItem>
+          <SelectContent className="bg-white border-gray-100 shadow-xl">
+            <SelectItem value="any">All Types</SelectItem>
             {Object.entries(PropertyTypeIcons).map(([type, Icon]) => (
               <SelectItem key={type} value={type}>
                 <div className="flex items-center">
-                  <Icon className="w-4 h-4 mr-2" />
-                  <span>{type}</span>
+                  <Icon className="w-4 h-4 mr-2 text-primary/70" />
+                  <span className="text-sm">{type}</span>
                 </div>
               </SelectItem>
             ))}
@@ -240,28 +223,30 @@ const FiltersBar = () => {
         </Select>
       </div>
 
-      {/* View Mode */}
-      <div className="flex justify-between items-center gap-4 p-2">
-        <div className="flex border rounded-xl">
+      {/* View Mode & Actions (Fixed Right on Desktop) */}
+      <div className="flex items-center gap-4 flex-shrink-0 self-end md:self-center px-4 md:px-0">
+        <div className="flex items-center bg-gray-100 p-1 rounded-xl">
           <Button
             variant="ghost"
+            size="icon"
             className={cn(
-              "px-3 py-1 rounded-none rounded-l-xl hover:bg-primary-600 hover:text-primary-50",
-              viewMode === "list" ? "bg-primary-700 text-primary-50" : ""
+              "h-8 w-10 rounded-lg transition-all",
+              viewMode === "list" ? "bg-white text-primary shadow-sm" : "text-gray-500 hover:text-primary"
             )}
             onClick={() => dispatch(setViewMode("list"))}
           >
-            <List className="w-5 h-5" />
+            <List className="w-4 h-4" />
           </Button>
           <Button
             variant="ghost"
+            size="icon"
             className={cn(
-              "px-3 py-1 rounded-none rounded-r-xl hover:bg-primary-600 hover:text-primary-50",
-              viewMode === "grid" ? "bg-primary-700 text-primary-50" : ""
+              "h-8 w-10 rounded-lg transition-all",
+              viewMode === "grid" ? "bg-white text-primary shadow-sm" : "text-gray-500 hover:text-primary"
             )}
             onClick={() => dispatch(setViewMode("grid"))}
           >
-            <Grid className="w-5 h-5" />
+            <Grid className="w-4 h-4" />
           </Button>
         </div>
       </div>
