@@ -14,10 +14,12 @@ const NeighborhoodSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const staticLocations = [
-    { city: "Lavington", coverImage: "/about/about_elegance_1.png" },
-    { city: "Westlands", coverImage: "/about/about_elegance_2.png" },
+    { city: "Kilimani", coverImage: "/kilimani_apartments.png" },
     { city: "Kileleshwa", coverImage: "/about/about_elegance_3.png" },
-    { city: "Kilimani", coverImage: "/about/about_elegance_1.png" },
+    { city: "Westlands", coverImage: "/about/about_elegance_2.png" },
+    { city: "Lavington", coverImage: "/lavington_mansion.png" },
+    { city: "Karen", coverImage: "/about/about_elegance_1.png" },
+    { city: "Riverside Drive", coverImage: "/about/about_interior.png" },
   ];
 
   useGSAP(() => {
@@ -67,7 +69,7 @@ const NeighborhoodSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {staticLocations.map((loc, index) => (
             <Link
               key={loc.city}

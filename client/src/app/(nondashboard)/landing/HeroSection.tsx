@@ -25,34 +25,37 @@ const HeroSection = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="relative min-h-screen flex items-start pt-32 md:pt-40 md:h-screen">
-      <Image
-        src="/landing-splash-minimal.png"
-        alt="Chestone Properties Ltd Hero Section"
-        fill
-        className="object-cover object-center"
-        priority
-      />
-      <div className="absolute inset-0 bg-white/30"></div>
+    <div ref={containerRef} className="relative min-h-screen flex items-start pt-32 md:pt-40 md:h-screen bg-primary overflow-hidden">
+      <div className="absolute inset-0 opacity-20">
+        <Image
+          src="/landing-splash-minimal.png"
+          alt="Rentful Hero Section"
+          fill
+          className="object-cover object-center mix-blend-overlay"
+          priority
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/50 to-primary pointer-events-none"></div>
+      
       <div
         className="hero-content relative w-full z-10 text-center"
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-primary mb-8 text-center drop-shadow-sm tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-8 text-center drop-shadow-sm tracking-tighter uppercase leading-tight">
             Elevate Your Living
           </h1>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 px-4">
             <Button
               onClick={() => router.push("/signup")}
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
+              className="w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-primary font-black rounded-xl px-10 h-16 text-lg uppercase tracking-widest shadow-2xl transition-all hover:scale-105 active:scale-95"
             >
-              Start Your Journey <ArrowUpRight className="w-5 h-5 ml-2" />
+              Start Your Journey <ArrowUpRight className="w-6 h-6 ml-2" />
             </Button>
             <Button
               onClick={() => router.push("/search")}
-              className="w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-white font-bold rounded-lg px-8 h-14 text-lg shadow-lg transition-all"
+              className="w-full sm:w-auto border-2 border-secondary bg-transparent hover:bg-secondary text-secondary hover:text-primary font-black rounded-xl px-10 h-16 text-lg uppercase tracking-widest shadow-2xl transition-all hover:scale-105 active:scale-95"
             >
-              View Listings <ArrowUpRight className="w-5 h-5 ml-2" />
+              View Listings <ArrowUpRight className="w-6 h-6 ml-2" />
             </Button>
           </div>
 

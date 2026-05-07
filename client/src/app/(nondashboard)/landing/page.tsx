@@ -6,6 +6,8 @@ import FeaturesSection from "./FeaturesSection";
 import MissionSection from "./MissionSection";
 import DiscoverSection from "./DiscoverSection";
 import CallToActionSection from "./CallToActionSection";
+import TestimonialsSection from "./TestimonialsSection";
+import VisionSection from "./VisionSection";
 import FooterSection from "./FooterSection";
 
 const Landing = () => {
@@ -17,7 +19,9 @@ const Landing = () => {
       {/* <FeaturesSection /> */}
       {/* <MissionSection /> */}
       {/* <DiscoverSection /> */}
+      <TestimonialsSection />
       <CallToActionSection />
+      <VisionSection />
       <FooterSection />
     </div>
   );

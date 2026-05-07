@@ -83,29 +83,29 @@ const SearchComponent = () => {
           BUY
         </button>
         <button
-          onClick={() => setSearchTab("sell")}
+          onClick={() => setSearchTab("rent")}
           className={`flex-1 md:flex-none px-6 md:px-10 py-4 font-bold uppercase tracking-wider transition-all ${
-            searchTab === "sell"
+            searchTab === "rent"
               ? "bg-primary text-white"
               : "bg-white/80 text-primary hover:bg-white border-x border-white/20"
           }`}
         >
-          SELL
+          RENT
         </button>
         <button
-          onClick={() => setSearchTab("rent")}
+          onClick={() => setSearchTab("sell")}
           className={`flex-1 md:flex-none px-6 md:px-10 py-4 rounded-tr-2xl font-bold uppercase tracking-wider transition-all ${
-            searchTab === "rent"
+            searchTab === "sell"
               ? "bg-primary text-white"
               : "bg-white/80 text-primary hover:bg-white"
           }`}
         >
-          Rent
+          SELL
         </button>
       </div>
 
       {/* Main Content Area */}
-      <div className="bg-white rounded-b-2xl rounded-tr-2xl p-6 md:p-8 shadow-2xl border border-gray-100 min-h-[140px] flex items-center">
+      <div className="bg-white rounded-b-2xl rounded-tr-2xl p-6 md:p-8 shadow-2xl border border-gray-100 min-h-[140px] flex flex-col justify-center gap-6">
         {searchTab === "sell" ? (
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 w-full">
             <div className="text-left">
@@ -118,14 +118,33 @@ const SearchComponent = () => {
             </div>
             <Button
               onClick={() => router.push("/contact-us")}
-              className="bg-secondary hover:bg-secondary/90 text-white font-black h-14 px-12 rounded-xl w-full md:w-auto transition-all shadow-lg hover:scale-105 active:scale-95 text-lg"
+              className="bg-secondary hover:bg-secondary/90 text-primary font-black h-14 px-12 rounded-xl w-full md:w-auto transition-all shadow-lg hover:scale-105 active:scale-95 text-lg uppercase tracking-widest"
             >
               GET IN TOUCH
             </Button>
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row items-end gap-6 w-full">
-            {/* Location */}
+          <>
+            {/* Quick Locations */}
+            <div className="flex flex-wrap items-center gap-2 md:gap-3 w-full">
+              <span className="text-xs font-black uppercase tracking-widest text-primary mr-2 md:mr-4">Top Areas:</span>
+              {["Kilimani", "Kileleshwa", "Westlands", "Lavington", "Karen", "Riverside Drive"].map((loc) => (
+                <button
+                  key={loc}
+                  onClick={() => setLocation(loc)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border-2 ${
+                    location === loc
+                      ? "bg-primary border-primary text-white shadow-md scale-105"
+                      : "bg-transparent border-gray-200 text-gray-500 hover:border-primary hover:text-primary hover:bg-gray-50"
+                  }`}
+                >
+                  {loc}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex flex-col md:flex-row items-end gap-6 w-full">
+              {/* Location */}
             <div className="flex-1 w-full">
               <label className="block text-xs font-black uppercase tracking-widest text-primary mb-3 text-left">
                 Location
@@ -139,10 +158,12 @@ const SearchComponent = () => {
                 </SelectTrigger>
                 <SelectContent className="bg-white border-gray-100">
                   <SelectItem value="any">All Locations</SelectItem>
-                  <SelectItem value="Lavington">Lavington</SelectItem>
-                  <SelectItem value="Westlands">Westlands</SelectItem>
-                  <SelectItem value="Kileleshwa">Kileleshwa</SelectItem>
                   <SelectItem value="Kilimani">Kilimani</SelectItem>
+                  <SelectItem value="Kileleshwa">Kileleshwa</SelectItem>
+                  <SelectItem value="Westlands">Westlands</SelectItem>
+                  <SelectItem value="Lavington">Lavington</SelectItem>
+                  <SelectItem value="Karen">Karen</SelectItem>
+                  <SelectItem value="Riverside Drive">Riverside Drive</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -200,6 +221,7 @@ const SearchComponent = () => {
               SEARCH <Search className="w-5 h-5 ml-2" />
             </Button>
           </div>
+          </>
         )}
       </div>
     </div>

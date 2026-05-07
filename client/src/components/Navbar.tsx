@@ -30,7 +30,7 @@ const Navbar = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollectionOpen, setIsCollectionOpen] = useState(false);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const [isWhyChooseOpen, setIsWhyChooseOpen] = useState(false);
 
 
 
@@ -137,26 +137,33 @@ const Navbar = () => {
 
           {/* Exclusive Areas Dropdown */}
           <div className="relative group">
-            <Link href="/search" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase block pb-1">
+            <Link href="/exclusive-areas" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase block pb-1">
               Exclusive Areas
             </Link>
             <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
-              <Link href="/search?location=Lavington" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Lavington</Link>
-              <Link href="/search?location=Westlands" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Westlands</Link>
-              <Link href="/search?location=Kileleshwa" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Kileleshwa</Link>
               <Link href="/search?location=Kilimani" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Kilimani</Link>
+              <Link href="/search?location=Kileleshwa" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Kileleshwa</Link>
+              <Link href="/search?location=Westlands" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Westlands</Link>
+              <Link href="/search?location=Lavington" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Lavington</Link>
+              <Link href="/search?location=Karen" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Karen</Link>
+              <Link href="/search?location=Riverside Drive" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Riverside Drive</Link>
             </div>
           </div>
 
-          {/* Structured Solutions Dropdown */}
+          <Link href="/#testimonials" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">
+            Testimonials
+          </Link>
+
+          {/* Why Choose Chestone Dropdown */}
           <div className="relative group">
-            <button className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">
-              Structured Solutions
-            </button>
-            <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
-              <Link href="/advisory" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Advisory</Link>
-              <Link href="/derisking" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Asset De-risking</Link>
-              <Link href="/diplomacy" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Diplomacy</Link>
+            <Link href="/exclusive-areas" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase block pb-1">
+              Why Choose Us
+            </Link>
+            <div className="absolute top-full right-0 mt-2 w-52 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 z-50">
+              <Link href="/exclusive-areas" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Exclusive Areas</Link>
+              <Link href="/about" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">About Us</Link>
+              <Link href="/#testimonials" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Testimonials</Link>
+              <Link href="/contact-us" className="px-4 py-2 text-primary hover:bg-primary hover:text-white transition-colors">Contact Us</Link>
             </div>
           </div>
         </div>
@@ -253,52 +260,82 @@ const Navbar = () => {
 
           {/* Mobile Exclusive Areas */}
           <div className="flex flex-col">
-            <button
-              className="flex justify-between items-center text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
-              onClick={() => setIsCollectionOpen(!isCollectionOpen)}
-            >
-              Exclusive Areas
-              {isCollectionOpen ? (
-                <ChevronUp className="w-3 h-3" />
-              ) : (
-                <ChevronDown className="w-3 h-3" />
-              )}
-            </button>
+            <div className="flex justify-between items-center">
+              <Link 
+                href="/exclusive-areas" 
+                className="text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Exclusive Areas
+              </Link>
+              <button
+                className="text-secondary p-2"
+                onClick={() => setIsCollectionOpen(!isCollectionOpen)}
+              >
+                {isCollectionOpen ? (
+                  <ChevronUp className="w-3 h-3" />
+                ) : (
+                  <ChevronDown className="w-3 h-3" />
+                )}
+              </button>
+            </div>
             <div
               className={`flex flex-col gap-3 pl-4 overflow-hidden transition-all duration-300 ${
-                isCollectionOpen ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"
+                isCollectionOpen ? "max-h-60 opacity-100 mt-2" : "max-h-0 opacity-0"
               }`}
             >
-              <Link href="/search?location=Lavington" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Lavington</Link>
-              <Link href="/search?location=Westlands" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Westlands</Link>
-              <Link href="/search?location=Kileleshwa" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Kileleshwa</Link>
               <Link href="/search?location=Kilimani" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Kilimani</Link>
+              <Link href="/search?location=Kileleshwa" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Kileleshwa</Link>
+              <Link href="/search?location=Westlands" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Westlands</Link>
+              <Link href="/search?location=Lavington" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Lavington</Link>
+              <Link href="/search?location=Karen" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Karen</Link>
+              <Link href="/search?location=Riverside Drive" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Riverside Drive</Link>
             </div>
           </div>
 
           <div className="h-px bg-gray-100 w-full my-1"></div>
 
-          {/* Mobile Solutions */}
+          {/* Mobile Testimonials */}
+          <Link 
+            href="/#testimonials" 
+            className="flex justify-between items-center text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Testimonials
+          </Link>
+
+          <div className="h-px bg-gray-100 w-full my-1"></div>
+
+          {/* Mobile Why Choose Chestone */}
           <div className="flex flex-col">
-            <button
-              className="flex justify-between items-center text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
-              onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
-            >
-              Structured Solutions
-              {isSolutionsOpen ? (
-                <ChevronUp className="w-3 h-3" />
-              ) : (
-                <ChevronDown className="w-3 h-3" />
-              )}
-            </button>
+            <div className="flex justify-between items-center">
+              <Link 
+                href="/exclusive-areas" 
+                className="text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Why Choose Us
+              </Link>
+              <button
+                className="text-secondary p-2"
+                onClick={() => setIsWhyChooseOpen(!isWhyChooseOpen)}
+              >
+                {isWhyChooseOpen ? (
+                  <ChevronUp className="w-3 h-3" />
+                ) : (
+                  <ChevronDown className="w-3 h-3" />
+                )}
+              </button>
+            </div>
             <div
               className={`flex flex-col gap-3 pl-4 overflow-hidden transition-all duration-300 ${
-                isSolutionsOpen ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"
+                isWhyChooseOpen ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0"
               }`}
             >
-              <Link href="/advisory" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Advisory</Link>
-              <Link href="/derisking" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Asset De-risking</Link>
-              <Link href="/diplomacy" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Diplomacy</Link>
+              <Link href="/exclusive-areas" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Exclusive Areas</Link>
+              <Link href="/about" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
+              <Link href="/#testimonials" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Testimonials</Link>
+              <Link href="/contact-us" className="text-primary font-bold uppercase py-1" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link>
             </div>
           </div>
           
