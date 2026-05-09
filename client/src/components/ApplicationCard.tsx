@@ -8,7 +8,7 @@ const ApplicationCard = ({
   children,
 }: ApplicationCardProps) => {
   const [imgSrc, setImgSrc] = useState(
-    application.property.photoUrls?.[0] || "/placeholder.jpg"
+    application.property.photoUrls?.[0] || "/placeholder_1.png"
   );
 
   const statusColor =
@@ -33,7 +33,7 @@ const ApplicationCard = ({
             height={150}
             className="rounded-xl object-cover w-full lg:w-[200px] h-[150px]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            onError={() => setImgSrc("/placeholder.jpg")}
+            onError={() => setImgSrc("/placeholder_1.png")}
           />
           <div className="flex flex-col justify-between">
             <div>

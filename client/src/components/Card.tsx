@@ -1,4 +1,4 @@
-import { Bath, Bed, Heart, House, Star } from "lucide-react";
+import { Bath, Bed, Heart, House } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -11,7 +11,7 @@ const Card = ({
   propertyLink,
 }: CardProps) => {
   const [imgSrc, setImgSrc] = useState(
-    property.photoUrls?.[0] || "/placeholder.jpg"
+    property.photoUrls?.[0] || "/placeholder_1.png"
   );
 
   return (
@@ -24,7 +24,7 @@ const Card = ({
           fill
           className="object-cover group-hover:scale-110 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          onError={() => setImgSrc("/placeholder.jpg")}
+          onError={() => setImgSrc("/placeholder_1.png")}
         />
         
         {/* Top Badges */}
@@ -48,7 +48,7 @@ const Card = ({
 
         {showFavoriteButton && (
           <button
-            className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-2.5 cursor-pointer shadow-lg transition-all hover:scale-110 active:scale-90"
+            className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-2.5 cursor-pointer shadow-lg transition-all hover:scale-110 active:scale-90 z-10"
             onClick={onFavoriteToggle}
           >
             <Heart
@@ -58,28 +58,30 @@ const Card = ({
             />
           </button>
         )}
+
+        {/* Property Features Overlay */}
+        <div className="absolute bottom-4 left-4 flex gap-2 pointer-events-none">
+          <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-primary px-2.5 py-1.5 rounded-xl shadow-sm border border-white/20">
+            <Bed className="w-3.5 h-3.5 text-primary/70" />
+            <span className="text-[11px] font-bold">{property.beds}</span>
+          </div>
+          <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-primary px-2.5 py-1.5 rounded-xl shadow-sm border border-white/20">
+            <Bath className="w-3.5 h-3.5 text-primary/70" />
+            <span className="text-[11px] font-bold">{property.baths}</span>
+          </div>
+          <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-primary px-2.5 py-1.5 rounded-xl shadow-sm border border-white/20">
+            <House className="w-3.5 h-3.5 text-primary/70" />
+            <span className="text-[11px] font-bold whitespace-nowrap">
+              {property.squareFeet} <span className="text-[9px] font-medium opacity-70">sq ft</span>
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Content Section */}
       <div className="p-5 flex flex-col flex-1">
-        {/* Features Grid */}
-        <div className="grid grid-cols-3 gap-1.5 text-primary font-bold mb-4">
-          <div className="flex flex-col items-center p-1.5 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
-            <Bed className="w-4 h-4 mb-1 text-primary/70" />
-            <span className="text-[10px]">{property.beds} Bed</span>
-          </div>
-          <div className="flex flex-col items-center p-1.5 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
-            <Bath className="w-4 h-4 mb-1 text-primary/70" />
-            <span className="text-[10px]">{property.baths} Bath</span>
-          </div>
-          <div className="flex flex-col items-center p-1.5 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
-            <House className="w-4 h-4 mb-1 text-primary/70" />
-            <span className="text-[10px] whitespace-nowrap">{property.squareFeet} sq ft</span>
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <h2 className="text-lg md:text-xl font-bold mb-1 text-primary line-clamp-1">
+        <div className="flex justify-between items-start gap-4 mb-1">
+          <h2 className="text-lg md:text-xl font-bold text-primary line-clamp-1 flex-1">
             {propertyLink ? (
               <Link
                 href={propertyLink}
@@ -92,21 +94,19 @@ const Card = ({
               property.name
             )}
           </h2>
-          <p className="text-foreground/60 text-sm font-medium line-clamp-2 mb-4">
-            {property?.location?.address}, {property?.location?.city}
-          </p>
-        </div>
-
-        <div className="flex flex-wrap justify-between items-end gap-2">
-          <div className="text-left w-full">
-            <p className="text-xl font-black text-secondary tracking-tighter leading-none">
+          <div className="text-right flex-shrink-0">
+            <p className="text-xl font-black text-secondary tracking-tight leading-none">
               kes {property.pricePerMonth.toLocaleString()}
             </p>
-            <span className="text-foreground/40 text-[10px] font-black uppercase tracking-widest">
+            <span className="text-[9px] font-bold text-foreground/40 uppercase tracking-widest block mt-1">
               {(property as any).isSale ? "Full Price" : "Per Month"}
             </span>
           </div>
         </div>
+
+        <p className="text-foreground/60 text-sm font-medium line-clamp-2">
+          {property?.location?.address}, {property?.location?.city}
+        </p>
       </div>
     </div>
   );
