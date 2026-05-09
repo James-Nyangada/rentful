@@ -132,6 +132,7 @@ const Navbar = () => {
           )}
         </div>
         <div className="hidden md:flex items-center justify-center gap-10 font-nav tracking-[1px] text-xs flex-1 px-8">
+          <Link href="/" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">Home</Link>
           <Link href="/search?type=buy" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">Buy</Link>
           <Link href="/search?type=rent" className="text-primary hover:text-secondary transition-colors duration-300 font-semibold uppercase">Rent</Link>
 
@@ -253,6 +254,7 @@ const Navbar = () => {
         }`}
       >
         <div className="flex flex-col py-6 px-8 gap-4 font-nav tracking-[1px] text-xs">
+          <Link href="/" className="text-primary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
           <Link href="/search?type=buy" className="text-primary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>Buy</Link>
           <Link href="/search?type=rent" className="text-primary font-bold uppercase py-2" onClick={() => setIsMobileMenuOpen(false)}>Rent</Link>
 
