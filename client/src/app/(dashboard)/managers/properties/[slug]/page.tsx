@@ -14,15 +14,18 @@ import {
   useGetPropertyPaymentsQuery,
   useGetPropertyLeasesQuery,
   useGetPropertyQuery,
+  useDeletePropertyMutation,
 } from "@/state/api";
 import { ArrowDownToLine, ArrowLeft, Check, Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React from "react";
 
 const PropertyTenants = () => {
   const { slug } = useParams();
+  const router = useRouter();
+  const [deleteProperty] = useDeletePropertyMutation();
 
   const { data: property, isLoading: propertyLoading } =
     useGetPropertyQuery(slug as string);
@@ -61,11 +64,28 @@ const PropertyTenants = () => {
           title={property?.name || "My Property"}
           subtitle="Manage tenants and leases for this property"
         />
-        <Link href={`/managers/properties/${property?.slug}/edit`} scroll={false}>
-          <button className="bg-primary-700 text-white px-4 py-2 rounded-md hover:bg-primary-600">
-            Edit Property
+        <div className="flex gap-4">
+          <Link href={`/managers/properties/${property?.slug}/edit`} scroll={false}>
+            <button className="bg-primary-700 text-white px-4 py-2 rounded-md hover:bg-primary-600 transition-colors">
+              Edit Property
+            </button>
+          </Link>
+          <button
+            onClick={async () => {
+              if (
+                window.confirm(
+                  "Are you sure you want to delete this property? This action cannot be undone."
+                )
+              ) {
+                await deleteProperty(property?.id ?? 0);
+                router.push("/managers/properties");
+              }
+            }}
+            className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
+          >
+            Delete Property
           </button>
-        </Link>
+        </div>
       </div>
 
       <div className="w-full space-y-6">

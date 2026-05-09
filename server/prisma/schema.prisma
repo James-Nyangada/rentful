@@ -150,7 +150,7 @@ model Application {
   message         String?
   leaseId         Int?              @unique
 
-  property Property @relation(fields: [propertyId], references: [id])
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   tenant   User     @relation("TenantApplications", fields: [tenantUserId], references: [authId])
   lease    Lease?   @relation(fields: [leaseId], references: [id])
 }
@@ -164,7 +164,7 @@ model Lease {
   propertyId   Int
   tenantUserId String
 
-  property    Property     @relation(fields: [propertyId], references: [id])
+  property    Property     @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   tenant      User         @relation("TenantLeases", fields: [tenantUserId], references: [authId])
   application Application?
   payments    Payment[]
@@ -179,14 +179,14 @@ model Payment {
   paymentStatus PaymentStatus
   leaseId       Int
 
-  lease Lease @relation(fields: [leaseId], references: [id])
+  lease Lease @relation(fields: [leaseId], references: [id], onDelete: Cascade)
 }
 
 model ViewingAvailability {
   id          Int      @id @default(autoincrement())
   propertyId  Int
   date        DateTime
-  property    Property @relation(fields: [propertyId], references: [id])
+  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 }
 
 model ViewingBooking {
@@ -197,5 +197,5 @@ model ViewingBooking {
   phone       String
   viewingDate DateTime
   status      String   @default("pending")
-  property    Property @relation(fields: [propertyId], references: [id])
+  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 }

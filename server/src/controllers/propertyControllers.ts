@@ -519,6 +519,41 @@ export const updateProperty = async (
   }
 };
 
+export const deleteProperty = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const property = await prisma.property.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!property) {
+      res.status(404).json({ message: "Property not found" });
+      return;
+    }
+
+    if (property.managerUserId !== req.user?.id) {
+      res
+        .status(403)
+        .json({ message: "Not authorized to delete this property" });
+      return;
+    }
+
+    await prisma.property.delete({
+      where: { id: Number(id) },
+    });
+
+    res.json({ message: "Property deleted successfully" });
+  } catch (err: any) {
+    res
+      .status(500)
+      .json({ message: `Error deleting property: ${err.message}` });
+  }
+};
+
 export const getPropertyLeases = async (
   req: Request,
   res: Response

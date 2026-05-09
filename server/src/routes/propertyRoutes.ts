@@ -6,6 +6,7 @@ import {
   getProperty,
   createProperty,
   updateProperty,
+  deleteProperty,
   getPropertyLeases,
   getPropertyPayments,
   getAvailability,
@@ -43,5 +44,6 @@ router.put(
   upload.array("photos"),
   updateProperty
 );
+router.delete("/:id", authMiddleware(["manager"]), deleteProperty);
 
 export default router;
