@@ -160,7 +160,7 @@ export default function ExclusiveAreasPage() {
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Pillar I */}
-            <div className="pillar-card group bg-gray-50 rounded-[2.5rem] p-10 md:p-14 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
+            <div className="pillar-card group bg-gray-50 rounded-[2.5rem] p-8 md:p-10 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 bg-secondary/5 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
               <div className="relative z-10">
                 <div className="bg-primary/5 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-300">
@@ -169,7 +169,7 @@ export default function ExclusiveAreasPage() {
                 <span className="text-secondary font-black text-[10px] tracking-[0.3em] uppercase mb-3 block">
                   Pillar I
                 </span>
-                <h3 className="text-3xl md:text-4xl font-black text-primary tracking-tighter uppercase mb-6 leading-tight">
+                <h3 className="text-2xl md:text-3xl font-black text-primary tracking-tighter uppercase mb-6 leading-tight">
                   Market Velocity
                 </h3>
                 <p className="text-foreground/70 text-lg leading-relaxed font-medium">
@@ -179,7 +179,7 @@ export default function ExclusiveAreasPage() {
             </div>
 
             {/* Pillar II */}
-            <div className="pillar-card group bg-gray-50 rounded-[2.5rem] p-10 md:p-14 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
+            <div className="pillar-card group bg-gray-50 rounded-[2.5rem] p-8 md:p-10 border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-primary/5 rounded-full transform -translate-x-1/3 translate-y-1/3"></div>
               <div className="relative z-10">
                 <div className="bg-primary/5 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-300">
@@ -188,7 +188,7 @@ export default function ExclusiveAreasPage() {
                 <span className="text-secondary font-black text-[10px] tracking-[0.3em] uppercase mb-3 block">
                   Pillar II
                 </span>
-                <h3 className="text-3xl md:text-4xl font-black text-primary tracking-tighter uppercase mb-6 leading-tight">
+                <h3 className="text-2xl md:text-3xl font-black text-primary tracking-tighter uppercase mb-6 leading-tight">
                   Inventory Integrity
                 </h3>
                 <p className="text-foreground/70 text-lg leading-relaxed font-medium">
@@ -245,7 +245,7 @@ export default function ExclusiveAreasPage() {
 
       {/* Areas Grid */}
       <section className="py-24 px-6 sm:px-8 lg:px-12 bg-gray-50">
-        <div className="max-w-6xl xl:max-w-7xl mx-auto flex flex-col gap-20">
+        <div className="max-w-6xl xl:max-w-7xl mx-auto flex flex-col gap-12">
           {areas.map((area, index) => {
             const isReversed = index % 2 !== 0;
             return (
@@ -257,7 +257,7 @@ export default function ExclusiveAreasPage() {
               >
                 {/* Image Side */}
                 <div
-                  className={`relative min-h-[350px] md:min-h-[500px] w-full group ${
+                  className={`relative min-h-[300px] md:min-h-[420px] w-full group ${
                     isReversed ? "md:order-2" : ""
                   }`}
                 >
@@ -281,14 +281,14 @@ export default function ExclusiveAreasPage() {
 
                 {/* Content Side */}
                 <div
-                  className={`p-10 md:p-14 lg:p-16 flex flex-col justify-center ${
+                  className={`p-8 md:p-10 lg:p-12 flex flex-col justify-center ${
                     isReversed ? "md:order-1" : ""
                   }`}
                 >
                   <span className="text-secondary font-black text-[10px] tracking-[0.3em] uppercase mb-4 block">
                     {area.tagline}
                   </span>
-                  <h2 className="text-4xl md:text-5xl font-black text-primary tracking-tighter uppercase leading-[1.1] mb-6">
+                  <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tighter uppercase leading-[1.1] mb-6">
                     {area.city}
                   </h2>
                   <p className="text-foreground/70 text-lg leading-relaxed font-medium mb-8">

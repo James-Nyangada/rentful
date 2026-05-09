@@ -25,7 +25,7 @@ const HeroSection = () => {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="relative min-h-screen flex items-start pt-32 md:pt-40 md:h-screen bg-primary overflow-hidden">
+    <div ref={containerRef} className="relative min-h-screen flex items-start pt-32 md:pt-40 pb-24 md:pb-32 bg-primary overflow-hidden">
       <div className="absolute inset-0 opacity-20">
         <Image
           src="/landing-splash-minimal.png"
@@ -59,7 +59,7 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 mb-10 md:mb-16">
             <SearchComponent />
           </div>
         </div>

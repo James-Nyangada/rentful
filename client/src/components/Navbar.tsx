@@ -84,24 +84,24 @@ const Navbar = () => {
             className="cursor-pointer transition-transform hover:scale-105"
             scroll={false}
           >
-            <div className="flex items-center gap-4">
-              <Image
-                src="/logo-rentful.png"
-                alt="Chestone Properties Logo"
-                width={160}
-                height={160}
-                className="h-16 w-auto object-contain"
-                priority
-              />
-              <div className="flex flex-col">
-                <span className="text-primary font-black text-[22px] md:text-[15px] leading-none tracking-tighter uppercase">
-                  Chestone Properties
-                </span>
-                <span className="text-primary/70 font-bold text-[12px] md:text-[10px] leading-none mt-1 uppercase">
-                  Structured Property Solutions
-                </span>
-              </div>
+          <div className="flex items-center gap-1.2 md:gap-2">
+            <Image
+              src="/logo-rentful.png"
+              alt="Chestone Properties Logo"
+              width={160}
+              height={160}
+              className="h-14 md:h-16 w-auto object-contain"
+              priority
+            />
+            <div className="flex flex-col">
+              <span className="text-primary font-heading font-black text-[24px] md:text-[22px] leading-none tracking-tighter uppercase">
+                Chestone Properties
+              </span>
+              <span className="text-primary/70 font-bold text-[10px] md:text-[9px] leading-none mt-1 uppercase tracking-[0.1em]">
+                Structured Property Solutions
+              </span>
             </div>
+          </div>
           </Link>
           {isDashboardPage && isLoggedIn && (
             <Button

@@ -120,10 +120,11 @@ const FiltersBar = () => {
           value={filters.location || "any"}
           onValueChange={(value) => handleFilterChange("location", value, null)}
         >
-          <SelectTrigger className="w-auto min-w-[140px] flex-shrink-0 rounded-xl border-gray-200 bg-gray-50/50">
+          <SelectTrigger className="w-auto min-w-[160px] flex-shrink-0 rounded-xl border-gray-200 bg-gray-50/50">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-secondary" />
-              <SelectValue placeholder="Location" />
+              <span className="text-xs font-bold text-primary">Location:</span>
+              <SelectValue placeholder="All" />
             </div>
           </SelectTrigger>
           <SelectContent className="bg-white border-gray-100 shadow-xl">
@@ -136,51 +137,6 @@ const FiltersBar = () => {
             <SelectItem value="Riverside Drive">Riverside Drive</SelectItem>
           </SelectContent>
         </Select>
-
-        {/* Price Range Group */}
-        <div className="flex items-center gap-1 flex-shrink-0">
-          <Select
-            value={filters.priceRange[0]?.toString() || "any"}
-            onValueChange={(value) =>
-              handleFilterChange("priceRange", value, true)
-            }
-          >
-            <SelectTrigger className="w-auto min-w-[110px] rounded-xl border-gray-200 bg-gray-50/50">
-              <SelectValue>
-                {formatPriceValue(filters.priceRange[0], true)}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent className="bg-white border-gray-100 shadow-xl">
-              <SelectItem value="any">Min Price</SelectItem>
-              {[50000, 100000, 150000, 200000, 300000, 500000].map((price) => (
-                <SelectItem key={price} value={price.toString()}>
-                  KSh {price.toLocaleString()}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <span className="text-gray-300 mx-1">-</span>
-          <Select
-            value={filters.priceRange[1]?.toString() || "any"}
-            onValueChange={(value) =>
-              handleFilterChange("priceRange", value, false)
-            }
-          >
-            <SelectTrigger className="w-auto min-w-[110px] rounded-xl border-gray-200 bg-gray-50/50">
-              <SelectValue>
-                {formatPriceValue(filters.priceRange[1], false)}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent className="bg-white border-gray-100 shadow-xl">
-              <SelectItem value="any">Max Price</SelectItem>
-              {[100000, 200000, 300000, 500000, 1000000].map((price) => (
-                <SelectItem key={price} value={price.toString()}>
-                  KSh {price.toLocaleString()}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
 
         {/* Beds */}
         <Select

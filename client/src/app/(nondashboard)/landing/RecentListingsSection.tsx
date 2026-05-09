@@ -44,7 +44,7 @@ const RecentListingsSection = () => {
   }, { scope: containerRef, dependencies: [isLoading, properties] });
 
   return (
-    <section ref={containerRef} className="py-24 px-6 sm:px-8 lg:px-12 xl:px-16 bg-gray-50">
+    <section ref={containerRef} className="pt-12 md:pt-16 pb-24 px-6 sm:px-8 lg:px-12 xl:px-16 bg-gray-50">
       <div className="max-w-6xl xl:max-w-7xl mx-auto">
         <div className="recent-heading text-center mb-16">
           <span className="inline-block text-secondary font-bold text-xs tracking-[0.2em] uppercase mb-4">

@@ -62,8 +62,24 @@ const Card = ({
 
       {/* Content Section */}
       <div className="p-5 flex flex-col flex-1">
-        <div className="mb-4">
-          <h2 className="text-lg md:text-xl font-bold mb-2 text-primary line-clamp-1">
+        {/* Features Grid */}
+        <div className="grid grid-cols-3 gap-1.5 text-primary font-bold mb-4">
+          <div className="flex flex-col items-center p-1.5 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
+            <Bed className="w-4 h-4 mb-1 text-primary/70" />
+            <span className="text-[10px]">{property.beds} Bed</span>
+          </div>
+          <div className="flex flex-col items-center p-1.5 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
+            <Bath className="w-4 h-4 mb-1 text-primary/70" />
+            <span className="text-[10px]">{property.baths} Bath</span>
+          </div>
+          <div className="flex flex-col items-center p-1.5 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
+            <House className="w-4 h-4 mb-1 text-primary/70" />
+            <span className="text-[10px] whitespace-nowrap">{property.squareFeet} sq ft</span>
+          </div>
+        </div>
+
+        <div className="mb-3">
+          <h2 className="text-lg md:text-xl font-bold mb-1 text-primary line-clamp-1">
             {propertyLink ? (
               <Link
                 href={propertyLink}
@@ -76,44 +92,19 @@ const Card = ({
               property.name
             )}
           </h2>
-          <p className="text-foreground/60 text-sm font-medium line-clamp-2 h-10 mb-2">
+          <p className="text-foreground/60 text-sm font-medium line-clamp-2 mb-4">
             {property?.location?.address}, {property?.location?.city}
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-between items-end gap-2 mt-auto pb-4 border-b border-gray-100">
-          <div className="flex items-center bg-gray-50 px-3 py-1.5 rounded-lg">
-            <Star className="w-3.5 h-3.5 text-secondary fill-secondary mr-1.5" />
-            <span className="font-bold text-primary text-sm">
-              {property.averageRating.toFixed(1)}
-            </span>
-            <span className="text-foreground/40 text-[10px] ml-1 font-semibold uppercase tracking-wider">
-              ({property.numberOfReviews})
-            </span>
-          </div>
-          <div className="text-right">
+        <div className="flex flex-wrap justify-between items-end gap-2">
+          <div className="text-left w-full">
             <p className="text-xl font-black text-secondary tracking-tighter leading-none">
               kes {property.pricePerMonth.toLocaleString()}
             </p>
             <span className="text-foreground/40 text-[10px] font-black uppercase tracking-widest">
               {(property as any).isSale ? "Full Price" : "Per Month"}
             </span>
-          </div>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-3 gap-2 text-primary font-bold mt-5">
-          <div className="flex flex-col items-center p-2 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
-            <Bed className="w-4 h-4 mb-1.5 text-primary/70" />
-            <span className="text-xs">{property.beds} Bed</span>
-          </div>
-          <div className="flex flex-col items-center p-2 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
-            <Bath className="w-4 h-4 mb-1.5 text-primary/70" />
-            <span className="text-xs">{property.baths} Bath</span>
-          </div>
-          <div className="flex flex-col items-center p-2 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
-            <House className="w-4 h-4 mb-1.5 text-primary/70" />
-            <span className="text-xs whitespace-nowrap">{property.squareFeet} sq ft</span>
           </div>
         </div>
       </div>

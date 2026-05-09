@@ -14,12 +14,12 @@ const NeighborhoodSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const staticLocations = [
-    { city: "Kilimani", coverImage: "/kilimani_apartments.png" },
-    { city: "Kileleshwa", coverImage: "/about/about_elegance_3.png" },
-    { city: "Westlands", coverImage: "/about/about_elegance_2.png" },
-    { city: "Lavington", coverImage: "/lavington_mansion.png" },
-    { city: "Karen", coverImage: "/about/about_elegance_1.png" },
-    { city: "Riverside Drive", coverImage: "/about/about_interior.png" },
+    { city: "Kilimani", coverImage: "/neighborhoods/kilimani.png" },
+    { city: "Kileleshwa", coverImage: "/neighborhoods/kileleshwa.png" },
+    { city: "Westlands", coverImage: "/neighborhoods/westlands.png" },
+    { city: "Lavington", coverImage: "/neighborhoods/lavington.png" },
+    { city: "Karen", coverImage: "/neighborhoods/karen.png" },
+    { city: "Riverside Drive", coverImage: "/neighborhoods/riverside.png" },
   ];
 
   useGSAP(() => {
@@ -51,7 +51,7 @@ const NeighborhoodSection = () => {
   return (
     <section
       ref={containerRef}
-      className="py-24 px-6 sm:px-8 lg:px-12 xl:px-16 bg-white"
+      className="pt-24 pb-12 md:pb-16 px-6 sm:px-8 lg:px-12 xl:px-16 bg-white"
     >
       <div className="max-w-6xl xl:max-w-7xl mx-auto">
         {/* Section Header */}
