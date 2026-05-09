@@ -97,9 +97,9 @@ const FiltersBar = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center w-full py-4 gap-4">
+    <div className="flex flex-col md:flex-row justify-between items-center w-full py-2 md:py-4 gap-2 md:gap-4">
       {/* Scrollable Filters Container */}
-      <div className="flex items-center gap-3 w-full overflow-x-auto pb-2 md:pb-0 scrollbar-hide px-4 md:px-0">
+      <div className="flex items-center gap-2 md:gap-3 w-full overflow-x-auto pb-2 md:pb-0 scrollbar-hide px-0">
         {/* All Filters Button */}
         <Button
           variant="outline"

@@ -7,7 +7,7 @@ import { debounce } from "lodash";
 import { cleanParams, cn, formatEnumString } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { MapPin, Search } from "lucide-react";
+import { MapPin, Search, X } from "lucide-react";
 import { AmenityIcons, PropertyTypeIcons } from "@/lib/constants";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -18,6 +18,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { toggleFiltersFullOpen } from "@/state";
+
+import { NAVBAR_HEIGHT } from "@/lib/constants";
 
 const FiltersFull = () => {
   const dispatch = useDispatch();
@@ -46,6 +49,9 @@ const FiltersFull = () => {
   const handleSubmit = () => {
     dispatch(setFilters(localFilters));
     updateURL(localFilters);
+    if (window.innerWidth < 768) {
+      dispatch(toggleFiltersFullOpen());
+    }
   };
 
   const handleReset = () => {
@@ -88,8 +94,21 @@ const FiltersFull = () => {
   if (!isFiltersFullOpen) return null;
 
   return (
-    <div className="bg-white rounded-lg px-4 h-full overflow-auto pb-10">
-      <div className="flex flex-col space-y-6">
+    <div className="bg-white md:rounded-lg px-4 h-full overflow-auto pb-10 pt-20 md:pt-0">
+      <div className="flex flex-col space-y-6 pt-6 md:pt-0">
+        {/* Mobile Header */}
+        <div className="flex items-center justify-between md:hidden mb-2">
+          <h2 className="text-xl font-black text-primary uppercase tracking-tight">Filters</h2>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => dispatch(toggleFiltersFullOpen())}
+            className="rounded-full hover:bg-gray-100"
+          >
+            <X className="w-6 h-6" />
+          </Button>
+        </div>
+
         {/* Location */}
         <div>
           <h4 className="text-xs font-black text-primary uppercase tracking-widest mb-4">Location</h4>

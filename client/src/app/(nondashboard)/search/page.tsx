@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect, useRef } from "react";
 import FiltersBar from "./FiltersBar";
 import FiltersFull from "./FiltersFull";
-import { cleanParams } from "@/lib/utils";
+import { cleanParams, cn } from "@/lib/utils";
 import { setFilters } from "@/state";
 import Map from "./Map";
 import Listings from "./Listings";
@@ -62,20 +62,29 @@ const SearchPage = () => {
         height: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
       }}
     >
-      <div className="search-anim w-full">
+      <div className="search-anim w-full sticky top-0 bg-background z-20">
         <FiltersBar />
       </div>
-      <div className="flex flex-col md:flex-row justify-between flex-1 overflow-hidden gap-3 mb-5 px-0 md:px-5">
+
+      <div className="flex flex-col md:flex-row justify-between flex-1 overflow-hidden relative gap-3 mb-5 px-0 md:px-5">
+        {/* Filters Sidebar (Desktop) / Overlay (Mobile) */}
         <div
-          className={`h-full overflow-auto transition-all duration-300 ease-in-out ${
+          className={cn(
+            "h-full transition-all duration-300 ease-in-out z-[60]", // Increased z-index to cover navbar if needed, or stay just above
+            "fixed inset-0 bg-white md:relative md:bg-transparent", // Mobile overlay vs Desktop sidebar
             isFiltersFullOpen
-              ? "w-full md:w-3/12 opacity-100 visible"
-              : "w-0 opacity-0 invisible"
-          }`}
+              ? "translate-x-0 opacity-100 visible w-full md:w-3/12"
+              : "-translate-x-full md:translate-x-0 md:w-0 opacity-0 invisible"
+          )}
         >
           <FiltersFull />
         </div>
-        <div className="search-anim flex-1 overflow-y-auto">
+
+        {/* Listings Area */}
+        <div className={cn(
+          "search-anim flex-1 overflow-y-auto min-h-0",
+          isFiltersFullOpen && "hidden md:block" // Hide listings on mobile when filters are open
+        )}>
           <Listings />
         </div>
       </div>
