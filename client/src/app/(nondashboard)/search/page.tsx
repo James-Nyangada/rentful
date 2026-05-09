@@ -62,7 +62,7 @@ const SearchPage = () => {
         height: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
       }}
     >
-      <div className="search-anim w-full sticky top-0 bg-background z-20">
+      <div className="search-anim w-full sticky top-0 bg-background z-20 mt-2 md:mt-4">
         <FiltersBar />
       </div>
 
