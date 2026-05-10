@@ -130,7 +130,7 @@ const FooterSection = () => {
 
         <div className="footer-bottom mt-20 pt-8 border-t border-secondary/30 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-400 font-medium tracking-wide">
-            © 2026 Rentful. ALL RIGHTS RESERVED.
+            © 2026 Chestone Properties. ALL RIGHTS RESERVED.
           </p>
           <div className="flex gap-8">
             <Link href="/privacy" className="text-sm text-gray-400 hover:text-secondary transition-colors uppercase font-bold tracking-tighter">Privacy Policy</Link>
