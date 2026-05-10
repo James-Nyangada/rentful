@@ -15,37 +15,40 @@ export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.from(".about-hero-text", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-      delay: 0.2,
-      stagger: 0.2
-    });
-
-    gsap.from(".about-vision", {
-      scrollTrigger: {
-        trigger: ".about-vision",
-        start: "top 80%",
-      },
-      y: 30,
-      opacity: 0,
-      duration: 1,
-    });
-
-    gsap.utils.toArray(".scroll-animate").forEach((section: any) => {
-      gsap.from(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top 75%",
-        },
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      gsap.from(".about-hero-text", {
         y: 50,
         opacity: 0,
         duration: 1,
+        ease: "power3.out",
+        delay: 0.2,
+        stagger: 0.2
+      });
+
+      gsap.from(".about-vision", {
+        scrollTrigger: {
+          trigger: ".about-vision",
+          start: "top 80%",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+      });
+
+      gsap.utils.toArray(".scroll-animate").forEach((section: any) => {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 75%",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 1,
+        });
       });
     });
-  }, { scope: containerRef });
+      }, { scope: containerRef });
 
   return (
     <div ref={containerRef} className="w-full bg-white">
@@ -73,7 +76,7 @@ export default function AboutPage() {
       <section className="about-vision bg-background py-20 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-primary leading-tight font-bold">
-            &quot;To be the definitive gateway to luxury real estate and structured property solutions.&quot;
+            &quot;The definitive gateway to luxury real estate Nairobi and structured real estate solutions for property management Lavington.&quot;
           </h2>
         </div>
       </section>
@@ -138,9 +141,9 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
              <span className="inline-block bg-primary/10 text-primary px-6 py-2 rounded-full text-xs font-black mb-6 tracking-[0.2em] uppercase border border-primary/5">
-               The Standard
+               The Chestone Standard
              </span>
-             <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter uppercase">Mission & Vision</h2>
+             <h2 className="text-5xl md:text-7xl font-black text-primary tracking-tighter uppercase">Real Estate Investment Nairobi</h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-0 items-stretch bg-white rounded-[3rem] overflow-hidden shadow-[0_30px_100px_-20px_rgba(10,31,59,0.15)] border border-gray-100">
@@ -169,10 +172,7 @@ most exclusive residential nodes.
                   <div>
                     <h4 className="text-xs font-black text-secondary uppercase tracking-[0.3em] mb-3">Our Vision</h4>
                     <p className="text-primary font-bold text-lg leading-relaxed">
-                      To be the definitive gateway for structured real
-estate in East Africa, recognized for redefining
-market transparency and setting the gold
-standard in premium property inventory.
+                      To be the definitive gateway for structured real estate in East Africa, recognized for asset de-risking for Nairobi property investors and setting the gold standard in premium property inventory.
                     </p>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ standard in premium property inventory.
         </div>
         <div className="order-1 md:order-2">
           <h2 className="text-4xl md:text-6xl font-black text-primary leading-[1.1] mb-12 tracking-tighter uppercase">
-            Defined by Distinction
+            Best real estate agents for Westlands luxury homes
           </h2>
           
           <div className="space-y-10 mb-12">
@@ -300,7 +300,7 @@ standard in premium property inventory.
                      </div>
                      <h4 className="text-2xl font-black text-primary mb-4 uppercase tracking-tight">Divestment</h4>
                      <p className="text-foreground/70 mb-8 leading-relaxed font-medium">
-                        Get the best value for your property with our strategic marketing and negotiation skills.
+                        Get the best value for your property and learn how to buy property in Lavington safely with our strategic marketing and negotiation skills.
                      </p>
                      <Link href="#" className="inline-flex items-center text-sm font-black text-primary hover:text-secondary transition-colors uppercase tracking-widest">
                         Market Analysis <ArrowRight className="w-5 h-5 ml-3" />

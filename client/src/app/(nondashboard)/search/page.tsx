@@ -44,14 +44,18 @@ const SearchPage = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useGSAP(() => {
-    gsap.from(".search-anim", {
-      y: 20,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power2.out",
-      delay: 0.1
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      gsap.from(".search-anim", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+        delay: 0.1
+      });
     });
+    
   }, { scope: containerRef });
 
   return (
@@ -62,6 +66,7 @@ const SearchPage = () => {
         height: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
       }}
     >
+      <h1 className="sr-only">Luxury Apartments & Houses for Sale in Nairobi | Chestone Properties</h1>
       <div className="search-anim w-full sticky top-0 bg-background z-20 mt-2 md:mt-4">
         <FiltersBar />
       </div>

@@ -21,7 +21,7 @@ const CardCompact = ({
           src={imgSrc}
           alt={property.name}
           fill
-          className="object-cover"
+          className="object-cover object-[85%_top]"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           onError={() => setImgSrc("/placeholder_1.png")}
         />

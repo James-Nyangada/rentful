@@ -13,16 +13,20 @@ const CallToActionSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.from(".cta-content", {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      },
-      scale: 0.95,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out"
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      gsap.from(".cta-content", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        },
+        scale: 0.95,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      });
     });
+    
   }, { scope: containerRef });
 
   return (

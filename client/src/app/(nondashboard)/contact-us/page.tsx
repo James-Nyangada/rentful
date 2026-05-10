@@ -32,24 +32,27 @@ export default function ContactUsPage() {
   };
 
   useGSAP(() => {
-    gsap.from(".contact-hero-text", {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power2.out",
-      delay: 0.2
-    });
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      gsap.from(".contact-hero-text", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+        delay: 0.2
+      });
 
-    gsap.from(".contact-form-element", {
-      y: 20,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power2.out",
-      delay: 0.5
+      gsap.from(".contact-form-element", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+        delay: 0.5
+      });
     });
-  }, { scope: containerRef });
+      }, { scope: containerRef });
 
   return (
     <div ref={containerRef} className="w-full bg-white">

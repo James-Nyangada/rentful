@@ -31,7 +31,7 @@ const ApplicationCard = ({
             alt={application.property.name}
             width={200}
             height={150}
-            className="rounded-xl object-cover w-full lg:w-[200px] h-[150px]"
+            className="rounded-xl object-cover object-[85%_top] w-full lg:w-[200px] h-[150px]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             onError={() => setImgSrc("/placeholder_1.png")}
           />

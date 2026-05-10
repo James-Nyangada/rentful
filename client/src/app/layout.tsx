@@ -23,6 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://rentful.onrender.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://rentful.onrender.com" />
+      </head>
       <body
         className={`${spectral.variable} font-sans antialiased bg-background text-foreground`}
       >

@@ -18,7 +18,7 @@ const areas = [
     description:
       "Sitting at the crossroads of convenience and sophistication, Kilimani is a fast-growing residential area with a thriving restaurant scene, boutique shops, and a growing skyline of luxury apartments.",
     highlights: ["Trendy Restaurants", "Boutique Living", "Growing Skyline"],
-    coverImage: "/kilimani_apartments.png",
+    coverImage: "/neighborhoods/kilimani.png",
   },
   {
     city: "Kileleshwa",
@@ -26,7 +26,7 @@ const areas = [
     description:
       "A leafy, upmarket neighbourhood favoured by professionals and young families, Kileleshwa combines a peaceful suburban atmosphere with easy access to Westlands and the city centre.",
     highlights: ["Quiet Streets", "Modern Apartments", "Central Access"],
-    coverImage: "/about/about_elegance_3.png",
+    coverImage: "/neighborhoods/kileleshwa.png",
   },
   {
     city: "Westlands",
@@ -34,7 +34,7 @@ const areas = [
     description:
       "Nairobi's premier commercial and lifestyle hub, Westlands offers a dynamic blend of modern high-rise living, world-class dining, and vibrant nightlife—all within minutes of the CBD.",
     highlights: ["Prime Location", "Modern High-Rises", "Vibrant Lifestyle"],
-    coverImage: "/about/about_elegance_2.png",
+    coverImage: "/neighborhoods/westlands.png",
   },
   {
     city: "Lavington",
@@ -42,7 +42,7 @@ const areas = [
     description:
       "One of Nairobi's most prestigious residential neighbourhoods, Lavington is known for its tree-lined avenues, spacious compounds, and proximity to top-tier international schools and shopping centres.",
     highlights: ["Gated Communities", "Lush Gardens", "Family-Friendly"],
-    coverImage: "/lavington_mansion.png",
+    coverImage: "/neighborhoods/lavington.png",
   },
   {
     city: "Karen",
@@ -50,7 +50,7 @@ const areas = [
     description:
       "Named after Karen Blixen, this exclusive suburb offers sprawling estates, equestrian culture, and a countryside feel just minutes from the city. Karen is the gold standard for luxury living in Nairobi.",
     highlights: ["Sprawling Estates", "Equestrian Culture", "Privacy"],
-    coverImage: "/about/about_elegance_1.png",
+    coverImage: "/neighborhoods/karen.png",
   },
   {
     city: "Riverside Drive",
@@ -58,7 +58,7 @@ const areas = [
     description:
       "One of Nairobi's most iconic addresses, Riverside Drive is home to embassies, international organisations, and premium residences. Its central location and lush surroundings make it ideal for discerning professionals.",
     highlights: ["Diplomatic Zone", "Central Location", "Premium Residences"],
-    coverImage: "/about/about_interior.png",
+    coverImage: "/neighborhoods/riverside.png",
   },
 ];
 
@@ -67,6 +67,8 @@ export default function ExclusiveAreasPage() {
 
   useGSAP(
     () => {
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
       gsap.from(".areas-hero-text", {
         y: 50,
         opacity: 0,
@@ -116,7 +118,8 @@ export default function ExclusiveAreasPage() {
       });
 
       ScrollTrigger.refresh();
-    },
+    });
+        },
     { scope: containerRef }
   );
 
@@ -170,10 +173,10 @@ export default function ExclusiveAreasPage() {
                   Pillar I
                 </span>
                 <h3 className="text-2xl md:text-3xl font-black text-primary tracking-tighter uppercase mb-6 leading-tight">
-                  Market Velocity
+                  Market Velocity & Property Management Lavington
                 </h3>
                 <p className="text-foreground/70 text-lg leading-relaxed font-medium">
-                  We leverage a high-volume approach to ensure our clients have immediate access to the most sought-after properties in Lavington, Westlands, and beyond.
+                  We leverage a high-volume approach and expert property management Lavington to ensure our clients have immediate access to the most sought-after high-end residential nodes.
                 </p>
               </div>
             </div>
@@ -189,10 +192,10 @@ export default function ExclusiveAreasPage() {
                   Pillar II
                 </span>
                 <h3 className="text-2xl md:text-3xl font-black text-primary tracking-tighter uppercase mb-6 leading-tight">
-                  Inventory Integrity
+                  Inventory Integrity & Asset De-risking
                 </h3>
                 <p className="text-foreground/70 text-lg leading-relaxed font-medium">
-                  Every listing in the Chestone portfolio undergoes a rigorous verification process, ensuring transparency and de-risking the acquisition for the buyer.
+                  Every listing in the Chestone portfolio undergoes a rigorous verification process, ensuring absolute asset de-risking for Nairobi property investors.
                 </p>
               </div>
             </div>
@@ -265,7 +268,7 @@ export default function ExclusiveAreasPage() {
                     src={area.coverImage}
                     alt={`${area.city} neighbourhood`}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="object-cover object-[85%_top] group-hover:scale-105 transition-transform duration-700 ease-out"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-primary/10"></div>

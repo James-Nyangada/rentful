@@ -12,25 +12,29 @@ const DiscoverSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      }
-    });
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        }
+      });
 
-    tl.from(".discover-heading", {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out"
-    }).from(".discover-card", {
-      y: 40,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.2,
-      ease: "power3.out"
-    }, "-=0.2");
+      tl.from(".discover-heading", {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out"
+      }).from(".discover-card", {
+        y: 40,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "power3.out"
+      }, "-=0.2");
+    });
+    
   }, { scope: containerRef });
 
   return (

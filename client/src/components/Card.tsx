@@ -22,7 +22,7 @@ const Card = ({
           src={imgSrc}
           alt={property.name}
           fill
-          className="object-cover group-hover:scale-110 transition-transform duration-500"
+          className="object-cover object-[85%_top] group-hover:scale-110 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           onError={() => setImgSrc("/placeholder_1.png")}
         />

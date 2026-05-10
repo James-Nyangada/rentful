@@ -15,33 +15,36 @@ const RecentListingsSection = () => {
   const { data: properties, isLoading } = useGetRecentPropertiesQuery(6);
 
   useGSAP(() => {
-    if (!isLoading && properties && properties.length > 0) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        }
-      });
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      if (!isLoading && properties && properties.length > 0) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+          }
+        });
 
-      tl.from(".recent-heading", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out"
-      }).from(".recent-card", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out"
-      }, "-=0.4").from(".recent-button", {
-        scale: 0.9,
-        opacity: 0,
-        duration: 0.6,
-        ease: "back.out(1.7)"
-      }, "-=0.4");
-    }
-  }, { scope: containerRef, dependencies: [isLoading, properties] });
+        tl.from(".recent-heading", {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        }).from(".recent-card", {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out"
+        }, "-=0.4").from(".recent-button", {
+          scale: 0.9,
+          opacity: 0,
+          duration: 0.6,
+          ease: "back.out(1.7)"
+        }, "-=0.4");
+      }
+    });
+      }, { scope: containerRef, dependencies: [isLoading, properties] });
 
   return (
     <section ref={containerRef} className="pt-12 md:pt-16 pb-24 px-6 sm:px-8 lg:px-12 xl:px-16 bg-gray-50">

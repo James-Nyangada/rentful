@@ -23,30 +23,33 @@ const NeighborhoodSection = () => {
   ];
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      },
-    });
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        },
+      });
 
-    tl.from(".neighborhood-heading", {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    }).from(
-      ".neighborhood-card",
-      {
-        y: 50,
+      tl.from(".neighborhood-heading", {
+        y: 40,
         opacity: 0,
-        duration: 0.7,
-        stagger: 0.15,
+        duration: 0.8,
         ease: "power3.out",
-      },
-      "-=0.4"
-    );
-  }, { scope: containerRef });
+      }).from(
+        ".neighborhood-card",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "-=0.4"
+      );
+    });
+      }, { scope: containerRef });
 
   return (
     <section
@@ -84,7 +87,7 @@ const NeighborhoodSection = () => {
                     src={loc.coverImage}
                     alt={`${loc.city} neighborhood`}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="object-cover object-[85%_top] group-hover:scale-110 transition-transform duration-700 ease-out"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                 ) : (

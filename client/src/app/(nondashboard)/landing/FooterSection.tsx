@@ -21,29 +21,33 @@ const FooterSection = () => {
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 95%",
-      }
-    });
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 95%",
+        }
+      });
 
-    tl.from(".footer-brand", {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out"
-    }).from(".footer-col", {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.15,
-      ease: "power2.out"
-    }, "-=0.3").from(".footer-bottom", {
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out"
-    }, "-=0.2");
+      tl.from(".footer-brand", {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      }).from(".footer-col", {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out"
+      }, "-=0.3").from(".footer-bottom", {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      }, "-=0.2");
+    });
+    
   }, { scope: containerRef });
 
   return (

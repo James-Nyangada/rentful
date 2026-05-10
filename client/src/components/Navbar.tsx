@@ -54,15 +54,18 @@ const Navbar = () => {
   };
 
   useGSAP(() => {
-    if (!isDashboardPage) {
-      gsap.from(containerRef.current, {
-        y: -50,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-      });
-    }
-  }, { scope: containerRef });
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      if (!isDashboardPage) {
+        gsap.from(containerRef.current, {
+          y: -50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      }
+    });
+      }, { scope: containerRef });
 
   if (isDashboardPage) return null;
 

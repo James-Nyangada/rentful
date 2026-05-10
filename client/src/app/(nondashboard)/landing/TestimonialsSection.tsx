@@ -76,34 +76,37 @@ const TestimonialsSection = () => {
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
   useGSAP(() => {
-    // Reveal header
-    gsap.from(".testimonials-heading", {
-      scrollTrigger: {
-        trigger: ".testimonials-heading",
-        start: "top bottom-=100",
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    });
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      // Reveal header
+      gsap.from(".testimonials-heading", {
+        scrollTrigger: {
+          trigger: ".testimonials-heading",
+          start: "top bottom-=100",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
 
-    // Reveal cards
-    gsap.from(".testimonial-card", {
-      scrollTrigger: {
-        trigger: "#testimonials",
-        start: "top bottom-=50",
-      },
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out",
-      clearProps: "all" // Clear GSAP styles after animation finishes
-    });
+      // Reveal cards
+      gsap.from(".testimonial-card", {
+        scrollTrigger: {
+          trigger: "#testimonials",
+          start: "top bottom-=50",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+        clearProps: "all" // Clear GSAP styles after animation finishes
+      });
 
-    ScrollTrigger.refresh();
-  }, { scope: containerRef, dependencies: [activeCategory] });
+      ScrollTrigger.refresh();
+    });
+      }, { scope: containerRef, dependencies: [activeCategory] });
 
   const filteredTestimonials =
     activeCategory === "all"

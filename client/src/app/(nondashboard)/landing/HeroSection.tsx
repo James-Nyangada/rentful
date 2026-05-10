@@ -14,15 +14,18 @@ const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.from(".hero-content > *", {
-      y: 40,
-      opacity: 0,
-      duration: 1.2,
-      stagger: 0.2,
-      ease: "power3.out",
-      delay: 0.2
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      gsap.from(".hero-content > *", {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power3.out",
+        delay: 0.2
+      });
     });
-  }, { scope: containerRef });
+      }, { scope: containerRef });
 
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-start pt-32 md:pt-40 pb-24 md:pb-32 bg-primary overflow-hidden">

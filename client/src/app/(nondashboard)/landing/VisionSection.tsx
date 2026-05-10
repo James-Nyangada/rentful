@@ -11,17 +11,20 @@ const VisionSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.from(".vision-text", {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      },
-      y: 30,
-      opacity: 0,
-      duration: 1.2,
-      ease: "power3.out",
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      gsap.from(".vision-text", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+      });
     });
-  }, { scope: containerRef });
+      }, { scope: containerRef });
 
   return (
     <section
