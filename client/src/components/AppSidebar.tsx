@@ -22,6 +22,7 @@ import {
   Plus,
   Settings,
   X,
+  Calendar,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -58,6 +59,11 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
             icon: FileText,
             label: "Applications",
             href: "/managers/applications",
+          },
+          {
+            icon: Calendar,
+            label: "Viewings",
+            href: "/managers/viewings",
           },
           { icon: Settings, label: "Settings", href: "/managers/settings" },
         ]

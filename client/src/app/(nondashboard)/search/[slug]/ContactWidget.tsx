@@ -11,11 +11,7 @@ const ContactWidget = ({ property, onOpenModal }: ContactWidgetProps) => {
   const [isViewingModalOpen, setIsViewingModalOpen] = useState(false);
 
   const handleButtonClick = () => {
-    if (authUser) {
-      onOpenModal();
-    } else {
-      router.push("/signin");
-    }
+    onOpenModal();
   };
 
   return (
@@ -36,7 +32,7 @@ const ContactWidget = ({ property, onOpenModal }: ContactWidgetProps) => {
         className="w-full bg-primary-700 text-white hover:bg-primary-600 mb-2"
         onClick={handleButtonClick}
       >
-        {authUser ? "Book Appointment" : "Sign In to Book Appointment"}
+        Book Appointment
       </Button>
       <Button
         className="w-full bg-[#EFBF04] text-white hover:bg-[#d6ab03] font-semibold"

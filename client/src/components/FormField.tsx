@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Edit, X, Plus } from "lucide-react";
 import { registerPlugin } from "filepond";
 import { FilePond } from "react-filepond";
@@ -43,9 +44,11 @@ interface FormFieldProps {
     | "number"
     | "select"
     | "switch"
+    | "checkbox"
     | "password"
     | "file"
-    | "multi-input";
+    | "multi-input"
+    | "multi-select";
   placeholder?: string;
   options?: { value: string; label: string }[];
   accept?: string;
@@ -128,6 +131,55 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
             </FormLabel>
           </div>
         );
+      case "checkbox":
+        return (
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              checked={field.value}
+              onCheckedChange={field.onChange}
+              id={name}
+              className={`${inputClassName}`}
+            />
+            <FormLabel htmlFor={name} className={labelClassName}>
+              {label}
+            </FormLabel>
+          </div>
+        );
+      case "multi-select":
+        return (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2">
+            {options?.map((option) => (
+              <div key={option.value} className="flex items-center space-x-2">
+                <Checkbox
+                  id={`${name}-${option.value}`}
+                  checked={
+                    field.value
+                      ? (field.value as string).split(",").includes(option.value)
+                      : false
+                  }
+                  onCheckedChange={(checked) => {
+                    const currentValues = field.value && (field.value as string).trim() !== "" 
+                      ? (field.value as string).split(",") 
+                      : [];
+                    let newValues;
+                    if (checked) {
+                      newValues = [...currentValues, option.value];
+                    } else {
+                      newValues = currentValues.filter((v) => v !== option.value);
+                    }
+                    field.onChange(newValues.join(","));
+                  }}
+                />
+                <FormLabel
+                  htmlFor={`${name}-${option.value}`}
+                  className={`font-normal cursor-pointer text-sm ${labelClassName}`}
+                >
+                  {option.label}
+                </FormLabel>
+              </div>
+            ))}
+          </div>
+        );
       case "file":
         return (
           <FilePond
@@ -181,10 +233,10 @@ export const CustomFormField: React.FC<FormFieldProps> = ({
       render={({ field }) => (
         <FormItem
           className={`${
-            type !== "switch" && "rounded-md"
+            type !== "switch" && type !== "checkbox" && "rounded-md"
           } relative ${className}`}
         >
-          {type !== "switch" && (
+          {type !== "switch" && type !== "checkbox" && (
             <div className="flex justify-between items-center">
               <FormLabel className={`text-sm ${labelClassName}`}>
                 {label}

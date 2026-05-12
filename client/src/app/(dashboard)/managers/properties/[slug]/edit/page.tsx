@@ -220,7 +220,7 @@ const EditProperty = () => {
                 <CustomFormField
                   name="isSale"
                   label={form.watch("isSale") ? "On Sale" : "For Rent"}
-                  type="switch"
+                  type="checkbox"
                 />
               </div>
               <div className="mt-4">
@@ -247,7 +247,7 @@ const EditProperty = () => {
                 <CustomFormField
                   name="amenities"
                   label="Amenities"
-                  type="select"
+                  type="multi-select"
                   options={Object.keys(AmenityEnum).map((amenity) => ({
                     value: amenity,
                     label: amenity,
@@ -256,7 +256,7 @@ const EditProperty = () => {
                 <CustomFormField
                   name="highlights"
                   label="Highlights"
-                  type="select"
+                  type="multi-select"
                   options={Object.keys(HighlightEnum).map((highlight) => ({
                     value: highlight,
                     label: highlight,
