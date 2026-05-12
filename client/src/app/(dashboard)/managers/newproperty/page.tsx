@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/(auth)/authProvider";
+import { useGetFeaturesQuery } from "@/state/api";
 
 const NewProperty = () => {
   const [createProperty, { isLoading: isCreating }] = useCreatePropertyMutation();
@@ -31,6 +32,7 @@ const NewProperty = () => {
       isPetsAllowed: true,
       isParkingIncluded: true,
       isSale: false,
+      isRent: true,
       photoUrls: [],
       amenities: "",
       highlights: "",
@@ -47,6 +49,8 @@ const NewProperty = () => {
       longitude: "",
     },
   });
+
+  const { data: features } = useGetFeaturesQuery();
 
   const onSubmit = async (data: PropertyFormData) => {
     setSubmitError(null);
@@ -167,7 +171,12 @@ const NewProperty = () => {
                 />
                 <CustomFormField
                   name="isSale"
-                  label={form.watch("isSale") ? "On Sale" : "For Rent"}
+                  label="For Sale"
+                  type="checkbox"
+                />
+                <CustomFormField
+                  name="isRent"
+                  label="For Rent"
                   type="checkbox"
                 />
               </div>
@@ -196,19 +205,19 @@ const NewProperty = () => {
                   name="amenities"
                   label="Amenities"
                   type="multi-select"
-                  options={Object.keys(AmenityEnum).map((amenity) => ({
-                    value: amenity,
-                    label: amenity,
-                  }))}
+                  options={features?.amenities?.map((amenity) => ({
+                    value: amenity.name,
+                    label: amenity.name,
+                  })) || []}
                 />
                 <CustomFormField
                   name="highlights"
                   label="Highlights"
                   type="multi-select"
-                  options={Object.keys(HighlightEnum).map((highlight) => ({
-                    value: highlight,
-                    label: highlight,
-                  }))}
+                  options={features?.highlights?.map((highlight) => ({
+                    value: highlight.name,
+                    label: highlight.name,
+                  })) || []}
                 />
               </div>
             </div>

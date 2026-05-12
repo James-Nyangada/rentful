@@ -6,8 +6,8 @@ import Link from "next/link";
 import { CustomFormField } from "@/components/FormField";
 import { Form } from "@/components/ui/form";
 import { AgentSubmissionFormData, agentSubmissionSchema } from "@/lib/schemas";
-import { useAgentSubmitPropertyMutation } from "@/state/api";
-import { AmenityEnum, HighlightEnum, PropertyTypeEnum } from "@/lib/constants";
+import { useAgentSubmitPropertyMutation, useGetFeaturesQuery } from "@/state/api";
+import { PropertyTypeEnum } from "@/lib/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -40,9 +40,11 @@ const ListWithUs = () => {
       isPetsAllowed: false,
       isParkingIncluded: false,
       isSale: false,
+      isRent: true,
       photoUrls: [],
       amenities: "",
       highlights: "",
+      availableDays: "",
       beds: 1,
       baths: 1,
       squareFeet: 1000,
@@ -56,6 +58,8 @@ const ListWithUs = () => {
       longitude: "",
     },
   });
+
+  const { data: features } = useGetFeaturesQuery();
 
   const onSubmit = async (data: AgentSubmissionFormData) => {
     try {
@@ -256,7 +260,12 @@ const ListWithUs = () => {
                     />
                     <CustomFormField
                       name="isSale"
-                      label={form.watch("isSale") ? "For Sale" : "For Rent"}
+                      label="For Sale"
+                      type="checkbox"
+                    />
+                    <CustomFormField
+                      name="isRent"
+                      label="For Rent"
                       type="checkbox"
                     />
                   </div>
@@ -330,19 +339,19 @@ const ListWithUs = () => {
                     name="amenities"
                     label="Amenities"
                     type="multi-select"
-                    options={Object.keys(AmenityEnum).map((amenity) => ({
-                      value: amenity,
-                      label: amenity,
-                    }))}
+                    options={features?.amenities?.map((amenity) => ({
+                      value: amenity.name,
+                      label: amenity.name,
+                    })) || []}
                   />
                   <CustomFormField
                     name="highlights"
                     label="Highlights"
                     type="multi-select"
-                    options={Object.keys(HighlightEnum).map((highlight) => ({
-                      value: highlight,
-                      label: highlight,
-                    }))}
+                    options={features?.highlights?.map((highlight) => ({
+                      value: highlight.name,
+                      label: highlight.name,
+                    })) || []}
                   />
                 </div>
               </div>
@@ -374,6 +383,41 @@ const ListWithUs = () => {
                   Images will be automatically branded with the Chestone
                   Properties watermark.
                 </p>
+              </div>
+
+              <div className="border-t border-gray-100" />
+
+              {/* Viewing Availability */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-primary">
+                      Viewing Availability
+                    </h2>
+                    <p className="text-sm text-foreground/50">
+                      Select which days of the week this property is available for viewings
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <CustomFormField
+                    name="availableDays"
+                    label="Available Days"
+                    type="multi-select"
+                    options={[
+                      { value: "0", label: "Sunday" },
+                      { value: "1", label: "Monday" },
+                      { value: "2", label: "Tuesday" },
+                      { value: "3", label: "Wednesday" },
+                      { value: "4", label: "Thursday" },
+                      { value: "5", label: "Friday" },
+                      { value: "6", label: "Saturday" },
+                    ]}
+                  />
+                </div>
               </div>
 
               <div className="border-t border-gray-100" />

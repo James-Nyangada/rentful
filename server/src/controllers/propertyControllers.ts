@@ -685,6 +685,7 @@ export const agentSubmitProperty = async (
       agentName,
       agentEmail,
       agentPhone,
+      availableDays,
       latitude: reqLat,
       longitude: reqLng,
       ...propertyData
@@ -797,6 +798,35 @@ export const agentSubmitProperty = async (
         location: true,
       },
     });
+
+    // Generate viewing availabilities for the next 60 days if availableDays is provided
+    if (availableDays && typeof availableDays === "string") {
+      const daysArray = availableDays.split(",").map(Number);
+      if (daysArray.length > 0) {
+        const availabilities = [];
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Start at midnight
+        
+        // Generate for the next 60 days
+        for (let i = 0; i < 60; i++) {
+          const date = new Date(today);
+          date.setDate(today.getDate() + i);
+          
+          if (daysArray.includes(date.getDay())) {
+            availabilities.push({
+              propertyId: newProperty.id,
+              date: date,
+            });
+          }
+        }
+        
+        if (availabilities.length > 0) {
+          await prisma.viewingAvailability.createMany({
+            data: availabilities,
+          });
+        }
+      }
+    }
 
     res.status(201).json({
       message: "Property submitted successfully! It will be reviewed by our team.",

@@ -10,6 +10,7 @@ export const propertySchema = z.object({
   isPetsAllowed: z.boolean(),
   isParkingIncluded: z.boolean(),
   isSale: z.boolean(),
+  isRent: z.boolean(),
   photoUrls: z
     .array(z.instanceof(File))
     .min(1, "At least one photo is required"),
@@ -86,6 +87,7 @@ export const agentSubmissionSchema = z.object({
   isPetsAllowed: z.boolean(),
   isParkingIncluded: z.boolean(),
   isSale: z.boolean(),
+  isRent: z.boolean(),
   photoUrls: z
     .array(z.instanceof(File))
     .min(1, "At least one photo is required"),
@@ -102,5 +104,6 @@ export const agentSubmissionSchema = z.object({
   postalCode: z.string().min(1, "Postal code is required"),
   latitude: z.string().optional(),
   longitude: z.string().optional(),
+  availableDays: z.string().optional(),
 });
 export type AgentSubmissionFormData = z.infer<typeof agentSubmissionSchema>;

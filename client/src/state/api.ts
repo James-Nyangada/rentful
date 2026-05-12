@@ -9,6 +9,16 @@ import {
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { FiltersState } from ".";
 
+export interface Feature {
+  id: number;
+  name: string;
+}
+
+export interface FeaturesResponse {
+  amenities: Feature[];
+  highlights: Feature[];
+}
+
 export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3002",
@@ -31,6 +41,7 @@ export const api = createApi({
     "Applications",
     "Viewings",
     "PendingProperties",
+    "Feature",
   ],
   endpoints: (build) => ({
     getAuthUser: build.query<AuthUserType, void>({
@@ -444,7 +455,7 @@ export const api = createApi({
       { propertyId: number; dates: string[] }
     >({
       query: ({ propertyId, dates }) => ({
-        url: `properties/${propertyId}/availability`,
+        url: `viewings/${propertyId}/availability`,
         method: "POST",
         body: { dates },
       }),
@@ -469,6 +480,42 @@ export const api = createApi({
     getManagerViewings: build.query<any[], void>({
       query: () => `viewings`,
       providesTags: ["Viewings"],
+    }),
+
+    // Features related endpoints
+    getFeatures: build.query<FeaturesResponse, void>({
+      query: () => "features",
+      providesTags: ["Feature"],
+    }),
+    addAmenity: build.mutation<Feature, { name: string }>({
+      query: (body) => ({
+        url: "features/amenity",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Feature"],
+    }),
+    removeAmenity: build.mutation<void, number>({
+      query: (id) => ({
+        url: `features/amenity/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Feature"],
+    }),
+    addHighlight: build.mutation<Feature, { name: string }>({
+      query: (body) => ({
+        url: "features/highlight",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Feature"],
+    }),
+    removeHighlight: build.mutation<void, number>({
+      query: (id) => ({
+        url: `features/highlight/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Feature"],
     }),
 
     // Agent workflow endpoints
@@ -566,6 +613,11 @@ export const {
   useSetAvailabilityMutation,
   useCreateBookingMutation,
   useGetManagerViewingsQuery,
+  useGetFeaturesQuery,
+  useAddAmenityMutation,
+  useRemoveAmenityMutation,
+  useAddHighlightMutation,
+  useRemoveHighlightMutation,
   useAgentSubmitPropertyMutation,
   useGetPendingPropertiesQuery,
   useApprovePropertyMutation,

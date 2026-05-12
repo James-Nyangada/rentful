@@ -7,42 +7,151 @@ datasource db {
   provider   = "postgresql"
   url        = env("DATABASE_URL")
   directUrl  = env("DIRECT_URL")
-  extensions = [postgis]
+  extensions = [postgis, uuid_ossp(map: "uuid-ossp", schema: "extensions")]
 }
 
-enum Highlight {
-  HighSpeedInternetAccess
-  WasherDryer
-  AirConditioning
-  Heating
-  SmokeFree
-  CableReady
-  SatelliteTV
-  DoubleVanities
-  TubShower
-  Intercom
-  SprinklerSystem
-  RecentlyRenovated
-  CloseToTransit
-  GreatView
-  QuietNeighborhood
+model User {
+  id                        Int           @id @default(autoincrement())
+  authId                    String        @unique @default(uuid())
+  name                      String
+  email                     String        @unique
+  phoneNumber               String        @default("")
+  password                  String
+  role                      UserRole      @default(tenant)
+  isVerified                Boolean       @default(false)
+  verificationCode          String?
+  verificationCodeExpiresAt DateTime?
+  tenantApplications        Application[] @relation("TenantApplications")
+  tenantLeases              Lease[]       @relation("TenantLeases")
+  managedProperties         Property[]    @relation("ManagerProperties")
+  favorites                 Property[]    @relation("TenantFavorites")
+  tenantProperties          Property[]    @relation("TenantProperties")
 }
 
-enum Amenity {
-  WasherDryer
-  AirConditioning
-  Dishwasher
-  HighSpeedInternet
-  HardwoodFloors
-  WalkInClosets
-  Microwave
-  Refrigerator
-  Pool
-  Gym
-  Parking
-  PetsAllowed
-  WiFi
+model Property {
+  id                    Int                   @id @default(autoincrement())
+  name                  String
+  slug                  String?               @unique
+  description           String
+  pricePerMonth         Float
+  securityDeposit       Float
+  applicationFee        Float
+  photoUrls             String[]
+  amenities             String[]
+  highlights            String[]
+  isPetsAllowed         Boolean               @default(false)
+  isParkingIncluded     Boolean               @default(false)
+  isRent                Boolean               @default(true)
+  beds                  Int
+  baths                 Float
+  squareFeet            Int
+  propertyType          PropertyType
+  postedDate            DateTime              @default(now())
+  averageRating         Float?                @default(0)
+  numberOfReviews       Int?                  @default(0)
+  locationId            Int
+  managerUserId         String
+  isSale                Boolean               @default(false)
+  status                PropertyStatus        @default(pending)
+  submittedBy           String?
+  applications          Application[]
+  leases                Lease[]
+  location              Location              @relation(fields: [locationId], references: [id])
+  manager               User                  @relation("ManagerProperties", fields: [managerUserId], references: [authId])
+  viewingAvailabilities ViewingAvailability[]
+  viewingBookings       ViewingBooking[]
+  favoritedBy           User[]                @relation("TenantFavorites")
+  tenants               User[]                @relation("TenantProperties")
 }
+
+model Location {
+  id          Int                      @id @default(autoincrement())
+  address     String
+  city        String
+  state       String
+  country     String
+  postalCode  String
+  coordinates Unsupported("geography")
+  properties  Property[]
+}
+
+model Application {
+  id              Int               @id @default(autoincrement())
+  applicationDate DateTime
+  status          ApplicationStatus
+  propertyId      Int
+  tenantUserId    String
+  name            String
+  email           String
+  phoneNumber     String
+  message         String?
+  leaseId         Int?              @unique
+  lease           Lease?            @relation(fields: [leaseId], references: [id])
+  property        Property          @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  tenant          User              @relation("TenantApplications", fields: [tenantUserId], references: [authId])
+}
+
+model Lease {
+  id           Int          @id @default(autoincrement())
+  startDate    DateTime
+  endDate      DateTime
+  rent         Float
+  deposit      Float
+  propertyId   Int
+  tenantUserId String
+  application  Application?
+  property     Property     @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  tenant       User         @relation("TenantLeases", fields: [tenantUserId], references: [authId])
+  payments     Payment[]
+}
+
+model Payment {
+  id            Int           @id @default(autoincrement())
+  amountDue     Float
+  amountPaid    Float
+  dueDate       DateTime
+  paymentDate   DateTime
+  paymentStatus PaymentStatus
+  leaseId       Int
+  lease         Lease         @relation(fields: [leaseId], references: [id], onDelete: Cascade)
+}
+
+model ViewingAvailability {
+  id         Int      @id @default(autoincrement())
+  propertyId Int
+  date       DateTime
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+}
+
+model ViewingBooking {
+  id          Int      @id @default(autoincrement())
+  propertyId  Int
+  name        String
+  email       String
+  phone       String
+  viewingDate DateTime
+  status      String   @default("pending")
+  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+}
+
+model SubmissionLink {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique @default(uuid())
+  expiryDate DateTime
+  isUsed     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model spatial_ref_sys {
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+}
+
+
 
 enum PropertyType {
   Rooms
@@ -78,140 +187,12 @@ enum UserRole {
   superadmin
 }
 
-model User {
-  id               Int      @id @default(autoincrement())
-  authId           String   @unique @default(uuid())
-  name             String
-  email            String   @unique
-  phoneNumber      String   @default("")
-  password         String
-  role             UserRole @default(tenant)
-  isVerified       Boolean  @default(false)
-  verificationCode String?
-  verificationCodeExpiresAt DateTime?
-
-  managedProperties Property[]    @relation("ManagerProperties")
-  tenantProperties  Property[]    @relation("TenantProperties")
-  favorites         Property[]    @relation("TenantFavorites")
-  tenantApplications Application[] @relation("TenantApplications")
-  tenantLeases      Lease[]       @relation("TenantLeases")
+model CustomAmenity {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
 }
 
-model Property {
-  id                Int              @id @default(autoincrement())
-  name              String
-  slug              String?          @unique
-  description       String
-  pricePerMonth     Float
-  securityDeposit   Float
-  applicationFee    Float
-  photoUrls         String[]
-  amenities         Amenity[]
-  highlights        Highlight[]
-  isPetsAllowed     Boolean          @default(false)
-  isParkingIncluded Boolean          @default(false)
-  isSale            Boolean          @default(false)
-  beds              Int
-  baths             Float
-  squareFeet        Int
-  propertyType      PropertyType
-  postedDate        DateTime         @default(now())
-  averageRating     Float?           @default(0)
-  numberOfReviews   Int?             @default(0)
-  status            PropertyStatus   @default(pending)
-  submittedBy       String?
-  locationId        Int
-  managerUserId     String
-
-  location     Location      @relation(fields: [locationId], references: [id])
-  manager      User          @relation("ManagerProperties", fields: [managerUserId], references: [authId])
-  leases       Lease[]
-  applications Application[]
-  favoritedBy  User[]        @relation("TenantFavorites")
-  tenants      User[]        @relation("TenantProperties")
-
-  viewingAvailabilities ViewingAvailability[]
-  viewingBookings       ViewingBooking[]
-}
-
-model Location {
-  id          Int                                   @id @default(autoincrement())
-  address     String
-  city        String
-  state       String
-  country     String
-  postalCode  String
-  coordinates Unsupported("geography(Point, 4326)")
-
-  properties Property[]
-}
-
-model Application {
-  id              Int               @id @default(autoincrement())
-  applicationDate DateTime
-  status          ApplicationStatus
-  propertyId      Int
-  tenantUserId    String
-  name            String
-  email           String
-  phoneNumber     String
-  message         String?
-  leaseId         Int?              @unique
-
-  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  tenant   User     @relation("TenantApplications", fields: [tenantUserId], references: [authId])
-  lease    Lease?   @relation(fields: [leaseId], references: [id])
-}
-
-model Lease {
-  id           Int      @id @default(autoincrement())
-  startDate    DateTime
-  endDate      DateTime
-  rent         Float
-  deposit      Float
-  propertyId   Int
-  tenantUserId String
-
-  property    Property     @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  tenant      User         @relation("TenantLeases", fields: [tenantUserId], references: [authId])
-  application Application?
-  payments    Payment[]
-}
-
-model Payment {
-  id            Int           @id @default(autoincrement())
-  amountDue     Float
-  amountPaid    Float
-  dueDate       DateTime
-  paymentDate   DateTime
-  paymentStatus PaymentStatus
-  leaseId       Int
-
-  lease Lease @relation(fields: [leaseId], references: [id], onDelete: Cascade)
-}
-
-model ViewingAvailability {
-  id          Int      @id @default(autoincrement())
-  propertyId  Int
-  date        DateTime
-  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-}
-
-model ViewingBooking {
-  id          Int      @id @default(autoincrement())
-  propertyId  Int
-  name        String
-  email       String
-  phone       String
-  viewingDate DateTime
-  status      String   @default("pending")
-  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-}
-
-model SubmissionLink {
-  id          Int      @id @default(autoincrement())
-  token       String   @unique @default(uuid())
-  expiryDate  DateTime
-  isUsed      Boolean  @default(false)
-  createdAt   DateTime @default(now())
+model CustomHighlight {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
 }
