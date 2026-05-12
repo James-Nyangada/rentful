@@ -2,7 +2,7 @@ import sharp from "sharp";
 import path from "path";
 import fs from "fs";
 
-const LOGO_PATH = path.join(__dirname, "..", "assets", "chestone-logo.png");
+const LOGO_PATH = path.join(process.cwd(), "src", "assets", "chestone-logo.png");
 
 /**
  * Applies the Chestone Properties watermark to an image buffer.

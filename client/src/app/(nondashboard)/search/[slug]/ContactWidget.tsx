@@ -53,7 +53,7 @@ const ContactWidget = ({ property, onOpenModal }: ContactWidgetProps) => {
 
       <hr className="my-4" />
       <div className="text-sm">
-        <div className="text-primary-600 mb-1">Language: English, Bahasa.</div>
+        <div className="text-primary-600 mb-1">Language: English, Kiswahili.</div>
         <div className="text-primary-600">
           Open by appointment on Monday - Sunday
         </div>
