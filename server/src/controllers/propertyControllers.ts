@@ -366,7 +366,9 @@ export const createProperty = async (
     // create property - Manager submissions are immediately approved
     const newProperty = await prisma.property.create({
       data: {
-        ...propertyData,
+        name: propertyData.name,
+        description: propertyData.description,
+        propertyType: propertyData.propertyType,
         slug,
         photoUrls,
         status: "approved",
@@ -374,21 +376,22 @@ export const createProperty = async (
         managerUserId,
         amenities:
           typeof propertyData.amenities === "string"
-            ? propertyData.amenities.split(",")
-            : [],
+            ? propertyData.amenities.split(",").filter((a: string) => a.trim() !== "")
+            : Array.isArray(propertyData.amenities) ? propertyData.amenities : [],
         highlights:
           typeof propertyData.highlights === "string"
-            ? propertyData.highlights.split(",")
-            : [],
-        isPetsAllowed: propertyData.isPetsAllowed === "true",
-        isParkingIncluded: propertyData.isParkingIncluded === "true",
-        isSale: propertyData.isSale === "true",
-        pricePerMonth: parseFloat(propertyData.pricePerMonth),
-        securityDeposit: parseFloat(propertyData.securityDeposit),
-        applicationFee: parseFloat(propertyData.applicationFee),
-        beds: parseInt(propertyData.beds),
-        baths: parseFloat(propertyData.baths),
-        squareFeet: parseInt(propertyData.squareFeet),
+            ? propertyData.highlights.split(",").filter((h: string) => h.trim() !== "")
+            : Array.isArray(propertyData.highlights) ? propertyData.highlights : [],
+        isPetsAllowed: propertyData.isPetsAllowed === "true" || propertyData.isPetsAllowed === true,
+        isParkingIncluded: propertyData.isParkingIncluded === "true" || propertyData.isParkingIncluded === true,
+        isSale: propertyData.isSale === "true" || propertyData.isSale === true,
+        isRent: propertyData.isRent === "true" || propertyData.isRent === true,
+        pricePerMonth: parseFloat(propertyData.pricePerMonth) || 0,
+        securityDeposit: parseFloat(propertyData.securityDeposit) || 0,
+        applicationFee: parseFloat(propertyData.applicationFee) || 0,
+        beds: parseInt(propertyData.beds) || 0,
+        baths: parseFloat(propertyData.baths) || 0,
+        squareFeet: parseInt(propertyData.squareFeet) || 0,
       },
       include: {
         location: true,
@@ -493,25 +496,28 @@ export const updateProperty = async (
     const updatedProperty = await prisma.property.update({
       where: { id: Number(id) },
       data: {
-        ...propertyData,
+        name: propertyData.name,
+        description: propertyData.description,
+        propertyType: propertyData.propertyType,
         photoUrls,
         amenities:
           typeof propertyData.amenities === "string"
-            ? propertyData.amenities.split(",")
-            : [],
+            ? propertyData.amenities.split(",").filter((a: string) => a.trim() !== "")
+            : Array.isArray(propertyData.amenities) ? propertyData.amenities : undefined,
         highlights:
           typeof propertyData.highlights === "string"
-            ? propertyData.highlights.split(",")
-            : [],
-        isPetsAllowed: propertyData.isPetsAllowed ? propertyData.isPetsAllowed === "true" : undefined,
-        isParkingIncluded: propertyData.isParkingIncluded ? propertyData.isParkingIncluded === "true" : undefined,
-        isSale: propertyData.isSale ? propertyData.isSale === "true" : undefined,
+            ? propertyData.highlights.split(",").filter((h: string) => h.trim() !== "")
+            : Array.isArray(propertyData.highlights) ? propertyData.highlights : undefined,
+        isPetsAllowed: propertyData.isPetsAllowed !== undefined ? (propertyData.isPetsAllowed === "true" || propertyData.isPetsAllowed === true) : undefined,
+        isParkingIncluded: propertyData.isParkingIncluded !== undefined ? (propertyData.isParkingIncluded === "true" || propertyData.isParkingIncluded === true) : undefined,
+        isSale: propertyData.isSale !== undefined ? (propertyData.isSale === "true" || propertyData.isSale === true) : undefined,
+        isRent: propertyData.isRent !== undefined ? (propertyData.isRent === "true" || propertyData.isRent === true) : undefined,
         pricePerMonth: propertyData.pricePerMonth ? parseFloat(propertyData.pricePerMonth) : undefined,
-        securityDeposit: parseFloat(propertyData.securityDeposit),
-        applicationFee: parseFloat(propertyData.applicationFee),
-        beds: parseInt(propertyData.beds),
-        baths: parseFloat(propertyData.baths),
-        squareFeet: parseInt(propertyData.squareFeet),
+        securityDeposit: propertyData.securityDeposit ? parseFloat(propertyData.securityDeposit) : undefined,
+        applicationFee: propertyData.applicationFee ? parseFloat(propertyData.applicationFee) : undefined,
+        beds: propertyData.beds ? parseInt(propertyData.beds) : undefined,
+        baths: propertyData.baths ? parseFloat(propertyData.baths) : undefined,
+        squareFeet: propertyData.squareFeet ? parseInt(propertyData.squareFeet) : undefined,
       },
       include: {
         location: true,
@@ -769,7 +775,9 @@ export const agentSubmitProperty = async (
 
     const newProperty = await prisma.property.create({
       data: {
-        ...propertyData,
+        name: propertyData.name,
+        description: propertyData.description,
+        propertyType: propertyData.propertyType,
         slug,
         photoUrls,
         status: "pending",
@@ -778,21 +786,22 @@ export const agentSubmitProperty = async (
         managerUserId: manager.authId,
         amenities:
           typeof propertyData.amenities === "string"
-            ? propertyData.amenities.split(",")
-            : [],
+            ? propertyData.amenities.split(",").filter((a: string) => a.trim() !== "")
+            : Array.isArray(propertyData.amenities) ? propertyData.amenities : [],
         highlights:
           typeof propertyData.highlights === "string"
-            ? propertyData.highlights.split(",")
-            : [],
-        isPetsAllowed: propertyData.isPetsAllowed === "true",
-        isParkingIncluded: propertyData.isParkingIncluded === "true",
-        isSale: propertyData.isSale === "true",
-        pricePerMonth: parseFloat(propertyData.pricePerMonth),
-        securityDeposit: parseFloat(propertyData.securityDeposit),
-        applicationFee: parseFloat(propertyData.applicationFee),
-        beds: parseInt(propertyData.beds),
-        baths: parseFloat(propertyData.baths),
-        squareFeet: parseInt(propertyData.squareFeet),
+            ? propertyData.highlights.split(",").filter((h: string) => h.trim() !== "")
+            : Array.isArray(propertyData.highlights) ? propertyData.highlights : [],
+        isPetsAllowed: propertyData.isPetsAllowed === "true" || propertyData.isPetsAllowed === true,
+        isParkingIncluded: propertyData.isParkingIncluded === "true" || propertyData.isParkingIncluded === true,
+        isSale: propertyData.isSale === "true" || propertyData.isSale === true,
+        isRent: propertyData.isRent === "true" || propertyData.isRent === true,
+        pricePerMonth: parseFloat(propertyData.pricePerMonth) || 0,
+        securityDeposit: parseFloat(propertyData.securityDeposit) || 0,
+        applicationFee: parseFloat(propertyData.applicationFee) || 0,
+        beds: parseInt(propertyData.beds) || 0,
+        baths: parseFloat(propertyData.baths) || 0,
+        squareFeet: parseInt(propertyData.squareFeet) || 0,
       },
       include: {
         location: true,
@@ -800,8 +809,8 @@ export const agentSubmitProperty = async (
     });
 
     // Generate viewing availabilities for the next 60 days if availableDays is provided
-    if (availableDays && typeof availableDays === "string") {
-      const daysArray = availableDays.split(",").map(Number);
+    if (availableDays && typeof availableDays === "string" && availableDays.trim() !== "") {
+      const daysArray = availableDays.split(",").filter(d => d.trim() !== "").map(Number);
       if (daysArray.length > 0) {
         const availabilities = [];
         const today = new Date();

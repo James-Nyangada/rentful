@@ -62,7 +62,7 @@ const FeaturesPage = () => {
                 onChange={(e) => setNewAmenity(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleAddAmenity()}
               />
-              <Button onClick={handleAddAmenity} disabled={isAddingAmenity || !newAmenity.trim()} className="bg-primary-700">
+              <Button onClick={handleAddAmenity} disabled={isAddingAmenity || !newAmenity.trim()} className="bg-primary-700 text-white">
                 <Plus className="w-4 h-4 mr-2" />
                 Add
               </Button>
@@ -102,7 +102,7 @@ const FeaturesPage = () => {
                 onChange={(e) => setNewHighlight(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleAddHighlight()}
               />
-              <Button onClick={handleAddHighlight} disabled={isAddingHighlight || !newHighlight.trim()} className="bg-primary-700">
+              <Button onClick={handleAddHighlight} disabled={isAddingHighlight || !newHighlight.trim()} className="bg-primary-700 text-white">
                 <Plus className="w-4 h-4 mr-2" />
                 Add
               </Button>
