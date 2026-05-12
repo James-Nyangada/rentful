@@ -21,10 +21,14 @@ const SingleListing = () => {
   if (!property) return <div>Property not found</div>;
 
   return (
-    <div>
-      <ImagePreviews
-        images={property.photoUrls && property.photoUrls.length > 0 ? property.photoUrls : ["/singlelisting-2.jpg", "/singlelisting-3.jpg"]}
-      />
+    <div className="pt-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl overflow-hidden shadow-lg">
+          <ImagePreviews
+            images={property.photoUrls && property.photoUrls.length > 0 ? property.photoUrls : ["/singlelisting-2.jpg", "/singlelisting-3.jpg"]}
+          />
+        </div>
+      </div>
       <div className="flex flex-col md:flex-row justify-center gap-10 mx-10 md:w-2/3 md:mx-auto mt-16 mb-8">
         <div className="order-2 md:order-1">
           <PropertyOverview propertyId={property.id} />

@@ -16,7 +16,7 @@ const ImagePreviews = ({ images }: ImagePreviewsProps) => {
   };
 
   return (
-    <div className="relative h-[450px] w-full">
+    <div className="relative h-[400px] md:h-[550px] w-full">
       {images.map((image, index) => (
         <div
           key={image}
@@ -29,7 +29,7 @@ const ImagePreviews = ({ images }: ImagePreviewsProps) => {
             alt={`Property Image ${index + 1}`}
             fill
             priority={index == 0}
-            className="object-cover cursor-pointer transition-transform duration-500 ease-in-out"
+            className="object-cover object-top cursor-pointer transition-transform duration-500 ease-in-out"
           />
         </div>
       ))}
