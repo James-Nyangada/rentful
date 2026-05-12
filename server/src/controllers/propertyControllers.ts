@@ -3,6 +3,7 @@ import { PrismaClient, Prisma } from "@prisma/client";
 import { wktToGeoJSON } from "@terraformer/wkt";
 import { Location } from "@prisma/client";
 import { uploadToCloudinary } from "../lib/cloudinary";
+import { applyWatermark } from "../lib/watermark";
 import axios from "axios";
 import slugify from "slugify";
 import crypto from "crypto";
@@ -43,7 +44,9 @@ export const getProperties = async (
       longitude,
     } = req.query;
 
-    let whereConditions: Prisma.Sql[] = [];
+    let whereConditions: Prisma.Sql[] = [
+      Prisma.sql`p."status" = 'approved'`
+    ];
 
     if (location && location !== "any") {
       whereConditions.push(
@@ -195,6 +198,7 @@ export const getRecentProperties = async (
         ) as location
       FROM "Property" p
       JOIN "Location" l ON p."locationId" = l.id
+      WHERE p."status" = 'approved'
       ORDER BY p."postedDate" DESC
       LIMIT ${limit}
     `;
@@ -222,12 +226,13 @@ export const getPropertyLocations = async (
           SELECT p2."photoUrls"[1]
           FROM "Property" p2
           JOIN "Location" l2 ON p2."locationId" = l2.id
-          WHERE l2.state = l.state AND array_length(p2."photoUrls", 1) > 0
+          WHERE l2.state = l.state AND array_length(p2."photoUrls", 1) > 0 AND p2."status" = 'approved'
           ORDER BY p2."postedDate" DESC
           LIMIT 1
         ) as "coverImage"
       FROM "Property" p
       JOIN "Location" l ON p."locationId" = l.id
+      WHERE p."status" = 'approved'
       GROUP BY l.state
       ORDER BY COUNT(p.id) DESC
     `;
@@ -304,11 +309,12 @@ export const createProperty = async (
       ...propertyData
     } = req.body;
 
-    // Upload photos to Cloudinary
+    // Apply watermark and upload photos to Cloudinary
     const photoUrls = await Promise.all(
       files.map(async (file) => {
+        const watermarkedBuffer = await applyWatermark(file.buffer);
         const result = await uploadToCloudinary(
-          file.buffer,
+          watermarkedBuffer,
           "properties"
         );
         return result.secure_url;
@@ -357,12 +363,13 @@ export const createProperty = async (
     // Generate unique slug from property name
     const slug = await generateUniqueSlug(propertyData.name);
 
-    // create property
+    // create property - Manager submissions are immediately approved
     const newProperty = await prisma.property.create({
       data: {
         ...propertyData,
         slug,
         photoUrls,
+        status: "approved",
         locationId: location.id,
         managerUserId,
         amenities:
@@ -431,12 +438,13 @@ export const updateProperty = async (
       return;
     }
 
-    // Upload new photos to Cloudinary if provided
+    // Upload new photos to Cloudinary if provided (with watermark)
     let photoUrls = property.photoUrls;
     if (files && files.length > 0) {
       photoUrls = await Promise.all(
         files.map(async (file) => {
-          const result = await uploadToCloudinary(file.buffer, "properties");
+          const watermarkedBuffer = await applyWatermark(file.buffer);
+          const result = await uploadToCloudinary(watermarkedBuffer, "properties");
           return result.secure_url;
         })
       );
@@ -651,5 +659,271 @@ export const setAvailability = async (
     res.status(500).json({
       message: `Error setting availability: ${err.message}`,
     });
+  }
+};
+
+// ==========================================
+// AGENT WORKFLOW ENDPOINTS
+// ==========================================
+
+/**
+ * Agent submission endpoint - no auth required.
+ * Status is hardcoded to 'pending'. Agent cannot override.
+ */
+export const agentSubmitProperty = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const files = req.files as Express.Multer.File[];
+    const {
+      address,
+      city,
+      state,
+      country,
+      postalCode,
+      agentName,
+      agentEmail,
+      agentPhone,
+      latitude: reqLat,
+      longitude: reqLng,
+      ...propertyData
+    } = req.body;
+
+    if (!agentName || !agentEmail) {
+      res.status(400).json({ message: "Agent name and email are required" });
+      return;
+    }
+
+    if (!files || files.length === 0) {
+      res.status(400).json({ message: "At least one property photo is required" });
+      return;
+    }
+
+    // Apply watermark and upload photos to Cloudinary (pending folder)
+    const photoUrls = await Promise.all(
+      files.map(async (file) => {
+        const watermarkedBuffer = await applyWatermark(file.buffer);
+        const result = await uploadToCloudinary(
+          watermarkedBuffer,
+          "properties/pending"
+        );
+        return result.secure_url;
+      })
+    );
+
+    let finalLongitude = 36.8219;
+    let finalLatitude = -1.2921;
+
+    if (reqLat && reqLng && !isNaN(parseFloat(reqLat)) && !isNaN(parseFloat(reqLng))) {
+      finalLatitude = parseFloat(reqLat);
+      finalLongitude = parseFloat(reqLng);
+    } else {
+      const geocodingUrl = `https://nominatim.openstreetmap.org/search?${new URLSearchParams(
+        {
+          street: address,
+          city,
+          country,
+          postalcode: postalCode,
+          format: "json",
+          limit: "1",
+        }
+      ).toString()}`;
+      try {
+        const geocodingResponse = await axios.get(geocodingUrl, {
+          headers: {
+            "User-Agent": "RealEstateApp (justsomedummyemail@gmail.com)",
+          },
+        });
+        if (geocodingResponse.data[0]?.lon && geocodingResponse.data[0]?.lat) {
+          finalLongitude = parseFloat(geocodingResponse.data[0].lon);
+          finalLatitude = parseFloat(geocodingResponse.data[0].lat);
+        }
+      } catch (error) {
+        console.error("Geocoding failed", error);
+      }
+    }
+
+    // create location
+    const [location] = await prisma.$queryRaw<Location[]>`
+      INSERT INTO "Location" (address, city, state, country, "postalCode", coordinates)
+      VALUES (${address}, ${city}, ${state}, ${country}, ${postalCode}, ST_SetSRID(ST_MakePoint(${finalLongitude}, ${finalLatitude}), 4326))
+      RETURNING id, address, city, state, country, "postalCode", ST_AsText(coordinates) as coordinates;
+    `;
+
+    const slug = await generateUniqueSlug(propertyData.name);
+
+    // Find the first manager to assign the property to
+    const manager = await prisma.user.findFirst({
+      where: { role: "manager" },
+    });
+
+    if (!manager) {
+      res.status(500).json({ message: "No manager found in the system. Please contact support." });
+      return;
+    }
+
+    // Create property - ALWAYS pending for agent submissions
+    const submittedBy = `${agentName} | ${agentEmail}${agentPhone ? ` | ${agentPhone}` : ""}`;
+
+    const newProperty = await prisma.property.create({
+      data: {
+        ...propertyData,
+        slug,
+        photoUrls,
+        status: "pending",
+        submittedBy,
+        locationId: location.id,
+        managerUserId: manager.authId,
+        amenities:
+          typeof propertyData.amenities === "string"
+            ? propertyData.amenities.split(",")
+            : [],
+        highlights:
+          typeof propertyData.highlights === "string"
+            ? propertyData.highlights.split(",")
+            : [],
+        isPetsAllowed: propertyData.isPetsAllowed === "true",
+        isParkingIncluded: propertyData.isParkingIncluded === "true",
+        isSale: propertyData.isSale === "true",
+        pricePerMonth: parseFloat(propertyData.pricePerMonth),
+        securityDeposit: parseFloat(propertyData.securityDeposit),
+        applicationFee: parseFloat(propertyData.applicationFee),
+        beds: parseInt(propertyData.beds),
+        baths: parseFloat(propertyData.baths),
+        squareFeet: parseInt(propertyData.squareFeet),
+      },
+      include: {
+        location: true,
+      },
+    });
+
+    res.status(201).json({
+      message: "Property submitted successfully! It will be reviewed by our team.",
+      propertyId: newProperty.id,
+    });
+  } catch (err: any) {
+    console.error("Agent submission error:", err);
+    res
+      .status(500)
+      .json({ message: `Error submitting property: ${err.message}` });
+  }
+};
+
+/**
+ * Get all pending properties for manager review.
+ * Manager only.
+ */
+export const getPendingProperties = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const completeQuery = Prisma.sql`
+      SELECT 
+        p.*,
+        json_build_object(
+          'id', l.id,
+          'address', l.address,
+          'city', l.city,
+          'state', l.state,
+          'country', l.country,
+          'postalCode', l."postalCode",
+          'coordinates', json_build_object(
+            'longitude', ST_X(l."coordinates"::geometry),
+            'latitude', ST_Y(l."coordinates"::geometry)
+          )
+        ) as location
+      FROM "Property" p
+      JOIN "Location" l ON p."locationId" = l.id
+      WHERE p."status" = 'pending'
+      ORDER BY p."postedDate" DESC
+    `;
+
+    const properties = await prisma.$queryRaw(completeQuery);
+
+    res.json(properties);
+  } catch (error: any) {
+    res
+      .status(500)
+      .json({ message: `Error retrieving pending properties: ${error.message}` });
+  }
+};
+
+/**
+ * Approve a property listing.
+ * Manager only. Toggles status to 'approved'.
+ */
+export const approveProperty = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const property = await prisma.property.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!property) {
+      res.status(404).json({ message: "Property not found" });
+      return;
+    }
+
+    const updatedProperty = await prisma.property.update({
+      where: { id: Number(id) },
+      data: { status: "approved" },
+      include: {
+        location: true,
+      },
+    });
+
+    res.json({
+      message: "Property approved and is now live!",
+      property: updatedProperty,
+    });
+  } catch (err: any) {
+    res
+      .status(500)
+      .json({ message: `Error approving property: ${err.message}` });
+  }
+};
+
+/**
+ * Reject a property listing.
+ * Manager only. Toggles status to 'rejected'.
+ */
+export const rejectProperty = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const property = await prisma.property.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!property) {
+      res.status(404).json({ message: "Property not found" });
+      return;
+    }
+
+    const updatedProperty = await prisma.property.update({
+      where: { id: Number(id) },
+      data: { status: "rejected" },
+      include: {
+        location: true,
+      },
+    });
+
+    res.json({
+      message: "Property has been rejected.",
+      property: updatedProperty,
+    });
+  } catch (err: any) {
+    res
+      .status(500)
+      .json({ message: `Error rejecting property: ${err.message}` });
   }
 };

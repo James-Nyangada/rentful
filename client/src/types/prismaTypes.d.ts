@@ -43,6 +43,21 @@ export type Lease = $Result.DefaultSelection<Prisma.$LeasePayload>
  * 
  */
 export type Payment = $Result.DefaultSelection<Prisma.$PaymentPayload>
+/**
+ * Model ViewingAvailability
+ * 
+ */
+export type ViewingAvailability = $Result.DefaultSelection<Prisma.$ViewingAvailabilityPayload>
+/**
+ * Model ViewingBooking
+ * 
+ */
+export type ViewingBooking = $Result.DefaultSelection<Prisma.$ViewingBookingPayload>
+/**
+ * Model SubmissionLink
+ * 
+ */
+export type SubmissionLink = $Result.DefaultSelection<Prisma.$SubmissionLinkPayload>
 
 /**
  * Enums
@@ -119,6 +134,15 @@ export const PaymentStatus: {
 export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
 
 
+export const PropertyStatus: {
+  pending: 'pending',
+  approved: 'approved',
+  rejected: 'rejected'
+};
+
+export type PropertyStatus = (typeof PropertyStatus)[keyof typeof PropertyStatus]
+
+
 export const UserRole: {
   tenant: 'tenant',
   manager: 'manager',
@@ -148,6 +172,10 @@ export const ApplicationStatus: typeof $Enums.ApplicationStatus
 export type PaymentStatus = $Enums.PaymentStatus
 
 export const PaymentStatus: typeof $Enums.PaymentStatus
+
+export type PropertyStatus = $Enums.PropertyStatus
+
+export const PropertyStatus: typeof $Enums.PropertyStatus
 
 export type UserRole = $Enums.UserRole
 
@@ -337,6 +365,36 @@ export class PrismaClient<
     * ```
     */
   get payment(): Prisma.PaymentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.viewingAvailability`: Exposes CRUD operations for the **ViewingAvailability** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ViewingAvailabilities
+    * const viewingAvailabilities = await prisma.viewingAvailability.findMany()
+    * ```
+    */
+  get viewingAvailability(): Prisma.ViewingAvailabilityDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.viewingBooking`: Exposes CRUD operations for the **ViewingBooking** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ViewingBookings
+    * const viewingBookings = await prisma.viewingBooking.findMany()
+    * ```
+    */
+  get viewingBooking(): Prisma.ViewingBookingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.submissionLink`: Exposes CRUD operations for the **SubmissionLink** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SubmissionLinks
+    * const submissionLinks = await prisma.submissionLink.findMany()
+    * ```
+    */
+  get submissionLink(): Prisma.SubmissionLinkDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -782,7 +840,10 @@ export namespace Prisma {
     Location: 'Location',
     Application: 'Application',
     Lease: 'Lease',
-    Payment: 'Payment'
+    Payment: 'Payment',
+    ViewingAvailability: 'ViewingAvailability',
+    ViewingBooking: 'ViewingBooking',
+    SubmissionLink: 'SubmissionLink'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -798,7 +859,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "property" | "location" | "application" | "lease" | "payment"
+      modelProps: "user" | "property" | "location" | "application" | "lease" | "payment" | "viewingAvailability" | "viewingBooking" | "submissionLink"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1230,6 +1291,228 @@ export namespace Prisma {
           }
         }
       }
+      ViewingAvailability: {
+        payload: Prisma.$ViewingAvailabilityPayload<ExtArgs>
+        fields: Prisma.ViewingAvailabilityFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ViewingAvailabilityFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ViewingAvailabilityFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>
+          }
+          findFirst: {
+            args: Prisma.ViewingAvailabilityFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ViewingAvailabilityFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>
+          }
+          findMany: {
+            args: Prisma.ViewingAvailabilityFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>[]
+          }
+          create: {
+            args: Prisma.ViewingAvailabilityCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>
+          }
+          createMany: {
+            args: Prisma.ViewingAvailabilityCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ViewingAvailabilityCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>[]
+          }
+          delete: {
+            args: Prisma.ViewingAvailabilityDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>
+          }
+          update: {
+            args: Prisma.ViewingAvailabilityUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>
+          }
+          deleteMany: {
+            args: Prisma.ViewingAvailabilityDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ViewingAvailabilityUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ViewingAvailabilityUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>[]
+          }
+          upsert: {
+            args: Prisma.ViewingAvailabilityUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingAvailabilityPayload>
+          }
+          aggregate: {
+            args: Prisma.ViewingAvailabilityAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateViewingAvailability>
+          }
+          groupBy: {
+            args: Prisma.ViewingAvailabilityGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ViewingAvailabilityGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ViewingAvailabilityCountArgs<ExtArgs>
+            result: $Utils.Optional<ViewingAvailabilityCountAggregateOutputType> | number
+          }
+        }
+      }
+      ViewingBooking: {
+        payload: Prisma.$ViewingBookingPayload<ExtArgs>
+        fields: Prisma.ViewingBookingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ViewingBookingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ViewingBookingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>
+          }
+          findFirst: {
+            args: Prisma.ViewingBookingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ViewingBookingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>
+          }
+          findMany: {
+            args: Prisma.ViewingBookingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>[]
+          }
+          create: {
+            args: Prisma.ViewingBookingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>
+          }
+          createMany: {
+            args: Prisma.ViewingBookingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ViewingBookingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>[]
+          }
+          delete: {
+            args: Prisma.ViewingBookingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>
+          }
+          update: {
+            args: Prisma.ViewingBookingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>
+          }
+          deleteMany: {
+            args: Prisma.ViewingBookingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ViewingBookingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ViewingBookingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>[]
+          }
+          upsert: {
+            args: Prisma.ViewingBookingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ViewingBookingPayload>
+          }
+          aggregate: {
+            args: Prisma.ViewingBookingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateViewingBooking>
+          }
+          groupBy: {
+            args: Prisma.ViewingBookingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ViewingBookingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ViewingBookingCountArgs<ExtArgs>
+            result: $Utils.Optional<ViewingBookingCountAggregateOutputType> | number
+          }
+        }
+      }
+      SubmissionLink: {
+        payload: Prisma.$SubmissionLinkPayload<ExtArgs>
+        fields: Prisma.SubmissionLinkFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SubmissionLinkFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SubmissionLinkFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>
+          }
+          findFirst: {
+            args: Prisma.SubmissionLinkFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SubmissionLinkFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>
+          }
+          findMany: {
+            args: Prisma.SubmissionLinkFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>[]
+          }
+          create: {
+            args: Prisma.SubmissionLinkCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>
+          }
+          createMany: {
+            args: Prisma.SubmissionLinkCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SubmissionLinkCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>[]
+          }
+          delete: {
+            args: Prisma.SubmissionLinkDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>
+          }
+          update: {
+            args: Prisma.SubmissionLinkUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>
+          }
+          deleteMany: {
+            args: Prisma.SubmissionLinkDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SubmissionLinkUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SubmissionLinkUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>[]
+          }
+          upsert: {
+            args: Prisma.SubmissionLinkUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubmissionLinkPayload>
+          }
+          aggregate: {
+            args: Prisma.SubmissionLinkAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSubmissionLink>
+          }
+          groupBy: {
+            args: Prisma.SubmissionLinkGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SubmissionLinkGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SubmissionLinkCountArgs<ExtArgs>
+            result: $Utils.Optional<SubmissionLinkCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1320,6 +1603,9 @@ export namespace Prisma {
     application?: ApplicationOmit
     lease?: LeaseOmit
     payment?: PaymentOmit
+    viewingAvailability?: ViewingAvailabilityOmit
+    viewingBooking?: ViewingBookingOmit
+    submissionLink?: SubmissionLinkOmit
   }
 
   /* Types for Logging */
@@ -1485,6 +1771,8 @@ export namespace Prisma {
     applications: number
     favoritedBy: number
     tenants: number
+    viewingAvailabilities: number
+    viewingBookings: number
   }
 
   export type PropertyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1492,6 +1780,8 @@ export namespace Prisma {
     applications?: boolean | PropertyCountOutputTypeCountApplicationsArgs
     favoritedBy?: boolean | PropertyCountOutputTypeCountFavoritedByArgs
     tenants?: boolean | PropertyCountOutputTypeCountTenantsArgs
+    viewingAvailabilities?: boolean | PropertyCountOutputTypeCountViewingAvailabilitiesArgs
+    viewingBookings?: boolean | PropertyCountOutputTypeCountViewingBookingsArgs
   }
 
   // Custom InputTypes
@@ -1531,6 +1821,20 @@ export namespace Prisma {
    */
   export type PropertyCountOutputTypeCountTenantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountViewingAvailabilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ViewingAvailabilityWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountViewingBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ViewingBookingWhereInput
   }
 
 
@@ -2929,6 +3233,7 @@ export namespace Prisma {
     applicationFee: number | null
     isPetsAllowed: boolean | null
     isParkingIncluded: boolean | null
+    isSale: boolean | null
     beds: number | null
     baths: number | null
     squareFeet: number | null
@@ -2936,6 +3241,8 @@ export namespace Prisma {
     postedDate: Date | null
     averageRating: number | null
     numberOfReviews: number | null
+    status: $Enums.PropertyStatus | null
+    submittedBy: string | null
     locationId: number | null
     managerUserId: string | null
   }
@@ -2950,6 +3257,7 @@ export namespace Prisma {
     applicationFee: number | null
     isPetsAllowed: boolean | null
     isParkingIncluded: boolean | null
+    isSale: boolean | null
     beds: number | null
     baths: number | null
     squareFeet: number | null
@@ -2957,6 +3265,8 @@ export namespace Prisma {
     postedDate: Date | null
     averageRating: number | null
     numberOfReviews: number | null
+    status: $Enums.PropertyStatus | null
+    submittedBy: string | null
     locationId: number | null
     managerUserId: string | null
   }
@@ -2974,6 +3284,7 @@ export namespace Prisma {
     highlights: number
     isPetsAllowed: number
     isParkingIncluded: number
+    isSale: number
     beds: number
     baths: number
     squareFeet: number
@@ -2981,6 +3292,8 @@ export namespace Prisma {
     postedDate: number
     averageRating: number
     numberOfReviews: number
+    status: number
+    submittedBy: number
     locationId: number
     managerUserId: number
     _all: number
@@ -3023,6 +3336,7 @@ export namespace Prisma {
     applicationFee?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
+    isSale?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -3030,6 +3344,8 @@ export namespace Prisma {
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
+    status?: true
+    submittedBy?: true
     locationId?: true
     managerUserId?: true
   }
@@ -3044,6 +3360,7 @@ export namespace Prisma {
     applicationFee?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
+    isSale?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -3051,6 +3368,8 @@ export namespace Prisma {
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
+    status?: true
+    submittedBy?: true
     locationId?: true
     managerUserId?: true
   }
@@ -3068,6 +3387,7 @@ export namespace Prisma {
     highlights?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
+    isSale?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -3075,6 +3395,8 @@ export namespace Prisma {
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
+    status?: true
+    submittedBy?: true
     locationId?: true
     managerUserId?: true
     _all?: true
@@ -3179,6 +3501,7 @@ export namespace Prisma {
     highlights: $Enums.Highlight[]
     isPetsAllowed: boolean
     isParkingIncluded: boolean
+    isSale: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -3186,6 +3509,8 @@ export namespace Prisma {
     postedDate: Date
     averageRating: number | null
     numberOfReviews: number | null
+    status: $Enums.PropertyStatus
+    submittedBy: string | null
     locationId: number
     managerUserId: string
     _count: PropertyCountAggregateOutputType | null
@@ -3222,6 +3547,7 @@ export namespace Prisma {
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -3229,6 +3555,8 @@ export namespace Prisma {
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
+    status?: boolean
+    submittedBy?: boolean
     locationId?: boolean
     managerUserId?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
@@ -3237,6 +3565,8 @@ export namespace Prisma {
     applications?: boolean | Property$applicationsArgs<ExtArgs>
     favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
     tenants?: boolean | Property$tenantsArgs<ExtArgs>
+    viewingAvailabilities?: boolean | Property$viewingAvailabilitiesArgs<ExtArgs>
+    viewingBookings?: boolean | Property$viewingBookingsArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -3253,6 +3583,7 @@ export namespace Prisma {
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -3260,6 +3591,8 @@ export namespace Prisma {
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
+    status?: boolean
+    submittedBy?: boolean
     locationId?: boolean
     managerUserId?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
@@ -3279,6 +3612,7 @@ export namespace Prisma {
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -3286,6 +3620,8 @@ export namespace Prisma {
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
+    status?: boolean
+    submittedBy?: boolean
     locationId?: boolean
     managerUserId?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
@@ -3305,6 +3641,7 @@ export namespace Prisma {
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -3312,11 +3649,13 @@ export namespace Prisma {
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
+    status?: boolean
+    submittedBy?: boolean
     locationId?: boolean
     managerUserId?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "photoUrls" | "amenities" | "highlights" | "isPetsAllowed" | "isParkingIncluded" | "beds" | "baths" | "squareFeet" | "propertyType" | "postedDate" | "averageRating" | "numberOfReviews" | "locationId" | "managerUserId", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "photoUrls" | "amenities" | "highlights" | "isPetsAllowed" | "isParkingIncluded" | "isSale" | "beds" | "baths" | "squareFeet" | "propertyType" | "postedDate" | "averageRating" | "numberOfReviews" | "status" | "submittedBy" | "locationId" | "managerUserId", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | UserDefaultArgs<ExtArgs>
@@ -3324,6 +3663,8 @@ export namespace Prisma {
     applications?: boolean | Property$applicationsArgs<ExtArgs>
     favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
     tenants?: boolean | Property$tenantsArgs<ExtArgs>
+    viewingAvailabilities?: boolean | Property$viewingAvailabilitiesArgs<ExtArgs>
+    viewingBookings?: boolean | Property$viewingBookingsArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3344,6 +3685,8 @@ export namespace Prisma {
       applications: Prisma.$ApplicationPayload<ExtArgs>[]
       favoritedBy: Prisma.$UserPayload<ExtArgs>[]
       tenants: Prisma.$UserPayload<ExtArgs>[]
+      viewingAvailabilities: Prisma.$ViewingAvailabilityPayload<ExtArgs>[]
+      viewingBookings: Prisma.$ViewingBookingPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3358,6 +3701,7 @@ export namespace Prisma {
       highlights: $Enums.Highlight[]
       isPetsAllowed: boolean
       isParkingIncluded: boolean
+      isSale: boolean
       beds: number
       baths: number
       squareFeet: number
@@ -3365,6 +3709,8 @@ export namespace Prisma {
       postedDate: Date
       averageRating: number | null
       numberOfReviews: number | null
+      status: $Enums.PropertyStatus
+      submittedBy: string | null
       locationId: number
       managerUserId: string
     }, ExtArgs["result"]["property"]>
@@ -3767,6 +4113,8 @@ export namespace Prisma {
     applications<T extends Property$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Property$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     favoritedBy<T extends Property$favoritedByArgs<ExtArgs> = {}>(args?: Subset<T, Property$favoritedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     tenants<T extends Property$tenantsArgs<ExtArgs> = {}>(args?: Subset<T, Property$tenantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    viewingAvailabilities<T extends Property$viewingAvailabilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Property$viewingAvailabilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    viewingBookings<T extends Property$viewingBookingsArgs<ExtArgs> = {}>(args?: Subset<T, Property$viewingBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3808,6 +4156,7 @@ export namespace Prisma {
     readonly highlights: FieldRef<"Property", 'Highlight[]'>
     readonly isPetsAllowed: FieldRef<"Property", 'Boolean'>
     readonly isParkingIncluded: FieldRef<"Property", 'Boolean'>
+    readonly isSale: FieldRef<"Property", 'Boolean'>
     readonly beds: FieldRef<"Property", 'Int'>
     readonly baths: FieldRef<"Property", 'Float'>
     readonly squareFeet: FieldRef<"Property", 'Int'>
@@ -3815,6 +4164,8 @@ export namespace Prisma {
     readonly postedDate: FieldRef<"Property", 'DateTime'>
     readonly averageRating: FieldRef<"Property", 'Float'>
     readonly numberOfReviews: FieldRef<"Property", 'Int'>
+    readonly status: FieldRef<"Property", 'PropertyStatus'>
+    readonly submittedBy: FieldRef<"Property", 'String'>
     readonly locationId: FieldRef<"Property", 'Int'>
     readonly managerUserId: FieldRef<"Property", 'String'>
   }
@@ -4306,6 +4657,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * Property.viewingAvailabilities
+   */
+  export type Property$viewingAvailabilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    where?: ViewingAvailabilityWhereInput
+    orderBy?: ViewingAvailabilityOrderByWithRelationInput | ViewingAvailabilityOrderByWithRelationInput[]
+    cursor?: ViewingAvailabilityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ViewingAvailabilityScalarFieldEnum | ViewingAvailabilityScalarFieldEnum[]
+  }
+
+  /**
+   * Property.viewingBookings
+   */
+  export type Property$viewingBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    where?: ViewingBookingWhereInput
+    orderBy?: ViewingBookingOrderByWithRelationInput | ViewingBookingOrderByWithRelationInput[]
+    cursor?: ViewingBookingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ViewingBookingScalarFieldEnum | ViewingBookingScalarFieldEnum[]
   }
 
   /**
@@ -8804,6 +9203,3227 @@ export namespace Prisma {
 
 
   /**
+   * Model ViewingAvailability
+   */
+
+  export type AggregateViewingAvailability = {
+    _count: ViewingAvailabilityCountAggregateOutputType | null
+    _avg: ViewingAvailabilityAvgAggregateOutputType | null
+    _sum: ViewingAvailabilitySumAggregateOutputType | null
+    _min: ViewingAvailabilityMinAggregateOutputType | null
+    _max: ViewingAvailabilityMaxAggregateOutputType | null
+  }
+
+  export type ViewingAvailabilityAvgAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+  }
+
+  export type ViewingAvailabilitySumAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+  }
+
+  export type ViewingAvailabilityMinAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+    date: Date | null
+  }
+
+  export type ViewingAvailabilityMaxAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+    date: Date | null
+  }
+
+  export type ViewingAvailabilityCountAggregateOutputType = {
+    id: number
+    propertyId: number
+    date: number
+    _all: number
+  }
+
+
+  export type ViewingAvailabilityAvgAggregateInputType = {
+    id?: true
+    propertyId?: true
+  }
+
+  export type ViewingAvailabilitySumAggregateInputType = {
+    id?: true
+    propertyId?: true
+  }
+
+  export type ViewingAvailabilityMinAggregateInputType = {
+    id?: true
+    propertyId?: true
+    date?: true
+  }
+
+  export type ViewingAvailabilityMaxAggregateInputType = {
+    id?: true
+    propertyId?: true
+    date?: true
+  }
+
+  export type ViewingAvailabilityCountAggregateInputType = {
+    id?: true
+    propertyId?: true
+    date?: true
+    _all?: true
+  }
+
+  export type ViewingAvailabilityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ViewingAvailability to aggregate.
+     */
+    where?: ViewingAvailabilityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ViewingAvailabilities to fetch.
+     */
+    orderBy?: ViewingAvailabilityOrderByWithRelationInput | ViewingAvailabilityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ViewingAvailabilityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ViewingAvailabilities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ViewingAvailabilities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ViewingAvailabilities
+    **/
+    _count?: true | ViewingAvailabilityCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ViewingAvailabilityAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ViewingAvailabilitySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ViewingAvailabilityMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ViewingAvailabilityMaxAggregateInputType
+  }
+
+  export type GetViewingAvailabilityAggregateType<T extends ViewingAvailabilityAggregateArgs> = {
+        [P in keyof T & keyof AggregateViewingAvailability]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateViewingAvailability[P]>
+      : GetScalarType<T[P], AggregateViewingAvailability[P]>
+  }
+
+
+
+
+  export type ViewingAvailabilityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ViewingAvailabilityWhereInput
+    orderBy?: ViewingAvailabilityOrderByWithAggregationInput | ViewingAvailabilityOrderByWithAggregationInput[]
+    by: ViewingAvailabilityScalarFieldEnum[] | ViewingAvailabilityScalarFieldEnum
+    having?: ViewingAvailabilityScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ViewingAvailabilityCountAggregateInputType | true
+    _avg?: ViewingAvailabilityAvgAggregateInputType
+    _sum?: ViewingAvailabilitySumAggregateInputType
+    _min?: ViewingAvailabilityMinAggregateInputType
+    _max?: ViewingAvailabilityMaxAggregateInputType
+  }
+
+  export type ViewingAvailabilityGroupByOutputType = {
+    id: number
+    propertyId: number
+    date: Date
+    _count: ViewingAvailabilityCountAggregateOutputType | null
+    _avg: ViewingAvailabilityAvgAggregateOutputType | null
+    _sum: ViewingAvailabilitySumAggregateOutputType | null
+    _min: ViewingAvailabilityMinAggregateOutputType | null
+    _max: ViewingAvailabilityMaxAggregateOutputType | null
+  }
+
+  type GetViewingAvailabilityGroupByPayload<T extends ViewingAvailabilityGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ViewingAvailabilityGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ViewingAvailabilityGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ViewingAvailabilityGroupByOutputType[P]>
+            : GetScalarType<T[P], ViewingAvailabilityGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ViewingAvailabilitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    date?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["viewingAvailability"]>
+
+  export type ViewingAvailabilitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    date?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["viewingAvailability"]>
+
+  export type ViewingAvailabilitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    date?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["viewingAvailability"]>
+
+  export type ViewingAvailabilitySelectScalar = {
+    id?: boolean
+    propertyId?: boolean
+    date?: boolean
+  }
+
+  export type ViewingAvailabilityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propertyId" | "date", ExtArgs["result"]["viewingAvailability"]>
+  export type ViewingAvailabilityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }
+  export type ViewingAvailabilityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }
+  export type ViewingAvailabilityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }
+
+  export type $ViewingAvailabilityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ViewingAvailability"
+    objects: {
+      property: Prisma.$PropertyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      propertyId: number
+      date: Date
+    }, ExtArgs["result"]["viewingAvailability"]>
+    composites: {}
+  }
+
+  type ViewingAvailabilityGetPayload<S extends boolean | null | undefined | ViewingAvailabilityDefaultArgs> = $Result.GetResult<Prisma.$ViewingAvailabilityPayload, S>
+
+  type ViewingAvailabilityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ViewingAvailabilityFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ViewingAvailabilityCountAggregateInputType | true
+    }
+
+  export interface ViewingAvailabilityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ViewingAvailability'], meta: { name: 'ViewingAvailability' } }
+    /**
+     * Find zero or one ViewingAvailability that matches the filter.
+     * @param {ViewingAvailabilityFindUniqueArgs} args - Arguments to find a ViewingAvailability
+     * @example
+     * // Get one ViewingAvailability
+     * const viewingAvailability = await prisma.viewingAvailability.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ViewingAvailabilityFindUniqueArgs>(args: SelectSubset<T, ViewingAvailabilityFindUniqueArgs<ExtArgs>>): Prisma__ViewingAvailabilityClient<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one ViewingAvailability that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ViewingAvailabilityFindUniqueOrThrowArgs} args - Arguments to find a ViewingAvailability
+     * @example
+     * // Get one ViewingAvailability
+     * const viewingAvailability = await prisma.viewingAvailability.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ViewingAvailabilityFindUniqueOrThrowArgs>(args: SelectSubset<T, ViewingAvailabilityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ViewingAvailabilityClient<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first ViewingAvailability that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingAvailabilityFindFirstArgs} args - Arguments to find a ViewingAvailability
+     * @example
+     * // Get one ViewingAvailability
+     * const viewingAvailability = await prisma.viewingAvailability.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ViewingAvailabilityFindFirstArgs>(args?: SelectSubset<T, ViewingAvailabilityFindFirstArgs<ExtArgs>>): Prisma__ViewingAvailabilityClient<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first ViewingAvailability that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingAvailabilityFindFirstOrThrowArgs} args - Arguments to find a ViewingAvailability
+     * @example
+     * // Get one ViewingAvailability
+     * const viewingAvailability = await prisma.viewingAvailability.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ViewingAvailabilityFindFirstOrThrowArgs>(args?: SelectSubset<T, ViewingAvailabilityFindFirstOrThrowArgs<ExtArgs>>): Prisma__ViewingAvailabilityClient<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more ViewingAvailabilities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingAvailabilityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ViewingAvailabilities
+     * const viewingAvailabilities = await prisma.viewingAvailability.findMany()
+     * 
+     * // Get first 10 ViewingAvailabilities
+     * const viewingAvailabilities = await prisma.viewingAvailability.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const viewingAvailabilityWithIdOnly = await prisma.viewingAvailability.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ViewingAvailabilityFindManyArgs>(args?: SelectSubset<T, ViewingAvailabilityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a ViewingAvailability.
+     * @param {ViewingAvailabilityCreateArgs} args - Arguments to create a ViewingAvailability.
+     * @example
+     * // Create one ViewingAvailability
+     * const ViewingAvailability = await prisma.viewingAvailability.create({
+     *   data: {
+     *     // ... data to create a ViewingAvailability
+     *   }
+     * })
+     * 
+     */
+    create<T extends ViewingAvailabilityCreateArgs>(args: SelectSubset<T, ViewingAvailabilityCreateArgs<ExtArgs>>): Prisma__ViewingAvailabilityClient<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many ViewingAvailabilities.
+     * @param {ViewingAvailabilityCreateManyArgs} args - Arguments to create many ViewingAvailabilities.
+     * @example
+     * // Create many ViewingAvailabilities
+     * const viewingAvailability = await prisma.viewingAvailability.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ViewingAvailabilityCreateManyArgs>(args?: SelectSubset<T, ViewingAvailabilityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ViewingAvailabilities and returns the data saved in the database.
+     * @param {ViewingAvailabilityCreateManyAndReturnArgs} args - Arguments to create many ViewingAvailabilities.
+     * @example
+     * // Create many ViewingAvailabilities
+     * const viewingAvailability = await prisma.viewingAvailability.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ViewingAvailabilities and only return the `id`
+     * const viewingAvailabilityWithIdOnly = await prisma.viewingAvailability.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ViewingAvailabilityCreateManyAndReturnArgs>(args?: SelectSubset<T, ViewingAvailabilityCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a ViewingAvailability.
+     * @param {ViewingAvailabilityDeleteArgs} args - Arguments to delete one ViewingAvailability.
+     * @example
+     * // Delete one ViewingAvailability
+     * const ViewingAvailability = await prisma.viewingAvailability.delete({
+     *   where: {
+     *     // ... filter to delete one ViewingAvailability
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ViewingAvailabilityDeleteArgs>(args: SelectSubset<T, ViewingAvailabilityDeleteArgs<ExtArgs>>): Prisma__ViewingAvailabilityClient<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one ViewingAvailability.
+     * @param {ViewingAvailabilityUpdateArgs} args - Arguments to update one ViewingAvailability.
+     * @example
+     * // Update one ViewingAvailability
+     * const viewingAvailability = await prisma.viewingAvailability.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ViewingAvailabilityUpdateArgs>(args: SelectSubset<T, ViewingAvailabilityUpdateArgs<ExtArgs>>): Prisma__ViewingAvailabilityClient<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more ViewingAvailabilities.
+     * @param {ViewingAvailabilityDeleteManyArgs} args - Arguments to filter ViewingAvailabilities to delete.
+     * @example
+     * // Delete a few ViewingAvailabilities
+     * const { count } = await prisma.viewingAvailability.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ViewingAvailabilityDeleteManyArgs>(args?: SelectSubset<T, ViewingAvailabilityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ViewingAvailabilities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingAvailabilityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ViewingAvailabilities
+     * const viewingAvailability = await prisma.viewingAvailability.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ViewingAvailabilityUpdateManyArgs>(args: SelectSubset<T, ViewingAvailabilityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ViewingAvailabilities and returns the data updated in the database.
+     * @param {ViewingAvailabilityUpdateManyAndReturnArgs} args - Arguments to update many ViewingAvailabilities.
+     * @example
+     * // Update many ViewingAvailabilities
+     * const viewingAvailability = await prisma.viewingAvailability.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ViewingAvailabilities and only return the `id`
+     * const viewingAvailabilityWithIdOnly = await prisma.viewingAvailability.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ViewingAvailabilityUpdateManyAndReturnArgs>(args: SelectSubset<T, ViewingAvailabilityUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one ViewingAvailability.
+     * @param {ViewingAvailabilityUpsertArgs} args - Arguments to update or create a ViewingAvailability.
+     * @example
+     * // Update or create a ViewingAvailability
+     * const viewingAvailability = await prisma.viewingAvailability.upsert({
+     *   create: {
+     *     // ... data to create a ViewingAvailability
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ViewingAvailability we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ViewingAvailabilityUpsertArgs>(args: SelectSubset<T, ViewingAvailabilityUpsertArgs<ExtArgs>>): Prisma__ViewingAvailabilityClient<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of ViewingAvailabilities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingAvailabilityCountArgs} args - Arguments to filter ViewingAvailabilities to count.
+     * @example
+     * // Count the number of ViewingAvailabilities
+     * const count = await prisma.viewingAvailability.count({
+     *   where: {
+     *     // ... the filter for the ViewingAvailabilities we want to count
+     *   }
+     * })
+    **/
+    count<T extends ViewingAvailabilityCountArgs>(
+      args?: Subset<T, ViewingAvailabilityCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ViewingAvailabilityCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ViewingAvailability.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingAvailabilityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ViewingAvailabilityAggregateArgs>(args: Subset<T, ViewingAvailabilityAggregateArgs>): Prisma.PrismaPromise<GetViewingAvailabilityAggregateType<T>>
+
+    /**
+     * Group by ViewingAvailability.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingAvailabilityGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ViewingAvailabilityGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ViewingAvailabilityGroupByArgs['orderBy'] }
+        : { orderBy?: ViewingAvailabilityGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ViewingAvailabilityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetViewingAvailabilityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ViewingAvailability model
+   */
+  readonly fields: ViewingAvailabilityFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ViewingAvailability.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ViewingAvailabilityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    property<T extends PropertyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PropertyDefaultArgs<ExtArgs>>): Prisma__PropertyClient<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ViewingAvailability model
+   */ 
+  interface ViewingAvailabilityFieldRefs {
+    readonly id: FieldRef<"ViewingAvailability", 'Int'>
+    readonly propertyId: FieldRef<"ViewingAvailability", 'Int'>
+    readonly date: FieldRef<"ViewingAvailability", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ViewingAvailability findUnique
+   */
+  export type ViewingAvailabilityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingAvailability to fetch.
+     */
+    where: ViewingAvailabilityWhereUniqueInput
+  }
+
+  /**
+   * ViewingAvailability findUniqueOrThrow
+   */
+  export type ViewingAvailabilityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingAvailability to fetch.
+     */
+    where: ViewingAvailabilityWhereUniqueInput
+  }
+
+  /**
+   * ViewingAvailability findFirst
+   */
+  export type ViewingAvailabilityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingAvailability to fetch.
+     */
+    where?: ViewingAvailabilityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ViewingAvailabilities to fetch.
+     */
+    orderBy?: ViewingAvailabilityOrderByWithRelationInput | ViewingAvailabilityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ViewingAvailabilities.
+     */
+    cursor?: ViewingAvailabilityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ViewingAvailabilities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ViewingAvailabilities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ViewingAvailabilities.
+     */
+    distinct?: ViewingAvailabilityScalarFieldEnum | ViewingAvailabilityScalarFieldEnum[]
+  }
+
+  /**
+   * ViewingAvailability findFirstOrThrow
+   */
+  export type ViewingAvailabilityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingAvailability to fetch.
+     */
+    where?: ViewingAvailabilityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ViewingAvailabilities to fetch.
+     */
+    orderBy?: ViewingAvailabilityOrderByWithRelationInput | ViewingAvailabilityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ViewingAvailabilities.
+     */
+    cursor?: ViewingAvailabilityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ViewingAvailabilities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ViewingAvailabilities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ViewingAvailabilities.
+     */
+    distinct?: ViewingAvailabilityScalarFieldEnum | ViewingAvailabilityScalarFieldEnum[]
+  }
+
+  /**
+   * ViewingAvailability findMany
+   */
+  export type ViewingAvailabilityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingAvailabilities to fetch.
+     */
+    where?: ViewingAvailabilityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ViewingAvailabilities to fetch.
+     */
+    orderBy?: ViewingAvailabilityOrderByWithRelationInput | ViewingAvailabilityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ViewingAvailabilities.
+     */
+    cursor?: ViewingAvailabilityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ViewingAvailabilities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ViewingAvailabilities.
+     */
+    skip?: number
+    distinct?: ViewingAvailabilityScalarFieldEnum | ViewingAvailabilityScalarFieldEnum[]
+  }
+
+  /**
+   * ViewingAvailability create
+   */
+  export type ViewingAvailabilityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ViewingAvailability.
+     */
+    data: XOR<ViewingAvailabilityCreateInput, ViewingAvailabilityUncheckedCreateInput>
+  }
+
+  /**
+   * ViewingAvailability createMany
+   */
+  export type ViewingAvailabilityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ViewingAvailabilities.
+     */
+    data: ViewingAvailabilityCreateManyInput | ViewingAvailabilityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ViewingAvailability createManyAndReturn
+   */
+  export type ViewingAvailabilityCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * The data used to create many ViewingAvailabilities.
+     */
+    data: ViewingAvailabilityCreateManyInput | ViewingAvailabilityCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ViewingAvailability update
+   */
+  export type ViewingAvailabilityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ViewingAvailability.
+     */
+    data: XOR<ViewingAvailabilityUpdateInput, ViewingAvailabilityUncheckedUpdateInput>
+    /**
+     * Choose, which ViewingAvailability to update.
+     */
+    where: ViewingAvailabilityWhereUniqueInput
+  }
+
+  /**
+   * ViewingAvailability updateMany
+   */
+  export type ViewingAvailabilityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ViewingAvailabilities.
+     */
+    data: XOR<ViewingAvailabilityUpdateManyMutationInput, ViewingAvailabilityUncheckedUpdateManyInput>
+    /**
+     * Filter which ViewingAvailabilities to update
+     */
+    where?: ViewingAvailabilityWhereInput
+    /**
+     * Limit how many ViewingAvailabilities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ViewingAvailability updateManyAndReturn
+   */
+  export type ViewingAvailabilityUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * The data used to update ViewingAvailabilities.
+     */
+    data: XOR<ViewingAvailabilityUpdateManyMutationInput, ViewingAvailabilityUncheckedUpdateManyInput>
+    /**
+     * Filter which ViewingAvailabilities to update
+     */
+    where?: ViewingAvailabilityWhereInput
+    /**
+     * Limit how many ViewingAvailabilities to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ViewingAvailability upsert
+   */
+  export type ViewingAvailabilityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ViewingAvailability to update in case it exists.
+     */
+    where: ViewingAvailabilityWhereUniqueInput
+    /**
+     * In case the ViewingAvailability found by the `where` argument doesn't exist, create a new ViewingAvailability with this data.
+     */
+    create: XOR<ViewingAvailabilityCreateInput, ViewingAvailabilityUncheckedCreateInput>
+    /**
+     * In case the ViewingAvailability was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ViewingAvailabilityUpdateInput, ViewingAvailabilityUncheckedUpdateInput>
+  }
+
+  /**
+   * ViewingAvailability delete
+   */
+  export type ViewingAvailabilityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    /**
+     * Filter which ViewingAvailability to delete.
+     */
+    where: ViewingAvailabilityWhereUniqueInput
+  }
+
+  /**
+   * ViewingAvailability deleteMany
+   */
+  export type ViewingAvailabilityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ViewingAvailabilities to delete
+     */
+    where?: ViewingAvailabilityWhereInput
+    /**
+     * Limit how many ViewingAvailabilities to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ViewingAvailability without action
+   */
+  export type ViewingAvailabilityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingAvailability
+     */
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingAvailability
+     */
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ViewingBooking
+   */
+
+  export type AggregateViewingBooking = {
+    _count: ViewingBookingCountAggregateOutputType | null
+    _avg: ViewingBookingAvgAggregateOutputType | null
+    _sum: ViewingBookingSumAggregateOutputType | null
+    _min: ViewingBookingMinAggregateOutputType | null
+    _max: ViewingBookingMaxAggregateOutputType | null
+  }
+
+  export type ViewingBookingAvgAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+  }
+
+  export type ViewingBookingSumAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+  }
+
+  export type ViewingBookingMinAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+    name: string | null
+    email: string | null
+    phone: string | null
+    viewingDate: Date | null
+    status: string | null
+  }
+
+  export type ViewingBookingMaxAggregateOutputType = {
+    id: number | null
+    propertyId: number | null
+    name: string | null
+    email: string | null
+    phone: string | null
+    viewingDate: Date | null
+    status: string | null
+  }
+
+  export type ViewingBookingCountAggregateOutputType = {
+    id: number
+    propertyId: number
+    name: number
+    email: number
+    phone: number
+    viewingDate: number
+    status: number
+    _all: number
+  }
+
+
+  export type ViewingBookingAvgAggregateInputType = {
+    id?: true
+    propertyId?: true
+  }
+
+  export type ViewingBookingSumAggregateInputType = {
+    id?: true
+    propertyId?: true
+  }
+
+  export type ViewingBookingMinAggregateInputType = {
+    id?: true
+    propertyId?: true
+    name?: true
+    email?: true
+    phone?: true
+    viewingDate?: true
+    status?: true
+  }
+
+  export type ViewingBookingMaxAggregateInputType = {
+    id?: true
+    propertyId?: true
+    name?: true
+    email?: true
+    phone?: true
+    viewingDate?: true
+    status?: true
+  }
+
+  export type ViewingBookingCountAggregateInputType = {
+    id?: true
+    propertyId?: true
+    name?: true
+    email?: true
+    phone?: true
+    viewingDate?: true
+    status?: true
+    _all?: true
+  }
+
+  export type ViewingBookingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ViewingBooking to aggregate.
+     */
+    where?: ViewingBookingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ViewingBookings to fetch.
+     */
+    orderBy?: ViewingBookingOrderByWithRelationInput | ViewingBookingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ViewingBookingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ViewingBookings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ViewingBookings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ViewingBookings
+    **/
+    _count?: true | ViewingBookingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ViewingBookingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ViewingBookingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ViewingBookingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ViewingBookingMaxAggregateInputType
+  }
+
+  export type GetViewingBookingAggregateType<T extends ViewingBookingAggregateArgs> = {
+        [P in keyof T & keyof AggregateViewingBooking]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateViewingBooking[P]>
+      : GetScalarType<T[P], AggregateViewingBooking[P]>
+  }
+
+
+
+
+  export type ViewingBookingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ViewingBookingWhereInput
+    orderBy?: ViewingBookingOrderByWithAggregationInput | ViewingBookingOrderByWithAggregationInput[]
+    by: ViewingBookingScalarFieldEnum[] | ViewingBookingScalarFieldEnum
+    having?: ViewingBookingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ViewingBookingCountAggregateInputType | true
+    _avg?: ViewingBookingAvgAggregateInputType
+    _sum?: ViewingBookingSumAggregateInputType
+    _min?: ViewingBookingMinAggregateInputType
+    _max?: ViewingBookingMaxAggregateInputType
+  }
+
+  export type ViewingBookingGroupByOutputType = {
+    id: number
+    propertyId: number
+    name: string
+    email: string
+    phone: string
+    viewingDate: Date
+    status: string
+    _count: ViewingBookingCountAggregateOutputType | null
+    _avg: ViewingBookingAvgAggregateOutputType | null
+    _sum: ViewingBookingSumAggregateOutputType | null
+    _min: ViewingBookingMinAggregateOutputType | null
+    _max: ViewingBookingMaxAggregateOutputType | null
+  }
+
+  type GetViewingBookingGroupByPayload<T extends ViewingBookingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ViewingBookingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ViewingBookingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ViewingBookingGroupByOutputType[P]>
+            : GetScalarType<T[P], ViewingBookingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ViewingBookingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    viewingDate?: boolean
+    status?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["viewingBooking"]>
+
+  export type ViewingBookingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    viewingDate?: boolean
+    status?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["viewingBooking"]>
+
+  export type ViewingBookingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    propertyId?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    viewingDate?: boolean
+    status?: boolean
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["viewingBooking"]>
+
+  export type ViewingBookingSelectScalar = {
+    id?: boolean
+    propertyId?: boolean
+    name?: boolean
+    email?: boolean
+    phone?: boolean
+    viewingDate?: boolean
+    status?: boolean
+  }
+
+  export type ViewingBookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propertyId" | "name" | "email" | "phone" | "viewingDate" | "status", ExtArgs["result"]["viewingBooking"]>
+  export type ViewingBookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }
+  export type ViewingBookingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }
+  export type ViewingBookingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    property?: boolean | PropertyDefaultArgs<ExtArgs>
+  }
+
+  export type $ViewingBookingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ViewingBooking"
+    objects: {
+      property: Prisma.$PropertyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      propertyId: number
+      name: string
+      email: string
+      phone: string
+      viewingDate: Date
+      status: string
+    }, ExtArgs["result"]["viewingBooking"]>
+    composites: {}
+  }
+
+  type ViewingBookingGetPayload<S extends boolean | null | undefined | ViewingBookingDefaultArgs> = $Result.GetResult<Prisma.$ViewingBookingPayload, S>
+
+  type ViewingBookingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ViewingBookingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ViewingBookingCountAggregateInputType | true
+    }
+
+  export interface ViewingBookingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ViewingBooking'], meta: { name: 'ViewingBooking' } }
+    /**
+     * Find zero or one ViewingBooking that matches the filter.
+     * @param {ViewingBookingFindUniqueArgs} args - Arguments to find a ViewingBooking
+     * @example
+     * // Get one ViewingBooking
+     * const viewingBooking = await prisma.viewingBooking.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ViewingBookingFindUniqueArgs>(args: SelectSubset<T, ViewingBookingFindUniqueArgs<ExtArgs>>): Prisma__ViewingBookingClient<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one ViewingBooking that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ViewingBookingFindUniqueOrThrowArgs} args - Arguments to find a ViewingBooking
+     * @example
+     * // Get one ViewingBooking
+     * const viewingBooking = await prisma.viewingBooking.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ViewingBookingFindUniqueOrThrowArgs>(args: SelectSubset<T, ViewingBookingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ViewingBookingClient<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first ViewingBooking that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingBookingFindFirstArgs} args - Arguments to find a ViewingBooking
+     * @example
+     * // Get one ViewingBooking
+     * const viewingBooking = await prisma.viewingBooking.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ViewingBookingFindFirstArgs>(args?: SelectSubset<T, ViewingBookingFindFirstArgs<ExtArgs>>): Prisma__ViewingBookingClient<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first ViewingBooking that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingBookingFindFirstOrThrowArgs} args - Arguments to find a ViewingBooking
+     * @example
+     * // Get one ViewingBooking
+     * const viewingBooking = await prisma.viewingBooking.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ViewingBookingFindFirstOrThrowArgs>(args?: SelectSubset<T, ViewingBookingFindFirstOrThrowArgs<ExtArgs>>): Prisma__ViewingBookingClient<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more ViewingBookings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingBookingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ViewingBookings
+     * const viewingBookings = await prisma.viewingBooking.findMany()
+     * 
+     * // Get first 10 ViewingBookings
+     * const viewingBookings = await prisma.viewingBooking.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const viewingBookingWithIdOnly = await prisma.viewingBooking.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ViewingBookingFindManyArgs>(args?: SelectSubset<T, ViewingBookingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a ViewingBooking.
+     * @param {ViewingBookingCreateArgs} args - Arguments to create a ViewingBooking.
+     * @example
+     * // Create one ViewingBooking
+     * const ViewingBooking = await prisma.viewingBooking.create({
+     *   data: {
+     *     // ... data to create a ViewingBooking
+     *   }
+     * })
+     * 
+     */
+    create<T extends ViewingBookingCreateArgs>(args: SelectSubset<T, ViewingBookingCreateArgs<ExtArgs>>): Prisma__ViewingBookingClient<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many ViewingBookings.
+     * @param {ViewingBookingCreateManyArgs} args - Arguments to create many ViewingBookings.
+     * @example
+     * // Create many ViewingBookings
+     * const viewingBooking = await prisma.viewingBooking.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ViewingBookingCreateManyArgs>(args?: SelectSubset<T, ViewingBookingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ViewingBookings and returns the data saved in the database.
+     * @param {ViewingBookingCreateManyAndReturnArgs} args - Arguments to create many ViewingBookings.
+     * @example
+     * // Create many ViewingBookings
+     * const viewingBooking = await prisma.viewingBooking.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ViewingBookings and only return the `id`
+     * const viewingBookingWithIdOnly = await prisma.viewingBooking.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ViewingBookingCreateManyAndReturnArgs>(args?: SelectSubset<T, ViewingBookingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a ViewingBooking.
+     * @param {ViewingBookingDeleteArgs} args - Arguments to delete one ViewingBooking.
+     * @example
+     * // Delete one ViewingBooking
+     * const ViewingBooking = await prisma.viewingBooking.delete({
+     *   where: {
+     *     // ... filter to delete one ViewingBooking
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ViewingBookingDeleteArgs>(args: SelectSubset<T, ViewingBookingDeleteArgs<ExtArgs>>): Prisma__ViewingBookingClient<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one ViewingBooking.
+     * @param {ViewingBookingUpdateArgs} args - Arguments to update one ViewingBooking.
+     * @example
+     * // Update one ViewingBooking
+     * const viewingBooking = await prisma.viewingBooking.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ViewingBookingUpdateArgs>(args: SelectSubset<T, ViewingBookingUpdateArgs<ExtArgs>>): Prisma__ViewingBookingClient<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more ViewingBookings.
+     * @param {ViewingBookingDeleteManyArgs} args - Arguments to filter ViewingBookings to delete.
+     * @example
+     * // Delete a few ViewingBookings
+     * const { count } = await prisma.viewingBooking.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ViewingBookingDeleteManyArgs>(args?: SelectSubset<T, ViewingBookingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ViewingBookings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingBookingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ViewingBookings
+     * const viewingBooking = await prisma.viewingBooking.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ViewingBookingUpdateManyArgs>(args: SelectSubset<T, ViewingBookingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ViewingBookings and returns the data updated in the database.
+     * @param {ViewingBookingUpdateManyAndReturnArgs} args - Arguments to update many ViewingBookings.
+     * @example
+     * // Update many ViewingBookings
+     * const viewingBooking = await prisma.viewingBooking.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ViewingBookings and only return the `id`
+     * const viewingBookingWithIdOnly = await prisma.viewingBooking.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ViewingBookingUpdateManyAndReturnArgs>(args: SelectSubset<T, ViewingBookingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one ViewingBooking.
+     * @param {ViewingBookingUpsertArgs} args - Arguments to update or create a ViewingBooking.
+     * @example
+     * // Update or create a ViewingBooking
+     * const viewingBooking = await prisma.viewingBooking.upsert({
+     *   create: {
+     *     // ... data to create a ViewingBooking
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ViewingBooking we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ViewingBookingUpsertArgs>(args: SelectSubset<T, ViewingBookingUpsertArgs<ExtArgs>>): Prisma__ViewingBookingClient<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of ViewingBookings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingBookingCountArgs} args - Arguments to filter ViewingBookings to count.
+     * @example
+     * // Count the number of ViewingBookings
+     * const count = await prisma.viewingBooking.count({
+     *   where: {
+     *     // ... the filter for the ViewingBookings we want to count
+     *   }
+     * })
+    **/
+    count<T extends ViewingBookingCountArgs>(
+      args?: Subset<T, ViewingBookingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ViewingBookingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ViewingBooking.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingBookingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ViewingBookingAggregateArgs>(args: Subset<T, ViewingBookingAggregateArgs>): Prisma.PrismaPromise<GetViewingBookingAggregateType<T>>
+
+    /**
+     * Group by ViewingBooking.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ViewingBookingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ViewingBookingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ViewingBookingGroupByArgs['orderBy'] }
+        : { orderBy?: ViewingBookingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ViewingBookingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetViewingBookingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ViewingBooking model
+   */
+  readonly fields: ViewingBookingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ViewingBooking.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ViewingBookingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    property<T extends PropertyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PropertyDefaultArgs<ExtArgs>>): Prisma__PropertyClient<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ViewingBooking model
+   */ 
+  interface ViewingBookingFieldRefs {
+    readonly id: FieldRef<"ViewingBooking", 'Int'>
+    readonly propertyId: FieldRef<"ViewingBooking", 'Int'>
+    readonly name: FieldRef<"ViewingBooking", 'String'>
+    readonly email: FieldRef<"ViewingBooking", 'String'>
+    readonly phone: FieldRef<"ViewingBooking", 'String'>
+    readonly viewingDate: FieldRef<"ViewingBooking", 'DateTime'>
+    readonly status: FieldRef<"ViewingBooking", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ViewingBooking findUnique
+   */
+  export type ViewingBookingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingBooking to fetch.
+     */
+    where: ViewingBookingWhereUniqueInput
+  }
+
+  /**
+   * ViewingBooking findUniqueOrThrow
+   */
+  export type ViewingBookingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingBooking to fetch.
+     */
+    where: ViewingBookingWhereUniqueInput
+  }
+
+  /**
+   * ViewingBooking findFirst
+   */
+  export type ViewingBookingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingBooking to fetch.
+     */
+    where?: ViewingBookingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ViewingBookings to fetch.
+     */
+    orderBy?: ViewingBookingOrderByWithRelationInput | ViewingBookingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ViewingBookings.
+     */
+    cursor?: ViewingBookingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ViewingBookings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ViewingBookings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ViewingBookings.
+     */
+    distinct?: ViewingBookingScalarFieldEnum | ViewingBookingScalarFieldEnum[]
+  }
+
+  /**
+   * ViewingBooking findFirstOrThrow
+   */
+  export type ViewingBookingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingBooking to fetch.
+     */
+    where?: ViewingBookingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ViewingBookings to fetch.
+     */
+    orderBy?: ViewingBookingOrderByWithRelationInput | ViewingBookingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ViewingBookings.
+     */
+    cursor?: ViewingBookingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ViewingBookings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ViewingBookings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ViewingBookings.
+     */
+    distinct?: ViewingBookingScalarFieldEnum | ViewingBookingScalarFieldEnum[]
+  }
+
+  /**
+   * ViewingBooking findMany
+   */
+  export type ViewingBookingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * Filter, which ViewingBookings to fetch.
+     */
+    where?: ViewingBookingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ViewingBookings to fetch.
+     */
+    orderBy?: ViewingBookingOrderByWithRelationInput | ViewingBookingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ViewingBookings.
+     */
+    cursor?: ViewingBookingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ViewingBookings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ViewingBookings.
+     */
+    skip?: number
+    distinct?: ViewingBookingScalarFieldEnum | ViewingBookingScalarFieldEnum[]
+  }
+
+  /**
+   * ViewingBooking create
+   */
+  export type ViewingBookingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ViewingBooking.
+     */
+    data: XOR<ViewingBookingCreateInput, ViewingBookingUncheckedCreateInput>
+  }
+
+  /**
+   * ViewingBooking createMany
+   */
+  export type ViewingBookingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ViewingBookings.
+     */
+    data: ViewingBookingCreateManyInput | ViewingBookingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ViewingBooking createManyAndReturn
+   */
+  export type ViewingBookingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * The data used to create many ViewingBookings.
+     */
+    data: ViewingBookingCreateManyInput | ViewingBookingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ViewingBooking update
+   */
+  export type ViewingBookingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ViewingBooking.
+     */
+    data: XOR<ViewingBookingUpdateInput, ViewingBookingUncheckedUpdateInput>
+    /**
+     * Choose, which ViewingBooking to update.
+     */
+    where: ViewingBookingWhereUniqueInput
+  }
+
+  /**
+   * ViewingBooking updateMany
+   */
+  export type ViewingBookingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ViewingBookings.
+     */
+    data: XOR<ViewingBookingUpdateManyMutationInput, ViewingBookingUncheckedUpdateManyInput>
+    /**
+     * Filter which ViewingBookings to update
+     */
+    where?: ViewingBookingWhereInput
+    /**
+     * Limit how many ViewingBookings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ViewingBooking updateManyAndReturn
+   */
+  export type ViewingBookingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * The data used to update ViewingBookings.
+     */
+    data: XOR<ViewingBookingUpdateManyMutationInput, ViewingBookingUncheckedUpdateManyInput>
+    /**
+     * Filter which ViewingBookings to update
+     */
+    where?: ViewingBookingWhereInput
+    /**
+     * Limit how many ViewingBookings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ViewingBooking upsert
+   */
+  export type ViewingBookingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ViewingBooking to update in case it exists.
+     */
+    where: ViewingBookingWhereUniqueInput
+    /**
+     * In case the ViewingBooking found by the `where` argument doesn't exist, create a new ViewingBooking with this data.
+     */
+    create: XOR<ViewingBookingCreateInput, ViewingBookingUncheckedCreateInput>
+    /**
+     * In case the ViewingBooking was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ViewingBookingUpdateInput, ViewingBookingUncheckedUpdateInput>
+  }
+
+  /**
+   * ViewingBooking delete
+   */
+  export type ViewingBookingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    /**
+     * Filter which ViewingBooking to delete.
+     */
+    where: ViewingBookingWhereUniqueInput
+  }
+
+  /**
+   * ViewingBooking deleteMany
+   */
+  export type ViewingBookingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ViewingBookings to delete
+     */
+    where?: ViewingBookingWhereInput
+    /**
+     * Limit how many ViewingBookings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ViewingBooking without action
+   */
+  export type ViewingBookingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SubmissionLink
+   */
+
+  export type AggregateSubmissionLink = {
+    _count: SubmissionLinkCountAggregateOutputType | null
+    _avg: SubmissionLinkAvgAggregateOutputType | null
+    _sum: SubmissionLinkSumAggregateOutputType | null
+    _min: SubmissionLinkMinAggregateOutputType | null
+    _max: SubmissionLinkMaxAggregateOutputType | null
+  }
+
+  export type SubmissionLinkAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SubmissionLinkSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SubmissionLinkMinAggregateOutputType = {
+    id: number | null
+    token: string | null
+    expiryDate: Date | null
+    isUsed: boolean | null
+    createdAt: Date | null
+  }
+
+  export type SubmissionLinkMaxAggregateOutputType = {
+    id: number | null
+    token: string | null
+    expiryDate: Date | null
+    isUsed: boolean | null
+    createdAt: Date | null
+  }
+
+  export type SubmissionLinkCountAggregateOutputType = {
+    id: number
+    token: number
+    expiryDate: number
+    isUsed: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type SubmissionLinkAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type SubmissionLinkSumAggregateInputType = {
+    id?: true
+  }
+
+  export type SubmissionLinkMinAggregateInputType = {
+    id?: true
+    token?: true
+    expiryDate?: true
+    isUsed?: true
+    createdAt?: true
+  }
+
+  export type SubmissionLinkMaxAggregateInputType = {
+    id?: true
+    token?: true
+    expiryDate?: true
+    isUsed?: true
+    createdAt?: true
+  }
+
+  export type SubmissionLinkCountAggregateInputType = {
+    id?: true
+    token?: true
+    expiryDate?: true
+    isUsed?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type SubmissionLinkAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SubmissionLink to aggregate.
+     */
+    where?: SubmissionLinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubmissionLinks to fetch.
+     */
+    orderBy?: SubmissionLinkOrderByWithRelationInput | SubmissionLinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SubmissionLinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubmissionLinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubmissionLinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SubmissionLinks
+    **/
+    _count?: true | SubmissionLinkCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SubmissionLinkAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SubmissionLinkSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SubmissionLinkMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SubmissionLinkMaxAggregateInputType
+  }
+
+  export type GetSubmissionLinkAggregateType<T extends SubmissionLinkAggregateArgs> = {
+        [P in keyof T & keyof AggregateSubmissionLink]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSubmissionLink[P]>
+      : GetScalarType<T[P], AggregateSubmissionLink[P]>
+  }
+
+
+
+
+  export type SubmissionLinkGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubmissionLinkWhereInput
+    orderBy?: SubmissionLinkOrderByWithAggregationInput | SubmissionLinkOrderByWithAggregationInput[]
+    by: SubmissionLinkScalarFieldEnum[] | SubmissionLinkScalarFieldEnum
+    having?: SubmissionLinkScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SubmissionLinkCountAggregateInputType | true
+    _avg?: SubmissionLinkAvgAggregateInputType
+    _sum?: SubmissionLinkSumAggregateInputType
+    _min?: SubmissionLinkMinAggregateInputType
+    _max?: SubmissionLinkMaxAggregateInputType
+  }
+
+  export type SubmissionLinkGroupByOutputType = {
+    id: number
+    token: string
+    expiryDate: Date
+    isUsed: boolean
+    createdAt: Date
+    _count: SubmissionLinkCountAggregateOutputType | null
+    _avg: SubmissionLinkAvgAggregateOutputType | null
+    _sum: SubmissionLinkSumAggregateOutputType | null
+    _min: SubmissionLinkMinAggregateOutputType | null
+    _max: SubmissionLinkMaxAggregateOutputType | null
+  }
+
+  type GetSubmissionLinkGroupByPayload<T extends SubmissionLinkGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SubmissionLinkGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SubmissionLinkGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SubmissionLinkGroupByOutputType[P]>
+            : GetScalarType<T[P], SubmissionLinkGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SubmissionLinkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    expiryDate?: boolean
+    isUsed?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["submissionLink"]>
+
+  export type SubmissionLinkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    expiryDate?: boolean
+    isUsed?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["submissionLink"]>
+
+  export type SubmissionLinkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    expiryDate?: boolean
+    isUsed?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["submissionLink"]>
+
+  export type SubmissionLinkSelectScalar = {
+    id?: boolean
+    token?: boolean
+    expiryDate?: boolean
+    isUsed?: boolean
+    createdAt?: boolean
+  }
+
+  export type SubmissionLinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "expiryDate" | "isUsed" | "createdAt", ExtArgs["result"]["submissionLink"]>
+
+  export type $SubmissionLinkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SubmissionLink"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      token: string
+      expiryDate: Date
+      isUsed: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["submissionLink"]>
+    composites: {}
+  }
+
+  type SubmissionLinkGetPayload<S extends boolean | null | undefined | SubmissionLinkDefaultArgs> = $Result.GetResult<Prisma.$SubmissionLinkPayload, S>
+
+  type SubmissionLinkCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SubmissionLinkFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SubmissionLinkCountAggregateInputType | true
+    }
+
+  export interface SubmissionLinkDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SubmissionLink'], meta: { name: 'SubmissionLink' } }
+    /**
+     * Find zero or one SubmissionLink that matches the filter.
+     * @param {SubmissionLinkFindUniqueArgs} args - Arguments to find a SubmissionLink
+     * @example
+     * // Get one SubmissionLink
+     * const submissionLink = await prisma.submissionLink.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SubmissionLinkFindUniqueArgs>(args: SelectSubset<T, SubmissionLinkFindUniqueArgs<ExtArgs>>): Prisma__SubmissionLinkClient<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one SubmissionLink that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SubmissionLinkFindUniqueOrThrowArgs} args - Arguments to find a SubmissionLink
+     * @example
+     * // Get one SubmissionLink
+     * const submissionLink = await prisma.submissionLink.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SubmissionLinkFindUniqueOrThrowArgs>(args: SelectSubset<T, SubmissionLinkFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubmissionLinkClient<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first SubmissionLink that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubmissionLinkFindFirstArgs} args - Arguments to find a SubmissionLink
+     * @example
+     * // Get one SubmissionLink
+     * const submissionLink = await prisma.submissionLink.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SubmissionLinkFindFirstArgs>(args?: SelectSubset<T, SubmissionLinkFindFirstArgs<ExtArgs>>): Prisma__SubmissionLinkClient<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first SubmissionLink that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubmissionLinkFindFirstOrThrowArgs} args - Arguments to find a SubmissionLink
+     * @example
+     * // Get one SubmissionLink
+     * const submissionLink = await prisma.submissionLink.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SubmissionLinkFindFirstOrThrowArgs>(args?: SelectSubset<T, SubmissionLinkFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubmissionLinkClient<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more SubmissionLinks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubmissionLinkFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SubmissionLinks
+     * const submissionLinks = await prisma.submissionLink.findMany()
+     * 
+     * // Get first 10 SubmissionLinks
+     * const submissionLinks = await prisma.submissionLink.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const submissionLinkWithIdOnly = await prisma.submissionLink.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SubmissionLinkFindManyArgs>(args?: SelectSubset<T, SubmissionLinkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a SubmissionLink.
+     * @param {SubmissionLinkCreateArgs} args - Arguments to create a SubmissionLink.
+     * @example
+     * // Create one SubmissionLink
+     * const SubmissionLink = await prisma.submissionLink.create({
+     *   data: {
+     *     // ... data to create a SubmissionLink
+     *   }
+     * })
+     * 
+     */
+    create<T extends SubmissionLinkCreateArgs>(args: SelectSubset<T, SubmissionLinkCreateArgs<ExtArgs>>): Prisma__SubmissionLinkClient<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many SubmissionLinks.
+     * @param {SubmissionLinkCreateManyArgs} args - Arguments to create many SubmissionLinks.
+     * @example
+     * // Create many SubmissionLinks
+     * const submissionLink = await prisma.submissionLink.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SubmissionLinkCreateManyArgs>(args?: SelectSubset<T, SubmissionLinkCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SubmissionLinks and returns the data saved in the database.
+     * @param {SubmissionLinkCreateManyAndReturnArgs} args - Arguments to create many SubmissionLinks.
+     * @example
+     * // Create many SubmissionLinks
+     * const submissionLink = await prisma.submissionLink.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SubmissionLinks and only return the `id`
+     * const submissionLinkWithIdOnly = await prisma.submissionLink.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SubmissionLinkCreateManyAndReturnArgs>(args?: SelectSubset<T, SubmissionLinkCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a SubmissionLink.
+     * @param {SubmissionLinkDeleteArgs} args - Arguments to delete one SubmissionLink.
+     * @example
+     * // Delete one SubmissionLink
+     * const SubmissionLink = await prisma.submissionLink.delete({
+     *   where: {
+     *     // ... filter to delete one SubmissionLink
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SubmissionLinkDeleteArgs>(args: SelectSubset<T, SubmissionLinkDeleteArgs<ExtArgs>>): Prisma__SubmissionLinkClient<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one SubmissionLink.
+     * @param {SubmissionLinkUpdateArgs} args - Arguments to update one SubmissionLink.
+     * @example
+     * // Update one SubmissionLink
+     * const submissionLink = await prisma.submissionLink.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SubmissionLinkUpdateArgs>(args: SelectSubset<T, SubmissionLinkUpdateArgs<ExtArgs>>): Prisma__SubmissionLinkClient<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more SubmissionLinks.
+     * @param {SubmissionLinkDeleteManyArgs} args - Arguments to filter SubmissionLinks to delete.
+     * @example
+     * // Delete a few SubmissionLinks
+     * const { count } = await prisma.submissionLink.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SubmissionLinkDeleteManyArgs>(args?: SelectSubset<T, SubmissionLinkDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SubmissionLinks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubmissionLinkUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SubmissionLinks
+     * const submissionLink = await prisma.submissionLink.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SubmissionLinkUpdateManyArgs>(args: SelectSubset<T, SubmissionLinkUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SubmissionLinks and returns the data updated in the database.
+     * @param {SubmissionLinkUpdateManyAndReturnArgs} args - Arguments to update many SubmissionLinks.
+     * @example
+     * // Update many SubmissionLinks
+     * const submissionLink = await prisma.submissionLink.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SubmissionLinks and only return the `id`
+     * const submissionLinkWithIdOnly = await prisma.submissionLink.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SubmissionLinkUpdateManyAndReturnArgs>(args: SelectSubset<T, SubmissionLinkUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one SubmissionLink.
+     * @param {SubmissionLinkUpsertArgs} args - Arguments to update or create a SubmissionLink.
+     * @example
+     * // Update or create a SubmissionLink
+     * const submissionLink = await prisma.submissionLink.upsert({
+     *   create: {
+     *     // ... data to create a SubmissionLink
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SubmissionLink we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SubmissionLinkUpsertArgs>(args: SelectSubset<T, SubmissionLinkUpsertArgs<ExtArgs>>): Prisma__SubmissionLinkClient<$Result.GetResult<Prisma.$SubmissionLinkPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of SubmissionLinks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubmissionLinkCountArgs} args - Arguments to filter SubmissionLinks to count.
+     * @example
+     * // Count the number of SubmissionLinks
+     * const count = await prisma.submissionLink.count({
+     *   where: {
+     *     // ... the filter for the SubmissionLinks we want to count
+     *   }
+     * })
+    **/
+    count<T extends SubmissionLinkCountArgs>(
+      args?: Subset<T, SubmissionLinkCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SubmissionLinkCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SubmissionLink.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubmissionLinkAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SubmissionLinkAggregateArgs>(args: Subset<T, SubmissionLinkAggregateArgs>): Prisma.PrismaPromise<GetSubmissionLinkAggregateType<T>>
+
+    /**
+     * Group by SubmissionLink.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SubmissionLinkGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SubmissionLinkGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SubmissionLinkGroupByArgs['orderBy'] }
+        : { orderBy?: SubmissionLinkGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SubmissionLinkGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubmissionLinkGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SubmissionLink model
+   */
+  readonly fields: SubmissionLinkFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SubmissionLink.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SubmissionLinkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SubmissionLink model
+   */ 
+  interface SubmissionLinkFieldRefs {
+    readonly id: FieldRef<"SubmissionLink", 'Int'>
+    readonly token: FieldRef<"SubmissionLink", 'String'>
+    readonly expiryDate: FieldRef<"SubmissionLink", 'DateTime'>
+    readonly isUsed: FieldRef<"SubmissionLink", 'Boolean'>
+    readonly createdAt: FieldRef<"SubmissionLink", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SubmissionLink findUnique
+   */
+  export type SubmissionLinkFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * Filter, which SubmissionLink to fetch.
+     */
+    where: SubmissionLinkWhereUniqueInput
+  }
+
+  /**
+   * SubmissionLink findUniqueOrThrow
+   */
+  export type SubmissionLinkFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * Filter, which SubmissionLink to fetch.
+     */
+    where: SubmissionLinkWhereUniqueInput
+  }
+
+  /**
+   * SubmissionLink findFirst
+   */
+  export type SubmissionLinkFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * Filter, which SubmissionLink to fetch.
+     */
+    where?: SubmissionLinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubmissionLinks to fetch.
+     */
+    orderBy?: SubmissionLinkOrderByWithRelationInput | SubmissionLinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SubmissionLinks.
+     */
+    cursor?: SubmissionLinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubmissionLinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubmissionLinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SubmissionLinks.
+     */
+    distinct?: SubmissionLinkScalarFieldEnum | SubmissionLinkScalarFieldEnum[]
+  }
+
+  /**
+   * SubmissionLink findFirstOrThrow
+   */
+  export type SubmissionLinkFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * Filter, which SubmissionLink to fetch.
+     */
+    where?: SubmissionLinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubmissionLinks to fetch.
+     */
+    orderBy?: SubmissionLinkOrderByWithRelationInput | SubmissionLinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SubmissionLinks.
+     */
+    cursor?: SubmissionLinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubmissionLinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubmissionLinks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SubmissionLinks.
+     */
+    distinct?: SubmissionLinkScalarFieldEnum | SubmissionLinkScalarFieldEnum[]
+  }
+
+  /**
+   * SubmissionLink findMany
+   */
+  export type SubmissionLinkFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * Filter, which SubmissionLinks to fetch.
+     */
+    where?: SubmissionLinkWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SubmissionLinks to fetch.
+     */
+    orderBy?: SubmissionLinkOrderByWithRelationInput | SubmissionLinkOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SubmissionLinks.
+     */
+    cursor?: SubmissionLinkWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SubmissionLinks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SubmissionLinks.
+     */
+    skip?: number
+    distinct?: SubmissionLinkScalarFieldEnum | SubmissionLinkScalarFieldEnum[]
+  }
+
+  /**
+   * SubmissionLink create
+   */
+  export type SubmissionLinkCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * The data needed to create a SubmissionLink.
+     */
+    data: XOR<SubmissionLinkCreateInput, SubmissionLinkUncheckedCreateInput>
+  }
+
+  /**
+   * SubmissionLink createMany
+   */
+  export type SubmissionLinkCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SubmissionLinks.
+     */
+    data: SubmissionLinkCreateManyInput | SubmissionLinkCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SubmissionLink createManyAndReturn
+   */
+  export type SubmissionLinkCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * The data used to create many SubmissionLinks.
+     */
+    data: SubmissionLinkCreateManyInput | SubmissionLinkCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SubmissionLink update
+   */
+  export type SubmissionLinkUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * The data needed to update a SubmissionLink.
+     */
+    data: XOR<SubmissionLinkUpdateInput, SubmissionLinkUncheckedUpdateInput>
+    /**
+     * Choose, which SubmissionLink to update.
+     */
+    where: SubmissionLinkWhereUniqueInput
+  }
+
+  /**
+   * SubmissionLink updateMany
+   */
+  export type SubmissionLinkUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SubmissionLinks.
+     */
+    data: XOR<SubmissionLinkUpdateManyMutationInput, SubmissionLinkUncheckedUpdateManyInput>
+    /**
+     * Filter which SubmissionLinks to update
+     */
+    where?: SubmissionLinkWhereInput
+    /**
+     * Limit how many SubmissionLinks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SubmissionLink updateManyAndReturn
+   */
+  export type SubmissionLinkUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * The data used to update SubmissionLinks.
+     */
+    data: XOR<SubmissionLinkUpdateManyMutationInput, SubmissionLinkUncheckedUpdateManyInput>
+    /**
+     * Filter which SubmissionLinks to update
+     */
+    where?: SubmissionLinkWhereInput
+    /**
+     * Limit how many SubmissionLinks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SubmissionLink upsert
+   */
+  export type SubmissionLinkUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * The filter to search for the SubmissionLink to update in case it exists.
+     */
+    where: SubmissionLinkWhereUniqueInput
+    /**
+     * In case the SubmissionLink found by the `where` argument doesn't exist, create a new SubmissionLink with this data.
+     */
+    create: XOR<SubmissionLinkCreateInput, SubmissionLinkUncheckedCreateInput>
+    /**
+     * In case the SubmissionLink was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SubmissionLinkUpdateInput, SubmissionLinkUncheckedUpdateInput>
+  }
+
+  /**
+   * SubmissionLink delete
+   */
+  export type SubmissionLinkDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+    /**
+     * Filter which SubmissionLink to delete.
+     */
+    where: SubmissionLinkWhereUniqueInput
+  }
+
+  /**
+   * SubmissionLink deleteMany
+   */
+  export type SubmissionLinkDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SubmissionLinks to delete
+     */
+    where?: SubmissionLinkWhereInput
+    /**
+     * Limit how many SubmissionLinks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SubmissionLink without action
+   */
+  export type SubmissionLinkDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubmissionLink
+     */
+    select?: SubmissionLinkSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubmissionLink
+     */
+    omit?: SubmissionLinkOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -8846,6 +12466,7 @@ export namespace Prisma {
     highlights: 'highlights',
     isPetsAllowed: 'isPetsAllowed',
     isParkingIncluded: 'isParkingIncluded',
+    isSale: 'isSale',
     beds: 'beds',
     baths: 'baths',
     squareFeet: 'squareFeet',
@@ -8853,6 +12474,8 @@ export namespace Prisma {
     postedDate: 'postedDate',
     averageRating: 'averageRating',
     numberOfReviews: 'numberOfReviews',
+    status: 'status',
+    submittedBy: 'submittedBy',
     locationId: 'locationId',
     managerUserId: 'managerUserId'
   };
@@ -8912,6 +12535,39 @@ export namespace Prisma {
   };
 
   export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+  export const ViewingAvailabilityScalarFieldEnum: {
+    id: 'id',
+    propertyId: 'propertyId',
+    date: 'date'
+  };
+
+  export type ViewingAvailabilityScalarFieldEnum = (typeof ViewingAvailabilityScalarFieldEnum)[keyof typeof ViewingAvailabilityScalarFieldEnum]
+
+
+  export const ViewingBookingScalarFieldEnum: {
+    id: 'id',
+    propertyId: 'propertyId',
+    name: 'name',
+    email: 'email',
+    phone: 'phone',
+    viewingDate: 'viewingDate',
+    status: 'status'
+  };
+
+  export type ViewingBookingScalarFieldEnum = (typeof ViewingBookingScalarFieldEnum)[keyof typeof ViewingBookingScalarFieldEnum]
+
+
+  export const SubmissionLinkScalarFieldEnum: {
+    id: 'id',
+    token: 'token',
+    expiryDate: 'expiryDate',
+    isUsed: 'isUsed',
+    createdAt: 'createdAt'
+  };
+
+  export type SubmissionLinkScalarFieldEnum = (typeof SubmissionLinkScalarFieldEnum)[keyof typeof SubmissionLinkScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9063,6 +12719,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'PropertyStatus'
+   */
+  export type EnumPropertyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PropertyStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'PropertyStatus[]'
+   */
+  export type ListEnumPropertyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PropertyStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'ApplicationStatus'
    */
   export type EnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus'>
@@ -9203,6 +12873,7 @@ export namespace Prisma {
     highlights?: EnumHighlightNullableListFilter<"Property">
     isPetsAllowed?: BoolFilter<"Property"> | boolean
     isParkingIncluded?: BoolFilter<"Property"> | boolean
+    isSale?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
@@ -9210,6 +12881,8 @@ export namespace Prisma {
     postedDate?: DateTimeFilter<"Property"> | Date | string
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
+    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
+    submittedBy?: StringNullableFilter<"Property"> | string | null
     locationId?: IntFilter<"Property"> | number
     managerUserId?: StringFilter<"Property"> | string
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
@@ -9218,6 +12891,8 @@ export namespace Prisma {
     applications?: ApplicationListRelationFilter
     favoritedBy?: UserListRelationFilter
     tenants?: UserListRelationFilter
+    viewingAvailabilities?: ViewingAvailabilityListRelationFilter
+    viewingBookings?: ViewingBookingListRelationFilter
   }
 
   export type PropertyOrderByWithRelationInput = {
@@ -9233,6 +12908,7 @@ export namespace Prisma {
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isSale?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -9240,6 +12916,8 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrderInput | SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
     location?: LocationOrderByWithRelationInput
@@ -9248,6 +12926,8 @@ export namespace Prisma {
     applications?: ApplicationOrderByRelationAggregateInput
     favoritedBy?: UserOrderByRelationAggregateInput
     tenants?: UserOrderByRelationAggregateInput
+    viewingAvailabilities?: ViewingAvailabilityOrderByRelationAggregateInput
+    viewingBookings?: ViewingBookingOrderByRelationAggregateInput
   }
 
   export type PropertyWhereUniqueInput = Prisma.AtLeast<{
@@ -9266,6 +12946,7 @@ export namespace Prisma {
     highlights?: EnumHighlightNullableListFilter<"Property">
     isPetsAllowed?: BoolFilter<"Property"> | boolean
     isParkingIncluded?: BoolFilter<"Property"> | boolean
+    isSale?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
@@ -9273,6 +12954,8 @@ export namespace Prisma {
     postedDate?: DateTimeFilter<"Property"> | Date | string
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
+    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
+    submittedBy?: StringNullableFilter<"Property"> | string | null
     locationId?: IntFilter<"Property"> | number
     managerUserId?: StringFilter<"Property"> | string
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
@@ -9281,6 +12964,8 @@ export namespace Prisma {
     applications?: ApplicationListRelationFilter
     favoritedBy?: UserListRelationFilter
     tenants?: UserListRelationFilter
+    viewingAvailabilities?: ViewingAvailabilityListRelationFilter
+    viewingBookings?: ViewingBookingListRelationFilter
   }, "id" | "slug">
 
   export type PropertyOrderByWithAggregationInput = {
@@ -9296,6 +12981,7 @@ export namespace Prisma {
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isSale?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -9303,6 +12989,8 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrderInput | SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
     _count?: PropertyCountOrderByAggregateInput
@@ -9328,6 +13016,7 @@ export namespace Prisma {
     highlights?: EnumHighlightNullableListFilter<"Property">
     isPetsAllowed?: BoolWithAggregatesFilter<"Property"> | boolean
     isParkingIncluded?: BoolWithAggregatesFilter<"Property"> | boolean
+    isSale?: BoolWithAggregatesFilter<"Property"> | boolean
     beds?: IntWithAggregatesFilter<"Property"> | number
     baths?: FloatWithAggregatesFilter<"Property"> | number
     squareFeet?: IntWithAggregatesFilter<"Property"> | number
@@ -9335,6 +13024,8 @@ export namespace Prisma {
     postedDate?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     averageRating?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     numberOfReviews?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    status?: EnumPropertyStatusWithAggregatesFilter<"Property"> | $Enums.PropertyStatus
+    submittedBy?: StringNullableWithAggregatesFilter<"Property"> | string | null
     locationId?: IntWithAggregatesFilter<"Property"> | number
     managerUserId?: StringWithAggregatesFilter<"Property"> | string
   }
@@ -9632,6 +13323,174 @@ export namespace Prisma {
     leaseId?: IntWithAggregatesFilter<"Payment"> | number
   }
 
+  export type ViewingAvailabilityWhereInput = {
+    AND?: ViewingAvailabilityWhereInput | ViewingAvailabilityWhereInput[]
+    OR?: ViewingAvailabilityWhereInput[]
+    NOT?: ViewingAvailabilityWhereInput | ViewingAvailabilityWhereInput[]
+    id?: IntFilter<"ViewingAvailability"> | number
+    propertyId?: IntFilter<"ViewingAvailability"> | number
+    date?: DateTimeFilter<"ViewingAvailability"> | Date | string
+    property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
+  }
+
+  export type ViewingAvailabilityOrderByWithRelationInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    date?: SortOrder
+    property?: PropertyOrderByWithRelationInput
+  }
+
+  export type ViewingAvailabilityWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ViewingAvailabilityWhereInput | ViewingAvailabilityWhereInput[]
+    OR?: ViewingAvailabilityWhereInput[]
+    NOT?: ViewingAvailabilityWhereInput | ViewingAvailabilityWhereInput[]
+    propertyId?: IntFilter<"ViewingAvailability"> | number
+    date?: DateTimeFilter<"ViewingAvailability"> | Date | string
+    property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
+  }, "id">
+
+  export type ViewingAvailabilityOrderByWithAggregationInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    date?: SortOrder
+    _count?: ViewingAvailabilityCountOrderByAggregateInput
+    _avg?: ViewingAvailabilityAvgOrderByAggregateInput
+    _max?: ViewingAvailabilityMaxOrderByAggregateInput
+    _min?: ViewingAvailabilityMinOrderByAggregateInput
+    _sum?: ViewingAvailabilitySumOrderByAggregateInput
+  }
+
+  export type ViewingAvailabilityScalarWhereWithAggregatesInput = {
+    AND?: ViewingAvailabilityScalarWhereWithAggregatesInput | ViewingAvailabilityScalarWhereWithAggregatesInput[]
+    OR?: ViewingAvailabilityScalarWhereWithAggregatesInput[]
+    NOT?: ViewingAvailabilityScalarWhereWithAggregatesInput | ViewingAvailabilityScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ViewingAvailability"> | number
+    propertyId?: IntWithAggregatesFilter<"ViewingAvailability"> | number
+    date?: DateTimeWithAggregatesFilter<"ViewingAvailability"> | Date | string
+  }
+
+  export type ViewingBookingWhereInput = {
+    AND?: ViewingBookingWhereInput | ViewingBookingWhereInput[]
+    OR?: ViewingBookingWhereInput[]
+    NOT?: ViewingBookingWhereInput | ViewingBookingWhereInput[]
+    id?: IntFilter<"ViewingBooking"> | number
+    propertyId?: IntFilter<"ViewingBooking"> | number
+    name?: StringFilter<"ViewingBooking"> | string
+    email?: StringFilter<"ViewingBooking"> | string
+    phone?: StringFilter<"ViewingBooking"> | string
+    viewingDate?: DateTimeFilter<"ViewingBooking"> | Date | string
+    status?: StringFilter<"ViewingBooking"> | string
+    property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
+  }
+
+  export type ViewingBookingOrderByWithRelationInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    viewingDate?: SortOrder
+    status?: SortOrder
+    property?: PropertyOrderByWithRelationInput
+  }
+
+  export type ViewingBookingWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ViewingBookingWhereInput | ViewingBookingWhereInput[]
+    OR?: ViewingBookingWhereInput[]
+    NOT?: ViewingBookingWhereInput | ViewingBookingWhereInput[]
+    propertyId?: IntFilter<"ViewingBooking"> | number
+    name?: StringFilter<"ViewingBooking"> | string
+    email?: StringFilter<"ViewingBooking"> | string
+    phone?: StringFilter<"ViewingBooking"> | string
+    viewingDate?: DateTimeFilter<"ViewingBooking"> | Date | string
+    status?: StringFilter<"ViewingBooking"> | string
+    property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
+  }, "id">
+
+  export type ViewingBookingOrderByWithAggregationInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    viewingDate?: SortOrder
+    status?: SortOrder
+    _count?: ViewingBookingCountOrderByAggregateInput
+    _avg?: ViewingBookingAvgOrderByAggregateInput
+    _max?: ViewingBookingMaxOrderByAggregateInput
+    _min?: ViewingBookingMinOrderByAggregateInput
+    _sum?: ViewingBookingSumOrderByAggregateInput
+  }
+
+  export type ViewingBookingScalarWhereWithAggregatesInput = {
+    AND?: ViewingBookingScalarWhereWithAggregatesInput | ViewingBookingScalarWhereWithAggregatesInput[]
+    OR?: ViewingBookingScalarWhereWithAggregatesInput[]
+    NOT?: ViewingBookingScalarWhereWithAggregatesInput | ViewingBookingScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ViewingBooking"> | number
+    propertyId?: IntWithAggregatesFilter<"ViewingBooking"> | number
+    name?: StringWithAggregatesFilter<"ViewingBooking"> | string
+    email?: StringWithAggregatesFilter<"ViewingBooking"> | string
+    phone?: StringWithAggregatesFilter<"ViewingBooking"> | string
+    viewingDate?: DateTimeWithAggregatesFilter<"ViewingBooking"> | Date | string
+    status?: StringWithAggregatesFilter<"ViewingBooking"> | string
+  }
+
+  export type SubmissionLinkWhereInput = {
+    AND?: SubmissionLinkWhereInput | SubmissionLinkWhereInput[]
+    OR?: SubmissionLinkWhereInput[]
+    NOT?: SubmissionLinkWhereInput | SubmissionLinkWhereInput[]
+    id?: IntFilter<"SubmissionLink"> | number
+    token?: StringFilter<"SubmissionLink"> | string
+    expiryDate?: DateTimeFilter<"SubmissionLink"> | Date | string
+    isUsed?: BoolFilter<"SubmissionLink"> | boolean
+    createdAt?: DateTimeFilter<"SubmissionLink"> | Date | string
+  }
+
+  export type SubmissionLinkOrderByWithRelationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiryDate?: SortOrder
+    isUsed?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SubmissionLinkWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    token?: string
+    AND?: SubmissionLinkWhereInput | SubmissionLinkWhereInput[]
+    OR?: SubmissionLinkWhereInput[]
+    NOT?: SubmissionLinkWhereInput | SubmissionLinkWhereInput[]
+    expiryDate?: DateTimeFilter<"SubmissionLink"> | Date | string
+    isUsed?: BoolFilter<"SubmissionLink"> | boolean
+    createdAt?: DateTimeFilter<"SubmissionLink"> | Date | string
+  }, "id" | "token">
+
+  export type SubmissionLinkOrderByWithAggregationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiryDate?: SortOrder
+    isUsed?: SortOrder
+    createdAt?: SortOrder
+    _count?: SubmissionLinkCountOrderByAggregateInput
+    _avg?: SubmissionLinkAvgOrderByAggregateInput
+    _max?: SubmissionLinkMaxOrderByAggregateInput
+    _min?: SubmissionLinkMinOrderByAggregateInput
+    _sum?: SubmissionLinkSumOrderByAggregateInput
+  }
+
+  export type SubmissionLinkScalarWhereWithAggregatesInput = {
+    AND?: SubmissionLinkScalarWhereWithAggregatesInput | SubmissionLinkScalarWhereWithAggregatesInput[]
+    OR?: SubmissionLinkScalarWhereWithAggregatesInput[]
+    NOT?: SubmissionLinkScalarWhereWithAggregatesInput | SubmissionLinkScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"SubmissionLink"> | number
+    token?: StringWithAggregatesFilter<"SubmissionLink"> | string
+    expiryDate?: DateTimeWithAggregatesFilter<"SubmissionLink"> | Date | string
+    isUsed?: BoolWithAggregatesFilter<"SubmissionLink"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"SubmissionLink"> | Date | string
+  }
+
   export type UserCreateInput = {
     authId?: string
     name: string
@@ -9752,6 +13611,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -9759,12 +13619,16 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
     tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateInput = {
@@ -9780,6 +13644,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -9787,12 +13652,16 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     locationId: number
     managerUserId: string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUpdateInput = {
@@ -9807,6 +13676,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -9814,12 +13684,16 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateInput = {
@@ -9835,6 +13709,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -9842,12 +13717,16 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyCreateManyInput = {
@@ -9863,6 +13742,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -9870,6 +13750,8 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     locationId: number
     managerUserId: string
   }
@@ -9886,6 +13768,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -9893,6 +13776,8 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PropertyUncheckedUpdateManyInput = {
@@ -9908,6 +13793,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -9915,6 +13801,8 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
   }
@@ -10177,6 +14065,163 @@ export namespace Prisma {
     paymentDate?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentStatus?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     leaseId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ViewingAvailabilityCreateInput = {
+    date: Date | string
+    property: PropertyCreateNestedOneWithoutViewingAvailabilitiesInput
+  }
+
+  export type ViewingAvailabilityUncheckedCreateInput = {
+    id?: number
+    propertyId: number
+    date: Date | string
+  }
+
+  export type ViewingAvailabilityUpdateInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    property?: PropertyUpdateOneRequiredWithoutViewingAvailabilitiesNestedInput
+  }
+
+  export type ViewingAvailabilityUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ViewingAvailabilityCreateManyInput = {
+    id?: number
+    propertyId: number
+    date: Date | string
+  }
+
+  export type ViewingAvailabilityUpdateManyMutationInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ViewingAvailabilityUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ViewingBookingCreateInput = {
+    name: string
+    email: string
+    phone: string
+    viewingDate: Date | string
+    status?: string
+    property: PropertyCreateNestedOneWithoutViewingBookingsInput
+  }
+
+  export type ViewingBookingUncheckedCreateInput = {
+    id?: number
+    propertyId: number
+    name: string
+    email: string
+    phone: string
+    viewingDate: Date | string
+    status?: string
+  }
+
+  export type ViewingBookingUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    viewingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    property?: PropertyUpdateOneRequiredWithoutViewingBookingsNestedInput
+  }
+
+  export type ViewingBookingUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    viewingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ViewingBookingCreateManyInput = {
+    id?: number
+    propertyId: number
+    name: string
+    email: string
+    phone: string
+    viewingDate: Date | string
+    status?: string
+  }
+
+  export type ViewingBookingUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    viewingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ViewingBookingUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    propertyId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    viewingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SubmissionLinkCreateInput = {
+    token?: string
+    expiryDate: Date | string
+    isUsed?: boolean
+    createdAt?: Date | string
+  }
+
+  export type SubmissionLinkUncheckedCreateInput = {
+    id?: number
+    token?: string
+    expiryDate: Date | string
+    isUsed?: boolean
+    createdAt?: Date | string
+  }
+
+  export type SubmissionLinkUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubmissionLinkUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    expiryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubmissionLinkCreateManyInput = {
+    id?: number
+    token?: string
+    expiryDate: Date | string
+    isUsed?: boolean
+    createdAt?: Date | string
+  }
+
+  export type SubmissionLinkUpdateManyMutationInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    expiryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SubmissionLinkUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    expiryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -10484,6 +14529,13 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type EnumPropertyStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PropertyStatus | EnumPropertyStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PropertyStatus[] | ListEnumPropertyStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PropertyStatus[] | ListEnumPropertyStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPropertyStatusFilter<$PrismaModel> | $Enums.PropertyStatus
+  }
+
   export type LocationScalarRelationFilter = {
     is?: LocationWhereInput
     isNot?: LocationWhereInput
@@ -10500,7 +14552,27 @@ export namespace Prisma {
     none?: UserWhereInput
   }
 
+  export type ViewingAvailabilityListRelationFilter = {
+    every?: ViewingAvailabilityWhereInput
+    some?: ViewingAvailabilityWhereInput
+    none?: ViewingAvailabilityWhereInput
+  }
+
+  export type ViewingBookingListRelationFilter = {
+    every?: ViewingBookingWhereInput
+    some?: ViewingBookingWhereInput
+    none?: ViewingBookingWhereInput
+  }
+
   export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ViewingAvailabilityOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ViewingBookingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10517,6 +14589,7 @@ export namespace Prisma {
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isSale?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -10524,6 +14597,8 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
   }
@@ -10551,6 +14626,7 @@ export namespace Prisma {
     applicationFee?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isSale?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -10558,6 +14634,8 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
   }
@@ -10572,6 +14650,7 @@ export namespace Prisma {
     applicationFee?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
+    isSale?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -10579,6 +14658,8 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
   }
@@ -10666,6 +14747,16 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumPropertyStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PropertyStatus | EnumPropertyStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PropertyStatus[] | ListEnumPropertyStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PropertyStatus[] | ListEnumPropertyStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPropertyStatusWithAggregatesFilter<$PrismaModel> | $Enums.PropertyStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPropertyStatusFilter<$PrismaModel>
+    _max?: NestedEnumPropertyStatusFilter<$PrismaModel>
   }
 
   export type LocationCountOrderByAggregateInput = {
@@ -10904,6 +14995,106 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPaymentStatusFilter<$PrismaModel>
     _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
+  }
+
+  export type ViewingAvailabilityCountOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    date?: SortOrder
+  }
+
+  export type ViewingAvailabilityAvgOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type ViewingAvailabilityMaxOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    date?: SortOrder
+  }
+
+  export type ViewingAvailabilityMinOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    date?: SortOrder
+  }
+
+  export type ViewingAvailabilitySumOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type ViewingBookingCountOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    viewingDate?: SortOrder
+    status?: SortOrder
+  }
+
+  export type ViewingBookingAvgOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type ViewingBookingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    viewingDate?: SortOrder
+    status?: SortOrder
+  }
+
+  export type ViewingBookingMinOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phone?: SortOrder
+    viewingDate?: SortOrder
+    status?: SortOrder
+  }
+
+  export type ViewingBookingSumOrderByAggregateInput = {
+    id?: SortOrder
+    propertyId?: SortOrder
+  }
+
+  export type SubmissionLinkCountOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiryDate?: SortOrder
+    isUsed?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SubmissionLinkAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type SubmissionLinkMaxOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiryDate?: SortOrder
+    isUsed?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SubmissionLinkMinOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiryDate?: SortOrder
+    isUsed?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SubmissionLinkSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type PropertyCreateNestedManyWithoutManagerInput = {
@@ -11184,6 +15375,20 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type ViewingAvailabilityCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ViewingAvailabilityCreateWithoutPropertyInput, ViewingAvailabilityUncheckedCreateWithoutPropertyInput> | ViewingAvailabilityCreateWithoutPropertyInput[] | ViewingAvailabilityUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ViewingAvailabilityCreateOrConnectWithoutPropertyInput | ViewingAvailabilityCreateOrConnectWithoutPropertyInput[]
+    createMany?: ViewingAvailabilityCreateManyPropertyInputEnvelope
+    connect?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+  }
+
+  export type ViewingBookingCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ViewingBookingCreateWithoutPropertyInput, ViewingBookingUncheckedCreateWithoutPropertyInput> | ViewingBookingCreateWithoutPropertyInput[] | ViewingBookingUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ViewingBookingCreateOrConnectWithoutPropertyInput | ViewingBookingCreateOrConnectWithoutPropertyInput[]
+    createMany?: ViewingBookingCreateManyPropertyInputEnvelope
+    connect?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+  }
+
   export type LeaseUncheckedCreateNestedManyWithoutPropertyInput = {
     create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
@@ -11208,6 +15413,20 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
     connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ViewingAvailabilityCreateWithoutPropertyInput, ViewingAvailabilityUncheckedCreateWithoutPropertyInput> | ViewingAvailabilityCreateWithoutPropertyInput[] | ViewingAvailabilityUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ViewingAvailabilityCreateOrConnectWithoutPropertyInput | ViewingAvailabilityCreateOrConnectWithoutPropertyInput[]
+    createMany?: ViewingAvailabilityCreateManyPropertyInputEnvelope
+    connect?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+  }
+
+  export type ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ViewingBookingCreateWithoutPropertyInput, ViewingBookingUncheckedCreateWithoutPropertyInput> | ViewingBookingCreateWithoutPropertyInput[] | ViewingBookingUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ViewingBookingCreateOrConnectWithoutPropertyInput | ViewingBookingCreateOrConnectWithoutPropertyInput[]
+    createMany?: ViewingBookingCreateManyPropertyInputEnvelope
+    connect?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -11255,6 +15474,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type EnumPropertyStatusFieldUpdateOperationsInput = {
+    set?: $Enums.PropertyStatus
   }
 
   export type LocationUpdateOneRequiredWithoutPropertiesNestedInput = {
@@ -11324,6 +15547,34 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type ViewingAvailabilityUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ViewingAvailabilityCreateWithoutPropertyInput, ViewingAvailabilityUncheckedCreateWithoutPropertyInput> | ViewingAvailabilityCreateWithoutPropertyInput[] | ViewingAvailabilityUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ViewingAvailabilityCreateOrConnectWithoutPropertyInput | ViewingAvailabilityCreateOrConnectWithoutPropertyInput[]
+    upsert?: ViewingAvailabilityUpsertWithWhereUniqueWithoutPropertyInput | ViewingAvailabilityUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ViewingAvailabilityCreateManyPropertyInputEnvelope
+    set?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+    disconnect?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+    delete?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+    connect?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+    update?: ViewingAvailabilityUpdateWithWhereUniqueWithoutPropertyInput | ViewingAvailabilityUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ViewingAvailabilityUpdateManyWithWhereWithoutPropertyInput | ViewingAvailabilityUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ViewingAvailabilityScalarWhereInput | ViewingAvailabilityScalarWhereInput[]
+  }
+
+  export type ViewingBookingUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ViewingBookingCreateWithoutPropertyInput, ViewingBookingUncheckedCreateWithoutPropertyInput> | ViewingBookingCreateWithoutPropertyInput[] | ViewingBookingUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ViewingBookingCreateOrConnectWithoutPropertyInput | ViewingBookingCreateOrConnectWithoutPropertyInput[]
+    upsert?: ViewingBookingUpsertWithWhereUniqueWithoutPropertyInput | ViewingBookingUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ViewingBookingCreateManyPropertyInputEnvelope
+    set?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+    disconnect?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+    delete?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+    connect?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+    update?: ViewingBookingUpdateWithWhereUniqueWithoutPropertyInput | ViewingBookingUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ViewingBookingUpdateManyWithWhereWithoutPropertyInput | ViewingBookingUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ViewingBookingScalarWhereInput | ViewingBookingScalarWhereInput[]
+  }
+
   export type LeaseUncheckedUpdateManyWithoutPropertyNestedInput = {
     create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
     connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
@@ -11376,6 +15627,34 @@ export namespace Prisma {
     update?: UserUpdateWithWhereUniqueWithoutTenantPropertiesInput | UserUpdateWithWhereUniqueWithoutTenantPropertiesInput[]
     updateMany?: UserUpdateManyWithWhereWithoutTenantPropertiesInput | UserUpdateManyWithWhereWithoutTenantPropertiesInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ViewingAvailabilityCreateWithoutPropertyInput, ViewingAvailabilityUncheckedCreateWithoutPropertyInput> | ViewingAvailabilityCreateWithoutPropertyInput[] | ViewingAvailabilityUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ViewingAvailabilityCreateOrConnectWithoutPropertyInput | ViewingAvailabilityCreateOrConnectWithoutPropertyInput[]
+    upsert?: ViewingAvailabilityUpsertWithWhereUniqueWithoutPropertyInput | ViewingAvailabilityUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ViewingAvailabilityCreateManyPropertyInputEnvelope
+    set?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+    disconnect?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+    delete?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+    connect?: ViewingAvailabilityWhereUniqueInput | ViewingAvailabilityWhereUniqueInput[]
+    update?: ViewingAvailabilityUpdateWithWhereUniqueWithoutPropertyInput | ViewingAvailabilityUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ViewingAvailabilityUpdateManyWithWhereWithoutPropertyInput | ViewingAvailabilityUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ViewingAvailabilityScalarWhereInput | ViewingAvailabilityScalarWhereInput[]
+  }
+
+  export type ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ViewingBookingCreateWithoutPropertyInput, ViewingBookingUncheckedCreateWithoutPropertyInput> | ViewingBookingCreateWithoutPropertyInput[] | ViewingBookingUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ViewingBookingCreateOrConnectWithoutPropertyInput | ViewingBookingCreateOrConnectWithoutPropertyInput[]
+    upsert?: ViewingBookingUpsertWithWhereUniqueWithoutPropertyInput | ViewingBookingUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ViewingBookingCreateManyPropertyInputEnvelope
+    set?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+    disconnect?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+    delete?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+    connect?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
+    update?: ViewingBookingUpdateWithWhereUniqueWithoutPropertyInput | ViewingBookingUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ViewingBookingUpdateManyWithWhereWithoutPropertyInput | ViewingBookingUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ViewingBookingScalarWhereInput | ViewingBookingScalarWhereInput[]
   }
 
   export type PropertyUpdateManyWithoutLocationNestedInput = {
@@ -11574,6 +15853,34 @@ export namespace Prisma {
     update?: XOR<XOR<LeaseUpdateToOneWithWhereWithoutPaymentsInput, LeaseUpdateWithoutPaymentsInput>, LeaseUncheckedUpdateWithoutPaymentsInput>
   }
 
+  export type PropertyCreateNestedOneWithoutViewingAvailabilitiesInput = {
+    create?: XOR<PropertyCreateWithoutViewingAvailabilitiesInput, PropertyUncheckedCreateWithoutViewingAvailabilitiesInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutViewingAvailabilitiesInput
+    connect?: PropertyWhereUniqueInput
+  }
+
+  export type PropertyUpdateOneRequiredWithoutViewingAvailabilitiesNestedInput = {
+    create?: XOR<PropertyCreateWithoutViewingAvailabilitiesInput, PropertyUncheckedCreateWithoutViewingAvailabilitiesInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutViewingAvailabilitiesInput
+    upsert?: PropertyUpsertWithoutViewingAvailabilitiesInput
+    connect?: PropertyWhereUniqueInput
+    update?: XOR<XOR<PropertyUpdateToOneWithWhereWithoutViewingAvailabilitiesInput, PropertyUpdateWithoutViewingAvailabilitiesInput>, PropertyUncheckedUpdateWithoutViewingAvailabilitiesInput>
+  }
+
+  export type PropertyCreateNestedOneWithoutViewingBookingsInput = {
+    create?: XOR<PropertyCreateWithoutViewingBookingsInput, PropertyUncheckedCreateWithoutViewingBookingsInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutViewingBookingsInput
+    connect?: PropertyWhereUniqueInput
+  }
+
+  export type PropertyUpdateOneRequiredWithoutViewingBookingsNestedInput = {
+    create?: XOR<PropertyCreateWithoutViewingBookingsInput, PropertyUncheckedCreateWithoutViewingBookingsInput>
+    connectOrCreate?: PropertyCreateOrConnectWithoutViewingBookingsInput
+    upsert?: PropertyUpsertWithoutViewingBookingsInput
+    connect?: PropertyWhereUniqueInput
+    update?: XOR<XOR<PropertyUpdateToOneWithWhereWithoutViewingBookingsInput, PropertyUpdateWithoutViewingBookingsInput>, PropertyUncheckedUpdateWithoutViewingBookingsInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -11769,6 +16076,13 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumPropertyStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.PropertyStatus | EnumPropertyStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PropertyStatus[] | ListEnumPropertyStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PropertyStatus[] | ListEnumPropertyStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPropertyStatusFilter<$PrismaModel> | $Enums.PropertyStatus
+  }
+
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -11841,6 +16155,16 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumPropertyStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PropertyStatus | EnumPropertyStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.PropertyStatus[] | ListEnumPropertyStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PropertyStatus[] | ListEnumPropertyStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumPropertyStatusWithAggregatesFilter<$PrismaModel> | $Enums.PropertyStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPropertyStatusFilter<$PrismaModel>
+    _max?: NestedEnumPropertyStatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumApplicationStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
     in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
@@ -11887,6 +16211,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -11894,11 +16219,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     location: LocationCreateNestedOneWithoutPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
     tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutManagerInput = {
@@ -11914,6 +16243,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -11921,11 +16251,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     locationId: number
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutManagerInput = {
@@ -11950,6 +16284,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -11957,11 +16292,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutTenantsInput = {
@@ -11977,6 +16316,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -11984,11 +16324,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     locationId: number
     managerUserId: string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutTenantsInput = {
@@ -12008,6 +16352,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -12015,11 +16360,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
     tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutFavoritedByInput = {
@@ -12035,6 +16384,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -12042,11 +16392,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     locationId: number
     managerUserId: string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutFavoritedByInput = {
@@ -12150,6 +16504,7 @@ export namespace Prisma {
     highlights?: EnumHighlightNullableListFilter<"Property">
     isPetsAllowed?: BoolFilter<"Property"> | boolean
     isParkingIncluded?: BoolFilter<"Property"> | boolean
+    isSale?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
@@ -12157,6 +16512,8 @@ export namespace Prisma {
     postedDate?: DateTimeFilter<"Property"> | Date | string
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
+    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
+    submittedBy?: StringNullableFilter<"Property"> | string | null
     locationId?: IntFilter<"Property"> | number
     managerUserId?: StringFilter<"Property"> | string
   }
@@ -12432,6 +16789,52 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput>
   }
 
+  export type ViewingAvailabilityCreateWithoutPropertyInput = {
+    date: Date | string
+  }
+
+  export type ViewingAvailabilityUncheckedCreateWithoutPropertyInput = {
+    id?: number
+    date: Date | string
+  }
+
+  export type ViewingAvailabilityCreateOrConnectWithoutPropertyInput = {
+    where: ViewingAvailabilityWhereUniqueInput
+    create: XOR<ViewingAvailabilityCreateWithoutPropertyInput, ViewingAvailabilityUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ViewingAvailabilityCreateManyPropertyInputEnvelope = {
+    data: ViewingAvailabilityCreateManyPropertyInput | ViewingAvailabilityCreateManyPropertyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ViewingBookingCreateWithoutPropertyInput = {
+    name: string
+    email: string
+    phone: string
+    viewingDate: Date | string
+    status?: string
+  }
+
+  export type ViewingBookingUncheckedCreateWithoutPropertyInput = {
+    id?: number
+    name: string
+    email: string
+    phone: string
+    viewingDate: Date | string
+    status?: string
+  }
+
+  export type ViewingBookingCreateOrConnectWithoutPropertyInput = {
+    where: ViewingBookingWhereUniqueInput
+    create: XOR<ViewingBookingCreateWithoutPropertyInput, ViewingBookingUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ViewingBookingCreateManyPropertyInputEnvelope = {
+    data: ViewingBookingCreateManyPropertyInput | ViewingBookingCreateManyPropertyInput[]
+    skipDuplicates?: boolean
+  }
+
   export type LocationUpdateToOneWithWhereWithoutPropertiesInput = {
     where?: LocationWhereInput
     data: XOR<LocationUpdateWithoutPropertiesInput, LocationUncheckedUpdateWithoutPropertiesInput>
@@ -12578,6 +16981,60 @@ export namespace Prisma {
     data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutTenantPropertiesInput>
   }
 
+  export type ViewingAvailabilityUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: ViewingAvailabilityWhereUniqueInput
+    update: XOR<ViewingAvailabilityUpdateWithoutPropertyInput, ViewingAvailabilityUncheckedUpdateWithoutPropertyInput>
+    create: XOR<ViewingAvailabilityCreateWithoutPropertyInput, ViewingAvailabilityUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ViewingAvailabilityUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: ViewingAvailabilityWhereUniqueInput
+    data: XOR<ViewingAvailabilityUpdateWithoutPropertyInput, ViewingAvailabilityUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type ViewingAvailabilityUpdateManyWithWhereWithoutPropertyInput = {
+    where: ViewingAvailabilityScalarWhereInput
+    data: XOR<ViewingAvailabilityUpdateManyMutationInput, ViewingAvailabilityUncheckedUpdateManyWithoutPropertyInput>
+  }
+
+  export type ViewingAvailabilityScalarWhereInput = {
+    AND?: ViewingAvailabilityScalarWhereInput | ViewingAvailabilityScalarWhereInput[]
+    OR?: ViewingAvailabilityScalarWhereInput[]
+    NOT?: ViewingAvailabilityScalarWhereInput | ViewingAvailabilityScalarWhereInput[]
+    id?: IntFilter<"ViewingAvailability"> | number
+    propertyId?: IntFilter<"ViewingAvailability"> | number
+    date?: DateTimeFilter<"ViewingAvailability"> | Date | string
+  }
+
+  export type ViewingBookingUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: ViewingBookingWhereUniqueInput
+    update: XOR<ViewingBookingUpdateWithoutPropertyInput, ViewingBookingUncheckedUpdateWithoutPropertyInput>
+    create: XOR<ViewingBookingCreateWithoutPropertyInput, ViewingBookingUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ViewingBookingUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: ViewingBookingWhereUniqueInput
+    data: XOR<ViewingBookingUpdateWithoutPropertyInput, ViewingBookingUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type ViewingBookingUpdateManyWithWhereWithoutPropertyInput = {
+    where: ViewingBookingScalarWhereInput
+    data: XOR<ViewingBookingUpdateManyMutationInput, ViewingBookingUncheckedUpdateManyWithoutPropertyInput>
+  }
+
+  export type ViewingBookingScalarWhereInput = {
+    AND?: ViewingBookingScalarWhereInput | ViewingBookingScalarWhereInput[]
+    OR?: ViewingBookingScalarWhereInput[]
+    NOT?: ViewingBookingScalarWhereInput | ViewingBookingScalarWhereInput[]
+    id?: IntFilter<"ViewingBooking"> | number
+    propertyId?: IntFilter<"ViewingBooking"> | number
+    name?: StringFilter<"ViewingBooking"> | string
+    email?: StringFilter<"ViewingBooking"> | string
+    phone?: StringFilter<"ViewingBooking"> | string
+    viewingDate?: DateTimeFilter<"ViewingBooking"> | Date | string
+    status?: StringFilter<"ViewingBooking"> | string
+  }
+
   export type PropertyCreateWithoutLocationInput = {
     name: string
     slug?: string | null
@@ -12590,6 +17047,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -12597,11 +17055,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
     tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutLocationInput = {
@@ -12617,6 +17079,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -12624,11 +17087,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     managerUserId: string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutLocationInput = {
@@ -12669,6 +17136,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -12676,11 +17144,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
     leases?: LeaseCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
     tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutApplicationsInput = {
@@ -12696,6 +17168,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -12703,11 +17176,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     locationId: number
     managerUserId: string
     leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutApplicationsInput = {
@@ -12802,6 +17279,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -12809,11 +17287,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutApplicationsInput = {
@@ -12829,6 +17311,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -12836,11 +17319,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserUpsertWithoutTenantApplicationsInput = {
@@ -12931,6 +17418,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -12938,11 +17426,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
     tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyUncheckedCreateWithoutLeasesInput = {
@@ -12958,6 +17450,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -12965,11 +17458,15 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     locationId: number
     managerUserId: string
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutLeasesInput = {
@@ -13093,6 +17590,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13100,11 +17598,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutLeasesInput = {
@@ -13120,6 +17622,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13127,11 +17630,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type UserUpsertWithoutTenantLeasesInput = {
@@ -13299,6 +17806,290 @@ export namespace Prisma {
     application?: ApplicationUncheckedUpdateOneWithoutLeaseNestedInput
   }
 
+  export type PropertyCreateWithoutViewingAvailabilitiesInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isSale?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyUncheckedCreateWithoutViewingAvailabilitiesInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isSale?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    locationId: number
+    managerUserId: string
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyCreateOrConnectWithoutViewingAvailabilitiesInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutViewingAvailabilitiesInput, PropertyUncheckedCreateWithoutViewingAvailabilitiesInput>
+  }
+
+  export type PropertyUpsertWithoutViewingAvailabilitiesInput = {
+    update: XOR<PropertyUpdateWithoutViewingAvailabilitiesInput, PropertyUncheckedUpdateWithoutViewingAvailabilitiesInput>
+    create: XOR<PropertyCreateWithoutViewingAvailabilitiesInput, PropertyUncheckedCreateWithoutViewingAvailabilitiesInput>
+    where?: PropertyWhereInput
+  }
+
+  export type PropertyUpdateToOneWithWhereWithoutViewingAvailabilitiesInput = {
+    where?: PropertyWhereInput
+    data: XOR<PropertyUpdateWithoutViewingAvailabilitiesInput, PropertyUncheckedUpdateWithoutViewingAvailabilitiesInput>
+  }
+
+  export type PropertyUpdateWithoutViewingAvailabilitiesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutViewingAvailabilitiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyCreateWithoutViewingBookingsInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isSale?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyUncheckedCreateWithoutViewingBookingsInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isSale?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    locationId: number
+    managerUserId: string
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+  }
+
+  export type PropertyCreateOrConnectWithoutViewingBookingsInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutViewingBookingsInput, PropertyUncheckedCreateWithoutViewingBookingsInput>
+  }
+
+  export type PropertyUpsertWithoutViewingBookingsInput = {
+    update: XOR<PropertyUpdateWithoutViewingBookingsInput, PropertyUncheckedUpdateWithoutViewingBookingsInput>
+    create: XOR<PropertyCreateWithoutViewingBookingsInput, PropertyUncheckedCreateWithoutViewingBookingsInput>
+    where?: PropertyWhereInput
+  }
+
+  export type PropertyUpdateToOneWithWhereWithoutViewingBookingsInput = {
+    where?: PropertyWhereInput
+    data: XOR<PropertyUpdateWithoutViewingBookingsInput, PropertyUncheckedUpdateWithoutViewingBookingsInput>
+  }
+
+  export type PropertyUpdateWithoutViewingBookingsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutViewingBookingsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
+    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+  }
+
   export type PropertyCreateManyManagerInput = {
     id?: number
     name: string
@@ -13312,6 +18103,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13319,6 +18111,8 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     locationId: number
   }
 
@@ -13355,6 +18149,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13362,11 +18157,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutManagerInput = {
@@ -13382,6 +18181,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13389,11 +18189,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutManagerInput = {
@@ -13409,6 +18213,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13416,6 +18221,8 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -13431,6 +18238,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13438,11 +18246,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutTenantsInput = {
@@ -13458,6 +18270,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13465,11 +18278,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutTenantsInput = {
@@ -13485,6 +18302,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13492,6 +18310,8 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
   }
@@ -13508,6 +18328,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13515,11 +18336,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
     tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutFavoritedByInput = {
@@ -13535,6 +18360,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13542,11 +18368,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateManyWithoutFavoritedByInput = {
@@ -13562,6 +18392,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13569,6 +18400,8 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
   }
@@ -13657,6 +18490,20 @@ export namespace Prisma {
     phoneNumber: string
     message?: string | null
     leaseId?: number | null
+  }
+
+  export type ViewingAvailabilityCreateManyPropertyInput = {
+    id?: number
+    date: Date | string
+  }
+
+  export type ViewingBookingCreateManyPropertyInput = {
+    id?: number
+    name: string
+    email: string
+    phone: string
+    viewingDate: Date | string
+    status?: string
   }
 
   export type LeaseUpdateWithoutPropertyInput = {
@@ -13816,6 +18663,46 @@ export namespace Prisma {
     verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
+  export type ViewingAvailabilityUpdateWithoutPropertyInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ViewingAvailabilityUncheckedUpdateWithoutPropertyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ViewingAvailabilityUncheckedUpdateManyWithoutPropertyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ViewingBookingUpdateWithoutPropertyInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    viewingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ViewingBookingUncheckedUpdateWithoutPropertyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    viewingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ViewingBookingUncheckedUpdateManyWithoutPropertyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    viewingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
   export type PropertyUpdateWithoutLocationInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13828,6 +18715,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13835,11 +18723,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
     leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutLocationInput = {
@@ -13855,6 +18747,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13862,11 +18755,15 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     managerUserId?: StringFieldUpdateOperationsInput | string
     leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyCreateManyLocationInput = {
@@ -13882,6 +18779,7 @@ export namespace Prisma {
     highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
+    isSale?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13889,6 +18787,8 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
     managerUserId: string
   }
 
@@ -13905,6 +18805,7 @@ export namespace Prisma {
     highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13912,6 +18813,8 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     managerUserId?: StringFieldUpdateOperationsInput | string
   }
 

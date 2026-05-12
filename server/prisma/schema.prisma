@@ -66,6 +66,12 @@ enum PaymentStatus {
   Overdue
 }
 
+enum PropertyStatus {
+  pending
+  approved
+  rejected
+}
+
 enum UserRole {
   tenant
   manager
@@ -92,9 +98,9 @@ model User {
 }
 
 model Property {
-  id                Int          @id @default(autoincrement())
+  id                Int              @id @default(autoincrement())
   name              String
-  slug              String?      @unique
+  slug              String?          @unique
   description       String
   pricePerMonth     Float
   securityDeposit   Float
@@ -102,16 +108,18 @@ model Property {
   photoUrls         String[]
   amenities         Amenity[]
   highlights        Highlight[]
-  isPetsAllowed     Boolean      @default(false)
-  isParkingIncluded Boolean      @default(false)
-  isSale            Boolean      @default(false)
+  isPetsAllowed     Boolean          @default(false)
+  isParkingIncluded Boolean          @default(false)
+  isSale            Boolean          @default(false)
   beds              Int
   baths             Float
   squareFeet        Int
   propertyType      PropertyType
-  postedDate        DateTime     @default(now())
-  averageRating     Float?       @default(0)
-  numberOfReviews   Int?         @default(0)
+  postedDate        DateTime         @default(now())
+  averageRating     Float?           @default(0)
+  numberOfReviews   Int?             @default(0)
+  status            PropertyStatus   @default(pending)
+  submittedBy       String?
   locationId        Int
   managerUserId     String
 
@@ -198,4 +206,12 @@ model ViewingBooking {
   viewingDate DateTime
   status      String   @default("pending")
   property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+}
+
+model SubmissionLink {
+  id          Int      @id @default(autoincrement())
+  token       String   @unique @default(uuid())
+  expiryDate  DateTime
+  isUsed      Boolean  @default(false)
+  createdAt   DateTime @default(now())
 }

@@ -225,7 +225,7 @@ const Navbar = () => {
             </>
           ) : (
             <div className="hidden md:flex items-center gap-6 font-nav tracking-[1px]">
-              <Link href="/contact-us">
+              <Link href="/list-with-us">
                 <Button
                   variant="default"
                   className="bg-secondary text-white hover:bg-secondary/90 font-bold px-6 shadow-sm uppercase text-xs rounded-md"
@@ -394,7 +394,7 @@ const Navbar = () => {
             <>
               <div className="h-px bg-gray-100 w-full my-1"></div>
               <div className="flex flex-col gap-4 mt-2">
-                <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/list-with-us" onClick={() => setIsMobileMenuOpen(false)}>
                   <Button className="w-full bg-secondary text-white font-bold uppercase py-6 shadow-lg hover:bg-secondary/90 transition-all">
                     List With Us
                   </Button>

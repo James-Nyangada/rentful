@@ -30,6 +30,7 @@ export const api = createApi({
     "Payments",
     "Applications",
     "Viewings",
+    "PendingProperties",
   ],
   endpoints: (build) => ({
     getAuthUser: build.query<AuthUserType, void>({
@@ -469,6 +470,72 @@ export const api = createApi({
       query: () => `viewings`,
       providesTags: ["Viewings"],
     }),
+
+    // Agent workflow endpoints
+    agentSubmitProperty: build.mutation<{ message: string; propertyId: number }, FormData>({
+      query: (formData) => ({
+        url: `properties/agent-submit`,
+        method: "POST",
+        body: formData,
+      }),
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          success: "Property submitted successfully! It will be reviewed by our team.",
+          error: "Failed to submit property.",
+        });
+      },
+    }),
+
+    getPendingProperties: build.query<Property[], void>({
+      query: () => `properties/pending`,
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "PendingProperties" as const, id })),
+              { type: "PendingProperties", id: "LIST" },
+            ]
+          : [{ type: "PendingProperties", id: "LIST" }],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          error: "Failed to fetch pending properties.",
+        });
+      },
+    }),
+
+    approveProperty: build.mutation<{ message: string; property: Property }, number>({
+      query: (id) => ({
+        url: `properties/${id}/approve`,
+        method: "PUT",
+      }),
+      invalidatesTags: (result, error, id) => [
+        { type: "PendingProperties", id: "LIST" },
+        { type: "Properties", id: "LIST" },
+        { type: "PropertyDetails", id },
+      ],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          success: "Property approved and is now live!",
+          error: "Failed to approve property.",
+        });
+      },
+    }),
+
+    rejectProperty: build.mutation<{ message: string; property: Property }, number>({
+      query: (id) => ({
+        url: `properties/${id}/reject`,
+        method: "PUT",
+      }),
+      invalidatesTags: (result, error, id) => [
+        { type: "PendingProperties", id: "LIST" },
+        { type: "PropertyDetails", id },
+      ],
+      async onQueryStarted(_, { queryFulfilled }) {
+        await withToast(queryFulfilled, {
+          success: "Property has been rejected.",
+          error: "Failed to reject property.",
+        });
+      },
+    }),
   }),
 });
 
@@ -499,4 +566,8 @@ export const {
   useSetAvailabilityMutation,
   useCreateBookingMutation,
   useGetManagerViewingsQuery,
+  useAgentSubmitPropertyMutation,
+  useGetPendingPropertiesQuery,
+  useApprovePropertyMutation,
+  useRejectPropertyMutation,
 } = api;

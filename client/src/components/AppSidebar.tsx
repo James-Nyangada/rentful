@@ -13,6 +13,7 @@ import {
 } from "./ui/sidebar";
 import {
   Building,
+  ClipboardCheck,
   FileText,
   Heart,
   Home,
@@ -47,6 +48,11 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
             icon: Plus,
             label: "Add New Property",
             href: "/managers/newproperty",
+          },
+          {
+            icon: ClipboardCheck,
+            label: "Review Room",
+            href: "/managers/review",
           },
           {
             icon: FileText,

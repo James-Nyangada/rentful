@@ -11,6 +11,10 @@ import {
   getPropertyPayments,
   getAvailability,
   setAvailability,
+  agentSubmitProperty,
+  getPendingProperties,
+  approveProperty,
+  rejectProperty,
 } from "../controllers/propertyControllers";
 import multer from "multer";
 import { authMiddleware } from "../middleware/authMiddleware";
@@ -20,9 +24,36 @@ const upload = multer({ storage: storage });
 
 const router = express.Router();
 
+// Public routes
 router.get("/", getProperties);
 router.get("/recent", getRecentProperties);
 router.get("/locations", getPropertyLocations);
+
+// Agent submission - public, no auth required
+router.post(
+  "/agent-submit",
+  upload.array("photos"),
+  agentSubmitProperty
+);
+
+// Manager review routes
+router.get(
+  "/pending",
+  authMiddleware(["manager"]),
+  getPendingProperties
+);
+router.put(
+  "/:id/approve",
+  authMiddleware(["manager"]),
+  approveProperty
+);
+router.put(
+  "/:id/reject",
+  authMiddleware(["manager"]),
+  rejectProperty
+);
+
+// Existing routes
 router.get("/:id", getProperty);
 router.get("/:id/availability", getAvailability);
 router.post(

@@ -73,3 +73,34 @@ export const verifySchema = z.object({
   code: z.string().min(6, "Code must be 6 characters").max(6),
 });
 export type VerifyFormData = z.infer<typeof verifySchema>;
+
+export const agentSubmissionSchema = z.object({
+  agentName: z.string().min(1, "Your name is required"),
+  agentEmail: z.string().email("Invalid email address"),
+  agentPhone: z.string().min(10, "Phone number must be at least 10 digits"),
+  name: z.string().min(1, "Property name is required"),
+  description: z.string().min(1, "Description is required"),
+  pricePerMonth: z.coerce.number().min(0).int(),
+  securityDeposit: z.coerce.number().min(0).int(),
+  applicationFee: z.coerce.number().min(0).int(),
+  isPetsAllowed: z.boolean(),
+  isParkingIncluded: z.boolean(),
+  isSale: z.boolean(),
+  photoUrls: z
+    .array(z.instanceof(File))
+    .min(1, "At least one photo is required"),
+  amenities: z.string().min(1, "Amenities are required"),
+  highlights: z.string().min(1, "Highlights are required"),
+  beds: z.coerce.number().positive().min(0).max(10).int(),
+  baths: z.coerce.number().positive().min(0).max(10).int(),
+  squareFeet: z.coerce.number().int().positive(),
+  propertyType: z.nativeEnum(PropertyTypeEnum),
+  address: z.string().min(1, "Address is required"),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "Area location is required"),
+  country: z.string().min(1, "Country is required"),
+  postalCode: z.string().min(1, "Postal code is required"),
+  latitude: z.string().optional(),
+  longitude: z.string().optional(),
+});
+export type AgentSubmissionFormData = z.infer<typeof agentSubmissionSchema>;

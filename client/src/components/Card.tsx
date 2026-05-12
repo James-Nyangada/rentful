@@ -28,19 +28,7 @@ const Card = ({
         />
         
         {/* Top Badges */}
-        <div className="absolute top-4 left-4 right-4 flex justify-between items-start pointer-events-none">
-          <div className="flex flex-col gap-2">
-            {property.isPetsAllowed && (
-              <span className="bg-white/90 backdrop-blur-sm text-primary text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-sm pointer-events-auto">
-                Pets OK
-              </span>
-            )}
-            {property.isParkingIncluded && (
-              <span className="bg-white/90 backdrop-blur-sm text-primary text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-sm pointer-events-auto">
-                Parking
-              </span>
-            )}
-          </div>
+        <div className="absolute top-4 left-4 flex justify-start items-start pointer-events-none">
           <span className={`${(property as any).isSale ? "bg-secondary" : "bg-primary"} text-white text-[10px] font-black uppercase tracking-[0.15em] px-3 py-1.5 rounded-lg shadow-xl pointer-events-auto`}>
             {(property as any).isSale ? "Sale" : "Rent"}
           </span>
