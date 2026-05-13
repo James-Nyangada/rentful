@@ -105,5 +105,12 @@ export const agentSubmissionSchema = z.object({
   latitude: z.string().optional(),
   longitude: z.string().optional(),
   availableDays: z.string().optional(),
+  landlordName: z.string().optional(),
+  landlordEmail: z.string().email("Invalid email address").optional().or(z.literal("")),
+  landlordPhone: z.string().optional(),
+  caretakerName: z.string().optional(),
+  caretakerEmail: z.string().email("Invalid email address").optional().or(z.literal("")),
+  caretakerPhone: z.string().optional(),
 });
+
 export type AgentSubmissionFormData = z.infer<typeof agentSubmissionSchema>;

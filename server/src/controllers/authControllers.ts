@@ -207,3 +207,4 @@ export const resendVerificationCode = async (
     res.status(500).json({ message: `Error resending code: ${error.message}` });
   }
 };
+

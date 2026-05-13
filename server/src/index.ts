@@ -16,6 +16,7 @@ import leaseRoutes from "./routes/leaseRoutes";
 import applicationRoutes from "./routes/applicationRoutes";
 import viewingRoutes from "./routes/viewingRoutes";
 import featureRoutes from "./routes/featureRoutes";
+import agentTrackingRoutes from "./routes/agentTrackingRoutes";
 
 /* CONFIGURATIONS */
 const app = express();
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
   res.send("This is home route");
 });
 
+
 app.use("/auth", authRoutes);
 app.use("/applications", applicationRoutes);
 app.use("/properties", propertyRoutes);
@@ -40,6 +42,7 @@ app.use("/viewings", viewingRoutes);
 app.use("/features", featureRoutes);
 app.use("/tenants", authMiddleware(["tenant"]), tenantRoutes);
 app.use("/managers", authMiddleware(["manager"]), managerRoutes);
+app.use("/managers/agents", authMiddleware(["manager"]), agentTrackingRoutes);
 
 /* SERVER */
 const port = Number(process.env.PORT) || 3002;

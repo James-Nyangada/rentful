@@ -42,6 +42,7 @@ export const api = createApi({
     "Viewings",
     "PendingProperties",
     "Feature",
+    "AgentTracking",
   ],
   endpoints: (build) => ({
     getAuthUser: build.query<AuthUserType, void>({
@@ -583,6 +584,16 @@ export const api = createApi({
         });
       },
     }),
+
+    // ======= AGENT TRACKING =======
+    getAgentTracking: build.query<any, { search?: string; status?: string; propertyType?: string; location?: string; dateFrom?: string; dateTo?: string }>({
+      query: (params) => {
+        const cleanedParams = cleanParams(params);
+        const queryString = new URLSearchParams(cleanedParams).toString();
+        return `managers/agents/tracking${queryString ? `?${queryString}` : ""}`;
+      },
+      providesTags: ["AgentTracking"],
+    }),
   }),
 });
 
@@ -622,4 +633,5 @@ export const {
   useGetPendingPropertiesQuery,
   useApprovePropertyMutation,
   useRejectPropertyMutation,
+  useGetAgentTrackingQuery,
 } = api;

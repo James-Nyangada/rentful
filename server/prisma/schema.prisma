@@ -10,6 +10,8 @@ datasource db {
   extensions = [postgis, uuid_ossp(map: "uuid-ossp", schema: "extensions")]
 }
 
+
+
 model User {
   id                        Int           @id @default(autoincrement())
   authId                    String        @unique @default(uuid())
@@ -26,6 +28,11 @@ model User {
   managedProperties         Property[]    @relation("ManagerProperties")
   favorites                 Property[]    @relation("TenantFavorites")
   tenantProperties          Property[]    @relation("TenantProperties")
+  onboardedProperties       Property[]    @relation("OnboardedProperties")
+  onboardedLandlords        Landlord[]    @relation("OnboardedLandlords")
+  onboardedCaretakers       Caretaker[]   @relation("OnboardedCaretakers")
+  sentMessages              Communication[] @relation("SentMessages")
+  receivedMessages          Communication[] @relation("ReceivedMessages")
 }
 
 model Property {
@@ -62,6 +69,12 @@ model Property {
   viewingBookings       ViewingBooking[]
   favoritedBy           User[]                @relation("TenantFavorites")
   tenants               User[]                @relation("TenantProperties")
+  landlordId            Int?
+  caretakerId           Int?
+  landlord              Landlord?             @relation(fields: [landlordId], references: [id])
+  caretaker             Caretaker?            @relation(fields: [caretakerId], references: [id])
+  onboardedBy           User?                 @relation("OnboardedProperties", fields: [onboardedByAgentId], references: [authId])
+  onboardedByAgentId    String?
 }
 
 model Location {
@@ -195,4 +208,34 @@ model CustomAmenity {
 model CustomHighlight {
   id    Int    @id @default(autoincrement())
   name  String @unique
+}
+
+model Landlord {
+  id            Int        @id @default(autoincrement())
+  name          String
+  email         String     @unique
+  phoneNumber   String?
+  properties    Property[]
+  onboardedBy   User?      @relation("OnboardedLandlords", fields: [onboardedById], references: [authId])
+  onboardedById String?
+}
+
+model Caretaker {
+  id            Int        @id @default(autoincrement())
+  name          String
+  email         String     @unique
+  phoneNumber   String?
+  properties    Property[]
+  onboardedBy   User?      @relation("OnboardedCaretakers", fields: [onboardedById], references: [authId])
+  onboardedById String?
+}
+
+model Communication {
+  id          Int      @id @default(autoincrement())
+  senderId    String
+  receiverId  String
+  message     String
+  sentAt      DateTime @default(now())
+  sender      User     @relation("SentMessages", fields: [senderId], references: [authId])
+  receiver    User     @relation("ReceivedMessages", fields: [receiverId], references: [authId])
 }

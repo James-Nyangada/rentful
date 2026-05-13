@@ -6,7 +6,12 @@ import Link from "next/link";
 import { CustomFormField } from "@/components/FormField";
 import { Form } from "@/components/ui/form";
 import { AgentSubmissionFormData, agentSubmissionSchema } from "@/lib/schemas";
-import { useAgentSubmitPropertyMutation, useGetFeaturesQuery } from "@/state/api";
+import { 
+  useAgentSubmitPropertyMutation, 
+  useGetFeaturesQuery, 
+  useGetAuthUserQuery 
+} from "@/state/api";
+
 import { PropertyTypeEnum } from "@/lib/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -15,11 +20,13 @@ import {
   CheckCircle,
   Upload,
   User,
+  UserCheck,
   Building,
   MapPin,
   DollarSign,
   Sparkles,
 } from "lucide-react";
+
 
 const ListWithUs = () => {
   const [agentSubmitProperty, { isLoading: isSubmitting }] =
@@ -56,12 +63,20 @@ const ListWithUs = () => {
       postalCode: "",
       latitude: "",
       longitude: "",
+      landlordName: "",
+      landlordEmail: "",
+      landlordPhone: "",
+      caretakerName: "",
+      caretakerEmail: "",
+      caretakerPhone: "",
     },
   });
 
+  const { data: authUser } = useGetAuthUserQuery();
   const { data: features } = useGetFeaturesQuery();
 
   const onSubmit = async (data: AgentSubmissionFormData) => {
+
     try {
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
@@ -77,12 +92,18 @@ const ListWithUs = () => {
         }
       });
 
+      // Link to authenticated agent if logged in
+      if (authUser?.userInfo?.authId) {
+        formData.append("agentAuthId", authUser.userInfo.authId);
+      }
+
       await agentSubmitProperty(formData).unwrap();
       setIsSubmitted(true);
     } catch (error: any) {
       console.error("Error submitting property:", error);
     }
   };
+
 
   if (isSubmitted) {
     return (
@@ -196,6 +217,78 @@ const ListWithUs = () => {
                   <CustomFormField
                     name="agentPhone"
                     label="Phone Number"
+                    placeholder="+254 700 000 000"
+                  />
+                </div>
+              </div>
+
+              <div className="border-t border-gray-100" />
+
+              {/* Landlord Information */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center">
+                    <User className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-primary">
+                      Landlord Details (Optional)
+                    </h2>
+                    <p className="text-sm text-foreground/50">
+                      Contact information for the property owner
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <CustomFormField
+                    name="landlordName"
+                    label="Landlord Name"
+                    placeholder="e.g. Mary Jane"
+                  />
+                  <CustomFormField
+                    name="landlordEmail"
+                    label="Landlord Email"
+                    placeholder="landlord@example.com"
+                  />
+                  <CustomFormField
+                    name="landlordPhone"
+                    label="Landlord Phone"
+                    placeholder="+254 700 000 000"
+                  />
+                </div>
+              </div>
+
+              <div className="border-t border-gray-100" />
+
+              {/* Caretaker Information */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center">
+                    <UserCheck className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-primary">
+                      Caretaker Details (Optional)
+                    </h2>
+                    <p className="text-sm text-foreground/50">
+                      Contact information for the property caretaker
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <CustomFormField
+                    name="caretakerName"
+                    label="Caretaker Name"
+                    placeholder="e.g. Peter Parker"
+                  />
+                  <CustomFormField
+                    name="caretakerEmail"
+                    label="Caretaker Email"
+                    placeholder="caretaker@example.com"
+                  />
+                  <CustomFormField
+                    name="caretakerPhone"
+                    label="Caretaker Phone"
                     placeholder="+254 700 000 000"
                   />
                 </div>
@@ -490,6 +583,7 @@ const ListWithUs = () => {
                   </div>
                 </div>
               </div>
+
 
               <div className="border-t border-gray-100" />
 

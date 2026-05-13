@@ -46,7 +46,7 @@ const SigninPage = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1 className="text-2xl font-bold mb-2 text-center">Welcome Back</h1>
+        <h1 className="text-2xl font-bold mb-2 text-center">Welcome Back Admin</h1>
         <p className="text-sm text-gray-500 mb-6 text-center">
           Sign in to your account
         </p>
@@ -82,7 +82,7 @@ const SigninPage = () => {
           </form>
         </Form>
 
-        <div className="mt-6 text-center text-sm">
+        {/* <div className="mt-6 text-center text-sm">
           <span className="text-gray-500">Dont have an account? </span>
           <Link
             href="/signup"
@@ -90,7 +90,7 @@ const SigninPage = () => {
           >
             Sign up
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

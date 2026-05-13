@@ -49,10 +49,10 @@ const HeroSection = () => {
           </h1>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 px-4">
             <Button
-              onClick={() => router.push("/signup")}
+              onClick={() => router.push("/list-with-us")}
               className="w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-primary font-black rounded-xl px-10 h-16 text-lg uppercase tracking-widest shadow-2xl transition-all hover:scale-105 active:scale-95"
             >
-              Start Your Journey <ArrowUpRight className="w-6 h-6 ml-2" />
+              List with us <ArrowUpRight className="w-6 h-6 ml-2" />
             </Button>
             <Button
               onClick={() => router.push("/search")}

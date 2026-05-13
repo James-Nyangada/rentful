@@ -58,52 +58,42 @@ export type ViewingBooking = $Result.DefaultSelection<Prisma.$ViewingBookingPayl
  * 
  */
 export type SubmissionLink = $Result.DefaultSelection<Prisma.$SubmissionLinkPayload>
+/**
+ * Model spatial_ref_sys
+ * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ */
+export type spatial_ref_sys = $Result.DefaultSelection<Prisma.$spatial_ref_sysPayload>
+/**
+ * Model CustomAmenity
+ * 
+ */
+export type CustomAmenity = $Result.DefaultSelection<Prisma.$CustomAmenityPayload>
+/**
+ * Model CustomHighlight
+ * 
+ */
+export type CustomHighlight = $Result.DefaultSelection<Prisma.$CustomHighlightPayload>
+/**
+ * Model Landlord
+ * 
+ */
+export type Landlord = $Result.DefaultSelection<Prisma.$LandlordPayload>
+/**
+ * Model Caretaker
+ * 
+ */
+export type Caretaker = $Result.DefaultSelection<Prisma.$CaretakerPayload>
+/**
+ * Model Communication
+ * 
+ */
+export type Communication = $Result.DefaultSelection<Prisma.$CommunicationPayload>
 
 /**
  * Enums
  */
 export namespace $Enums {
-  export const Highlight: {
-  HighSpeedInternetAccess: 'HighSpeedInternetAccess',
-  WasherDryer: 'WasherDryer',
-  AirConditioning: 'AirConditioning',
-  Heating: 'Heating',
-  SmokeFree: 'SmokeFree',
-  CableReady: 'CableReady',
-  SatelliteTV: 'SatelliteTV',
-  DoubleVanities: 'DoubleVanities',
-  TubShower: 'TubShower',
-  Intercom: 'Intercom',
-  SprinklerSystem: 'SprinklerSystem',
-  RecentlyRenovated: 'RecentlyRenovated',
-  CloseToTransit: 'CloseToTransit',
-  GreatView: 'GreatView',
-  QuietNeighborhood: 'QuietNeighborhood'
-};
-
-export type Highlight = (typeof Highlight)[keyof typeof Highlight]
-
-
-export const Amenity: {
-  WasherDryer: 'WasherDryer',
-  AirConditioning: 'AirConditioning',
-  Dishwasher: 'Dishwasher',
-  HighSpeedInternet: 'HighSpeedInternet',
-  HardwoodFloors: 'HardwoodFloors',
-  WalkInClosets: 'WalkInClosets',
-  Microwave: 'Microwave',
-  Refrigerator: 'Refrigerator',
-  Pool: 'Pool',
-  Gym: 'Gym',
-  Parking: 'Parking',
-  PetsAllowed: 'PetsAllowed',
-  WiFi: 'WiFi'
-};
-
-export type Amenity = (typeof Amenity)[keyof typeof Amenity]
-
-
-export const PropertyType: {
+  export const PropertyType: {
   Rooms: 'Rooms',
   Tinyhouse: 'Tinyhouse',
   Apartment: 'Apartment',
@@ -152,14 +142,6 @@ export const UserRole: {
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 
 }
-
-export type Highlight = $Enums.Highlight
-
-export const Highlight: typeof $Enums.Highlight
-
-export type Amenity = $Enums.Amenity
-
-export const Amenity: typeof $Enums.Amenity
 
 export type PropertyType = $Enums.PropertyType
 
@@ -395,6 +377,66 @@ export class PrismaClient<
     * ```
     */
   get submissionLink(): Prisma.SubmissionLinkDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.spatial_ref_sys`: Exposes CRUD operations for the **spatial_ref_sys** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Spatial_ref_sys
+    * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+    * ```
+    */
+  get spatial_ref_sys(): Prisma.spatial_ref_sysDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.customAmenity`: Exposes CRUD operations for the **CustomAmenity** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CustomAmenities
+    * const customAmenities = await prisma.customAmenity.findMany()
+    * ```
+    */
+  get customAmenity(): Prisma.CustomAmenityDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.customHighlight`: Exposes CRUD operations for the **CustomHighlight** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CustomHighlights
+    * const customHighlights = await prisma.customHighlight.findMany()
+    * ```
+    */
+  get customHighlight(): Prisma.CustomHighlightDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.landlord`: Exposes CRUD operations for the **Landlord** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Landlords
+    * const landlords = await prisma.landlord.findMany()
+    * ```
+    */
+  get landlord(): Prisma.LandlordDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.caretaker`: Exposes CRUD operations for the **Caretaker** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Caretakers
+    * const caretakers = await prisma.caretaker.findMany()
+    * ```
+    */
+  get caretaker(): Prisma.CaretakerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.communication`: Exposes CRUD operations for the **Communication** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Communications
+    * const communications = await prisma.communication.findMany()
+    * ```
+    */
+  get communication(): Prisma.CommunicationDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -843,7 +885,13 @@ export namespace Prisma {
     Payment: 'Payment',
     ViewingAvailability: 'ViewingAvailability',
     ViewingBooking: 'ViewingBooking',
-    SubmissionLink: 'SubmissionLink'
+    SubmissionLink: 'SubmissionLink',
+    spatial_ref_sys: 'spatial_ref_sys',
+    CustomAmenity: 'CustomAmenity',
+    CustomHighlight: 'CustomHighlight',
+    Landlord: 'Landlord',
+    Caretaker: 'Caretaker',
+    Communication: 'Communication'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -859,7 +907,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "property" | "location" | "application" | "lease" | "payment" | "viewingAvailability" | "viewingBooking" | "submissionLink"
+      modelProps: "user" | "property" | "location" | "application" | "lease" | "payment" | "viewingAvailability" | "viewingBooking" | "submissionLink" | "spatial_ref_sys" | "customAmenity" | "customHighlight" | "landlord" | "caretaker" | "communication"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1513,6 +1561,450 @@ export namespace Prisma {
           }
         }
       }
+      spatial_ref_sys: {
+        payload: Prisma.$spatial_ref_sysPayload<ExtArgs>
+        fields: Prisma.spatial_ref_sysFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.spatial_ref_sysFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          findFirst: {
+            args: Prisma.spatial_ref_sysFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          findMany: {
+            args: Prisma.spatial_ref_sysFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
+          }
+          create: {
+            args: Prisma.spatial_ref_sysCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          createMany: {
+            args: Prisma.spatial_ref_sysCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
+          }
+          delete: {
+            args: Prisma.spatial_ref_sysDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          update: {
+            args: Prisma.spatial_ref_sysUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          deleteMany: {
+            args: Prisma.spatial_ref_sysDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.spatial_ref_sysUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.spatial_ref_sysUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>[]
+          }
+          upsert: {
+            args: Prisma.spatial_ref_sysUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$spatial_ref_sysPayload>
+          }
+          aggregate: {
+            args: Prisma.Spatial_ref_sysAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSpatial_ref_sys>
+          }
+          groupBy: {
+            args: Prisma.spatial_ref_sysGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Spatial_ref_sysGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.spatial_ref_sysCountArgs<ExtArgs>
+            result: $Utils.Optional<Spatial_ref_sysCountAggregateOutputType> | number
+          }
+        }
+      }
+      CustomAmenity: {
+        payload: Prisma.$CustomAmenityPayload<ExtArgs>
+        fields: Prisma.CustomAmenityFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CustomAmenityFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CustomAmenityFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>
+          }
+          findFirst: {
+            args: Prisma.CustomAmenityFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CustomAmenityFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>
+          }
+          findMany: {
+            args: Prisma.CustomAmenityFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>[]
+          }
+          create: {
+            args: Prisma.CustomAmenityCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>
+          }
+          createMany: {
+            args: Prisma.CustomAmenityCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CustomAmenityCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>[]
+          }
+          delete: {
+            args: Prisma.CustomAmenityDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>
+          }
+          update: {
+            args: Prisma.CustomAmenityUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>
+          }
+          deleteMany: {
+            args: Prisma.CustomAmenityDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CustomAmenityUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CustomAmenityUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>[]
+          }
+          upsert: {
+            args: Prisma.CustomAmenityUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomAmenityPayload>
+          }
+          aggregate: {
+            args: Prisma.CustomAmenityAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCustomAmenity>
+          }
+          groupBy: {
+            args: Prisma.CustomAmenityGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CustomAmenityGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CustomAmenityCountArgs<ExtArgs>
+            result: $Utils.Optional<CustomAmenityCountAggregateOutputType> | number
+          }
+        }
+      }
+      CustomHighlight: {
+        payload: Prisma.$CustomHighlightPayload<ExtArgs>
+        fields: Prisma.CustomHighlightFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CustomHighlightFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CustomHighlightFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>
+          }
+          findFirst: {
+            args: Prisma.CustomHighlightFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CustomHighlightFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>
+          }
+          findMany: {
+            args: Prisma.CustomHighlightFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>[]
+          }
+          create: {
+            args: Prisma.CustomHighlightCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>
+          }
+          createMany: {
+            args: Prisma.CustomHighlightCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CustomHighlightCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>[]
+          }
+          delete: {
+            args: Prisma.CustomHighlightDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>
+          }
+          update: {
+            args: Prisma.CustomHighlightUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>
+          }
+          deleteMany: {
+            args: Prisma.CustomHighlightDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CustomHighlightUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CustomHighlightUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>[]
+          }
+          upsert: {
+            args: Prisma.CustomHighlightUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CustomHighlightPayload>
+          }
+          aggregate: {
+            args: Prisma.CustomHighlightAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCustomHighlight>
+          }
+          groupBy: {
+            args: Prisma.CustomHighlightGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CustomHighlightGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CustomHighlightCountArgs<ExtArgs>
+            result: $Utils.Optional<CustomHighlightCountAggregateOutputType> | number
+          }
+        }
+      }
+      Landlord: {
+        payload: Prisma.$LandlordPayload<ExtArgs>
+        fields: Prisma.LandlordFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LandlordFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LandlordFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>
+          }
+          findFirst: {
+            args: Prisma.LandlordFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LandlordFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>
+          }
+          findMany: {
+            args: Prisma.LandlordFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>[]
+          }
+          create: {
+            args: Prisma.LandlordCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>
+          }
+          createMany: {
+            args: Prisma.LandlordCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LandlordCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>[]
+          }
+          delete: {
+            args: Prisma.LandlordDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>
+          }
+          update: {
+            args: Prisma.LandlordUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>
+          }
+          deleteMany: {
+            args: Prisma.LandlordDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LandlordUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LandlordUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>[]
+          }
+          upsert: {
+            args: Prisma.LandlordUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LandlordPayload>
+          }
+          aggregate: {
+            args: Prisma.LandlordAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLandlord>
+          }
+          groupBy: {
+            args: Prisma.LandlordGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LandlordGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LandlordCountArgs<ExtArgs>
+            result: $Utils.Optional<LandlordCountAggregateOutputType> | number
+          }
+        }
+      }
+      Caretaker: {
+        payload: Prisma.$CaretakerPayload<ExtArgs>
+        fields: Prisma.CaretakerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CaretakerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CaretakerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>
+          }
+          findFirst: {
+            args: Prisma.CaretakerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CaretakerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>
+          }
+          findMany: {
+            args: Prisma.CaretakerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>[]
+          }
+          create: {
+            args: Prisma.CaretakerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>
+          }
+          createMany: {
+            args: Prisma.CaretakerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CaretakerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>[]
+          }
+          delete: {
+            args: Prisma.CaretakerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>
+          }
+          update: {
+            args: Prisma.CaretakerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>
+          }
+          deleteMany: {
+            args: Prisma.CaretakerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CaretakerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CaretakerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>[]
+          }
+          upsert: {
+            args: Prisma.CaretakerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CaretakerPayload>
+          }
+          aggregate: {
+            args: Prisma.CaretakerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCaretaker>
+          }
+          groupBy: {
+            args: Prisma.CaretakerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CaretakerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CaretakerCountArgs<ExtArgs>
+            result: $Utils.Optional<CaretakerCountAggregateOutputType> | number
+          }
+        }
+      }
+      Communication: {
+        payload: Prisma.$CommunicationPayload<ExtArgs>
+        fields: Prisma.CommunicationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CommunicationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CommunicationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>
+          }
+          findFirst: {
+            args: Prisma.CommunicationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CommunicationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>
+          }
+          findMany: {
+            args: Prisma.CommunicationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>[]
+          }
+          create: {
+            args: Prisma.CommunicationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>
+          }
+          createMany: {
+            args: Prisma.CommunicationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CommunicationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>[]
+          }
+          delete: {
+            args: Prisma.CommunicationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>
+          }
+          update: {
+            args: Prisma.CommunicationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>
+          }
+          deleteMany: {
+            args: Prisma.CommunicationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CommunicationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CommunicationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>[]
+          }
+          upsert: {
+            args: Prisma.CommunicationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CommunicationPayload>
+          }
+          aggregate: {
+            args: Prisma.CommunicationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCommunication>
+          }
+          groupBy: {
+            args: Prisma.CommunicationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CommunicationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CommunicationCountArgs<ExtArgs>
+            result: $Utils.Optional<CommunicationCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1606,6 +2098,12 @@ export namespace Prisma {
     viewingAvailability?: ViewingAvailabilityOmit
     viewingBooking?: ViewingBookingOmit
     submissionLink?: SubmissionLinkOmit
+    spatial_ref_sys?: spatial_ref_sysOmit
+    customAmenity?: CustomAmenityOmit
+    customHighlight?: CustomHighlightOmit
+    landlord?: LandlordOmit
+    caretaker?: CaretakerOmit
+    communication?: CommunicationOmit
   }
 
   /* Types for Logging */
@@ -1700,19 +2198,29 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    managedProperties: number
-    tenantProperties: number
-    favorites: number
     tenantApplications: number
     tenantLeases: number
+    managedProperties: number
+    favorites: number
+    tenantProperties: number
+    onboardedProperties: number
+    onboardedLandlords: number
+    onboardedCaretakers: number
+    sentMessages: number
+    receivedMessages: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    managedProperties?: boolean | UserCountOutputTypeCountManagedPropertiesArgs
-    tenantProperties?: boolean | UserCountOutputTypeCountTenantPropertiesArgs
-    favorites?: boolean | UserCountOutputTypeCountFavoritesArgs
     tenantApplications?: boolean | UserCountOutputTypeCountTenantApplicationsArgs
     tenantLeases?: boolean | UserCountOutputTypeCountTenantLeasesArgs
+    managedProperties?: boolean | UserCountOutputTypeCountManagedPropertiesArgs
+    favorites?: boolean | UserCountOutputTypeCountFavoritesArgs
+    tenantProperties?: boolean | UserCountOutputTypeCountTenantPropertiesArgs
+    onboardedProperties?: boolean | UserCountOutputTypeCountOnboardedPropertiesArgs
+    onboardedLandlords?: boolean | UserCountOutputTypeCountOnboardedLandlordsArgs
+    onboardedCaretakers?: boolean | UserCountOutputTypeCountOnboardedCaretakersArgs
+    sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs
+    receivedMessages?: boolean | UserCountOutputTypeCountReceivedMessagesArgs
   }
 
   // Custom InputTypes
@@ -1729,14 +2237,21 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountManagedPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PropertyWhereInput
+  export type UserCountOutputTypeCountTenantApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ApplicationWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTenantPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountTenantLeasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LeaseWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountManagedPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PropertyWhereInput
   }
 
@@ -1750,15 +2265,43 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTenantApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ApplicationWhereInput
+  export type UserCountOutputTypeCountTenantPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTenantLeasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LeaseWhereInput
+  export type UserCountOutputTypeCountOnboardedPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountOnboardedLandlordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LandlordWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountOnboardedCaretakersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaretakerWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSentMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommunicationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReceivedMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommunicationWhereInput
   }
 
 
@@ -1767,21 +2310,21 @@ export namespace Prisma {
    */
 
   export type PropertyCountOutputType = {
-    leases: number
     applications: number
-    favoritedBy: number
-    tenants: number
+    leases: number
     viewingAvailabilities: number
     viewingBookings: number
+    favoritedBy: number
+    tenants: number
   }
 
   export type PropertyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    leases?: boolean | PropertyCountOutputTypeCountLeasesArgs
     applications?: boolean | PropertyCountOutputTypeCountApplicationsArgs
-    favoritedBy?: boolean | PropertyCountOutputTypeCountFavoritedByArgs
-    tenants?: boolean | PropertyCountOutputTypeCountTenantsArgs
+    leases?: boolean | PropertyCountOutputTypeCountLeasesArgs
     viewingAvailabilities?: boolean | PropertyCountOutputTypeCountViewingAvailabilitiesArgs
     viewingBookings?: boolean | PropertyCountOutputTypeCountViewingBookingsArgs
+    favoritedBy?: boolean | PropertyCountOutputTypeCountFavoritedByArgs
+    tenants?: boolean | PropertyCountOutputTypeCountTenantsArgs
   }
 
   // Custom InputTypes
@@ -1798,13 +2341,6 @@ export namespace Prisma {
   /**
    * PropertyCountOutputType without action
    */
-  export type PropertyCountOutputTypeCountLeasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LeaseWhereInput
-  }
-
-  /**
-   * PropertyCountOutputType without action
-   */
   export type PropertyCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ApplicationWhereInput
   }
@@ -1812,15 +2348,8 @@ export namespace Prisma {
   /**
    * PropertyCountOutputType without action
    */
-  export type PropertyCountOutputTypeCountFavoritedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-  }
-
-  /**
-   * PropertyCountOutputType without action
-   */
-  export type PropertyCountOutputTypeCountTenantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
+  export type PropertyCountOutputTypeCountLeasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LeaseWhereInput
   }
 
   /**
@@ -1835,6 +2364,20 @@ export namespace Prisma {
    */
   export type PropertyCountOutputTypeCountViewingBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ViewingBookingWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountFavoritedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+  }
+
+  /**
+   * PropertyCountOutputType without action
+   */
+  export type PropertyCountOutputTypeCountTenantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
   }
 
 
@@ -1897,6 +2440,68 @@ export namespace Prisma {
    */
   export type LeaseCountOutputTypeCountPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PaymentWhereInput
+  }
+
+
+  /**
+   * Count Type LandlordCountOutputType
+   */
+
+  export type LandlordCountOutputType = {
+    properties: number
+  }
+
+  export type LandlordCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | LandlordCountOutputTypeCountPropertiesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LandlordCountOutputType without action
+   */
+  export type LandlordCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LandlordCountOutputType
+     */
+    select?: LandlordCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LandlordCountOutputType without action
+   */
+  export type LandlordCountOutputTypeCountPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
+  }
+
+
+  /**
+   * Count Type CaretakerCountOutputType
+   */
+
+  export type CaretakerCountOutputType = {
+    properties: number
+  }
+
+  export type CaretakerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | CaretakerCountOutputTypeCountPropertiesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CaretakerCountOutputType without action
+   */
+  export type CaretakerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CaretakerCountOutputType
+     */
+    select?: CaretakerCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CaretakerCountOutputType without action
+   */
+  export type CaretakerCountOutputTypeCountPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PropertyWhereInput
   }
 
 
@@ -2142,11 +2747,16 @@ export namespace Prisma {
     isVerified?: boolean
     verificationCode?: boolean
     verificationCodeExpiresAt?: boolean
-    managedProperties?: boolean | User$managedPropertiesArgs<ExtArgs>
-    tenantProperties?: boolean | User$tenantPropertiesArgs<ExtArgs>
-    favorites?: boolean | User$favoritesArgs<ExtArgs>
     tenantApplications?: boolean | User$tenantApplicationsArgs<ExtArgs>
     tenantLeases?: boolean | User$tenantLeasesArgs<ExtArgs>
+    managedProperties?: boolean | User$managedPropertiesArgs<ExtArgs>
+    favorites?: boolean | User$favoritesArgs<ExtArgs>
+    tenantProperties?: boolean | User$tenantPropertiesArgs<ExtArgs>
+    onboardedProperties?: boolean | User$onboardedPropertiesArgs<ExtArgs>
+    onboardedLandlords?: boolean | User$onboardedLandlordsArgs<ExtArgs>
+    onboardedCaretakers?: boolean | User$onboardedCaretakersArgs<ExtArgs>
+    sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
+    receivedMessages?: boolean | User$receivedMessagesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2191,11 +2801,16 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "authId" | "name" | "email" | "phoneNumber" | "password" | "role" | "isVerified" | "verificationCode" | "verificationCodeExpiresAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    managedProperties?: boolean | User$managedPropertiesArgs<ExtArgs>
-    tenantProperties?: boolean | User$tenantPropertiesArgs<ExtArgs>
-    favorites?: boolean | User$favoritesArgs<ExtArgs>
     tenantApplications?: boolean | User$tenantApplicationsArgs<ExtArgs>
     tenantLeases?: boolean | User$tenantLeasesArgs<ExtArgs>
+    managedProperties?: boolean | User$managedPropertiesArgs<ExtArgs>
+    favorites?: boolean | User$favoritesArgs<ExtArgs>
+    tenantProperties?: boolean | User$tenantPropertiesArgs<ExtArgs>
+    onboardedProperties?: boolean | User$onboardedPropertiesArgs<ExtArgs>
+    onboardedLandlords?: boolean | User$onboardedLandlordsArgs<ExtArgs>
+    onboardedCaretakers?: boolean | User$onboardedCaretakersArgs<ExtArgs>
+    sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
+    receivedMessages?: boolean | User$receivedMessagesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2204,11 +2819,16 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      managedProperties: Prisma.$PropertyPayload<ExtArgs>[]
-      tenantProperties: Prisma.$PropertyPayload<ExtArgs>[]
-      favorites: Prisma.$PropertyPayload<ExtArgs>[]
       tenantApplications: Prisma.$ApplicationPayload<ExtArgs>[]
       tenantLeases: Prisma.$LeasePayload<ExtArgs>[]
+      managedProperties: Prisma.$PropertyPayload<ExtArgs>[]
+      favorites: Prisma.$PropertyPayload<ExtArgs>[]
+      tenantProperties: Prisma.$PropertyPayload<ExtArgs>[]
+      onboardedProperties: Prisma.$PropertyPayload<ExtArgs>[]
+      onboardedLandlords: Prisma.$LandlordPayload<ExtArgs>[]
+      onboardedCaretakers: Prisma.$CaretakerPayload<ExtArgs>[]
+      sentMessages: Prisma.$CommunicationPayload<ExtArgs>[]
+      receivedMessages: Prisma.$CommunicationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2615,11 +3235,16 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    managedProperties<T extends User$managedPropertiesArgs<ExtArgs> = {}>(args?: Subset<T, User$managedPropertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
-    tenantProperties<T extends User$tenantPropertiesArgs<ExtArgs> = {}>(args?: Subset<T, User$tenantPropertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
-    favorites<T extends User$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, User$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     tenantApplications<T extends User$tenantApplicationsArgs<ExtArgs> = {}>(args?: Subset<T, User$tenantApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     tenantLeases<T extends User$tenantLeasesArgs<ExtArgs> = {}>(args?: Subset<T, User$tenantLeasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeasePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    managedProperties<T extends User$managedPropertiesArgs<ExtArgs> = {}>(args?: Subset<T, User$managedPropertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    favorites<T extends User$favoritesArgs<ExtArgs> = {}>(args?: Subset<T, User$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    tenantProperties<T extends User$tenantPropertiesArgs<ExtArgs> = {}>(args?: Subset<T, User$tenantPropertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    onboardedProperties<T extends User$onboardedPropertiesArgs<ExtArgs> = {}>(args?: Subset<T, User$onboardedPropertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    onboardedLandlords<T extends User$onboardedLandlordsArgs<ExtArgs> = {}>(args?: Subset<T, User$onboardedLandlordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    onboardedCaretakers<T extends User$onboardedCaretakersArgs<ExtArgs> = {}>(args?: Subset<T, User$onboardedCaretakersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    sentMessages<T extends User$sentMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    receivedMessages<T extends User$receivedMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$receivedMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3047,78 +3672,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.managedProperties
-   */
-  export type User$managedPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Property
-     */
-    select?: PropertySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Property
-     */
-    omit?: PropertyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PropertyInclude<ExtArgs> | null
-    where?: PropertyWhereInput
-    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
-    cursor?: PropertyWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
-  }
-
-  /**
-   * User.tenantProperties
-   */
-  export type User$tenantPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Property
-     */
-    select?: PropertySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Property
-     */
-    omit?: PropertyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PropertyInclude<ExtArgs> | null
-    where?: PropertyWhereInput
-    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
-    cursor?: PropertyWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
-  }
-
-  /**
-   * User.favorites
-   */
-  export type User$favoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Property
-     */
-    select?: PropertySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Property
-     */
-    omit?: PropertyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PropertyInclude<ExtArgs> | null
-    where?: PropertyWhereInput
-    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
-    cursor?: PropertyWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
-  }
-
-  /**
    * User.tenantApplications
    */
   export type User$tenantApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3167,6 +3720,198 @@ export namespace Prisma {
   }
 
   /**
+   * User.managedProperties
+   */
+  export type User$managedPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * User.favorites
+   */
+  export type User$favoritesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * User.tenantProperties
+   */
+  export type User$tenantPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * User.onboardedProperties
+   */
+  export type User$onboardedPropertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * User.onboardedLandlords
+   */
+  export type User$onboardedLandlordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    where?: LandlordWhereInput
+    orderBy?: LandlordOrderByWithRelationInput | LandlordOrderByWithRelationInput[]
+    cursor?: LandlordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LandlordScalarFieldEnum | LandlordScalarFieldEnum[]
+  }
+
+  /**
+   * User.onboardedCaretakers
+   */
+  export type User$onboardedCaretakersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    where?: CaretakerWhereInput
+    orderBy?: CaretakerOrderByWithRelationInput | CaretakerOrderByWithRelationInput[]
+    cursor?: CaretakerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CaretakerScalarFieldEnum | CaretakerScalarFieldEnum[]
+  }
+
+  /**
+   * User.sentMessages
+   */
+  export type User$sentMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    where?: CommunicationWhereInput
+    orderBy?: CommunicationOrderByWithRelationInput | CommunicationOrderByWithRelationInput[]
+    cursor?: CommunicationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommunicationScalarFieldEnum | CommunicationScalarFieldEnum[]
+  }
+
+  /**
+   * User.receivedMessages
+   */
+  export type User$receivedMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    where?: CommunicationWhereInput
+    orderBy?: CommunicationOrderByWithRelationInput | CommunicationOrderByWithRelationInput[]
+    cursor?: CommunicationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommunicationScalarFieldEnum | CommunicationScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3208,6 +3953,8 @@ export namespace Prisma {
     averageRating: number | null
     numberOfReviews: number | null
     locationId: number | null
+    landlordId: number | null
+    caretakerId: number | null
   }
 
   export type PropertySumAggregateOutputType = {
@@ -3221,6 +3968,8 @@ export namespace Prisma {
     averageRating: number | null
     numberOfReviews: number | null
     locationId: number | null
+    landlordId: number | null
+    caretakerId: number | null
   }
 
   export type PropertyMinAggregateOutputType = {
@@ -3233,7 +3982,7 @@ export namespace Prisma {
     applicationFee: number | null
     isPetsAllowed: boolean | null
     isParkingIncluded: boolean | null
-    isSale: boolean | null
+    isRent: boolean | null
     beds: number | null
     baths: number | null
     squareFeet: number | null
@@ -3241,10 +3990,14 @@ export namespace Prisma {
     postedDate: Date | null
     averageRating: number | null
     numberOfReviews: number | null
-    status: $Enums.PropertyStatus | null
-    submittedBy: string | null
     locationId: number | null
     managerUserId: string | null
+    isSale: boolean | null
+    status: $Enums.PropertyStatus | null
+    submittedBy: string | null
+    landlordId: number | null
+    caretakerId: number | null
+    onboardedByAgentId: string | null
   }
 
   export type PropertyMaxAggregateOutputType = {
@@ -3257,7 +4010,7 @@ export namespace Prisma {
     applicationFee: number | null
     isPetsAllowed: boolean | null
     isParkingIncluded: boolean | null
-    isSale: boolean | null
+    isRent: boolean | null
     beds: number | null
     baths: number | null
     squareFeet: number | null
@@ -3265,10 +4018,14 @@ export namespace Prisma {
     postedDate: Date | null
     averageRating: number | null
     numberOfReviews: number | null
-    status: $Enums.PropertyStatus | null
-    submittedBy: string | null
     locationId: number | null
     managerUserId: string | null
+    isSale: boolean | null
+    status: $Enums.PropertyStatus | null
+    submittedBy: string | null
+    landlordId: number | null
+    caretakerId: number | null
+    onboardedByAgentId: string | null
   }
 
   export type PropertyCountAggregateOutputType = {
@@ -3284,7 +4041,7 @@ export namespace Prisma {
     highlights: number
     isPetsAllowed: number
     isParkingIncluded: number
-    isSale: number
+    isRent: number
     beds: number
     baths: number
     squareFeet: number
@@ -3292,10 +4049,14 @@ export namespace Prisma {
     postedDate: number
     averageRating: number
     numberOfReviews: number
-    status: number
-    submittedBy: number
     locationId: number
     managerUserId: number
+    isSale: number
+    status: number
+    submittedBy: number
+    landlordId: number
+    caretakerId: number
+    onboardedByAgentId: number
     _all: number
   }
 
@@ -3311,6 +4072,8 @@ export namespace Prisma {
     averageRating?: true
     numberOfReviews?: true
     locationId?: true
+    landlordId?: true
+    caretakerId?: true
   }
 
   export type PropertySumAggregateInputType = {
@@ -3324,6 +4087,8 @@ export namespace Prisma {
     averageRating?: true
     numberOfReviews?: true
     locationId?: true
+    landlordId?: true
+    caretakerId?: true
   }
 
   export type PropertyMinAggregateInputType = {
@@ -3336,7 +4101,7 @@ export namespace Prisma {
     applicationFee?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
-    isSale?: true
+    isRent?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -3344,10 +4109,14 @@ export namespace Prisma {
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
-    status?: true
-    submittedBy?: true
     locationId?: true
     managerUserId?: true
+    isSale?: true
+    status?: true
+    submittedBy?: true
+    landlordId?: true
+    caretakerId?: true
+    onboardedByAgentId?: true
   }
 
   export type PropertyMaxAggregateInputType = {
@@ -3360,7 +4129,7 @@ export namespace Prisma {
     applicationFee?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
-    isSale?: true
+    isRent?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -3368,10 +4137,14 @@ export namespace Prisma {
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
-    status?: true
-    submittedBy?: true
     locationId?: true
     managerUserId?: true
+    isSale?: true
+    status?: true
+    submittedBy?: true
+    landlordId?: true
+    caretakerId?: true
+    onboardedByAgentId?: true
   }
 
   export type PropertyCountAggregateInputType = {
@@ -3387,7 +4160,7 @@ export namespace Prisma {
     highlights?: true
     isPetsAllowed?: true
     isParkingIncluded?: true
-    isSale?: true
+    isRent?: true
     beds?: true
     baths?: true
     squareFeet?: true
@@ -3395,10 +4168,14 @@ export namespace Prisma {
     postedDate?: true
     averageRating?: true
     numberOfReviews?: true
-    status?: true
-    submittedBy?: true
     locationId?: true
     managerUserId?: true
+    isSale?: true
+    status?: true
+    submittedBy?: true
+    landlordId?: true
+    caretakerId?: true
+    onboardedByAgentId?: true
     _all?: true
   }
 
@@ -3497,11 +4274,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls: string[]
-    amenities: $Enums.Amenity[]
-    highlights: $Enums.Highlight[]
+    amenities: string[]
+    highlights: string[]
     isPetsAllowed: boolean
     isParkingIncluded: boolean
-    isSale: boolean
+    isRent: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -3509,10 +4286,14 @@ export namespace Prisma {
     postedDate: Date
     averageRating: number | null
     numberOfReviews: number | null
-    status: $Enums.PropertyStatus
-    submittedBy: string | null
     locationId: number
     managerUserId: string
+    isSale: boolean
+    status: $Enums.PropertyStatus
+    submittedBy: string | null
+    landlordId: number | null
+    caretakerId: number | null
+    onboardedByAgentId: string | null
     _count: PropertyCountAggregateOutputType | null
     _avg: PropertyAvgAggregateOutputType | null
     _sum: PropertySumAggregateOutputType | null
@@ -3547,7 +4328,7 @@ export namespace Prisma {
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -3555,18 +4336,25 @@ export namespace Prisma {
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
-    status?: boolean
-    submittedBy?: boolean
     locationId?: boolean
     managerUserId?: boolean
+    isSale?: boolean
+    status?: boolean
+    submittedBy?: boolean
+    landlordId?: boolean
+    caretakerId?: boolean
+    onboardedByAgentId?: boolean
+    applications?: boolean | Property$applicationsArgs<ExtArgs>
+    leases?: boolean | Property$leasesArgs<ExtArgs>
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | UserDefaultArgs<ExtArgs>
-    leases?: boolean | Property$leasesArgs<ExtArgs>
-    applications?: boolean | Property$applicationsArgs<ExtArgs>
-    favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
-    tenants?: boolean | Property$tenantsArgs<ExtArgs>
     viewingAvailabilities?: boolean | Property$viewingAvailabilitiesArgs<ExtArgs>
     viewingBookings?: boolean | Property$viewingBookingsArgs<ExtArgs>
+    favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
+    tenants?: boolean | Property$tenantsArgs<ExtArgs>
+    landlord?: boolean | Property$landlordArgs<ExtArgs>
+    caretaker?: boolean | Property$caretakerArgs<ExtArgs>
+    onboardedBy?: boolean | Property$onboardedByArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -3583,7 +4371,7 @@ export namespace Prisma {
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -3591,12 +4379,19 @@ export namespace Prisma {
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
-    status?: boolean
-    submittedBy?: boolean
     locationId?: boolean
     managerUserId?: boolean
+    isSale?: boolean
+    status?: boolean
+    submittedBy?: boolean
+    landlordId?: boolean
+    caretakerId?: boolean
+    onboardedByAgentId?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | UserDefaultArgs<ExtArgs>
+    landlord?: boolean | Property$landlordArgs<ExtArgs>
+    caretaker?: boolean | Property$caretakerArgs<ExtArgs>
+    onboardedBy?: boolean | Property$onboardedByArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
   export type PropertySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3612,7 +4407,7 @@ export namespace Prisma {
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -3620,12 +4415,19 @@ export namespace Prisma {
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
-    status?: boolean
-    submittedBy?: boolean
     locationId?: boolean
     managerUserId?: boolean
+    isSale?: boolean
+    status?: boolean
+    submittedBy?: boolean
+    landlordId?: boolean
+    caretakerId?: boolean
+    onboardedByAgentId?: boolean
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | UserDefaultArgs<ExtArgs>
+    landlord?: boolean | Property$landlordArgs<ExtArgs>
+    caretaker?: boolean | Property$caretakerArgs<ExtArgs>
+    onboardedBy?: boolean | Property$onboardedByArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
   export type PropertySelectScalar = {
@@ -3641,7 +4443,7 @@ export namespace Prisma {
     highlights?: boolean
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds?: boolean
     baths?: boolean
     squareFeet?: boolean
@@ -3649,44 +4451,60 @@ export namespace Prisma {
     postedDate?: boolean
     averageRating?: boolean
     numberOfReviews?: boolean
-    status?: boolean
-    submittedBy?: boolean
     locationId?: boolean
     managerUserId?: boolean
+    isSale?: boolean
+    status?: boolean
+    submittedBy?: boolean
+    landlordId?: boolean
+    caretakerId?: boolean
+    onboardedByAgentId?: boolean
   }
 
-  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "photoUrls" | "amenities" | "highlights" | "isPetsAllowed" | "isParkingIncluded" | "isSale" | "beds" | "baths" | "squareFeet" | "propertyType" | "postedDate" | "averageRating" | "numberOfReviews" | "status" | "submittedBy" | "locationId" | "managerUserId", ExtArgs["result"]["property"]>
+  export type PropertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "pricePerMonth" | "securityDeposit" | "applicationFee" | "photoUrls" | "amenities" | "highlights" | "isPetsAllowed" | "isParkingIncluded" | "isRent" | "beds" | "baths" | "squareFeet" | "propertyType" | "postedDate" | "averageRating" | "numberOfReviews" | "locationId" | "managerUserId" | "isSale" | "status" | "submittedBy" | "landlordId" | "caretakerId" | "onboardedByAgentId", ExtArgs["result"]["property"]>
   export type PropertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    applications?: boolean | Property$applicationsArgs<ExtArgs>
+    leases?: boolean | Property$leasesArgs<ExtArgs>
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | UserDefaultArgs<ExtArgs>
-    leases?: boolean | Property$leasesArgs<ExtArgs>
-    applications?: boolean | Property$applicationsArgs<ExtArgs>
-    favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
-    tenants?: boolean | Property$tenantsArgs<ExtArgs>
     viewingAvailabilities?: boolean | Property$viewingAvailabilitiesArgs<ExtArgs>
     viewingBookings?: boolean | Property$viewingBookingsArgs<ExtArgs>
+    favoritedBy?: boolean | Property$favoritedByArgs<ExtArgs>
+    tenants?: boolean | Property$tenantsArgs<ExtArgs>
+    landlord?: boolean | Property$landlordArgs<ExtArgs>
+    caretaker?: boolean | Property$caretakerArgs<ExtArgs>
+    onboardedBy?: boolean | Property$onboardedByArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PropertyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | UserDefaultArgs<ExtArgs>
+    landlord?: boolean | Property$landlordArgs<ExtArgs>
+    caretaker?: boolean | Property$caretakerArgs<ExtArgs>
+    onboardedBy?: boolean | Property$onboardedByArgs<ExtArgs>
   }
   export type PropertyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     location?: boolean | LocationDefaultArgs<ExtArgs>
     manager?: boolean | UserDefaultArgs<ExtArgs>
+    landlord?: boolean | Property$landlordArgs<ExtArgs>
+    caretaker?: boolean | Property$caretakerArgs<ExtArgs>
+    onboardedBy?: boolean | Property$onboardedByArgs<ExtArgs>
   }
 
   export type $PropertyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Property"
     objects: {
+      applications: Prisma.$ApplicationPayload<ExtArgs>[]
+      leases: Prisma.$LeasePayload<ExtArgs>[]
       location: Prisma.$LocationPayload<ExtArgs>
       manager: Prisma.$UserPayload<ExtArgs>
-      leases: Prisma.$LeasePayload<ExtArgs>[]
-      applications: Prisma.$ApplicationPayload<ExtArgs>[]
-      favoritedBy: Prisma.$UserPayload<ExtArgs>[]
-      tenants: Prisma.$UserPayload<ExtArgs>[]
       viewingAvailabilities: Prisma.$ViewingAvailabilityPayload<ExtArgs>[]
       viewingBookings: Prisma.$ViewingBookingPayload<ExtArgs>[]
+      favoritedBy: Prisma.$UserPayload<ExtArgs>[]
+      tenants: Prisma.$UserPayload<ExtArgs>[]
+      landlord: Prisma.$LandlordPayload<ExtArgs> | null
+      caretaker: Prisma.$CaretakerPayload<ExtArgs> | null
+      onboardedBy: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3697,11 +4515,11 @@ export namespace Prisma {
       securityDeposit: number
       applicationFee: number
       photoUrls: string[]
-      amenities: $Enums.Amenity[]
-      highlights: $Enums.Highlight[]
+      amenities: string[]
+      highlights: string[]
       isPetsAllowed: boolean
       isParkingIncluded: boolean
-      isSale: boolean
+      isRent: boolean
       beds: number
       baths: number
       squareFeet: number
@@ -3709,10 +4527,14 @@ export namespace Prisma {
       postedDate: Date
       averageRating: number | null
       numberOfReviews: number | null
-      status: $Enums.PropertyStatus
-      submittedBy: string | null
       locationId: number
       managerUserId: string
+      isSale: boolean
+      status: $Enums.PropertyStatus
+      submittedBy: string | null
+      landlordId: number | null
+      caretakerId: number | null
+      onboardedByAgentId: string | null
     }, ExtArgs["result"]["property"]>
     composites: {}
   }
@@ -4107,14 +4929,17 @@ export namespace Prisma {
    */
   export interface Prisma__PropertyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    applications<T extends Property$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Property$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    leases<T extends Property$leasesArgs<ExtArgs> = {}>(args?: Subset<T, Property$leasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeasePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     location<T extends LocationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LocationDefaultArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     manager<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
-    leases<T extends Property$leasesArgs<ExtArgs> = {}>(args?: Subset<T, Property$leasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeasePayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
-    applications<T extends Property$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, Property$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
-    favoritedBy<T extends Property$favoritedByArgs<ExtArgs> = {}>(args?: Subset<T, Property$favoritedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
-    tenants<T extends Property$tenantsArgs<ExtArgs> = {}>(args?: Subset<T, Property$tenantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     viewingAvailabilities<T extends Property$viewingAvailabilitiesArgs<ExtArgs> = {}>(args?: Subset<T, Property$viewingAvailabilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingAvailabilityPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     viewingBookings<T extends Property$viewingBookingsArgs<ExtArgs> = {}>(args?: Subset<T, Property$viewingBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewingBookingPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    favoritedBy<T extends Property$favoritedByArgs<ExtArgs> = {}>(args?: Subset<T, Property$favoritedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    tenants<T extends Property$tenantsArgs<ExtArgs> = {}>(args?: Subset<T, Property$tenantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    landlord<T extends Property$landlordArgs<ExtArgs> = {}>(args?: Subset<T, Property$landlordArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    caretaker<T extends Property$caretakerArgs<ExtArgs> = {}>(args?: Subset<T, Property$caretakerArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    onboardedBy<T extends Property$onboardedByArgs<ExtArgs> = {}>(args?: Subset<T, Property$onboardedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4152,11 +4977,11 @@ export namespace Prisma {
     readonly securityDeposit: FieldRef<"Property", 'Float'>
     readonly applicationFee: FieldRef<"Property", 'Float'>
     readonly photoUrls: FieldRef<"Property", 'String[]'>
-    readonly amenities: FieldRef<"Property", 'Amenity[]'>
-    readonly highlights: FieldRef<"Property", 'Highlight[]'>
+    readonly amenities: FieldRef<"Property", 'String[]'>
+    readonly highlights: FieldRef<"Property", 'String[]'>
     readonly isPetsAllowed: FieldRef<"Property", 'Boolean'>
     readonly isParkingIncluded: FieldRef<"Property", 'Boolean'>
-    readonly isSale: FieldRef<"Property", 'Boolean'>
+    readonly isRent: FieldRef<"Property", 'Boolean'>
     readonly beds: FieldRef<"Property", 'Int'>
     readonly baths: FieldRef<"Property", 'Float'>
     readonly squareFeet: FieldRef<"Property", 'Int'>
@@ -4164,10 +4989,14 @@ export namespace Prisma {
     readonly postedDate: FieldRef<"Property", 'DateTime'>
     readonly averageRating: FieldRef<"Property", 'Float'>
     readonly numberOfReviews: FieldRef<"Property", 'Int'>
-    readonly status: FieldRef<"Property", 'PropertyStatus'>
-    readonly submittedBy: FieldRef<"Property", 'String'>
     readonly locationId: FieldRef<"Property", 'Int'>
     readonly managerUserId: FieldRef<"Property", 'String'>
+    readonly isSale: FieldRef<"Property", 'Boolean'>
+    readonly status: FieldRef<"Property", 'PropertyStatus'>
+    readonly submittedBy: FieldRef<"Property", 'String'>
+    readonly landlordId: FieldRef<"Property", 'Int'>
+    readonly caretakerId: FieldRef<"Property", 'Int'>
+    readonly onboardedByAgentId: FieldRef<"Property", 'String'>
   }
     
 
@@ -4564,6 +5393,30 @@ export namespace Prisma {
   }
 
   /**
+   * Property.applications
+   */
+  export type Property$applicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Application
+     */
+    select?: ApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Application
+     */
+    omit?: ApplicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationInclude<ExtArgs> | null
+    where?: ApplicationWhereInput
+    orderBy?: ApplicationOrderByWithRelationInput | ApplicationOrderByWithRelationInput[]
+    cursor?: ApplicationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ApplicationScalarFieldEnum | ApplicationScalarFieldEnum[]
+  }
+
+  /**
    * Property.leases
    */
   export type Property$leasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4588,27 +5441,51 @@ export namespace Prisma {
   }
 
   /**
-   * Property.applications
+   * Property.viewingAvailabilities
    */
-  export type Property$applicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Property$viewingAvailabilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Application
+     * Select specific fields to fetch from the ViewingAvailability
      */
-    select?: ApplicationSelect<ExtArgs> | null
+    select?: ViewingAvailabilitySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Application
+     * Omit specific fields from the ViewingAvailability
      */
-    omit?: ApplicationOmit<ExtArgs> | null
+    omit?: ViewingAvailabilityOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ApplicationInclude<ExtArgs> | null
-    where?: ApplicationWhereInput
-    orderBy?: ApplicationOrderByWithRelationInput | ApplicationOrderByWithRelationInput[]
-    cursor?: ApplicationWhereUniqueInput
+    include?: ViewingAvailabilityInclude<ExtArgs> | null
+    where?: ViewingAvailabilityWhereInput
+    orderBy?: ViewingAvailabilityOrderByWithRelationInput | ViewingAvailabilityOrderByWithRelationInput[]
+    cursor?: ViewingAvailabilityWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ApplicationScalarFieldEnum | ApplicationScalarFieldEnum[]
+    distinct?: ViewingAvailabilityScalarFieldEnum | ViewingAvailabilityScalarFieldEnum[]
+  }
+
+  /**
+   * Property.viewingBookings
+   */
+  export type Property$viewingBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ViewingBooking
+     */
+    select?: ViewingBookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ViewingBooking
+     */
+    omit?: ViewingBookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewingBookingInclude<ExtArgs> | null
+    where?: ViewingBookingWhereInput
+    orderBy?: ViewingBookingOrderByWithRelationInput | ViewingBookingOrderByWithRelationInput[]
+    cursor?: ViewingBookingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ViewingBookingScalarFieldEnum | ViewingBookingScalarFieldEnum[]
   }
 
   /**
@@ -4660,51 +5537,60 @@ export namespace Prisma {
   }
 
   /**
-   * Property.viewingAvailabilities
+   * Property.landlord
    */
-  export type Property$viewingAvailabilitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Property$landlordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ViewingAvailability
+     * Select specific fields to fetch from the Landlord
      */
-    select?: ViewingAvailabilitySelect<ExtArgs> | null
+    select?: LandlordSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ViewingAvailability
+     * Omit specific fields from the Landlord
      */
-    omit?: ViewingAvailabilityOmit<ExtArgs> | null
+    omit?: LandlordOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ViewingAvailabilityInclude<ExtArgs> | null
-    where?: ViewingAvailabilityWhereInput
-    orderBy?: ViewingAvailabilityOrderByWithRelationInput | ViewingAvailabilityOrderByWithRelationInput[]
-    cursor?: ViewingAvailabilityWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ViewingAvailabilityScalarFieldEnum | ViewingAvailabilityScalarFieldEnum[]
+    include?: LandlordInclude<ExtArgs> | null
+    where?: LandlordWhereInput
   }
 
   /**
-   * Property.viewingBookings
+   * Property.caretaker
    */
-  export type Property$viewingBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Property$caretakerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ViewingBooking
+     * Select specific fields to fetch from the Caretaker
      */
-    select?: ViewingBookingSelect<ExtArgs> | null
+    select?: CaretakerSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ViewingBooking
+     * Omit specific fields from the Caretaker
      */
-    omit?: ViewingBookingOmit<ExtArgs> | null
+    omit?: CaretakerOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ViewingBookingInclude<ExtArgs> | null
-    where?: ViewingBookingWhereInput
-    orderBy?: ViewingBookingOrderByWithRelationInput | ViewingBookingOrderByWithRelationInput[]
-    cursor?: ViewingBookingWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ViewingBookingScalarFieldEnum | ViewingBookingScalarFieldEnum[]
+    include?: CaretakerInclude<ExtArgs> | null
+    where?: CaretakerWhereInput
+  }
+
+  /**
+   * Property.onboardedBy
+   */
+  export type Property$onboardedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
   }
 
   /**
@@ -5927,9 +6813,9 @@ export namespace Prisma {
     phoneNumber?: boolean
     message?: boolean
     leaseId?: boolean
+    lease?: boolean | Application$leaseArgs<ExtArgs>
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | UserDefaultArgs<ExtArgs>
-    lease?: boolean | Application$leaseArgs<ExtArgs>
   }, ExtArgs["result"]["application"]>
 
   export type ApplicationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5943,9 +6829,9 @@ export namespace Prisma {
     phoneNumber?: boolean
     message?: boolean
     leaseId?: boolean
+    lease?: boolean | Application$leaseArgs<ExtArgs>
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | UserDefaultArgs<ExtArgs>
-    lease?: boolean | Application$leaseArgs<ExtArgs>
   }, ExtArgs["result"]["application"]>
 
   export type ApplicationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5959,9 +6845,9 @@ export namespace Prisma {
     phoneNumber?: boolean
     message?: boolean
     leaseId?: boolean
+    lease?: boolean | Application$leaseArgs<ExtArgs>
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | UserDefaultArgs<ExtArgs>
-    lease?: boolean | Application$leaseArgs<ExtArgs>
   }, ExtArgs["result"]["application"]>
 
   export type ApplicationSelectScalar = {
@@ -5979,27 +6865,27 @@ export namespace Prisma {
 
   export type ApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "applicationDate" | "status" | "propertyId" | "tenantUserId" | "name" | "email" | "phoneNumber" | "message" | "leaseId", ExtArgs["result"]["application"]>
   export type ApplicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    lease?: boolean | Application$leaseArgs<ExtArgs>
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | UserDefaultArgs<ExtArgs>
-    lease?: boolean | Application$leaseArgs<ExtArgs>
   }
   export type ApplicationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    lease?: boolean | Application$leaseArgs<ExtArgs>
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | UserDefaultArgs<ExtArgs>
-    lease?: boolean | Application$leaseArgs<ExtArgs>
   }
   export type ApplicationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    lease?: boolean | Application$leaseArgs<ExtArgs>
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | UserDefaultArgs<ExtArgs>
-    lease?: boolean | Application$leaseArgs<ExtArgs>
   }
 
   export type $ApplicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Application"
     objects: {
+      lease: Prisma.$LeasePayload<ExtArgs> | null
       property: Prisma.$PropertyPayload<ExtArgs>
       tenant: Prisma.$UserPayload<ExtArgs>
-      lease: Prisma.$LeasePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6406,9 +7292,9 @@ export namespace Prisma {
    */
   export interface Prisma__ApplicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    lease<T extends Application$leaseArgs<ExtArgs> = {}>(args?: Subset<T, Application$leaseArgs<ExtArgs>>): Prisma__LeaseClient<$Result.GetResult<Prisma.$LeasePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     property<T extends PropertyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PropertyDefaultArgs<ExtArgs>>): Prisma__PropertyClient<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     tenant<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
-    lease<T extends Application$leaseArgs<ExtArgs> = {}>(args?: Subset<T, Application$leaseArgs<ExtArgs>>): Prisma__LeaseClient<$Result.GetResult<Prisma.$LeasePayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7107,9 +7993,9 @@ export namespace Prisma {
     deposit?: boolean
     propertyId?: boolean
     tenantUserId?: boolean
+    application?: boolean | Lease$applicationArgs<ExtArgs>
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | UserDefaultArgs<ExtArgs>
-    application?: boolean | Lease$applicationArgs<ExtArgs>
     payments?: boolean | Lease$paymentsArgs<ExtArgs>
     _count?: boolean | LeaseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lease"]>
@@ -7150,9 +8036,9 @@ export namespace Prisma {
 
   export type LeaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "startDate" | "endDate" | "rent" | "deposit" | "propertyId" | "tenantUserId", ExtArgs["result"]["lease"]>
   export type LeaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    application?: boolean | Lease$applicationArgs<ExtArgs>
     property?: boolean | PropertyDefaultArgs<ExtArgs>
     tenant?: boolean | UserDefaultArgs<ExtArgs>
-    application?: boolean | Lease$applicationArgs<ExtArgs>
     payments?: boolean | Lease$paymentsArgs<ExtArgs>
     _count?: boolean | LeaseCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -7168,9 +8054,9 @@ export namespace Prisma {
   export type $LeasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Lease"
     objects: {
+      application: Prisma.$ApplicationPayload<ExtArgs> | null
       property: Prisma.$PropertyPayload<ExtArgs>
       tenant: Prisma.$UserPayload<ExtArgs>
-      application: Prisma.$ApplicationPayload<ExtArgs> | null
       payments: Prisma.$PaymentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -7575,9 +8461,9 @@ export namespace Prisma {
    */
   export interface Prisma__LeaseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    application<T extends Lease$applicationArgs<ExtArgs> = {}>(args?: Subset<T, Lease$applicationArgs<ExtArgs>>): Prisma__ApplicationClient<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     property<T extends PropertyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PropertyDefaultArgs<ExtArgs>>): Prisma__PropertyClient<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
     tenant<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
-    application<T extends Lease$applicationArgs<ExtArgs> = {}>(args?: Subset<T, Lease$applicationArgs<ExtArgs>>): Prisma__ApplicationClient<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
     payments<T extends Lease$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, Lease$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -12424,6 +13310,6401 @@ export namespace Prisma {
 
 
   /**
+   * Model spatial_ref_sys
+   */
+
+  export type AggregateSpatial_ref_sys = {
+    _count: Spatial_ref_sysCountAggregateOutputType | null
+    _avg: Spatial_ref_sysAvgAggregateOutputType | null
+    _sum: Spatial_ref_sysSumAggregateOutputType | null
+    _min: Spatial_ref_sysMinAggregateOutputType | null
+    _max: Spatial_ref_sysMaxAggregateOutputType | null
+  }
+
+  export type Spatial_ref_sysAvgAggregateOutputType = {
+    srid: number | null
+    auth_srid: number | null
+  }
+
+  export type Spatial_ref_sysSumAggregateOutputType = {
+    srid: number | null
+    auth_srid: number | null
+  }
+
+  export type Spatial_ref_sysMinAggregateOutputType = {
+    srid: number | null
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+  }
+
+  export type Spatial_ref_sysMaxAggregateOutputType = {
+    srid: number | null
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+  }
+
+  export type Spatial_ref_sysCountAggregateOutputType = {
+    srid: number
+    auth_name: number
+    auth_srid: number
+    srtext: number
+    proj4text: number
+    _all: number
+  }
+
+
+  export type Spatial_ref_sysAvgAggregateInputType = {
+    srid?: true
+    auth_srid?: true
+  }
+
+  export type Spatial_ref_sysSumAggregateInputType = {
+    srid?: true
+    auth_srid?: true
+  }
+
+  export type Spatial_ref_sysMinAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+  }
+
+  export type Spatial_ref_sysMaxAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+  }
+
+  export type Spatial_ref_sysCountAggregateInputType = {
+    srid?: true
+    auth_name?: true
+    auth_srid?: true
+    srtext?: true
+    proj4text?: true
+    _all?: true
+  }
+
+  export type Spatial_ref_sysAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which spatial_ref_sys to aggregate.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned spatial_ref_sys
+    **/
+    _count?: true | Spatial_ref_sysCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Spatial_ref_sysAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Spatial_ref_sysSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Spatial_ref_sysMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Spatial_ref_sysMaxAggregateInputType
+  }
+
+  export type GetSpatial_ref_sysAggregateType<T extends Spatial_ref_sysAggregateArgs> = {
+        [P in keyof T & keyof AggregateSpatial_ref_sys]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
+      : GetScalarType<T[P], AggregateSpatial_ref_sys[P]>
+  }
+
+
+
+
+  export type spatial_ref_sysGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: spatial_ref_sysWhereInput
+    orderBy?: spatial_ref_sysOrderByWithAggregationInput | spatial_ref_sysOrderByWithAggregationInput[]
+    by: Spatial_ref_sysScalarFieldEnum[] | Spatial_ref_sysScalarFieldEnum
+    having?: spatial_ref_sysScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Spatial_ref_sysCountAggregateInputType | true
+    _avg?: Spatial_ref_sysAvgAggregateInputType
+    _sum?: Spatial_ref_sysSumAggregateInputType
+    _min?: Spatial_ref_sysMinAggregateInputType
+    _max?: Spatial_ref_sysMaxAggregateInputType
+  }
+
+  export type Spatial_ref_sysGroupByOutputType = {
+    srid: number
+    auth_name: string | null
+    auth_srid: number | null
+    srtext: string | null
+    proj4text: string | null
+    _count: Spatial_ref_sysCountAggregateOutputType | null
+    _avg: Spatial_ref_sysAvgAggregateOutputType | null
+    _sum: Spatial_ref_sysSumAggregateOutputType | null
+    _min: Spatial_ref_sysMinAggregateOutputType | null
+    _max: Spatial_ref_sysMaxAggregateOutputType | null
+  }
+
+  type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Spatial_ref_sysGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Spatial_ref_sysGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
+            : GetScalarType<T[P], Spatial_ref_sysGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type spatial_ref_sysSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
+
+  export type spatial_ref_sysSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
+
+  export type spatial_ref_sysSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }, ExtArgs["result"]["spatial_ref_sys"]>
+
+  export type spatial_ref_sysSelectScalar = {
+    srid?: boolean
+    auth_name?: boolean
+    auth_srid?: boolean
+    srtext?: boolean
+    proj4text?: boolean
+  }
+
+  export type spatial_ref_sysOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"srid" | "auth_name" | "auth_srid" | "srtext" | "proj4text", ExtArgs["result"]["spatial_ref_sys"]>
+
+  export type $spatial_ref_sysPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "spatial_ref_sys"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      srid: number
+      auth_name: string | null
+      auth_srid: number | null
+      srtext: string | null
+      proj4text: string | null
+    }, ExtArgs["result"]["spatial_ref_sys"]>
+    composites: {}
+  }
+
+  type spatial_ref_sysGetPayload<S extends boolean | null | undefined | spatial_ref_sysDefaultArgs> = $Result.GetResult<Prisma.$spatial_ref_sysPayload, S>
+
+  type spatial_ref_sysCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<spatial_ref_sysFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Spatial_ref_sysCountAggregateInputType | true
+    }
+
+  export interface spatial_ref_sysDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['spatial_ref_sys'], meta: { name: 'spatial_ref_sys' } }
+    /**
+     * Find zero or one Spatial_ref_sys that matches the filter.
+     * @param {spatial_ref_sysFindUniqueArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends spatial_ref_sysFindUniqueArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Spatial_ref_sys that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {spatial_ref_sysFindUniqueOrThrowArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends spatial_ref_sysFindUniqueOrThrowArgs>(args: SelectSubset<T, spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Spatial_ref_sys that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindFirstArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends spatial_ref_sysFindFirstArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Spatial_ref_sys that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindFirstOrThrowArgs} args - Arguments to find a Spatial_ref_sys
+     * @example
+     * // Get one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends spatial_ref_sysFindFirstOrThrowArgs>(args?: SelectSubset<T, spatial_ref_sysFindFirstOrThrowArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Spatial_ref_sys that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany()
+     * 
+     * // Get first 10 Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.findMany({ take: 10 })
+     * 
+     * // Only select the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.findMany({ select: { srid: true } })
+     * 
+     */
+    findMany<T extends spatial_ref_sysFindManyArgs>(args?: SelectSubset<T, spatial_ref_sysFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Spatial_ref_sys.
+     * @param {spatial_ref_sysCreateArgs} args - Arguments to create a Spatial_ref_sys.
+     * @example
+     * // Create one Spatial_ref_sys
+     * const Spatial_ref_sys = await prisma.spatial_ref_sys.create({
+     *   data: {
+     *     // ... data to create a Spatial_ref_sys
+     *   }
+     * })
+     * 
+     */
+    create<T extends spatial_ref_sysCreateArgs>(args: SelectSubset<T, spatial_ref_sysCreateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Spatial_ref_sys.
+     * @param {spatial_ref_sysCreateManyArgs} args - Arguments to create many Spatial_ref_sys.
+     * @example
+     * // Create many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends spatial_ref_sysCreateManyArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Spatial_ref_sys and returns the data saved in the database.
+     * @param {spatial_ref_sysCreateManyAndReturnArgs} args - Arguments to create many Spatial_ref_sys.
+     * @example
+     * // Create many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Spatial_ref_sys and only return the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.createManyAndReturn({
+     *   select: { srid: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends spatial_ref_sysCreateManyAndReturnArgs>(args?: SelectSubset<T, spatial_ref_sysCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Spatial_ref_sys.
+     * @param {spatial_ref_sysDeleteArgs} args - Arguments to delete one Spatial_ref_sys.
+     * @example
+     * // Delete one Spatial_ref_sys
+     * const Spatial_ref_sys = await prisma.spatial_ref_sys.delete({
+     *   where: {
+     *     // ... filter to delete one Spatial_ref_sys
+     *   }
+     * })
+     * 
+     */
+    delete<T extends spatial_ref_sysDeleteArgs>(args: SelectSubset<T, spatial_ref_sysDeleteArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Spatial_ref_sys.
+     * @param {spatial_ref_sysUpdateArgs} args - Arguments to update one Spatial_ref_sys.
+     * @example
+     * // Update one Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends spatial_ref_sysUpdateArgs>(args: SelectSubset<T, spatial_ref_sysUpdateArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Spatial_ref_sys.
+     * @param {spatial_ref_sysDeleteManyArgs} args - Arguments to filter Spatial_ref_sys to delete.
+     * @example
+     * // Delete a few Spatial_ref_sys
+     * const { count } = await prisma.spatial_ref_sys.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends spatial_ref_sysDeleteManyArgs>(args?: SelectSubset<T, spatial_ref_sysDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends spatial_ref_sysUpdateManyArgs>(args: SelectSubset<T, spatial_ref_sysUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Spatial_ref_sys and returns the data updated in the database.
+     * @param {spatial_ref_sysUpdateManyAndReturnArgs} args - Arguments to update many Spatial_ref_sys.
+     * @example
+     * // Update many Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Spatial_ref_sys and only return the `srid`
+     * const spatial_ref_sysWithSridOnly = await prisma.spatial_ref_sys.updateManyAndReturn({
+     *   select: { srid: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends spatial_ref_sysUpdateManyAndReturnArgs>(args: SelectSubset<T, spatial_ref_sysUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Spatial_ref_sys.
+     * @param {spatial_ref_sysUpsertArgs} args - Arguments to update or create a Spatial_ref_sys.
+     * @example
+     * // Update or create a Spatial_ref_sys
+     * const spatial_ref_sys = await prisma.spatial_ref_sys.upsert({
+     *   create: {
+     *     // ... data to create a Spatial_ref_sys
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Spatial_ref_sys we want to update
+     *   }
+     * })
+     */
+    upsert<T extends spatial_ref_sysUpsertArgs>(args: SelectSubset<T, spatial_ref_sysUpsertArgs<ExtArgs>>): Prisma__spatial_ref_sysClient<$Result.GetResult<Prisma.$spatial_ref_sysPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysCountArgs} args - Arguments to filter Spatial_ref_sys to count.
+     * @example
+     * // Count the number of Spatial_ref_sys
+     * const count = await prisma.spatial_ref_sys.count({
+     *   where: {
+     *     // ... the filter for the Spatial_ref_sys we want to count
+     *   }
+     * })
+    **/
+    count<T extends spatial_ref_sysCountArgs>(
+      args?: Subset<T, spatial_ref_sysCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Spatial_ref_sysCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Spatial_ref_sysAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Spatial_ref_sysAggregateArgs>(args: Subset<T, Spatial_ref_sysAggregateArgs>): Prisma.PrismaPromise<GetSpatial_ref_sysAggregateType<T>>
+
+    /**
+     * Group by Spatial_ref_sys.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {spatial_ref_sysGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends spatial_ref_sysGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: spatial_ref_sysGroupByArgs['orderBy'] }
+        : { orderBy?: spatial_ref_sysGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, spatial_ref_sysGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpatial_ref_sysGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the spatial_ref_sys model
+   */
+  readonly fields: spatial_ref_sysFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for spatial_ref_sys.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__spatial_ref_sysClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the spatial_ref_sys model
+   */ 
+  interface spatial_ref_sysFieldRefs {
+    readonly srid: FieldRef<"spatial_ref_sys", 'Int'>
+    readonly auth_name: FieldRef<"spatial_ref_sys", 'String'>
+    readonly auth_srid: FieldRef<"spatial_ref_sys", 'Int'>
+    readonly srtext: FieldRef<"spatial_ref_sys", 'String'>
+    readonly proj4text: FieldRef<"spatial_ref_sys", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * spatial_ref_sys findUnique
+   */
+  export type spatial_ref_sysFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys findUniqueOrThrow
+   */
+  export type spatial_ref_sysFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys findFirst
+   */
+  export type spatial_ref_sysFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of spatial_ref_sys.
+     */
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys findFirstOrThrow
+   */
+  export type spatial_ref_sysFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of spatial_ref_sys.
+     */
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys findMany
+   */
+  export type spatial_ref_sysFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * Filter, which spatial_ref_sys to fetch.
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of spatial_ref_sys to fetch.
+     */
+    orderBy?: spatial_ref_sysOrderByWithRelationInput | spatial_ref_sysOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing spatial_ref_sys.
+     */
+    cursor?: spatial_ref_sysWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` spatial_ref_sys from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` spatial_ref_sys.
+     */
+    skip?: number
+    distinct?: Spatial_ref_sysScalarFieldEnum | Spatial_ref_sysScalarFieldEnum[]
+  }
+
+  /**
+   * spatial_ref_sys create
+   */
+  export type spatial_ref_sysCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * The data needed to create a spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
+  }
+
+  /**
+   * spatial_ref_sys createMany
+   */
+  export type spatial_ref_sysCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many spatial_ref_sys.
+     */
+    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * spatial_ref_sys createManyAndReturn
+   */
+  export type spatial_ref_sysCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * The data used to create many spatial_ref_sys.
+     */
+    data: spatial_ref_sysCreateManyInput | spatial_ref_sysCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * spatial_ref_sys update
+   */
+  export type spatial_ref_sysUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * The data needed to update a spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
+    /**
+     * Choose, which spatial_ref_sys to update.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys updateMany
+   */
+  export type spatial_ref_sysUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysUpdateManyMutationInput, spatial_ref_sysUncheckedUpdateManyInput>
+    /**
+     * Filter which spatial_ref_sys to update
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * Limit how many spatial_ref_sys to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * spatial_ref_sys updateManyAndReturn
+   */
+  export type spatial_ref_sysUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * The data used to update spatial_ref_sys.
+     */
+    data: XOR<spatial_ref_sysUpdateManyMutationInput, spatial_ref_sysUncheckedUpdateManyInput>
+    /**
+     * Filter which spatial_ref_sys to update
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * Limit how many spatial_ref_sys to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * spatial_ref_sys upsert
+   */
+  export type spatial_ref_sysUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * The filter to search for the spatial_ref_sys to update in case it exists.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+    /**
+     * In case the spatial_ref_sys found by the `where` argument doesn't exist, create a new spatial_ref_sys with this data.
+     */
+    create: XOR<spatial_ref_sysCreateInput, spatial_ref_sysUncheckedCreateInput>
+    /**
+     * In case the spatial_ref_sys was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<spatial_ref_sysUpdateInput, spatial_ref_sysUncheckedUpdateInput>
+  }
+
+  /**
+   * spatial_ref_sys delete
+   */
+  export type spatial_ref_sysDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+    /**
+     * Filter which spatial_ref_sys to delete.
+     */
+    where: spatial_ref_sysWhereUniqueInput
+  }
+
+  /**
+   * spatial_ref_sys deleteMany
+   */
+  export type spatial_ref_sysDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which spatial_ref_sys to delete
+     */
+    where?: spatial_ref_sysWhereInput
+    /**
+     * Limit how many spatial_ref_sys to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * spatial_ref_sys without action
+   */
+  export type spatial_ref_sysDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the spatial_ref_sys
+     */
+    select?: spatial_ref_sysSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the spatial_ref_sys
+     */
+    omit?: spatial_ref_sysOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CustomAmenity
+   */
+
+  export type AggregateCustomAmenity = {
+    _count: CustomAmenityCountAggregateOutputType | null
+    _avg: CustomAmenityAvgAggregateOutputType | null
+    _sum: CustomAmenitySumAggregateOutputType | null
+    _min: CustomAmenityMinAggregateOutputType | null
+    _max: CustomAmenityMaxAggregateOutputType | null
+  }
+
+  export type CustomAmenityAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CustomAmenitySumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CustomAmenityMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type CustomAmenityMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type CustomAmenityCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type CustomAmenityAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CustomAmenitySumAggregateInputType = {
+    id?: true
+  }
+
+  export type CustomAmenityMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type CustomAmenityMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type CustomAmenityCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type CustomAmenityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustomAmenity to aggregate.
+     */
+    where?: CustomAmenityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomAmenities to fetch.
+     */
+    orderBy?: CustomAmenityOrderByWithRelationInput | CustomAmenityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CustomAmenityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomAmenities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomAmenities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CustomAmenities
+    **/
+    _count?: true | CustomAmenityCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CustomAmenityAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CustomAmenitySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CustomAmenityMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CustomAmenityMaxAggregateInputType
+  }
+
+  export type GetCustomAmenityAggregateType<T extends CustomAmenityAggregateArgs> = {
+        [P in keyof T & keyof AggregateCustomAmenity]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCustomAmenity[P]>
+      : GetScalarType<T[P], AggregateCustomAmenity[P]>
+  }
+
+
+
+
+  export type CustomAmenityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CustomAmenityWhereInput
+    orderBy?: CustomAmenityOrderByWithAggregationInput | CustomAmenityOrderByWithAggregationInput[]
+    by: CustomAmenityScalarFieldEnum[] | CustomAmenityScalarFieldEnum
+    having?: CustomAmenityScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CustomAmenityCountAggregateInputType | true
+    _avg?: CustomAmenityAvgAggregateInputType
+    _sum?: CustomAmenitySumAggregateInputType
+    _min?: CustomAmenityMinAggregateInputType
+    _max?: CustomAmenityMaxAggregateInputType
+  }
+
+  export type CustomAmenityGroupByOutputType = {
+    id: number
+    name: string
+    _count: CustomAmenityCountAggregateOutputType | null
+    _avg: CustomAmenityAvgAggregateOutputType | null
+    _sum: CustomAmenitySumAggregateOutputType | null
+    _min: CustomAmenityMinAggregateOutputType | null
+    _max: CustomAmenityMaxAggregateOutputType | null
+  }
+
+  type GetCustomAmenityGroupByPayload<T extends CustomAmenityGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CustomAmenityGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CustomAmenityGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CustomAmenityGroupByOutputType[P]>
+            : GetScalarType<T[P], CustomAmenityGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CustomAmenitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["customAmenity"]>
+
+  export type CustomAmenitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["customAmenity"]>
+
+  export type CustomAmenitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["customAmenity"]>
+
+  export type CustomAmenitySelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type CustomAmenityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["customAmenity"]>
+
+  export type $CustomAmenityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CustomAmenity"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["customAmenity"]>
+    composites: {}
+  }
+
+  type CustomAmenityGetPayload<S extends boolean | null | undefined | CustomAmenityDefaultArgs> = $Result.GetResult<Prisma.$CustomAmenityPayload, S>
+
+  type CustomAmenityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CustomAmenityFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CustomAmenityCountAggregateInputType | true
+    }
+
+  export interface CustomAmenityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CustomAmenity'], meta: { name: 'CustomAmenity' } }
+    /**
+     * Find zero or one CustomAmenity that matches the filter.
+     * @param {CustomAmenityFindUniqueArgs} args - Arguments to find a CustomAmenity
+     * @example
+     * // Get one CustomAmenity
+     * const customAmenity = await prisma.customAmenity.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CustomAmenityFindUniqueArgs>(args: SelectSubset<T, CustomAmenityFindUniqueArgs<ExtArgs>>): Prisma__CustomAmenityClient<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one CustomAmenity that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CustomAmenityFindUniqueOrThrowArgs} args - Arguments to find a CustomAmenity
+     * @example
+     * // Get one CustomAmenity
+     * const customAmenity = await prisma.customAmenity.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CustomAmenityFindUniqueOrThrowArgs>(args: SelectSubset<T, CustomAmenityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CustomAmenityClient<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first CustomAmenity that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomAmenityFindFirstArgs} args - Arguments to find a CustomAmenity
+     * @example
+     * // Get one CustomAmenity
+     * const customAmenity = await prisma.customAmenity.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CustomAmenityFindFirstArgs>(args?: SelectSubset<T, CustomAmenityFindFirstArgs<ExtArgs>>): Prisma__CustomAmenityClient<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first CustomAmenity that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomAmenityFindFirstOrThrowArgs} args - Arguments to find a CustomAmenity
+     * @example
+     * // Get one CustomAmenity
+     * const customAmenity = await prisma.customAmenity.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CustomAmenityFindFirstOrThrowArgs>(args?: SelectSubset<T, CustomAmenityFindFirstOrThrowArgs<ExtArgs>>): Prisma__CustomAmenityClient<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more CustomAmenities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomAmenityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CustomAmenities
+     * const customAmenities = await prisma.customAmenity.findMany()
+     * 
+     * // Get first 10 CustomAmenities
+     * const customAmenities = await prisma.customAmenity.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const customAmenityWithIdOnly = await prisma.customAmenity.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CustomAmenityFindManyArgs>(args?: SelectSubset<T, CustomAmenityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a CustomAmenity.
+     * @param {CustomAmenityCreateArgs} args - Arguments to create a CustomAmenity.
+     * @example
+     * // Create one CustomAmenity
+     * const CustomAmenity = await prisma.customAmenity.create({
+     *   data: {
+     *     // ... data to create a CustomAmenity
+     *   }
+     * })
+     * 
+     */
+    create<T extends CustomAmenityCreateArgs>(args: SelectSubset<T, CustomAmenityCreateArgs<ExtArgs>>): Prisma__CustomAmenityClient<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many CustomAmenities.
+     * @param {CustomAmenityCreateManyArgs} args - Arguments to create many CustomAmenities.
+     * @example
+     * // Create many CustomAmenities
+     * const customAmenity = await prisma.customAmenity.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CustomAmenityCreateManyArgs>(args?: SelectSubset<T, CustomAmenityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CustomAmenities and returns the data saved in the database.
+     * @param {CustomAmenityCreateManyAndReturnArgs} args - Arguments to create many CustomAmenities.
+     * @example
+     * // Create many CustomAmenities
+     * const customAmenity = await prisma.customAmenity.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CustomAmenities and only return the `id`
+     * const customAmenityWithIdOnly = await prisma.customAmenity.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CustomAmenityCreateManyAndReturnArgs>(args?: SelectSubset<T, CustomAmenityCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a CustomAmenity.
+     * @param {CustomAmenityDeleteArgs} args - Arguments to delete one CustomAmenity.
+     * @example
+     * // Delete one CustomAmenity
+     * const CustomAmenity = await prisma.customAmenity.delete({
+     *   where: {
+     *     // ... filter to delete one CustomAmenity
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CustomAmenityDeleteArgs>(args: SelectSubset<T, CustomAmenityDeleteArgs<ExtArgs>>): Prisma__CustomAmenityClient<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one CustomAmenity.
+     * @param {CustomAmenityUpdateArgs} args - Arguments to update one CustomAmenity.
+     * @example
+     * // Update one CustomAmenity
+     * const customAmenity = await prisma.customAmenity.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CustomAmenityUpdateArgs>(args: SelectSubset<T, CustomAmenityUpdateArgs<ExtArgs>>): Prisma__CustomAmenityClient<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more CustomAmenities.
+     * @param {CustomAmenityDeleteManyArgs} args - Arguments to filter CustomAmenities to delete.
+     * @example
+     * // Delete a few CustomAmenities
+     * const { count } = await prisma.customAmenity.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CustomAmenityDeleteManyArgs>(args?: SelectSubset<T, CustomAmenityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CustomAmenities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomAmenityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CustomAmenities
+     * const customAmenity = await prisma.customAmenity.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CustomAmenityUpdateManyArgs>(args: SelectSubset<T, CustomAmenityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CustomAmenities and returns the data updated in the database.
+     * @param {CustomAmenityUpdateManyAndReturnArgs} args - Arguments to update many CustomAmenities.
+     * @example
+     * // Update many CustomAmenities
+     * const customAmenity = await prisma.customAmenity.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CustomAmenities and only return the `id`
+     * const customAmenityWithIdOnly = await prisma.customAmenity.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CustomAmenityUpdateManyAndReturnArgs>(args: SelectSubset<T, CustomAmenityUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one CustomAmenity.
+     * @param {CustomAmenityUpsertArgs} args - Arguments to update or create a CustomAmenity.
+     * @example
+     * // Update or create a CustomAmenity
+     * const customAmenity = await prisma.customAmenity.upsert({
+     *   create: {
+     *     // ... data to create a CustomAmenity
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CustomAmenity we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CustomAmenityUpsertArgs>(args: SelectSubset<T, CustomAmenityUpsertArgs<ExtArgs>>): Prisma__CustomAmenityClient<$Result.GetResult<Prisma.$CustomAmenityPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of CustomAmenities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomAmenityCountArgs} args - Arguments to filter CustomAmenities to count.
+     * @example
+     * // Count the number of CustomAmenities
+     * const count = await prisma.customAmenity.count({
+     *   where: {
+     *     // ... the filter for the CustomAmenities we want to count
+     *   }
+     * })
+    **/
+    count<T extends CustomAmenityCountArgs>(
+      args?: Subset<T, CustomAmenityCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CustomAmenityCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CustomAmenity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomAmenityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CustomAmenityAggregateArgs>(args: Subset<T, CustomAmenityAggregateArgs>): Prisma.PrismaPromise<GetCustomAmenityAggregateType<T>>
+
+    /**
+     * Group by CustomAmenity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomAmenityGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CustomAmenityGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CustomAmenityGroupByArgs['orderBy'] }
+        : { orderBy?: CustomAmenityGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CustomAmenityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCustomAmenityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CustomAmenity model
+   */
+  readonly fields: CustomAmenityFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CustomAmenity.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CustomAmenityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CustomAmenity model
+   */ 
+  interface CustomAmenityFieldRefs {
+    readonly id: FieldRef<"CustomAmenity", 'Int'>
+    readonly name: FieldRef<"CustomAmenity", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CustomAmenity findUnique
+   */
+  export type CustomAmenityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomAmenity to fetch.
+     */
+    where: CustomAmenityWhereUniqueInput
+  }
+
+  /**
+   * CustomAmenity findUniqueOrThrow
+   */
+  export type CustomAmenityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomAmenity to fetch.
+     */
+    where: CustomAmenityWhereUniqueInput
+  }
+
+  /**
+   * CustomAmenity findFirst
+   */
+  export type CustomAmenityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomAmenity to fetch.
+     */
+    where?: CustomAmenityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomAmenities to fetch.
+     */
+    orderBy?: CustomAmenityOrderByWithRelationInput | CustomAmenityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustomAmenities.
+     */
+    cursor?: CustomAmenityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomAmenities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomAmenities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustomAmenities.
+     */
+    distinct?: CustomAmenityScalarFieldEnum | CustomAmenityScalarFieldEnum[]
+  }
+
+  /**
+   * CustomAmenity findFirstOrThrow
+   */
+  export type CustomAmenityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomAmenity to fetch.
+     */
+    where?: CustomAmenityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomAmenities to fetch.
+     */
+    orderBy?: CustomAmenityOrderByWithRelationInput | CustomAmenityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustomAmenities.
+     */
+    cursor?: CustomAmenityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomAmenities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomAmenities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustomAmenities.
+     */
+    distinct?: CustomAmenityScalarFieldEnum | CustomAmenityScalarFieldEnum[]
+  }
+
+  /**
+   * CustomAmenity findMany
+   */
+  export type CustomAmenityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomAmenities to fetch.
+     */
+    where?: CustomAmenityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomAmenities to fetch.
+     */
+    orderBy?: CustomAmenityOrderByWithRelationInput | CustomAmenityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CustomAmenities.
+     */
+    cursor?: CustomAmenityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomAmenities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomAmenities.
+     */
+    skip?: number
+    distinct?: CustomAmenityScalarFieldEnum | CustomAmenityScalarFieldEnum[]
+  }
+
+  /**
+   * CustomAmenity create
+   */
+  export type CustomAmenityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CustomAmenity.
+     */
+    data: XOR<CustomAmenityCreateInput, CustomAmenityUncheckedCreateInput>
+  }
+
+  /**
+   * CustomAmenity createMany
+   */
+  export type CustomAmenityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CustomAmenities.
+     */
+    data: CustomAmenityCreateManyInput | CustomAmenityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CustomAmenity createManyAndReturn
+   */
+  export type CustomAmenityCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * The data used to create many CustomAmenities.
+     */
+    data: CustomAmenityCreateManyInput | CustomAmenityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CustomAmenity update
+   */
+  export type CustomAmenityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CustomAmenity.
+     */
+    data: XOR<CustomAmenityUpdateInput, CustomAmenityUncheckedUpdateInput>
+    /**
+     * Choose, which CustomAmenity to update.
+     */
+    where: CustomAmenityWhereUniqueInput
+  }
+
+  /**
+   * CustomAmenity updateMany
+   */
+  export type CustomAmenityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CustomAmenities.
+     */
+    data: XOR<CustomAmenityUpdateManyMutationInput, CustomAmenityUncheckedUpdateManyInput>
+    /**
+     * Filter which CustomAmenities to update
+     */
+    where?: CustomAmenityWhereInput
+    /**
+     * Limit how many CustomAmenities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustomAmenity updateManyAndReturn
+   */
+  export type CustomAmenityUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * The data used to update CustomAmenities.
+     */
+    data: XOR<CustomAmenityUpdateManyMutationInput, CustomAmenityUncheckedUpdateManyInput>
+    /**
+     * Filter which CustomAmenities to update
+     */
+    where?: CustomAmenityWhereInput
+    /**
+     * Limit how many CustomAmenities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustomAmenity upsert
+   */
+  export type CustomAmenityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CustomAmenity to update in case it exists.
+     */
+    where: CustomAmenityWhereUniqueInput
+    /**
+     * In case the CustomAmenity found by the `where` argument doesn't exist, create a new CustomAmenity with this data.
+     */
+    create: XOR<CustomAmenityCreateInput, CustomAmenityUncheckedCreateInput>
+    /**
+     * In case the CustomAmenity was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CustomAmenityUpdateInput, CustomAmenityUncheckedUpdateInput>
+  }
+
+  /**
+   * CustomAmenity delete
+   */
+  export type CustomAmenityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+    /**
+     * Filter which CustomAmenity to delete.
+     */
+    where: CustomAmenityWhereUniqueInput
+  }
+
+  /**
+   * CustomAmenity deleteMany
+   */
+  export type CustomAmenityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustomAmenities to delete
+     */
+    where?: CustomAmenityWhereInput
+    /**
+     * Limit how many CustomAmenities to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustomAmenity without action
+   */
+  export type CustomAmenityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomAmenity
+     */
+    select?: CustomAmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomAmenity
+     */
+    omit?: CustomAmenityOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CustomHighlight
+   */
+
+  export type AggregateCustomHighlight = {
+    _count: CustomHighlightCountAggregateOutputType | null
+    _avg: CustomHighlightAvgAggregateOutputType | null
+    _sum: CustomHighlightSumAggregateOutputType | null
+    _min: CustomHighlightMinAggregateOutputType | null
+    _max: CustomHighlightMaxAggregateOutputType | null
+  }
+
+  export type CustomHighlightAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CustomHighlightSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CustomHighlightMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type CustomHighlightMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type CustomHighlightCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type CustomHighlightAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CustomHighlightSumAggregateInputType = {
+    id?: true
+  }
+
+  export type CustomHighlightMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type CustomHighlightMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type CustomHighlightCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type CustomHighlightAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustomHighlight to aggregate.
+     */
+    where?: CustomHighlightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomHighlights to fetch.
+     */
+    orderBy?: CustomHighlightOrderByWithRelationInput | CustomHighlightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CustomHighlightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomHighlights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomHighlights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CustomHighlights
+    **/
+    _count?: true | CustomHighlightCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CustomHighlightAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CustomHighlightSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CustomHighlightMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CustomHighlightMaxAggregateInputType
+  }
+
+  export type GetCustomHighlightAggregateType<T extends CustomHighlightAggregateArgs> = {
+        [P in keyof T & keyof AggregateCustomHighlight]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCustomHighlight[P]>
+      : GetScalarType<T[P], AggregateCustomHighlight[P]>
+  }
+
+
+
+
+  export type CustomHighlightGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CustomHighlightWhereInput
+    orderBy?: CustomHighlightOrderByWithAggregationInput | CustomHighlightOrderByWithAggregationInput[]
+    by: CustomHighlightScalarFieldEnum[] | CustomHighlightScalarFieldEnum
+    having?: CustomHighlightScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CustomHighlightCountAggregateInputType | true
+    _avg?: CustomHighlightAvgAggregateInputType
+    _sum?: CustomHighlightSumAggregateInputType
+    _min?: CustomHighlightMinAggregateInputType
+    _max?: CustomHighlightMaxAggregateInputType
+  }
+
+  export type CustomHighlightGroupByOutputType = {
+    id: number
+    name: string
+    _count: CustomHighlightCountAggregateOutputType | null
+    _avg: CustomHighlightAvgAggregateOutputType | null
+    _sum: CustomHighlightSumAggregateOutputType | null
+    _min: CustomHighlightMinAggregateOutputType | null
+    _max: CustomHighlightMaxAggregateOutputType | null
+  }
+
+  type GetCustomHighlightGroupByPayload<T extends CustomHighlightGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CustomHighlightGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CustomHighlightGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CustomHighlightGroupByOutputType[P]>
+            : GetScalarType<T[P], CustomHighlightGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CustomHighlightSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["customHighlight"]>
+
+  export type CustomHighlightSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["customHighlight"]>
+
+  export type CustomHighlightSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["customHighlight"]>
+
+  export type CustomHighlightSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type CustomHighlightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["customHighlight"]>
+
+  export type $CustomHighlightPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CustomHighlight"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["customHighlight"]>
+    composites: {}
+  }
+
+  type CustomHighlightGetPayload<S extends boolean | null | undefined | CustomHighlightDefaultArgs> = $Result.GetResult<Prisma.$CustomHighlightPayload, S>
+
+  type CustomHighlightCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CustomHighlightFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CustomHighlightCountAggregateInputType | true
+    }
+
+  export interface CustomHighlightDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CustomHighlight'], meta: { name: 'CustomHighlight' } }
+    /**
+     * Find zero or one CustomHighlight that matches the filter.
+     * @param {CustomHighlightFindUniqueArgs} args - Arguments to find a CustomHighlight
+     * @example
+     * // Get one CustomHighlight
+     * const customHighlight = await prisma.customHighlight.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CustomHighlightFindUniqueArgs>(args: SelectSubset<T, CustomHighlightFindUniqueArgs<ExtArgs>>): Prisma__CustomHighlightClient<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one CustomHighlight that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CustomHighlightFindUniqueOrThrowArgs} args - Arguments to find a CustomHighlight
+     * @example
+     * // Get one CustomHighlight
+     * const customHighlight = await prisma.customHighlight.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CustomHighlightFindUniqueOrThrowArgs>(args: SelectSubset<T, CustomHighlightFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CustomHighlightClient<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first CustomHighlight that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomHighlightFindFirstArgs} args - Arguments to find a CustomHighlight
+     * @example
+     * // Get one CustomHighlight
+     * const customHighlight = await prisma.customHighlight.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CustomHighlightFindFirstArgs>(args?: SelectSubset<T, CustomHighlightFindFirstArgs<ExtArgs>>): Prisma__CustomHighlightClient<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first CustomHighlight that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomHighlightFindFirstOrThrowArgs} args - Arguments to find a CustomHighlight
+     * @example
+     * // Get one CustomHighlight
+     * const customHighlight = await prisma.customHighlight.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CustomHighlightFindFirstOrThrowArgs>(args?: SelectSubset<T, CustomHighlightFindFirstOrThrowArgs<ExtArgs>>): Prisma__CustomHighlightClient<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more CustomHighlights that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomHighlightFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CustomHighlights
+     * const customHighlights = await prisma.customHighlight.findMany()
+     * 
+     * // Get first 10 CustomHighlights
+     * const customHighlights = await prisma.customHighlight.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const customHighlightWithIdOnly = await prisma.customHighlight.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CustomHighlightFindManyArgs>(args?: SelectSubset<T, CustomHighlightFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a CustomHighlight.
+     * @param {CustomHighlightCreateArgs} args - Arguments to create a CustomHighlight.
+     * @example
+     * // Create one CustomHighlight
+     * const CustomHighlight = await prisma.customHighlight.create({
+     *   data: {
+     *     // ... data to create a CustomHighlight
+     *   }
+     * })
+     * 
+     */
+    create<T extends CustomHighlightCreateArgs>(args: SelectSubset<T, CustomHighlightCreateArgs<ExtArgs>>): Prisma__CustomHighlightClient<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many CustomHighlights.
+     * @param {CustomHighlightCreateManyArgs} args - Arguments to create many CustomHighlights.
+     * @example
+     * // Create many CustomHighlights
+     * const customHighlight = await prisma.customHighlight.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CustomHighlightCreateManyArgs>(args?: SelectSubset<T, CustomHighlightCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CustomHighlights and returns the data saved in the database.
+     * @param {CustomHighlightCreateManyAndReturnArgs} args - Arguments to create many CustomHighlights.
+     * @example
+     * // Create many CustomHighlights
+     * const customHighlight = await prisma.customHighlight.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CustomHighlights and only return the `id`
+     * const customHighlightWithIdOnly = await prisma.customHighlight.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CustomHighlightCreateManyAndReturnArgs>(args?: SelectSubset<T, CustomHighlightCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a CustomHighlight.
+     * @param {CustomHighlightDeleteArgs} args - Arguments to delete one CustomHighlight.
+     * @example
+     * // Delete one CustomHighlight
+     * const CustomHighlight = await prisma.customHighlight.delete({
+     *   where: {
+     *     // ... filter to delete one CustomHighlight
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CustomHighlightDeleteArgs>(args: SelectSubset<T, CustomHighlightDeleteArgs<ExtArgs>>): Prisma__CustomHighlightClient<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one CustomHighlight.
+     * @param {CustomHighlightUpdateArgs} args - Arguments to update one CustomHighlight.
+     * @example
+     * // Update one CustomHighlight
+     * const customHighlight = await prisma.customHighlight.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CustomHighlightUpdateArgs>(args: SelectSubset<T, CustomHighlightUpdateArgs<ExtArgs>>): Prisma__CustomHighlightClient<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more CustomHighlights.
+     * @param {CustomHighlightDeleteManyArgs} args - Arguments to filter CustomHighlights to delete.
+     * @example
+     * // Delete a few CustomHighlights
+     * const { count } = await prisma.customHighlight.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CustomHighlightDeleteManyArgs>(args?: SelectSubset<T, CustomHighlightDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CustomHighlights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomHighlightUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CustomHighlights
+     * const customHighlight = await prisma.customHighlight.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CustomHighlightUpdateManyArgs>(args: SelectSubset<T, CustomHighlightUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CustomHighlights and returns the data updated in the database.
+     * @param {CustomHighlightUpdateManyAndReturnArgs} args - Arguments to update many CustomHighlights.
+     * @example
+     * // Update many CustomHighlights
+     * const customHighlight = await prisma.customHighlight.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CustomHighlights and only return the `id`
+     * const customHighlightWithIdOnly = await prisma.customHighlight.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CustomHighlightUpdateManyAndReturnArgs>(args: SelectSubset<T, CustomHighlightUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one CustomHighlight.
+     * @param {CustomHighlightUpsertArgs} args - Arguments to update or create a CustomHighlight.
+     * @example
+     * // Update or create a CustomHighlight
+     * const customHighlight = await prisma.customHighlight.upsert({
+     *   create: {
+     *     // ... data to create a CustomHighlight
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CustomHighlight we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CustomHighlightUpsertArgs>(args: SelectSubset<T, CustomHighlightUpsertArgs<ExtArgs>>): Prisma__CustomHighlightClient<$Result.GetResult<Prisma.$CustomHighlightPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of CustomHighlights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomHighlightCountArgs} args - Arguments to filter CustomHighlights to count.
+     * @example
+     * // Count the number of CustomHighlights
+     * const count = await prisma.customHighlight.count({
+     *   where: {
+     *     // ... the filter for the CustomHighlights we want to count
+     *   }
+     * })
+    **/
+    count<T extends CustomHighlightCountArgs>(
+      args?: Subset<T, CustomHighlightCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CustomHighlightCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CustomHighlight.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomHighlightAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CustomHighlightAggregateArgs>(args: Subset<T, CustomHighlightAggregateArgs>): Prisma.PrismaPromise<GetCustomHighlightAggregateType<T>>
+
+    /**
+     * Group by CustomHighlight.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CustomHighlightGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CustomHighlightGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CustomHighlightGroupByArgs['orderBy'] }
+        : { orderBy?: CustomHighlightGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CustomHighlightGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCustomHighlightGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CustomHighlight model
+   */
+  readonly fields: CustomHighlightFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CustomHighlight.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CustomHighlightClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CustomHighlight model
+   */ 
+  interface CustomHighlightFieldRefs {
+    readonly id: FieldRef<"CustomHighlight", 'Int'>
+    readonly name: FieldRef<"CustomHighlight", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CustomHighlight findUnique
+   */
+  export type CustomHighlightFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomHighlight to fetch.
+     */
+    where: CustomHighlightWhereUniqueInput
+  }
+
+  /**
+   * CustomHighlight findUniqueOrThrow
+   */
+  export type CustomHighlightFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomHighlight to fetch.
+     */
+    where: CustomHighlightWhereUniqueInput
+  }
+
+  /**
+   * CustomHighlight findFirst
+   */
+  export type CustomHighlightFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomHighlight to fetch.
+     */
+    where?: CustomHighlightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomHighlights to fetch.
+     */
+    orderBy?: CustomHighlightOrderByWithRelationInput | CustomHighlightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustomHighlights.
+     */
+    cursor?: CustomHighlightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomHighlights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomHighlights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustomHighlights.
+     */
+    distinct?: CustomHighlightScalarFieldEnum | CustomHighlightScalarFieldEnum[]
+  }
+
+  /**
+   * CustomHighlight findFirstOrThrow
+   */
+  export type CustomHighlightFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomHighlight to fetch.
+     */
+    where?: CustomHighlightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomHighlights to fetch.
+     */
+    orderBy?: CustomHighlightOrderByWithRelationInput | CustomHighlightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CustomHighlights.
+     */
+    cursor?: CustomHighlightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomHighlights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomHighlights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CustomHighlights.
+     */
+    distinct?: CustomHighlightScalarFieldEnum | CustomHighlightScalarFieldEnum[]
+  }
+
+  /**
+   * CustomHighlight findMany
+   */
+  export type CustomHighlightFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * Filter, which CustomHighlights to fetch.
+     */
+    where?: CustomHighlightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CustomHighlights to fetch.
+     */
+    orderBy?: CustomHighlightOrderByWithRelationInput | CustomHighlightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CustomHighlights.
+     */
+    cursor?: CustomHighlightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CustomHighlights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CustomHighlights.
+     */
+    skip?: number
+    distinct?: CustomHighlightScalarFieldEnum | CustomHighlightScalarFieldEnum[]
+  }
+
+  /**
+   * CustomHighlight create
+   */
+  export type CustomHighlightCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * The data needed to create a CustomHighlight.
+     */
+    data: XOR<CustomHighlightCreateInput, CustomHighlightUncheckedCreateInput>
+  }
+
+  /**
+   * CustomHighlight createMany
+   */
+  export type CustomHighlightCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CustomHighlights.
+     */
+    data: CustomHighlightCreateManyInput | CustomHighlightCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CustomHighlight createManyAndReturn
+   */
+  export type CustomHighlightCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * The data used to create many CustomHighlights.
+     */
+    data: CustomHighlightCreateManyInput | CustomHighlightCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CustomHighlight update
+   */
+  export type CustomHighlightUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * The data needed to update a CustomHighlight.
+     */
+    data: XOR<CustomHighlightUpdateInput, CustomHighlightUncheckedUpdateInput>
+    /**
+     * Choose, which CustomHighlight to update.
+     */
+    where: CustomHighlightWhereUniqueInput
+  }
+
+  /**
+   * CustomHighlight updateMany
+   */
+  export type CustomHighlightUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CustomHighlights.
+     */
+    data: XOR<CustomHighlightUpdateManyMutationInput, CustomHighlightUncheckedUpdateManyInput>
+    /**
+     * Filter which CustomHighlights to update
+     */
+    where?: CustomHighlightWhereInput
+    /**
+     * Limit how many CustomHighlights to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustomHighlight updateManyAndReturn
+   */
+  export type CustomHighlightUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * The data used to update CustomHighlights.
+     */
+    data: XOR<CustomHighlightUpdateManyMutationInput, CustomHighlightUncheckedUpdateManyInput>
+    /**
+     * Filter which CustomHighlights to update
+     */
+    where?: CustomHighlightWhereInput
+    /**
+     * Limit how many CustomHighlights to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustomHighlight upsert
+   */
+  export type CustomHighlightUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * The filter to search for the CustomHighlight to update in case it exists.
+     */
+    where: CustomHighlightWhereUniqueInput
+    /**
+     * In case the CustomHighlight found by the `where` argument doesn't exist, create a new CustomHighlight with this data.
+     */
+    create: XOR<CustomHighlightCreateInput, CustomHighlightUncheckedCreateInput>
+    /**
+     * In case the CustomHighlight was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CustomHighlightUpdateInput, CustomHighlightUncheckedUpdateInput>
+  }
+
+  /**
+   * CustomHighlight delete
+   */
+  export type CustomHighlightDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+    /**
+     * Filter which CustomHighlight to delete.
+     */
+    where: CustomHighlightWhereUniqueInput
+  }
+
+  /**
+   * CustomHighlight deleteMany
+   */
+  export type CustomHighlightDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CustomHighlights to delete
+     */
+    where?: CustomHighlightWhereInput
+    /**
+     * Limit how many CustomHighlights to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CustomHighlight without action
+   */
+  export type CustomHighlightDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomHighlight
+     */
+    select?: CustomHighlightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CustomHighlight
+     */
+    omit?: CustomHighlightOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Landlord
+   */
+
+  export type AggregateLandlord = {
+    _count: LandlordCountAggregateOutputType | null
+    _avg: LandlordAvgAggregateOutputType | null
+    _sum: LandlordSumAggregateOutputType | null
+    _min: LandlordMinAggregateOutputType | null
+    _max: LandlordMaxAggregateOutputType | null
+  }
+
+  export type LandlordAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type LandlordSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type LandlordMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    email: string | null
+    phoneNumber: string | null
+    onboardedById: string | null
+  }
+
+  export type LandlordMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    email: string | null
+    phoneNumber: string | null
+    onboardedById: string | null
+  }
+
+  export type LandlordCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    phoneNumber: number
+    onboardedById: number
+    _all: number
+  }
+
+
+  export type LandlordAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type LandlordSumAggregateInputType = {
+    id?: true
+  }
+
+  export type LandlordMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phoneNumber?: true
+    onboardedById?: true
+  }
+
+  export type LandlordMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phoneNumber?: true
+    onboardedById?: true
+  }
+
+  export type LandlordCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phoneNumber?: true
+    onboardedById?: true
+    _all?: true
+  }
+
+  export type LandlordAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Landlord to aggregate.
+     */
+    where?: LandlordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Landlords to fetch.
+     */
+    orderBy?: LandlordOrderByWithRelationInput | LandlordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LandlordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Landlords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Landlords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Landlords
+    **/
+    _count?: true | LandlordCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LandlordAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LandlordSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LandlordMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LandlordMaxAggregateInputType
+  }
+
+  export type GetLandlordAggregateType<T extends LandlordAggregateArgs> = {
+        [P in keyof T & keyof AggregateLandlord]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLandlord[P]>
+      : GetScalarType<T[P], AggregateLandlord[P]>
+  }
+
+
+
+
+  export type LandlordGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LandlordWhereInput
+    orderBy?: LandlordOrderByWithAggregationInput | LandlordOrderByWithAggregationInput[]
+    by: LandlordScalarFieldEnum[] | LandlordScalarFieldEnum
+    having?: LandlordScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LandlordCountAggregateInputType | true
+    _avg?: LandlordAvgAggregateInputType
+    _sum?: LandlordSumAggregateInputType
+    _min?: LandlordMinAggregateInputType
+    _max?: LandlordMaxAggregateInputType
+  }
+
+  export type LandlordGroupByOutputType = {
+    id: number
+    name: string
+    email: string
+    phoneNumber: string | null
+    onboardedById: string | null
+    _count: LandlordCountAggregateOutputType | null
+    _avg: LandlordAvgAggregateOutputType | null
+    _sum: LandlordSumAggregateOutputType | null
+    _min: LandlordMinAggregateOutputType | null
+    _max: LandlordMaxAggregateOutputType | null
+  }
+
+  type GetLandlordGroupByPayload<T extends LandlordGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LandlordGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LandlordGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LandlordGroupByOutputType[P]>
+            : GetScalarType<T[P], LandlordGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LandlordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phoneNumber?: boolean
+    onboardedById?: boolean
+    properties?: boolean | Landlord$propertiesArgs<ExtArgs>
+    onboardedBy?: boolean | Landlord$onboardedByArgs<ExtArgs>
+    _count?: boolean | LandlordCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["landlord"]>
+
+  export type LandlordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phoneNumber?: boolean
+    onboardedById?: boolean
+    onboardedBy?: boolean | Landlord$onboardedByArgs<ExtArgs>
+  }, ExtArgs["result"]["landlord"]>
+
+  export type LandlordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phoneNumber?: boolean
+    onboardedById?: boolean
+    onboardedBy?: boolean | Landlord$onboardedByArgs<ExtArgs>
+  }, ExtArgs["result"]["landlord"]>
+
+  export type LandlordSelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phoneNumber?: boolean
+    onboardedById?: boolean
+  }
+
+  export type LandlordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phoneNumber" | "onboardedById", ExtArgs["result"]["landlord"]>
+  export type LandlordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | Landlord$propertiesArgs<ExtArgs>
+    onboardedBy?: boolean | Landlord$onboardedByArgs<ExtArgs>
+    _count?: boolean | LandlordCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LandlordIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    onboardedBy?: boolean | Landlord$onboardedByArgs<ExtArgs>
+  }
+  export type LandlordIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    onboardedBy?: boolean | Landlord$onboardedByArgs<ExtArgs>
+  }
+
+  export type $LandlordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Landlord"
+    objects: {
+      properties: Prisma.$PropertyPayload<ExtArgs>[]
+      onboardedBy: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      email: string
+      phoneNumber: string | null
+      onboardedById: string | null
+    }, ExtArgs["result"]["landlord"]>
+    composites: {}
+  }
+
+  type LandlordGetPayload<S extends boolean | null | undefined | LandlordDefaultArgs> = $Result.GetResult<Prisma.$LandlordPayload, S>
+
+  type LandlordCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LandlordFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LandlordCountAggregateInputType | true
+    }
+
+  export interface LandlordDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Landlord'], meta: { name: 'Landlord' } }
+    /**
+     * Find zero or one Landlord that matches the filter.
+     * @param {LandlordFindUniqueArgs} args - Arguments to find a Landlord
+     * @example
+     * // Get one Landlord
+     * const landlord = await prisma.landlord.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LandlordFindUniqueArgs>(args: SelectSubset<T, LandlordFindUniqueArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Landlord that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LandlordFindUniqueOrThrowArgs} args - Arguments to find a Landlord
+     * @example
+     * // Get one Landlord
+     * const landlord = await prisma.landlord.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LandlordFindUniqueOrThrowArgs>(args: SelectSubset<T, LandlordFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Landlord that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LandlordFindFirstArgs} args - Arguments to find a Landlord
+     * @example
+     * // Get one Landlord
+     * const landlord = await prisma.landlord.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LandlordFindFirstArgs>(args?: SelectSubset<T, LandlordFindFirstArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Landlord that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LandlordFindFirstOrThrowArgs} args - Arguments to find a Landlord
+     * @example
+     * // Get one Landlord
+     * const landlord = await prisma.landlord.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LandlordFindFirstOrThrowArgs>(args?: SelectSubset<T, LandlordFindFirstOrThrowArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Landlords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LandlordFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Landlords
+     * const landlords = await prisma.landlord.findMany()
+     * 
+     * // Get first 10 Landlords
+     * const landlords = await prisma.landlord.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const landlordWithIdOnly = await prisma.landlord.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LandlordFindManyArgs>(args?: SelectSubset<T, LandlordFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Landlord.
+     * @param {LandlordCreateArgs} args - Arguments to create a Landlord.
+     * @example
+     * // Create one Landlord
+     * const Landlord = await prisma.landlord.create({
+     *   data: {
+     *     // ... data to create a Landlord
+     *   }
+     * })
+     * 
+     */
+    create<T extends LandlordCreateArgs>(args: SelectSubset<T, LandlordCreateArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Landlords.
+     * @param {LandlordCreateManyArgs} args - Arguments to create many Landlords.
+     * @example
+     * // Create many Landlords
+     * const landlord = await prisma.landlord.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LandlordCreateManyArgs>(args?: SelectSubset<T, LandlordCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Landlords and returns the data saved in the database.
+     * @param {LandlordCreateManyAndReturnArgs} args - Arguments to create many Landlords.
+     * @example
+     * // Create many Landlords
+     * const landlord = await prisma.landlord.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Landlords and only return the `id`
+     * const landlordWithIdOnly = await prisma.landlord.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LandlordCreateManyAndReturnArgs>(args?: SelectSubset<T, LandlordCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Landlord.
+     * @param {LandlordDeleteArgs} args - Arguments to delete one Landlord.
+     * @example
+     * // Delete one Landlord
+     * const Landlord = await prisma.landlord.delete({
+     *   where: {
+     *     // ... filter to delete one Landlord
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LandlordDeleteArgs>(args: SelectSubset<T, LandlordDeleteArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Landlord.
+     * @param {LandlordUpdateArgs} args - Arguments to update one Landlord.
+     * @example
+     * // Update one Landlord
+     * const landlord = await prisma.landlord.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LandlordUpdateArgs>(args: SelectSubset<T, LandlordUpdateArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Landlords.
+     * @param {LandlordDeleteManyArgs} args - Arguments to filter Landlords to delete.
+     * @example
+     * // Delete a few Landlords
+     * const { count } = await prisma.landlord.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LandlordDeleteManyArgs>(args?: SelectSubset<T, LandlordDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Landlords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LandlordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Landlords
+     * const landlord = await prisma.landlord.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LandlordUpdateManyArgs>(args: SelectSubset<T, LandlordUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Landlords and returns the data updated in the database.
+     * @param {LandlordUpdateManyAndReturnArgs} args - Arguments to update many Landlords.
+     * @example
+     * // Update many Landlords
+     * const landlord = await prisma.landlord.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Landlords and only return the `id`
+     * const landlordWithIdOnly = await prisma.landlord.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LandlordUpdateManyAndReturnArgs>(args: SelectSubset<T, LandlordUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Landlord.
+     * @param {LandlordUpsertArgs} args - Arguments to update or create a Landlord.
+     * @example
+     * // Update or create a Landlord
+     * const landlord = await prisma.landlord.upsert({
+     *   create: {
+     *     // ... data to create a Landlord
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Landlord we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LandlordUpsertArgs>(args: SelectSubset<T, LandlordUpsertArgs<ExtArgs>>): Prisma__LandlordClient<$Result.GetResult<Prisma.$LandlordPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Landlords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LandlordCountArgs} args - Arguments to filter Landlords to count.
+     * @example
+     * // Count the number of Landlords
+     * const count = await prisma.landlord.count({
+     *   where: {
+     *     // ... the filter for the Landlords we want to count
+     *   }
+     * })
+    **/
+    count<T extends LandlordCountArgs>(
+      args?: Subset<T, LandlordCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LandlordCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Landlord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LandlordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LandlordAggregateArgs>(args: Subset<T, LandlordAggregateArgs>): Prisma.PrismaPromise<GetLandlordAggregateType<T>>
+
+    /**
+     * Group by Landlord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LandlordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LandlordGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LandlordGroupByArgs['orderBy'] }
+        : { orderBy?: LandlordGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LandlordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLandlordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Landlord model
+   */
+  readonly fields: LandlordFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Landlord.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LandlordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    properties<T extends Landlord$propertiesArgs<ExtArgs> = {}>(args?: Subset<T, Landlord$propertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    onboardedBy<T extends Landlord$onboardedByArgs<ExtArgs> = {}>(args?: Subset<T, Landlord$onboardedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Landlord model
+   */ 
+  interface LandlordFieldRefs {
+    readonly id: FieldRef<"Landlord", 'Int'>
+    readonly name: FieldRef<"Landlord", 'String'>
+    readonly email: FieldRef<"Landlord", 'String'>
+    readonly phoneNumber: FieldRef<"Landlord", 'String'>
+    readonly onboardedById: FieldRef<"Landlord", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Landlord findUnique
+   */
+  export type LandlordFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * Filter, which Landlord to fetch.
+     */
+    where: LandlordWhereUniqueInput
+  }
+
+  /**
+   * Landlord findUniqueOrThrow
+   */
+  export type LandlordFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * Filter, which Landlord to fetch.
+     */
+    where: LandlordWhereUniqueInput
+  }
+
+  /**
+   * Landlord findFirst
+   */
+  export type LandlordFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * Filter, which Landlord to fetch.
+     */
+    where?: LandlordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Landlords to fetch.
+     */
+    orderBy?: LandlordOrderByWithRelationInput | LandlordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Landlords.
+     */
+    cursor?: LandlordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Landlords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Landlords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Landlords.
+     */
+    distinct?: LandlordScalarFieldEnum | LandlordScalarFieldEnum[]
+  }
+
+  /**
+   * Landlord findFirstOrThrow
+   */
+  export type LandlordFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * Filter, which Landlord to fetch.
+     */
+    where?: LandlordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Landlords to fetch.
+     */
+    orderBy?: LandlordOrderByWithRelationInput | LandlordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Landlords.
+     */
+    cursor?: LandlordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Landlords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Landlords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Landlords.
+     */
+    distinct?: LandlordScalarFieldEnum | LandlordScalarFieldEnum[]
+  }
+
+  /**
+   * Landlord findMany
+   */
+  export type LandlordFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * Filter, which Landlords to fetch.
+     */
+    where?: LandlordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Landlords to fetch.
+     */
+    orderBy?: LandlordOrderByWithRelationInput | LandlordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Landlords.
+     */
+    cursor?: LandlordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Landlords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Landlords.
+     */
+    skip?: number
+    distinct?: LandlordScalarFieldEnum | LandlordScalarFieldEnum[]
+  }
+
+  /**
+   * Landlord create
+   */
+  export type LandlordCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Landlord.
+     */
+    data: XOR<LandlordCreateInput, LandlordUncheckedCreateInput>
+  }
+
+  /**
+   * Landlord createMany
+   */
+  export type LandlordCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Landlords.
+     */
+    data: LandlordCreateManyInput | LandlordCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Landlord createManyAndReturn
+   */
+  export type LandlordCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * The data used to create many Landlords.
+     */
+    data: LandlordCreateManyInput | LandlordCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Landlord update
+   */
+  export type LandlordUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Landlord.
+     */
+    data: XOR<LandlordUpdateInput, LandlordUncheckedUpdateInput>
+    /**
+     * Choose, which Landlord to update.
+     */
+    where: LandlordWhereUniqueInput
+  }
+
+  /**
+   * Landlord updateMany
+   */
+  export type LandlordUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Landlords.
+     */
+    data: XOR<LandlordUpdateManyMutationInput, LandlordUncheckedUpdateManyInput>
+    /**
+     * Filter which Landlords to update
+     */
+    where?: LandlordWhereInput
+    /**
+     * Limit how many Landlords to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Landlord updateManyAndReturn
+   */
+  export type LandlordUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * The data used to update Landlords.
+     */
+    data: XOR<LandlordUpdateManyMutationInput, LandlordUncheckedUpdateManyInput>
+    /**
+     * Filter which Landlords to update
+     */
+    where?: LandlordWhereInput
+    /**
+     * Limit how many Landlords to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Landlord upsert
+   */
+  export type LandlordUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Landlord to update in case it exists.
+     */
+    where: LandlordWhereUniqueInput
+    /**
+     * In case the Landlord found by the `where` argument doesn't exist, create a new Landlord with this data.
+     */
+    create: XOR<LandlordCreateInput, LandlordUncheckedCreateInput>
+    /**
+     * In case the Landlord was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LandlordUpdateInput, LandlordUncheckedUpdateInput>
+  }
+
+  /**
+   * Landlord delete
+   */
+  export type LandlordDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+    /**
+     * Filter which Landlord to delete.
+     */
+    where: LandlordWhereUniqueInput
+  }
+
+  /**
+   * Landlord deleteMany
+   */
+  export type LandlordDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Landlords to delete
+     */
+    where?: LandlordWhereInput
+    /**
+     * Limit how many Landlords to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Landlord.properties
+   */
+  export type Landlord$propertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * Landlord.onboardedBy
+   */
+  export type Landlord$onboardedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Landlord without action
+   */
+  export type LandlordDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Landlord
+     */
+    select?: LandlordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Landlord
+     */
+    omit?: LandlordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LandlordInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Caretaker
+   */
+
+  export type AggregateCaretaker = {
+    _count: CaretakerCountAggregateOutputType | null
+    _avg: CaretakerAvgAggregateOutputType | null
+    _sum: CaretakerSumAggregateOutputType | null
+    _min: CaretakerMinAggregateOutputType | null
+    _max: CaretakerMaxAggregateOutputType | null
+  }
+
+  export type CaretakerAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CaretakerSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CaretakerMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    email: string | null
+    phoneNumber: string | null
+    onboardedById: string | null
+  }
+
+  export type CaretakerMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    email: string | null
+    phoneNumber: string | null
+    onboardedById: string | null
+  }
+
+  export type CaretakerCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    phoneNumber: number
+    onboardedById: number
+    _all: number
+  }
+
+
+  export type CaretakerAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CaretakerSumAggregateInputType = {
+    id?: true
+  }
+
+  export type CaretakerMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phoneNumber?: true
+    onboardedById?: true
+  }
+
+  export type CaretakerMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phoneNumber?: true
+    onboardedById?: true
+  }
+
+  export type CaretakerCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    phoneNumber?: true
+    onboardedById?: true
+    _all?: true
+  }
+
+  export type CaretakerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Caretaker to aggregate.
+     */
+    where?: CaretakerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Caretakers to fetch.
+     */
+    orderBy?: CaretakerOrderByWithRelationInput | CaretakerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CaretakerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Caretakers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Caretakers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Caretakers
+    **/
+    _count?: true | CaretakerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CaretakerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CaretakerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CaretakerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CaretakerMaxAggregateInputType
+  }
+
+  export type GetCaretakerAggregateType<T extends CaretakerAggregateArgs> = {
+        [P in keyof T & keyof AggregateCaretaker]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCaretaker[P]>
+      : GetScalarType<T[P], AggregateCaretaker[P]>
+  }
+
+
+
+
+  export type CaretakerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CaretakerWhereInput
+    orderBy?: CaretakerOrderByWithAggregationInput | CaretakerOrderByWithAggregationInput[]
+    by: CaretakerScalarFieldEnum[] | CaretakerScalarFieldEnum
+    having?: CaretakerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CaretakerCountAggregateInputType | true
+    _avg?: CaretakerAvgAggregateInputType
+    _sum?: CaretakerSumAggregateInputType
+    _min?: CaretakerMinAggregateInputType
+    _max?: CaretakerMaxAggregateInputType
+  }
+
+  export type CaretakerGroupByOutputType = {
+    id: number
+    name: string
+    email: string
+    phoneNumber: string | null
+    onboardedById: string | null
+    _count: CaretakerCountAggregateOutputType | null
+    _avg: CaretakerAvgAggregateOutputType | null
+    _sum: CaretakerSumAggregateOutputType | null
+    _min: CaretakerMinAggregateOutputType | null
+    _max: CaretakerMaxAggregateOutputType | null
+  }
+
+  type GetCaretakerGroupByPayload<T extends CaretakerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CaretakerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CaretakerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CaretakerGroupByOutputType[P]>
+            : GetScalarType<T[P], CaretakerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CaretakerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phoneNumber?: boolean
+    onboardedById?: boolean
+    properties?: boolean | Caretaker$propertiesArgs<ExtArgs>
+    onboardedBy?: boolean | Caretaker$onboardedByArgs<ExtArgs>
+    _count?: boolean | CaretakerCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["caretaker"]>
+
+  export type CaretakerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phoneNumber?: boolean
+    onboardedById?: boolean
+    onboardedBy?: boolean | Caretaker$onboardedByArgs<ExtArgs>
+  }, ExtArgs["result"]["caretaker"]>
+
+  export type CaretakerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phoneNumber?: boolean
+    onboardedById?: boolean
+    onboardedBy?: boolean | Caretaker$onboardedByArgs<ExtArgs>
+  }, ExtArgs["result"]["caretaker"]>
+
+  export type CaretakerSelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    phoneNumber?: boolean
+    onboardedById?: boolean
+  }
+
+  export type CaretakerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phoneNumber" | "onboardedById", ExtArgs["result"]["caretaker"]>
+  export type CaretakerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    properties?: boolean | Caretaker$propertiesArgs<ExtArgs>
+    onboardedBy?: boolean | Caretaker$onboardedByArgs<ExtArgs>
+    _count?: boolean | CaretakerCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CaretakerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    onboardedBy?: boolean | Caretaker$onboardedByArgs<ExtArgs>
+  }
+  export type CaretakerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    onboardedBy?: boolean | Caretaker$onboardedByArgs<ExtArgs>
+  }
+
+  export type $CaretakerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Caretaker"
+    objects: {
+      properties: Prisma.$PropertyPayload<ExtArgs>[]
+      onboardedBy: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      email: string
+      phoneNumber: string | null
+      onboardedById: string | null
+    }, ExtArgs["result"]["caretaker"]>
+    composites: {}
+  }
+
+  type CaretakerGetPayload<S extends boolean | null | undefined | CaretakerDefaultArgs> = $Result.GetResult<Prisma.$CaretakerPayload, S>
+
+  type CaretakerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CaretakerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CaretakerCountAggregateInputType | true
+    }
+
+  export interface CaretakerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Caretaker'], meta: { name: 'Caretaker' } }
+    /**
+     * Find zero or one Caretaker that matches the filter.
+     * @param {CaretakerFindUniqueArgs} args - Arguments to find a Caretaker
+     * @example
+     * // Get one Caretaker
+     * const caretaker = await prisma.caretaker.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CaretakerFindUniqueArgs>(args: SelectSubset<T, CaretakerFindUniqueArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Caretaker that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CaretakerFindUniqueOrThrowArgs} args - Arguments to find a Caretaker
+     * @example
+     * // Get one Caretaker
+     * const caretaker = await prisma.caretaker.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CaretakerFindUniqueOrThrowArgs>(args: SelectSubset<T, CaretakerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Caretaker that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaretakerFindFirstArgs} args - Arguments to find a Caretaker
+     * @example
+     * // Get one Caretaker
+     * const caretaker = await prisma.caretaker.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CaretakerFindFirstArgs>(args?: SelectSubset<T, CaretakerFindFirstArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Caretaker that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaretakerFindFirstOrThrowArgs} args - Arguments to find a Caretaker
+     * @example
+     * // Get one Caretaker
+     * const caretaker = await prisma.caretaker.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CaretakerFindFirstOrThrowArgs>(args?: SelectSubset<T, CaretakerFindFirstOrThrowArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Caretakers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaretakerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Caretakers
+     * const caretakers = await prisma.caretaker.findMany()
+     * 
+     * // Get first 10 Caretakers
+     * const caretakers = await prisma.caretaker.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const caretakerWithIdOnly = await prisma.caretaker.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CaretakerFindManyArgs>(args?: SelectSubset<T, CaretakerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Caretaker.
+     * @param {CaretakerCreateArgs} args - Arguments to create a Caretaker.
+     * @example
+     * // Create one Caretaker
+     * const Caretaker = await prisma.caretaker.create({
+     *   data: {
+     *     // ... data to create a Caretaker
+     *   }
+     * })
+     * 
+     */
+    create<T extends CaretakerCreateArgs>(args: SelectSubset<T, CaretakerCreateArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Caretakers.
+     * @param {CaretakerCreateManyArgs} args - Arguments to create many Caretakers.
+     * @example
+     * // Create many Caretakers
+     * const caretaker = await prisma.caretaker.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CaretakerCreateManyArgs>(args?: SelectSubset<T, CaretakerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Caretakers and returns the data saved in the database.
+     * @param {CaretakerCreateManyAndReturnArgs} args - Arguments to create many Caretakers.
+     * @example
+     * // Create many Caretakers
+     * const caretaker = await prisma.caretaker.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Caretakers and only return the `id`
+     * const caretakerWithIdOnly = await prisma.caretaker.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CaretakerCreateManyAndReturnArgs>(args?: SelectSubset<T, CaretakerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Caretaker.
+     * @param {CaretakerDeleteArgs} args - Arguments to delete one Caretaker.
+     * @example
+     * // Delete one Caretaker
+     * const Caretaker = await prisma.caretaker.delete({
+     *   where: {
+     *     // ... filter to delete one Caretaker
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CaretakerDeleteArgs>(args: SelectSubset<T, CaretakerDeleteArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Caretaker.
+     * @param {CaretakerUpdateArgs} args - Arguments to update one Caretaker.
+     * @example
+     * // Update one Caretaker
+     * const caretaker = await prisma.caretaker.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CaretakerUpdateArgs>(args: SelectSubset<T, CaretakerUpdateArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Caretakers.
+     * @param {CaretakerDeleteManyArgs} args - Arguments to filter Caretakers to delete.
+     * @example
+     * // Delete a few Caretakers
+     * const { count } = await prisma.caretaker.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CaretakerDeleteManyArgs>(args?: SelectSubset<T, CaretakerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Caretakers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaretakerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Caretakers
+     * const caretaker = await prisma.caretaker.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CaretakerUpdateManyArgs>(args: SelectSubset<T, CaretakerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Caretakers and returns the data updated in the database.
+     * @param {CaretakerUpdateManyAndReturnArgs} args - Arguments to update many Caretakers.
+     * @example
+     * // Update many Caretakers
+     * const caretaker = await prisma.caretaker.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Caretakers and only return the `id`
+     * const caretakerWithIdOnly = await prisma.caretaker.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CaretakerUpdateManyAndReturnArgs>(args: SelectSubset<T, CaretakerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Caretaker.
+     * @param {CaretakerUpsertArgs} args - Arguments to update or create a Caretaker.
+     * @example
+     * // Update or create a Caretaker
+     * const caretaker = await prisma.caretaker.upsert({
+     *   create: {
+     *     // ... data to create a Caretaker
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Caretaker we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CaretakerUpsertArgs>(args: SelectSubset<T, CaretakerUpsertArgs<ExtArgs>>): Prisma__CaretakerClient<$Result.GetResult<Prisma.$CaretakerPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Caretakers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaretakerCountArgs} args - Arguments to filter Caretakers to count.
+     * @example
+     * // Count the number of Caretakers
+     * const count = await prisma.caretaker.count({
+     *   where: {
+     *     // ... the filter for the Caretakers we want to count
+     *   }
+     * })
+    **/
+    count<T extends CaretakerCountArgs>(
+      args?: Subset<T, CaretakerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CaretakerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Caretaker.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaretakerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CaretakerAggregateArgs>(args: Subset<T, CaretakerAggregateArgs>): Prisma.PrismaPromise<GetCaretakerAggregateType<T>>
+
+    /**
+     * Group by Caretaker.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CaretakerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CaretakerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CaretakerGroupByArgs['orderBy'] }
+        : { orderBy?: CaretakerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CaretakerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCaretakerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Caretaker model
+   */
+  readonly fields: CaretakerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Caretaker.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CaretakerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    properties<T extends Caretaker$propertiesArgs<ExtArgs> = {}>(args?: Subset<T, Caretaker$propertiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropertyPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
+    onboardedBy<T extends Caretaker$onboardedByArgs<ExtArgs> = {}>(args?: Subset<T, Caretaker$onboardedByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | null, null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Caretaker model
+   */ 
+  interface CaretakerFieldRefs {
+    readonly id: FieldRef<"Caretaker", 'Int'>
+    readonly name: FieldRef<"Caretaker", 'String'>
+    readonly email: FieldRef<"Caretaker", 'String'>
+    readonly phoneNumber: FieldRef<"Caretaker", 'String'>
+    readonly onboardedById: FieldRef<"Caretaker", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Caretaker findUnique
+   */
+  export type CaretakerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * Filter, which Caretaker to fetch.
+     */
+    where: CaretakerWhereUniqueInput
+  }
+
+  /**
+   * Caretaker findUniqueOrThrow
+   */
+  export type CaretakerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * Filter, which Caretaker to fetch.
+     */
+    where: CaretakerWhereUniqueInput
+  }
+
+  /**
+   * Caretaker findFirst
+   */
+  export type CaretakerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * Filter, which Caretaker to fetch.
+     */
+    where?: CaretakerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Caretakers to fetch.
+     */
+    orderBy?: CaretakerOrderByWithRelationInput | CaretakerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Caretakers.
+     */
+    cursor?: CaretakerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Caretakers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Caretakers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Caretakers.
+     */
+    distinct?: CaretakerScalarFieldEnum | CaretakerScalarFieldEnum[]
+  }
+
+  /**
+   * Caretaker findFirstOrThrow
+   */
+  export type CaretakerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * Filter, which Caretaker to fetch.
+     */
+    where?: CaretakerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Caretakers to fetch.
+     */
+    orderBy?: CaretakerOrderByWithRelationInput | CaretakerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Caretakers.
+     */
+    cursor?: CaretakerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Caretakers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Caretakers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Caretakers.
+     */
+    distinct?: CaretakerScalarFieldEnum | CaretakerScalarFieldEnum[]
+  }
+
+  /**
+   * Caretaker findMany
+   */
+  export type CaretakerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * Filter, which Caretakers to fetch.
+     */
+    where?: CaretakerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Caretakers to fetch.
+     */
+    orderBy?: CaretakerOrderByWithRelationInput | CaretakerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Caretakers.
+     */
+    cursor?: CaretakerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Caretakers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Caretakers.
+     */
+    skip?: number
+    distinct?: CaretakerScalarFieldEnum | CaretakerScalarFieldEnum[]
+  }
+
+  /**
+   * Caretaker create
+   */
+  export type CaretakerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Caretaker.
+     */
+    data: XOR<CaretakerCreateInput, CaretakerUncheckedCreateInput>
+  }
+
+  /**
+   * Caretaker createMany
+   */
+  export type CaretakerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Caretakers.
+     */
+    data: CaretakerCreateManyInput | CaretakerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Caretaker createManyAndReturn
+   */
+  export type CaretakerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * The data used to create many Caretakers.
+     */
+    data: CaretakerCreateManyInput | CaretakerCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Caretaker update
+   */
+  export type CaretakerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Caretaker.
+     */
+    data: XOR<CaretakerUpdateInput, CaretakerUncheckedUpdateInput>
+    /**
+     * Choose, which Caretaker to update.
+     */
+    where: CaretakerWhereUniqueInput
+  }
+
+  /**
+   * Caretaker updateMany
+   */
+  export type CaretakerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Caretakers.
+     */
+    data: XOR<CaretakerUpdateManyMutationInput, CaretakerUncheckedUpdateManyInput>
+    /**
+     * Filter which Caretakers to update
+     */
+    where?: CaretakerWhereInput
+    /**
+     * Limit how many Caretakers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Caretaker updateManyAndReturn
+   */
+  export type CaretakerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * The data used to update Caretakers.
+     */
+    data: XOR<CaretakerUpdateManyMutationInput, CaretakerUncheckedUpdateManyInput>
+    /**
+     * Filter which Caretakers to update
+     */
+    where?: CaretakerWhereInput
+    /**
+     * Limit how many Caretakers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Caretaker upsert
+   */
+  export type CaretakerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Caretaker to update in case it exists.
+     */
+    where: CaretakerWhereUniqueInput
+    /**
+     * In case the Caretaker found by the `where` argument doesn't exist, create a new Caretaker with this data.
+     */
+    create: XOR<CaretakerCreateInput, CaretakerUncheckedCreateInput>
+    /**
+     * In case the Caretaker was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CaretakerUpdateInput, CaretakerUncheckedUpdateInput>
+  }
+
+  /**
+   * Caretaker delete
+   */
+  export type CaretakerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+    /**
+     * Filter which Caretaker to delete.
+     */
+    where: CaretakerWhereUniqueInput
+  }
+
+  /**
+   * Caretaker deleteMany
+   */
+  export type CaretakerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Caretakers to delete
+     */
+    where?: CaretakerWhereInput
+    /**
+     * Limit how many Caretakers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Caretaker.properties
+   */
+  export type Caretaker$propertiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Property
+     */
+    select?: PropertySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Property
+     */
+    omit?: PropertyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PropertyInclude<ExtArgs> | null
+    where?: PropertyWhereInput
+    orderBy?: PropertyOrderByWithRelationInput | PropertyOrderByWithRelationInput[]
+    cursor?: PropertyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PropertyScalarFieldEnum | PropertyScalarFieldEnum[]
+  }
+
+  /**
+   * Caretaker.onboardedBy
+   */
+  export type Caretaker$onboardedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Caretaker without action
+   */
+  export type CaretakerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Caretaker
+     */
+    select?: CaretakerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Caretaker
+     */
+    omit?: CaretakerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CaretakerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Communication
+   */
+
+  export type AggregateCommunication = {
+    _count: CommunicationCountAggregateOutputType | null
+    _avg: CommunicationAvgAggregateOutputType | null
+    _sum: CommunicationSumAggregateOutputType | null
+    _min: CommunicationMinAggregateOutputType | null
+    _max: CommunicationMaxAggregateOutputType | null
+  }
+
+  export type CommunicationAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CommunicationSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CommunicationMinAggregateOutputType = {
+    id: number | null
+    senderId: string | null
+    receiverId: string | null
+    message: string | null
+    sentAt: Date | null
+  }
+
+  export type CommunicationMaxAggregateOutputType = {
+    id: number | null
+    senderId: string | null
+    receiverId: string | null
+    message: string | null
+    sentAt: Date | null
+  }
+
+  export type CommunicationCountAggregateOutputType = {
+    id: number
+    senderId: number
+    receiverId: number
+    message: number
+    sentAt: number
+    _all: number
+  }
+
+
+  export type CommunicationAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CommunicationSumAggregateInputType = {
+    id?: true
+  }
+
+  export type CommunicationMinAggregateInputType = {
+    id?: true
+    senderId?: true
+    receiverId?: true
+    message?: true
+    sentAt?: true
+  }
+
+  export type CommunicationMaxAggregateInputType = {
+    id?: true
+    senderId?: true
+    receiverId?: true
+    message?: true
+    sentAt?: true
+  }
+
+  export type CommunicationCountAggregateInputType = {
+    id?: true
+    senderId?: true
+    receiverId?: true
+    message?: true
+    sentAt?: true
+    _all?: true
+  }
+
+  export type CommunicationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Communication to aggregate.
+     */
+    where?: CommunicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Communications to fetch.
+     */
+    orderBy?: CommunicationOrderByWithRelationInput | CommunicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CommunicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Communications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Communications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Communications
+    **/
+    _count?: true | CommunicationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CommunicationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CommunicationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CommunicationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CommunicationMaxAggregateInputType
+  }
+
+  export type GetCommunicationAggregateType<T extends CommunicationAggregateArgs> = {
+        [P in keyof T & keyof AggregateCommunication]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCommunication[P]>
+      : GetScalarType<T[P], AggregateCommunication[P]>
+  }
+
+
+
+
+  export type CommunicationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CommunicationWhereInput
+    orderBy?: CommunicationOrderByWithAggregationInput | CommunicationOrderByWithAggregationInput[]
+    by: CommunicationScalarFieldEnum[] | CommunicationScalarFieldEnum
+    having?: CommunicationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CommunicationCountAggregateInputType | true
+    _avg?: CommunicationAvgAggregateInputType
+    _sum?: CommunicationSumAggregateInputType
+    _min?: CommunicationMinAggregateInputType
+    _max?: CommunicationMaxAggregateInputType
+  }
+
+  export type CommunicationGroupByOutputType = {
+    id: number
+    senderId: string
+    receiverId: string
+    message: string
+    sentAt: Date
+    _count: CommunicationCountAggregateOutputType | null
+    _avg: CommunicationAvgAggregateOutputType | null
+    _sum: CommunicationSumAggregateOutputType | null
+    _min: CommunicationMinAggregateOutputType | null
+    _max: CommunicationMaxAggregateOutputType | null
+  }
+
+  type GetCommunicationGroupByPayload<T extends CommunicationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CommunicationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CommunicationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CommunicationGroupByOutputType[P]>
+            : GetScalarType<T[P], CommunicationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CommunicationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    senderId?: boolean
+    receiverId?: boolean
+    message?: boolean
+    sentAt?: boolean
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    receiver?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["communication"]>
+
+  export type CommunicationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    senderId?: boolean
+    receiverId?: boolean
+    message?: boolean
+    sentAt?: boolean
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    receiver?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["communication"]>
+
+  export type CommunicationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    senderId?: boolean
+    receiverId?: boolean
+    message?: boolean
+    sentAt?: boolean
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    receiver?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["communication"]>
+
+  export type CommunicationSelectScalar = {
+    id?: boolean
+    senderId?: boolean
+    receiverId?: boolean
+    message?: boolean
+    sentAt?: boolean
+  }
+
+  export type CommunicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "senderId" | "receiverId" | "message" | "sentAt", ExtArgs["result"]["communication"]>
+  export type CommunicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    receiver?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CommunicationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    receiver?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CommunicationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+    receiver?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CommunicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Communication"
+    objects: {
+      sender: Prisma.$UserPayload<ExtArgs>
+      receiver: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      senderId: string
+      receiverId: string
+      message: string
+      sentAt: Date
+    }, ExtArgs["result"]["communication"]>
+    composites: {}
+  }
+
+  type CommunicationGetPayload<S extends boolean | null | undefined | CommunicationDefaultArgs> = $Result.GetResult<Prisma.$CommunicationPayload, S>
+
+  type CommunicationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CommunicationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CommunicationCountAggregateInputType | true
+    }
+
+  export interface CommunicationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Communication'], meta: { name: 'Communication' } }
+    /**
+     * Find zero or one Communication that matches the filter.
+     * @param {CommunicationFindUniqueArgs} args - Arguments to find a Communication
+     * @example
+     * // Get one Communication
+     * const communication = await prisma.communication.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CommunicationFindUniqueArgs>(args: SelectSubset<T, CommunicationFindUniqueArgs<ExtArgs>>): Prisma__CommunicationClient<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one Communication that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CommunicationFindUniqueOrThrowArgs} args - Arguments to find a Communication
+     * @example
+     * // Get one Communication
+     * const communication = await prisma.communication.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CommunicationFindUniqueOrThrowArgs>(args: SelectSubset<T, CommunicationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommunicationClient<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Communication that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunicationFindFirstArgs} args - Arguments to find a Communication
+     * @example
+     * // Get one Communication
+     * const communication = await prisma.communication.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CommunicationFindFirstArgs>(args?: SelectSubset<T, CommunicationFindFirstArgs<ExtArgs>>): Prisma__CommunicationClient<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first Communication that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunicationFindFirstOrThrowArgs} args - Arguments to find a Communication
+     * @example
+     * // Get one Communication
+     * const communication = await prisma.communication.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CommunicationFindFirstOrThrowArgs>(args?: SelectSubset<T, CommunicationFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommunicationClient<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more Communications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunicationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Communications
+     * const communications = await prisma.communication.findMany()
+     * 
+     * // Get first 10 Communications
+     * const communications = await prisma.communication.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const communicationWithIdOnly = await prisma.communication.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CommunicationFindManyArgs>(args?: SelectSubset<T, CommunicationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a Communication.
+     * @param {CommunicationCreateArgs} args - Arguments to create a Communication.
+     * @example
+     * // Create one Communication
+     * const Communication = await prisma.communication.create({
+     *   data: {
+     *     // ... data to create a Communication
+     *   }
+     * })
+     * 
+     */
+    create<T extends CommunicationCreateArgs>(args: SelectSubset<T, CommunicationCreateArgs<ExtArgs>>): Prisma__CommunicationClient<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many Communications.
+     * @param {CommunicationCreateManyArgs} args - Arguments to create many Communications.
+     * @example
+     * // Create many Communications
+     * const communication = await prisma.communication.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CommunicationCreateManyArgs>(args?: SelectSubset<T, CommunicationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Communications and returns the data saved in the database.
+     * @param {CommunicationCreateManyAndReturnArgs} args - Arguments to create many Communications.
+     * @example
+     * // Create many Communications
+     * const communication = await prisma.communication.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Communications and only return the `id`
+     * const communicationWithIdOnly = await prisma.communication.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CommunicationCreateManyAndReturnArgs>(args?: SelectSubset<T, CommunicationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a Communication.
+     * @param {CommunicationDeleteArgs} args - Arguments to delete one Communication.
+     * @example
+     * // Delete one Communication
+     * const Communication = await prisma.communication.delete({
+     *   where: {
+     *     // ... filter to delete one Communication
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CommunicationDeleteArgs>(args: SelectSubset<T, CommunicationDeleteArgs<ExtArgs>>): Prisma__CommunicationClient<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one Communication.
+     * @param {CommunicationUpdateArgs} args - Arguments to update one Communication.
+     * @example
+     * // Update one Communication
+     * const communication = await prisma.communication.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CommunicationUpdateArgs>(args: SelectSubset<T, CommunicationUpdateArgs<ExtArgs>>): Prisma__CommunicationClient<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more Communications.
+     * @param {CommunicationDeleteManyArgs} args - Arguments to filter Communications to delete.
+     * @example
+     * // Delete a few Communications
+     * const { count } = await prisma.communication.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CommunicationDeleteManyArgs>(args?: SelectSubset<T, CommunicationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunicationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Communications
+     * const communication = await prisma.communication.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CommunicationUpdateManyArgs>(args: SelectSubset<T, CommunicationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Communications and returns the data updated in the database.
+     * @param {CommunicationUpdateManyAndReturnArgs} args - Arguments to update many Communications.
+     * @example
+     * // Update many Communications
+     * const communication = await prisma.communication.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Communications and only return the `id`
+     * const communicationWithIdOnly = await prisma.communication.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CommunicationUpdateManyAndReturnArgs>(args: SelectSubset<T, CommunicationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one Communication.
+     * @param {CommunicationUpsertArgs} args - Arguments to update or create a Communication.
+     * @example
+     * // Update or create a Communication
+     * const communication = await prisma.communication.upsert({
+     *   create: {
+     *     // ... data to create a Communication
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Communication we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CommunicationUpsertArgs>(args: SelectSubset<T, CommunicationUpsertArgs<ExtArgs>>): Prisma__CommunicationClient<$Result.GetResult<Prisma.$CommunicationPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of Communications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunicationCountArgs} args - Arguments to filter Communications to count.
+     * @example
+     * // Count the number of Communications
+     * const count = await prisma.communication.count({
+     *   where: {
+     *     // ... the filter for the Communications we want to count
+     *   }
+     * })
+    **/
+    count<T extends CommunicationCountArgs>(
+      args?: Subset<T, CommunicationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CommunicationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Communication.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunicationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CommunicationAggregateArgs>(args: Subset<T, CommunicationAggregateArgs>): Prisma.PrismaPromise<GetCommunicationAggregateType<T>>
+
+    /**
+     * Group by Communication.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CommunicationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CommunicationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CommunicationGroupByArgs['orderBy'] }
+        : { orderBy?: CommunicationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CommunicationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommunicationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Communication model
+   */
+  readonly fields: CommunicationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Communication.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CommunicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    sender<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    receiver<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Communication model
+   */ 
+  interface CommunicationFieldRefs {
+    readonly id: FieldRef<"Communication", 'Int'>
+    readonly senderId: FieldRef<"Communication", 'String'>
+    readonly receiverId: FieldRef<"Communication", 'String'>
+    readonly message: FieldRef<"Communication", 'String'>
+    readonly sentAt: FieldRef<"Communication", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Communication findUnique
+   */
+  export type CommunicationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * Filter, which Communication to fetch.
+     */
+    where: CommunicationWhereUniqueInput
+  }
+
+  /**
+   * Communication findUniqueOrThrow
+   */
+  export type CommunicationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * Filter, which Communication to fetch.
+     */
+    where: CommunicationWhereUniqueInput
+  }
+
+  /**
+   * Communication findFirst
+   */
+  export type CommunicationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * Filter, which Communication to fetch.
+     */
+    where?: CommunicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Communications to fetch.
+     */
+    orderBy?: CommunicationOrderByWithRelationInput | CommunicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Communications.
+     */
+    cursor?: CommunicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Communications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Communications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Communications.
+     */
+    distinct?: CommunicationScalarFieldEnum | CommunicationScalarFieldEnum[]
+  }
+
+  /**
+   * Communication findFirstOrThrow
+   */
+  export type CommunicationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * Filter, which Communication to fetch.
+     */
+    where?: CommunicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Communications to fetch.
+     */
+    orderBy?: CommunicationOrderByWithRelationInput | CommunicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Communications.
+     */
+    cursor?: CommunicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Communications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Communications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Communications.
+     */
+    distinct?: CommunicationScalarFieldEnum | CommunicationScalarFieldEnum[]
+  }
+
+  /**
+   * Communication findMany
+   */
+  export type CommunicationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * Filter, which Communications to fetch.
+     */
+    where?: CommunicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Communications to fetch.
+     */
+    orderBy?: CommunicationOrderByWithRelationInput | CommunicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Communications.
+     */
+    cursor?: CommunicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Communications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Communications.
+     */
+    skip?: number
+    distinct?: CommunicationScalarFieldEnum | CommunicationScalarFieldEnum[]
+  }
+
+  /**
+   * Communication create
+   */
+  export type CommunicationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Communication.
+     */
+    data: XOR<CommunicationCreateInput, CommunicationUncheckedCreateInput>
+  }
+
+  /**
+   * Communication createMany
+   */
+  export type CommunicationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Communications.
+     */
+    data: CommunicationCreateManyInput | CommunicationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Communication createManyAndReturn
+   */
+  export type CommunicationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * The data used to create many Communications.
+     */
+    data: CommunicationCreateManyInput | CommunicationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Communication update
+   */
+  export type CommunicationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Communication.
+     */
+    data: XOR<CommunicationUpdateInput, CommunicationUncheckedUpdateInput>
+    /**
+     * Choose, which Communication to update.
+     */
+    where: CommunicationWhereUniqueInput
+  }
+
+  /**
+   * Communication updateMany
+   */
+  export type CommunicationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Communications.
+     */
+    data: XOR<CommunicationUpdateManyMutationInput, CommunicationUncheckedUpdateManyInput>
+    /**
+     * Filter which Communications to update
+     */
+    where?: CommunicationWhereInput
+    /**
+     * Limit how many Communications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Communication updateManyAndReturn
+   */
+  export type CommunicationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * The data used to update Communications.
+     */
+    data: XOR<CommunicationUpdateManyMutationInput, CommunicationUncheckedUpdateManyInput>
+    /**
+     * Filter which Communications to update
+     */
+    where?: CommunicationWhereInput
+    /**
+     * Limit how many Communications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Communication upsert
+   */
+  export type CommunicationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Communication to update in case it exists.
+     */
+    where: CommunicationWhereUniqueInput
+    /**
+     * In case the Communication found by the `where` argument doesn't exist, create a new Communication with this data.
+     */
+    create: XOR<CommunicationCreateInput, CommunicationUncheckedCreateInput>
+    /**
+     * In case the Communication was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CommunicationUpdateInput, CommunicationUncheckedUpdateInput>
+  }
+
+  /**
+   * Communication delete
+   */
+  export type CommunicationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+    /**
+     * Filter which Communication to delete.
+     */
+    where: CommunicationWhereUniqueInput
+  }
+
+  /**
+   * Communication deleteMany
+   */
+  export type CommunicationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Communications to delete
+     */
+    where?: CommunicationWhereInput
+    /**
+     * Limit how many Communications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Communication without action
+   */
+  export type CommunicationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Communication
+     */
+    select?: CommunicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Communication
+     */
+    omit?: CommunicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CommunicationInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12466,7 +19747,7 @@ export namespace Prisma {
     highlights: 'highlights',
     isPetsAllowed: 'isPetsAllowed',
     isParkingIncluded: 'isParkingIncluded',
-    isSale: 'isSale',
+    isRent: 'isRent',
     beds: 'beds',
     baths: 'baths',
     squareFeet: 'squareFeet',
@@ -12474,10 +19755,14 @@ export namespace Prisma {
     postedDate: 'postedDate',
     averageRating: 'averageRating',
     numberOfReviews: 'numberOfReviews',
+    locationId: 'locationId',
+    managerUserId: 'managerUserId',
+    isSale: 'isSale',
     status: 'status',
     submittedBy: 'submittedBy',
-    locationId: 'locationId',
-    managerUserId: 'managerUserId'
+    landlordId: 'landlordId',
+    caretakerId: 'caretakerId',
+    onboardedByAgentId: 'onboardedByAgentId'
   };
 
   export type PropertyScalarFieldEnum = (typeof PropertyScalarFieldEnum)[keyof typeof PropertyScalarFieldEnum]
@@ -12568,6 +19853,66 @@ export namespace Prisma {
   };
 
   export type SubmissionLinkScalarFieldEnum = (typeof SubmissionLinkScalarFieldEnum)[keyof typeof SubmissionLinkScalarFieldEnum]
+
+
+  export const Spatial_ref_sysScalarFieldEnum: {
+    srid: 'srid',
+    auth_name: 'auth_name',
+    auth_srid: 'auth_srid',
+    srtext: 'srtext',
+    proj4text: 'proj4text'
+  };
+
+  export type Spatial_ref_sysScalarFieldEnum = (typeof Spatial_ref_sysScalarFieldEnum)[keyof typeof Spatial_ref_sysScalarFieldEnum]
+
+
+  export const CustomAmenityScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type CustomAmenityScalarFieldEnum = (typeof CustomAmenityScalarFieldEnum)[keyof typeof CustomAmenityScalarFieldEnum]
+
+
+  export const CustomHighlightScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type CustomHighlightScalarFieldEnum = (typeof CustomHighlightScalarFieldEnum)[keyof typeof CustomHighlightScalarFieldEnum]
+
+
+  export const LandlordScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    phoneNumber: 'phoneNumber',
+    onboardedById: 'onboardedById'
+  };
+
+  export type LandlordScalarFieldEnum = (typeof LandlordScalarFieldEnum)[keyof typeof LandlordScalarFieldEnum]
+
+
+  export const CaretakerScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    phoneNumber: 'phoneNumber',
+    onboardedById: 'onboardedById'
+  };
+
+  export type CaretakerScalarFieldEnum = (typeof CaretakerScalarFieldEnum)[keyof typeof CaretakerScalarFieldEnum]
+
+
+  export const CommunicationScalarFieldEnum: {
+    id: 'id',
+    senderId: 'senderId',
+    receiverId: 'receiverId',
+    message: 'message',
+    sentAt: 'sentAt'
+  };
+
+  export type CommunicationScalarFieldEnum = (typeof CommunicationScalarFieldEnum)[keyof typeof CommunicationScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12677,34 +20022,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Amenity[]'
-   */
-  export type ListEnumAmenityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Amenity[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Amenity'
-   */
-  export type EnumAmenityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Amenity'>
-    
-
-
-  /**
-   * Reference to a field of type 'Highlight[]'
-   */
-  export type ListEnumHighlightFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Highlight[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Highlight'
-   */
-  export type EnumHighlightFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Highlight'>
-    
-
-
-  /**
    * Reference to a field of type 'PropertyType'
    */
   export type EnumPropertyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PropertyType'>
@@ -12777,11 +20094,16 @@ export namespace Prisma {
     isVerified?: BoolFilter<"User"> | boolean
     verificationCode?: StringNullableFilter<"User"> | string | null
     verificationCodeExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    managedProperties?: PropertyListRelationFilter
-    tenantProperties?: PropertyListRelationFilter
-    favorites?: PropertyListRelationFilter
     tenantApplications?: ApplicationListRelationFilter
     tenantLeases?: LeaseListRelationFilter
+    managedProperties?: PropertyListRelationFilter
+    favorites?: PropertyListRelationFilter
+    tenantProperties?: PropertyListRelationFilter
+    onboardedProperties?: PropertyListRelationFilter
+    onboardedLandlords?: LandlordListRelationFilter
+    onboardedCaretakers?: CaretakerListRelationFilter
+    sentMessages?: CommunicationListRelationFilter
+    receivedMessages?: CommunicationListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -12795,11 +20117,16 @@ export namespace Prisma {
     isVerified?: SortOrder
     verificationCode?: SortOrderInput | SortOrder
     verificationCodeExpiresAt?: SortOrderInput | SortOrder
-    managedProperties?: PropertyOrderByRelationAggregateInput
-    tenantProperties?: PropertyOrderByRelationAggregateInput
-    favorites?: PropertyOrderByRelationAggregateInput
     tenantApplications?: ApplicationOrderByRelationAggregateInput
     tenantLeases?: LeaseOrderByRelationAggregateInput
+    managedProperties?: PropertyOrderByRelationAggregateInput
+    favorites?: PropertyOrderByRelationAggregateInput
+    tenantProperties?: PropertyOrderByRelationAggregateInput
+    onboardedProperties?: PropertyOrderByRelationAggregateInput
+    onboardedLandlords?: LandlordOrderByRelationAggregateInput
+    onboardedCaretakers?: CaretakerOrderByRelationAggregateInput
+    sentMessages?: CommunicationOrderByRelationAggregateInput
+    receivedMessages?: CommunicationOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -12816,11 +20143,16 @@ export namespace Prisma {
     isVerified?: BoolFilter<"User"> | boolean
     verificationCode?: StringNullableFilter<"User"> | string | null
     verificationCodeExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
-    managedProperties?: PropertyListRelationFilter
-    tenantProperties?: PropertyListRelationFilter
-    favorites?: PropertyListRelationFilter
     tenantApplications?: ApplicationListRelationFilter
     tenantLeases?: LeaseListRelationFilter
+    managedProperties?: PropertyListRelationFilter
+    favorites?: PropertyListRelationFilter
+    tenantProperties?: PropertyListRelationFilter
+    onboardedProperties?: PropertyListRelationFilter
+    onboardedLandlords?: LandlordListRelationFilter
+    onboardedCaretakers?: CaretakerListRelationFilter
+    sentMessages?: CommunicationListRelationFilter
+    receivedMessages?: CommunicationListRelationFilter
   }, "id" | "authId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -12869,11 +20201,11 @@ export namespace Prisma {
     securityDeposit?: FloatFilter<"Property"> | number
     applicationFee?: FloatFilter<"Property"> | number
     photoUrls?: StringNullableListFilter<"Property">
-    amenities?: EnumAmenityNullableListFilter<"Property">
-    highlights?: EnumHighlightNullableListFilter<"Property">
+    amenities?: StringNullableListFilter<"Property">
+    highlights?: StringNullableListFilter<"Property">
     isPetsAllowed?: BoolFilter<"Property"> | boolean
     isParkingIncluded?: BoolFilter<"Property"> | boolean
-    isSale?: BoolFilter<"Property"> | boolean
+    isRent?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
@@ -12881,18 +20213,25 @@ export namespace Prisma {
     postedDate?: DateTimeFilter<"Property"> | Date | string
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
-    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
-    submittedBy?: StringNullableFilter<"Property"> | string | null
     locationId?: IntFilter<"Property"> | number
     managerUserId?: StringFilter<"Property"> | string
+    isSale?: BoolFilter<"Property"> | boolean
+    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
+    submittedBy?: StringNullableFilter<"Property"> | string | null
+    landlordId?: IntNullableFilter<"Property"> | number | null
+    caretakerId?: IntNullableFilter<"Property"> | number | null
+    onboardedByAgentId?: StringNullableFilter<"Property"> | string | null
+    applications?: ApplicationListRelationFilter
+    leases?: LeaseListRelationFilter
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
     manager?: XOR<UserScalarRelationFilter, UserWhereInput>
-    leases?: LeaseListRelationFilter
-    applications?: ApplicationListRelationFilter
-    favoritedBy?: UserListRelationFilter
-    tenants?: UserListRelationFilter
     viewingAvailabilities?: ViewingAvailabilityListRelationFilter
     viewingBookings?: ViewingBookingListRelationFilter
+    favoritedBy?: UserListRelationFilter
+    tenants?: UserListRelationFilter
+    landlord?: XOR<LandlordNullableScalarRelationFilter, LandlordWhereInput> | null
+    caretaker?: XOR<CaretakerNullableScalarRelationFilter, CaretakerWhereInput> | null
+    onboardedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type PropertyOrderByWithRelationInput = {
@@ -12908,7 +20247,7 @@ export namespace Prisma {
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
-    isSale?: SortOrder
+    isRent?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -12916,18 +20255,25 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
-    status?: SortOrder
-    submittedBy?: SortOrderInput | SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
+    isSale?: SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrderInput | SortOrder
+    landlordId?: SortOrderInput | SortOrder
+    caretakerId?: SortOrderInput | SortOrder
+    onboardedByAgentId?: SortOrderInput | SortOrder
+    applications?: ApplicationOrderByRelationAggregateInput
+    leases?: LeaseOrderByRelationAggregateInput
     location?: LocationOrderByWithRelationInput
     manager?: UserOrderByWithRelationInput
-    leases?: LeaseOrderByRelationAggregateInput
-    applications?: ApplicationOrderByRelationAggregateInput
-    favoritedBy?: UserOrderByRelationAggregateInput
-    tenants?: UserOrderByRelationAggregateInput
     viewingAvailabilities?: ViewingAvailabilityOrderByRelationAggregateInput
     viewingBookings?: ViewingBookingOrderByRelationAggregateInput
+    favoritedBy?: UserOrderByRelationAggregateInput
+    tenants?: UserOrderByRelationAggregateInput
+    landlord?: LandlordOrderByWithRelationInput
+    caretaker?: CaretakerOrderByWithRelationInput
+    onboardedBy?: UserOrderByWithRelationInput
   }
 
   export type PropertyWhereUniqueInput = Prisma.AtLeast<{
@@ -12942,11 +20288,11 @@ export namespace Prisma {
     securityDeposit?: FloatFilter<"Property"> | number
     applicationFee?: FloatFilter<"Property"> | number
     photoUrls?: StringNullableListFilter<"Property">
-    amenities?: EnumAmenityNullableListFilter<"Property">
-    highlights?: EnumHighlightNullableListFilter<"Property">
+    amenities?: StringNullableListFilter<"Property">
+    highlights?: StringNullableListFilter<"Property">
     isPetsAllowed?: BoolFilter<"Property"> | boolean
     isParkingIncluded?: BoolFilter<"Property"> | boolean
-    isSale?: BoolFilter<"Property"> | boolean
+    isRent?: BoolFilter<"Property"> | boolean
     beds?: IntFilter<"Property"> | number
     baths?: FloatFilter<"Property"> | number
     squareFeet?: IntFilter<"Property"> | number
@@ -12954,18 +20300,25 @@ export namespace Prisma {
     postedDate?: DateTimeFilter<"Property"> | Date | string
     averageRating?: FloatNullableFilter<"Property"> | number | null
     numberOfReviews?: IntNullableFilter<"Property"> | number | null
-    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
-    submittedBy?: StringNullableFilter<"Property"> | string | null
     locationId?: IntFilter<"Property"> | number
     managerUserId?: StringFilter<"Property"> | string
+    isSale?: BoolFilter<"Property"> | boolean
+    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
+    submittedBy?: StringNullableFilter<"Property"> | string | null
+    landlordId?: IntNullableFilter<"Property"> | number | null
+    caretakerId?: IntNullableFilter<"Property"> | number | null
+    onboardedByAgentId?: StringNullableFilter<"Property"> | string | null
+    applications?: ApplicationListRelationFilter
+    leases?: LeaseListRelationFilter
     location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
     manager?: XOR<UserScalarRelationFilter, UserWhereInput>
-    leases?: LeaseListRelationFilter
-    applications?: ApplicationListRelationFilter
-    favoritedBy?: UserListRelationFilter
-    tenants?: UserListRelationFilter
     viewingAvailabilities?: ViewingAvailabilityListRelationFilter
     viewingBookings?: ViewingBookingListRelationFilter
+    favoritedBy?: UserListRelationFilter
+    tenants?: UserListRelationFilter
+    landlord?: XOR<LandlordNullableScalarRelationFilter, LandlordWhereInput> | null
+    caretaker?: XOR<CaretakerNullableScalarRelationFilter, CaretakerWhereInput> | null
+    onboardedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "slug">
 
   export type PropertyOrderByWithAggregationInput = {
@@ -12981,7 +20334,7 @@ export namespace Prisma {
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
-    isSale?: SortOrder
+    isRent?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -12989,10 +20342,14 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrderInput | SortOrder
     numberOfReviews?: SortOrderInput | SortOrder
-    status?: SortOrder
-    submittedBy?: SortOrderInput | SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
+    isSale?: SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrderInput | SortOrder
+    landlordId?: SortOrderInput | SortOrder
+    caretakerId?: SortOrderInput | SortOrder
+    onboardedByAgentId?: SortOrderInput | SortOrder
     _count?: PropertyCountOrderByAggregateInput
     _avg?: PropertyAvgOrderByAggregateInput
     _max?: PropertyMaxOrderByAggregateInput
@@ -13012,11 +20369,11 @@ export namespace Prisma {
     securityDeposit?: FloatWithAggregatesFilter<"Property"> | number
     applicationFee?: FloatWithAggregatesFilter<"Property"> | number
     photoUrls?: StringNullableListFilter<"Property">
-    amenities?: EnumAmenityNullableListFilter<"Property">
-    highlights?: EnumHighlightNullableListFilter<"Property">
+    amenities?: StringNullableListFilter<"Property">
+    highlights?: StringNullableListFilter<"Property">
     isPetsAllowed?: BoolWithAggregatesFilter<"Property"> | boolean
     isParkingIncluded?: BoolWithAggregatesFilter<"Property"> | boolean
-    isSale?: BoolWithAggregatesFilter<"Property"> | boolean
+    isRent?: BoolWithAggregatesFilter<"Property"> | boolean
     beds?: IntWithAggregatesFilter<"Property"> | number
     baths?: FloatWithAggregatesFilter<"Property"> | number
     squareFeet?: IntWithAggregatesFilter<"Property"> | number
@@ -13024,10 +20381,14 @@ export namespace Prisma {
     postedDate?: DateTimeWithAggregatesFilter<"Property"> | Date | string
     averageRating?: FloatNullableWithAggregatesFilter<"Property"> | number | null
     numberOfReviews?: IntNullableWithAggregatesFilter<"Property"> | number | null
-    status?: EnumPropertyStatusWithAggregatesFilter<"Property"> | $Enums.PropertyStatus
-    submittedBy?: StringNullableWithAggregatesFilter<"Property"> | string | null
     locationId?: IntWithAggregatesFilter<"Property"> | number
     managerUserId?: StringWithAggregatesFilter<"Property"> | string
+    isSale?: BoolWithAggregatesFilter<"Property"> | boolean
+    status?: EnumPropertyStatusWithAggregatesFilter<"Property"> | $Enums.PropertyStatus
+    submittedBy?: StringNullableWithAggregatesFilter<"Property"> | string | null
+    landlordId?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    caretakerId?: IntNullableWithAggregatesFilter<"Property"> | number | null
+    onboardedByAgentId?: StringNullableWithAggregatesFilter<"Property"> | string | null
   }
 
   export type LocationWhereInput = {
@@ -13106,9 +20467,9 @@ export namespace Prisma {
     phoneNumber?: StringFilter<"Application"> | string
     message?: StringNullableFilter<"Application"> | string | null
     leaseId?: IntNullableFilter<"Application"> | number | null
+    lease?: XOR<LeaseNullableScalarRelationFilter, LeaseWhereInput> | null
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     tenant?: XOR<UserScalarRelationFilter, UserWhereInput>
-    lease?: XOR<LeaseNullableScalarRelationFilter, LeaseWhereInput> | null
   }
 
   export type ApplicationOrderByWithRelationInput = {
@@ -13122,9 +20483,9 @@ export namespace Prisma {
     phoneNumber?: SortOrder
     message?: SortOrderInput | SortOrder
     leaseId?: SortOrderInput | SortOrder
+    lease?: LeaseOrderByWithRelationInput
     property?: PropertyOrderByWithRelationInput
     tenant?: UserOrderByWithRelationInput
-    lease?: LeaseOrderByWithRelationInput
   }
 
   export type ApplicationWhereUniqueInput = Prisma.AtLeast<{
@@ -13141,9 +20502,9 @@ export namespace Prisma {
     email?: StringFilter<"Application"> | string
     phoneNumber?: StringFilter<"Application"> | string
     message?: StringNullableFilter<"Application"> | string | null
+    lease?: XOR<LeaseNullableScalarRelationFilter, LeaseWhereInput> | null
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     tenant?: XOR<UserScalarRelationFilter, UserWhereInput>
-    lease?: XOR<LeaseNullableScalarRelationFilter, LeaseWhereInput> | null
   }, "id" | "leaseId">
 
   export type ApplicationOrderByWithAggregationInput = {
@@ -13191,9 +20552,9 @@ export namespace Prisma {
     deposit?: FloatFilter<"Lease"> | number
     propertyId?: IntFilter<"Lease"> | number
     tenantUserId?: StringFilter<"Lease"> | string
+    application?: XOR<ApplicationNullableScalarRelationFilter, ApplicationWhereInput> | null
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     tenant?: XOR<UserScalarRelationFilter, UserWhereInput>
-    application?: XOR<ApplicationNullableScalarRelationFilter, ApplicationWhereInput> | null
     payments?: PaymentListRelationFilter
   }
 
@@ -13205,9 +20566,9 @@ export namespace Prisma {
     deposit?: SortOrder
     propertyId?: SortOrder
     tenantUserId?: SortOrder
+    application?: ApplicationOrderByWithRelationInput
     property?: PropertyOrderByWithRelationInput
     tenant?: UserOrderByWithRelationInput
-    application?: ApplicationOrderByWithRelationInput
     payments?: PaymentOrderByRelationAggregateInput
   }
 
@@ -13222,9 +20583,9 @@ export namespace Prisma {
     deposit?: FloatFilter<"Lease"> | number
     propertyId?: IntFilter<"Lease"> | number
     tenantUserId?: StringFilter<"Lease"> | string
+    application?: XOR<ApplicationNullableScalarRelationFilter, ApplicationWhereInput> | null
     property?: XOR<PropertyScalarRelationFilter, PropertyWhereInput>
     tenant?: XOR<UserScalarRelationFilter, UserWhereInput>
-    application?: XOR<ApplicationNullableScalarRelationFilter, ApplicationWhereInput> | null
     payments?: PaymentListRelationFilter
   }, "id">
 
@@ -13491,6 +20852,318 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"SubmissionLink"> | Date | string
   }
 
+  export type spatial_ref_sysWhereInput = {
+    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    OR?: spatial_ref_sysWhereInput[]
+    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    srid?: IntFilter<"spatial_ref_sys"> | number
+    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
+  }
+
+  export type spatial_ref_sysOrderByWithRelationInput = {
+    srid?: SortOrder
+    auth_name?: SortOrderInput | SortOrder
+    auth_srid?: SortOrderInput | SortOrder
+    srtext?: SortOrderInput | SortOrder
+    proj4text?: SortOrderInput | SortOrder
+  }
+
+  export type spatial_ref_sysWhereUniqueInput = Prisma.AtLeast<{
+    srid?: number
+    AND?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    OR?: spatial_ref_sysWhereInput[]
+    NOT?: spatial_ref_sysWhereInput | spatial_ref_sysWhereInput[]
+    auth_name?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableFilter<"spatial_ref_sys"> | string | null
+  }, "srid">
+
+  export type spatial_ref_sysOrderByWithAggregationInput = {
+    srid?: SortOrder
+    auth_name?: SortOrderInput | SortOrder
+    auth_srid?: SortOrderInput | SortOrder
+    srtext?: SortOrderInput | SortOrder
+    proj4text?: SortOrderInput | SortOrder
+    _count?: spatial_ref_sysCountOrderByAggregateInput
+    _avg?: spatial_ref_sysAvgOrderByAggregateInput
+    _max?: spatial_ref_sysMaxOrderByAggregateInput
+    _min?: spatial_ref_sysMinOrderByAggregateInput
+    _sum?: spatial_ref_sysSumOrderByAggregateInput
+  }
+
+  export type spatial_ref_sysScalarWhereWithAggregatesInput = {
+    AND?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
+    OR?: spatial_ref_sysScalarWhereWithAggregatesInput[]
+    NOT?: spatial_ref_sysScalarWhereWithAggregatesInput | spatial_ref_sysScalarWhereWithAggregatesInput[]
+    srid?: IntWithAggregatesFilter<"spatial_ref_sys"> | number
+    auth_name?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+    auth_srid?: IntNullableWithAggregatesFilter<"spatial_ref_sys"> | number | null
+    srtext?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+    proj4text?: StringNullableWithAggregatesFilter<"spatial_ref_sys"> | string | null
+  }
+
+  export type CustomAmenityWhereInput = {
+    AND?: CustomAmenityWhereInput | CustomAmenityWhereInput[]
+    OR?: CustomAmenityWhereInput[]
+    NOT?: CustomAmenityWhereInput | CustomAmenityWhereInput[]
+    id?: IntFilter<"CustomAmenity"> | number
+    name?: StringFilter<"CustomAmenity"> | string
+  }
+
+  export type CustomAmenityOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CustomAmenityWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: CustomAmenityWhereInput | CustomAmenityWhereInput[]
+    OR?: CustomAmenityWhereInput[]
+    NOT?: CustomAmenityWhereInput | CustomAmenityWhereInput[]
+  }, "id" | "name">
+
+  export type CustomAmenityOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: CustomAmenityCountOrderByAggregateInput
+    _avg?: CustomAmenityAvgOrderByAggregateInput
+    _max?: CustomAmenityMaxOrderByAggregateInput
+    _min?: CustomAmenityMinOrderByAggregateInput
+    _sum?: CustomAmenitySumOrderByAggregateInput
+  }
+
+  export type CustomAmenityScalarWhereWithAggregatesInput = {
+    AND?: CustomAmenityScalarWhereWithAggregatesInput | CustomAmenityScalarWhereWithAggregatesInput[]
+    OR?: CustomAmenityScalarWhereWithAggregatesInput[]
+    NOT?: CustomAmenityScalarWhereWithAggregatesInput | CustomAmenityScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CustomAmenity"> | number
+    name?: StringWithAggregatesFilter<"CustomAmenity"> | string
+  }
+
+  export type CustomHighlightWhereInput = {
+    AND?: CustomHighlightWhereInput | CustomHighlightWhereInput[]
+    OR?: CustomHighlightWhereInput[]
+    NOT?: CustomHighlightWhereInput | CustomHighlightWhereInput[]
+    id?: IntFilter<"CustomHighlight"> | number
+    name?: StringFilter<"CustomHighlight"> | string
+  }
+
+  export type CustomHighlightOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CustomHighlightWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: CustomHighlightWhereInput | CustomHighlightWhereInput[]
+    OR?: CustomHighlightWhereInput[]
+    NOT?: CustomHighlightWhereInput | CustomHighlightWhereInput[]
+  }, "id" | "name">
+
+  export type CustomHighlightOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: CustomHighlightCountOrderByAggregateInput
+    _avg?: CustomHighlightAvgOrderByAggregateInput
+    _max?: CustomHighlightMaxOrderByAggregateInput
+    _min?: CustomHighlightMinOrderByAggregateInput
+    _sum?: CustomHighlightSumOrderByAggregateInput
+  }
+
+  export type CustomHighlightScalarWhereWithAggregatesInput = {
+    AND?: CustomHighlightScalarWhereWithAggregatesInput | CustomHighlightScalarWhereWithAggregatesInput[]
+    OR?: CustomHighlightScalarWhereWithAggregatesInput[]
+    NOT?: CustomHighlightScalarWhereWithAggregatesInput | CustomHighlightScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CustomHighlight"> | number
+    name?: StringWithAggregatesFilter<"CustomHighlight"> | string
+  }
+
+  export type LandlordWhereInput = {
+    AND?: LandlordWhereInput | LandlordWhereInput[]
+    OR?: LandlordWhereInput[]
+    NOT?: LandlordWhereInput | LandlordWhereInput[]
+    id?: IntFilter<"Landlord"> | number
+    name?: StringFilter<"Landlord"> | string
+    email?: StringFilter<"Landlord"> | string
+    phoneNumber?: StringNullableFilter<"Landlord"> | string | null
+    onboardedById?: StringNullableFilter<"Landlord"> | string | null
+    properties?: PropertyListRelationFilter
+    onboardedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type LandlordOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    onboardedById?: SortOrderInput | SortOrder
+    properties?: PropertyOrderByRelationAggregateInput
+    onboardedBy?: UserOrderByWithRelationInput
+  }
+
+  export type LandlordWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    email?: string
+    AND?: LandlordWhereInput | LandlordWhereInput[]
+    OR?: LandlordWhereInput[]
+    NOT?: LandlordWhereInput | LandlordWhereInput[]
+    name?: StringFilter<"Landlord"> | string
+    phoneNumber?: StringNullableFilter<"Landlord"> | string | null
+    onboardedById?: StringNullableFilter<"Landlord"> | string | null
+    properties?: PropertyListRelationFilter
+    onboardedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "email">
+
+  export type LandlordOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    onboardedById?: SortOrderInput | SortOrder
+    _count?: LandlordCountOrderByAggregateInput
+    _avg?: LandlordAvgOrderByAggregateInput
+    _max?: LandlordMaxOrderByAggregateInput
+    _min?: LandlordMinOrderByAggregateInput
+    _sum?: LandlordSumOrderByAggregateInput
+  }
+
+  export type LandlordScalarWhereWithAggregatesInput = {
+    AND?: LandlordScalarWhereWithAggregatesInput | LandlordScalarWhereWithAggregatesInput[]
+    OR?: LandlordScalarWhereWithAggregatesInput[]
+    NOT?: LandlordScalarWhereWithAggregatesInput | LandlordScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Landlord"> | number
+    name?: StringWithAggregatesFilter<"Landlord"> | string
+    email?: StringWithAggregatesFilter<"Landlord"> | string
+    phoneNumber?: StringNullableWithAggregatesFilter<"Landlord"> | string | null
+    onboardedById?: StringNullableWithAggregatesFilter<"Landlord"> | string | null
+  }
+
+  export type CaretakerWhereInput = {
+    AND?: CaretakerWhereInput | CaretakerWhereInput[]
+    OR?: CaretakerWhereInput[]
+    NOT?: CaretakerWhereInput | CaretakerWhereInput[]
+    id?: IntFilter<"Caretaker"> | number
+    name?: StringFilter<"Caretaker"> | string
+    email?: StringFilter<"Caretaker"> | string
+    phoneNumber?: StringNullableFilter<"Caretaker"> | string | null
+    onboardedById?: StringNullableFilter<"Caretaker"> | string | null
+    properties?: PropertyListRelationFilter
+    onboardedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type CaretakerOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    onboardedById?: SortOrderInput | SortOrder
+    properties?: PropertyOrderByRelationAggregateInput
+    onboardedBy?: UserOrderByWithRelationInput
+  }
+
+  export type CaretakerWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    email?: string
+    AND?: CaretakerWhereInput | CaretakerWhereInput[]
+    OR?: CaretakerWhereInput[]
+    NOT?: CaretakerWhereInput | CaretakerWhereInput[]
+    name?: StringFilter<"Caretaker"> | string
+    phoneNumber?: StringNullableFilter<"Caretaker"> | string | null
+    onboardedById?: StringNullableFilter<"Caretaker"> | string | null
+    properties?: PropertyListRelationFilter
+    onboardedBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "email">
+
+  export type CaretakerOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    onboardedById?: SortOrderInput | SortOrder
+    _count?: CaretakerCountOrderByAggregateInput
+    _avg?: CaretakerAvgOrderByAggregateInput
+    _max?: CaretakerMaxOrderByAggregateInput
+    _min?: CaretakerMinOrderByAggregateInput
+    _sum?: CaretakerSumOrderByAggregateInput
+  }
+
+  export type CaretakerScalarWhereWithAggregatesInput = {
+    AND?: CaretakerScalarWhereWithAggregatesInput | CaretakerScalarWhereWithAggregatesInput[]
+    OR?: CaretakerScalarWhereWithAggregatesInput[]
+    NOT?: CaretakerScalarWhereWithAggregatesInput | CaretakerScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Caretaker"> | number
+    name?: StringWithAggregatesFilter<"Caretaker"> | string
+    email?: StringWithAggregatesFilter<"Caretaker"> | string
+    phoneNumber?: StringNullableWithAggregatesFilter<"Caretaker"> | string | null
+    onboardedById?: StringNullableWithAggregatesFilter<"Caretaker"> | string | null
+  }
+
+  export type CommunicationWhereInput = {
+    AND?: CommunicationWhereInput | CommunicationWhereInput[]
+    OR?: CommunicationWhereInput[]
+    NOT?: CommunicationWhereInput | CommunicationWhereInput[]
+    id?: IntFilter<"Communication"> | number
+    senderId?: StringFilter<"Communication"> | string
+    receiverId?: StringFilter<"Communication"> | string
+    message?: StringFilter<"Communication"> | string
+    sentAt?: DateTimeFilter<"Communication"> | Date | string
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+    receiver?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type CommunicationOrderByWithRelationInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    message?: SortOrder
+    sentAt?: SortOrder
+    sender?: UserOrderByWithRelationInput
+    receiver?: UserOrderByWithRelationInput
+  }
+
+  export type CommunicationWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CommunicationWhereInput | CommunicationWhereInput[]
+    OR?: CommunicationWhereInput[]
+    NOT?: CommunicationWhereInput | CommunicationWhereInput[]
+    senderId?: StringFilter<"Communication"> | string
+    receiverId?: StringFilter<"Communication"> | string
+    message?: StringFilter<"Communication"> | string
+    sentAt?: DateTimeFilter<"Communication"> | Date | string
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+    receiver?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type CommunicationOrderByWithAggregationInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    message?: SortOrder
+    sentAt?: SortOrder
+    _count?: CommunicationCountOrderByAggregateInput
+    _avg?: CommunicationAvgOrderByAggregateInput
+    _max?: CommunicationMaxOrderByAggregateInput
+    _min?: CommunicationMinOrderByAggregateInput
+    _sum?: CommunicationSumOrderByAggregateInput
+  }
+
+  export type CommunicationScalarWhereWithAggregatesInput = {
+    AND?: CommunicationScalarWhereWithAggregatesInput | CommunicationScalarWhereWithAggregatesInput[]
+    OR?: CommunicationScalarWhereWithAggregatesInput[]
+    NOT?: CommunicationScalarWhereWithAggregatesInput | CommunicationScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Communication"> | number
+    senderId?: StringWithAggregatesFilter<"Communication"> | string
+    receiverId?: StringWithAggregatesFilter<"Communication"> | string
+    message?: StringWithAggregatesFilter<"Communication"> | string
+    sentAt?: DateTimeWithAggregatesFilter<"Communication"> | Date | string
+  }
+
   export type UserCreateInput = {
     authId?: string
     name: string
@@ -13501,11 +21174,16 @@ export namespace Prisma {
     isVerified?: boolean
     verificationCode?: string | null
     verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
-    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
-    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
     tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
     tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -13519,11 +21197,16 @@ export namespace Prisma {
     isVerified?: boolean
     verificationCode?: string | null
     verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
-    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
-    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
     tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
     tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
   }
 
   export type UserUpdateInput = {
@@ -13536,11 +21219,16 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
     verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
-    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
-    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
     tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
     tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -13554,11 +21242,16 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
     verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
-    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
-    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
     tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
     tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -13607,11 +21300,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13619,16 +21312,20 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    isSale?: boolean
     status?: $Enums.PropertyStatus
     submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
-    leases?: LeaseCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
-    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
     viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
     viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
   }
 
   export type PropertyUncheckedCreateInput = {
@@ -13640,11 +21337,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13652,16 +21349,20 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
     locationId: number
     managerUserId: string
-    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
-    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
     viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
   }
 
   export type PropertyUpdateInput = {
@@ -13672,11 +21373,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13684,16 +21385,20 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
     submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
-    leases?: LeaseUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
     viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
     viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
   }
 
   export type PropertyUncheckedUpdateInput = {
@@ -13705,11 +21410,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13717,16 +21422,20 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
-    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
     viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
   }
 
   export type PropertyCreateManyInput = {
@@ -13738,11 +21447,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -13750,10 +21459,14 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
     locationId: number
     managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
   }
 
   export type PropertyUpdateManyMutationInput = {
@@ -13764,11 +21477,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13776,6 +21489,7 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
     submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -13789,11 +21503,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -13801,10 +21515,14 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type LocationUpdateInput = {
@@ -13850,9 +21568,9 @@ export namespace Prisma {
     email: string
     phoneNumber: string
     message?: string | null
+    lease?: LeaseCreateNestedOneWithoutApplicationInput
     property: PropertyCreateNestedOneWithoutApplicationsInput
     tenant: UserCreateNestedOneWithoutTenantApplicationsInput
-    lease?: LeaseCreateNestedOneWithoutApplicationInput
   }
 
   export type ApplicationUncheckedCreateInput = {
@@ -13875,9 +21593,9 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
+    lease?: LeaseUpdateOneWithoutApplicationNestedInput
     property?: PropertyUpdateOneRequiredWithoutApplicationsNestedInput
     tenant?: UserUpdateOneRequiredWithoutTenantApplicationsNestedInput
-    lease?: LeaseUpdateOneWithoutApplicationNestedInput
   }
 
   export type ApplicationUncheckedUpdateInput = {
@@ -13933,9 +21651,9 @@ export namespace Prisma {
     endDate: Date | string
     rent: number
     deposit: number
+    application?: ApplicationCreateNestedOneWithoutLeaseInput
     property: PropertyCreateNestedOneWithoutLeasesInput
     tenant: UserCreateNestedOneWithoutTenantLeasesInput
-    application?: ApplicationCreateNestedOneWithoutLeaseInput
     payments?: PaymentCreateNestedManyWithoutLeaseInput
   }
 
@@ -13956,9 +21674,9 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     rent?: FloatFieldUpdateOperationsInput | number
     deposit?: FloatFieldUpdateOperationsInput | number
+    application?: ApplicationUpdateOneWithoutLeaseNestedInput
     property?: PropertyUpdateOneRequiredWithoutLeasesNestedInput
     tenant?: UserUpdateOneRequiredWithoutTenantLeasesNestedInput
-    application?: ApplicationUpdateOneWithoutLeaseNestedInput
     payments?: PaymentUpdateManyWithoutLeaseNestedInput
   }
 
@@ -14224,6 +21942,289 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type spatial_ref_sysCreateInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUncheckedCreateInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUpdateInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysUncheckedUpdateInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysCreateManyInput = {
+    srid: number
+    auth_name?: string | null
+    auth_srid?: number | null
+    srtext?: string | null
+    proj4text?: string | null
+  }
+
+  export type spatial_ref_sysUpdateManyMutationInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type spatial_ref_sysUncheckedUpdateManyInput = {
+    srid?: IntFieldUpdateOperationsInput | number
+    auth_name?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_srid?: NullableIntFieldUpdateOperationsInput | number | null
+    srtext?: NullableStringFieldUpdateOperationsInput | string | null
+    proj4text?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CustomAmenityCreateInput = {
+    name: string
+  }
+
+  export type CustomAmenityUncheckedCreateInput = {
+    id?: number
+    name: string
+  }
+
+  export type CustomAmenityUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CustomAmenityUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CustomAmenityCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type CustomAmenityUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CustomAmenityUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CustomHighlightCreateInput = {
+    name: string
+  }
+
+  export type CustomHighlightUncheckedCreateInput = {
+    id?: number
+    name: string
+  }
+
+  export type CustomHighlightUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CustomHighlightUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CustomHighlightCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type CustomHighlightUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CustomHighlightUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LandlordCreateInput = {
+    name: string
+    email: string
+    phoneNumber?: string | null
+    properties?: PropertyCreateNestedManyWithoutLandlordInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedLandlordsInput
+  }
+
+  export type LandlordUncheckedCreateInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
+    onboardedById?: string | null
+    properties?: PropertyUncheckedCreateNestedManyWithoutLandlordInput
+  }
+
+  export type LandlordUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    properties?: PropertyUpdateManyWithoutLandlordNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedLandlordsNestedInput
+  }
+
+  export type LandlordUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    onboardedById?: NullableStringFieldUpdateOperationsInput | string | null
+    properties?: PropertyUncheckedUpdateManyWithoutLandlordNestedInput
+  }
+
+  export type LandlordCreateManyInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
+    onboardedById?: string | null
+  }
+
+  export type LandlordUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type LandlordUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    onboardedById?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaretakerCreateInput = {
+    name: string
+    email: string
+    phoneNumber?: string | null
+    properties?: PropertyCreateNestedManyWithoutCaretakerInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedCaretakersInput
+  }
+
+  export type CaretakerUncheckedCreateInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
+    onboardedById?: string | null
+    properties?: PropertyUncheckedCreateNestedManyWithoutCaretakerInput
+  }
+
+  export type CaretakerUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    properties?: PropertyUpdateManyWithoutCaretakerNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedCaretakersNestedInput
+  }
+
+  export type CaretakerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    onboardedById?: NullableStringFieldUpdateOperationsInput | string | null
+    properties?: PropertyUncheckedUpdateManyWithoutCaretakerNestedInput
+  }
+
+  export type CaretakerCreateManyInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
+    onboardedById?: string | null
+  }
+
+  export type CaretakerUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaretakerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    onboardedById?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CommunicationCreateInput = {
+    message: string
+    sentAt?: Date | string
+    sender: UserCreateNestedOneWithoutSentMessagesInput
+    receiver: UserCreateNestedOneWithoutReceivedMessagesInput
+  }
+
+  export type CommunicationUncheckedCreateInput = {
+    id?: number
+    senderId: string
+    receiverId: string
+    message: string
+    sentAt?: Date | string
+  }
+
+  export type CommunicationUpdateInput = {
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
+    receiver?: UserUpdateOneRequiredWithoutReceivedMessagesNestedInput
+  }
+
+  export type CommunicationUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    senderId?: StringFieldUpdateOperationsInput | string
+    receiverId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunicationCreateManyInput = {
+    id?: number
+    senderId: string
+    receiverId: string
+    message: string
+    sentAt?: Date | string
+  }
+
+  export type CommunicationUpdateManyMutationInput = {
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunicationUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    senderId?: StringFieldUpdateOperationsInput | string
+    receiverId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -14288,12 +22289,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type PropertyListRelationFilter = {
-    every?: PropertyWhereInput
-    some?: PropertyWhereInput
-    none?: PropertyWhereInput
-  }
-
   export type ApplicationListRelationFilter = {
     every?: ApplicationWhereInput
     some?: ApplicationWhereInput
@@ -14306,13 +22301,33 @@ export namespace Prisma {
     none?: LeaseWhereInput
   }
 
+  export type PropertyListRelationFilter = {
+    every?: PropertyWhereInput
+    some?: PropertyWhereInput
+    none?: PropertyWhereInput
+  }
+
+  export type LandlordListRelationFilter = {
+    every?: LandlordWhereInput
+    some?: LandlordWhereInput
+    none?: LandlordWhereInput
+  }
+
+  export type CaretakerListRelationFilter = {
+    every?: CaretakerWhereInput
+    some?: CaretakerWhereInput
+    none?: CaretakerWhereInput
+  }
+
+  export type CommunicationListRelationFilter = {
+    every?: CommunicationWhereInput
+    some?: CommunicationWhereInput
+    none?: CommunicationWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
-  }
-
-  export type PropertyOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type ApplicationOrderByRelationAggregateInput = {
@@ -14320,6 +22335,22 @@ export namespace Prisma {
   }
 
   export type LeaseOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PropertyOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LandlordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CaretakerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CommunicationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14473,22 +22504,6 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type EnumAmenityNullableListFilter<$PrismaModel = never> = {
-    equals?: $Enums.Amenity[] | ListEnumAmenityFieldRefInput<$PrismaModel> | null
-    has?: $Enums.Amenity | EnumAmenityFieldRefInput<$PrismaModel> | null
-    hasEvery?: $Enums.Amenity[] | ListEnumAmenityFieldRefInput<$PrismaModel>
-    hasSome?: $Enums.Amenity[] | ListEnumAmenityFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
-  export type EnumHighlightNullableListFilter<$PrismaModel = never> = {
-    equals?: $Enums.Highlight[] | ListEnumHighlightFieldRefInput<$PrismaModel> | null
-    has?: $Enums.Highlight | EnumHighlightFieldRefInput<$PrismaModel> | null
-    hasEvery?: $Enums.Highlight[] | ListEnumHighlightFieldRefInput<$PrismaModel>
-    hasSome?: $Enums.Highlight[] | ListEnumHighlightFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
   export type EnumPropertyTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.PropertyType | EnumPropertyTypeFieldRefInput<$PrismaModel>
     in?: $Enums.PropertyType[] | ListEnumPropertyTypeFieldRefInput<$PrismaModel>
@@ -14546,12 +22561,6 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type UserListRelationFilter = {
-    every?: UserWhereInput
-    some?: UserWhereInput
-    none?: UserWhereInput
-  }
-
   export type ViewingAvailabilityListRelationFilter = {
     every?: ViewingAvailabilityWhereInput
     some?: ViewingAvailabilityWhereInput
@@ -14564,8 +22573,25 @@ export namespace Prisma {
     none?: ViewingBookingWhereInput
   }
 
-  export type UserOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type UserListRelationFilter = {
+    every?: UserWhereInput
+    some?: UserWhereInput
+    none?: UserWhereInput
+  }
+
+  export type LandlordNullableScalarRelationFilter = {
+    is?: LandlordWhereInput | null
+    isNot?: LandlordWhereInput | null
+  }
+
+  export type CaretakerNullableScalarRelationFilter = {
+    is?: CaretakerWhereInput | null
+    isNot?: CaretakerWhereInput | null
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type ViewingAvailabilityOrderByRelationAggregateInput = {
@@ -14573,6 +22599,10 @@ export namespace Prisma {
   }
 
   export type ViewingBookingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14589,7 +22619,7 @@ export namespace Prisma {
     highlights?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
-    isSale?: SortOrder
+    isRent?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -14597,10 +22627,14 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
-    status?: SortOrder
-    submittedBy?: SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
+    isSale?: SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrder
+    landlordId?: SortOrder
+    caretakerId?: SortOrder
+    onboardedByAgentId?: SortOrder
   }
 
   export type PropertyAvgOrderByAggregateInput = {
@@ -14614,6 +22648,8 @@ export namespace Prisma {
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
     locationId?: SortOrder
+    landlordId?: SortOrder
+    caretakerId?: SortOrder
   }
 
   export type PropertyMaxOrderByAggregateInput = {
@@ -14626,7 +22662,7 @@ export namespace Prisma {
     applicationFee?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
-    isSale?: SortOrder
+    isRent?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -14634,10 +22670,14 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
-    status?: SortOrder
-    submittedBy?: SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
+    isSale?: SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrder
+    landlordId?: SortOrder
+    caretakerId?: SortOrder
+    onboardedByAgentId?: SortOrder
   }
 
   export type PropertyMinOrderByAggregateInput = {
@@ -14650,7 +22690,7 @@ export namespace Prisma {
     applicationFee?: SortOrder
     isPetsAllowed?: SortOrder
     isParkingIncluded?: SortOrder
-    isSale?: SortOrder
+    isRent?: SortOrder
     beds?: SortOrder
     baths?: SortOrder
     squareFeet?: SortOrder
@@ -14658,10 +22698,14 @@ export namespace Prisma {
     postedDate?: SortOrder
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
-    status?: SortOrder
-    submittedBy?: SortOrder
     locationId?: SortOrder
     managerUserId?: SortOrder
+    isSale?: SortOrder
+    status?: SortOrder
+    submittedBy?: SortOrder
+    landlordId?: SortOrder
+    caretakerId?: SortOrder
+    onboardedByAgentId?: SortOrder
   }
 
   export type PropertySumOrderByAggregateInput = {
@@ -14675,6 +22719,8 @@ export namespace Prisma {
     averageRating?: SortOrder
     numberOfReviews?: SortOrder
     locationId?: SortOrder
+    landlordId?: SortOrder
+    caretakerId?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -14801,14 +22847,14 @@ export namespace Prisma {
     not?: NestedEnumApplicationStatusFilter<$PrismaModel> | $Enums.ApplicationStatus
   }
 
-  export type PropertyScalarRelationFilter = {
-    is?: PropertyWhereInput
-    isNot?: PropertyWhereInput
-  }
-
   export type LeaseNullableScalarRelationFilter = {
     is?: LeaseWhereInput | null
     isNot?: LeaseWhereInput | null
+  }
+
+  export type PropertyScalarRelationFilter = {
+    is?: PropertyWhereInput
+    isNot?: PropertyWhereInput
   }
 
   export type ApplicationCountOrderByAggregateInput = {
@@ -15097,23 +23143,180 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type PropertyCreateNestedManyWithoutManagerInput = {
-    create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
-    connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
-    createMany?: PropertyCreateManyManagerInputEnvelope
-    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  export type spatial_ref_sysCountOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
   }
 
-  export type PropertyCreateNestedManyWithoutTenantsInput = {
-    create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
-    connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
-    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  export type spatial_ref_sysAvgOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_srid?: SortOrder
   }
 
-  export type PropertyCreateNestedManyWithoutFavoritedByInput = {
-    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
-    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
-    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  export type spatial_ref_sysMaxOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
+  }
+
+  export type spatial_ref_sysMinOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_name?: SortOrder
+    auth_srid?: SortOrder
+    srtext?: SortOrder
+    proj4text?: SortOrder
+  }
+
+  export type spatial_ref_sysSumOrderByAggregateInput = {
+    srid?: SortOrder
+    auth_srid?: SortOrder
+  }
+
+  export type CustomAmenityCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CustomAmenityAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CustomAmenityMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CustomAmenityMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CustomAmenitySumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CustomHighlightCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CustomHighlightAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CustomHighlightMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CustomHighlightMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CustomHighlightSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type LandlordCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrder
+    onboardedById?: SortOrder
+  }
+
+  export type LandlordAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type LandlordMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrder
+    onboardedById?: SortOrder
+  }
+
+  export type LandlordMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrder
+    onboardedById?: SortOrder
+  }
+
+  export type LandlordSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CaretakerCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrder
+    onboardedById?: SortOrder
+  }
+
+  export type CaretakerAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CaretakerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrder
+    onboardedById?: SortOrder
+  }
+
+  export type CaretakerMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    phoneNumber?: SortOrder
+    onboardedById?: SortOrder
+  }
+
+  export type CaretakerSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CommunicationCountOrderByAggregateInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    message?: SortOrder
+    sentAt?: SortOrder
+  }
+
+  export type CommunicationAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CommunicationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    message?: SortOrder
+    sentAt?: SortOrder
+  }
+
+  export type CommunicationMinOrderByAggregateInput = {
+    id?: SortOrder
+    senderId?: SortOrder
+    receiverId?: SortOrder
+    message?: SortOrder
+    sentAt?: SortOrder
+  }
+
+  export type CommunicationSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type ApplicationCreateNestedManyWithoutTenantInput = {
@@ -15130,23 +23333,58 @@ export namespace Prisma {
     connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
   }
 
-  export type PropertyUncheckedCreateNestedManyWithoutManagerInput = {
+  export type PropertyCreateNestedManyWithoutManagerInput = {
     create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
     connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
     createMany?: PropertyCreateManyManagerInputEnvelope
     connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
   }
 
-  export type PropertyUncheckedCreateNestedManyWithoutTenantsInput = {
+  export type PropertyCreateNestedManyWithoutFavoritedByInput = {
+    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyCreateNestedManyWithoutTenantsInput = {
     create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
     connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
     connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
   }
 
-  export type PropertyUncheckedCreateNestedManyWithoutFavoritedByInput = {
-    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
-    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+  export type PropertyCreateNestedManyWithoutOnboardedByInput = {
+    create?: XOR<PropertyCreateWithoutOnboardedByInput, PropertyUncheckedCreateWithoutOnboardedByInput> | PropertyCreateWithoutOnboardedByInput[] | PropertyUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutOnboardedByInput | PropertyCreateOrConnectWithoutOnboardedByInput[]
+    createMany?: PropertyCreateManyOnboardedByInputEnvelope
     connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type LandlordCreateNestedManyWithoutOnboardedByInput = {
+    create?: XOR<LandlordCreateWithoutOnboardedByInput, LandlordUncheckedCreateWithoutOnboardedByInput> | LandlordCreateWithoutOnboardedByInput[] | LandlordUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: LandlordCreateOrConnectWithoutOnboardedByInput | LandlordCreateOrConnectWithoutOnboardedByInput[]
+    createMany?: LandlordCreateManyOnboardedByInputEnvelope
+    connect?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+  }
+
+  export type CaretakerCreateNestedManyWithoutOnboardedByInput = {
+    create?: XOR<CaretakerCreateWithoutOnboardedByInput, CaretakerUncheckedCreateWithoutOnboardedByInput> | CaretakerCreateWithoutOnboardedByInput[] | CaretakerUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: CaretakerCreateOrConnectWithoutOnboardedByInput | CaretakerCreateOrConnectWithoutOnboardedByInput[]
+    createMany?: CaretakerCreateManyOnboardedByInputEnvelope
+    connect?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+  }
+
+  export type CommunicationCreateNestedManyWithoutSenderInput = {
+    create?: XOR<CommunicationCreateWithoutSenderInput, CommunicationUncheckedCreateWithoutSenderInput> | CommunicationCreateWithoutSenderInput[] | CommunicationUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: CommunicationCreateOrConnectWithoutSenderInput | CommunicationCreateOrConnectWithoutSenderInput[]
+    createMany?: CommunicationCreateManySenderInputEnvelope
+    connect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+  }
+
+  export type CommunicationCreateNestedManyWithoutReceiverInput = {
+    create?: XOR<CommunicationCreateWithoutReceiverInput, CommunicationUncheckedCreateWithoutReceiverInput> | CommunicationCreateWithoutReceiverInput[] | CommunicationUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: CommunicationCreateOrConnectWithoutReceiverInput | CommunicationCreateOrConnectWithoutReceiverInput[]
+    createMany?: CommunicationCreateManyReceiverInputEnvelope
+    connect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
   }
 
   export type ApplicationUncheckedCreateNestedManyWithoutTenantInput = {
@@ -15161,6 +23399,60 @@ export namespace Prisma {
     connectOrCreate?: LeaseCreateOrConnectWithoutTenantInput | LeaseCreateOrConnectWithoutTenantInput[]
     createMany?: LeaseCreateManyTenantInputEnvelope
     connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutManagerInput = {
+    create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
+    createMany?: PropertyCreateManyManagerInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutFavoritedByInput = {
+    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutTenantsInput = {
+    create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutOnboardedByInput = {
+    create?: XOR<PropertyCreateWithoutOnboardedByInput, PropertyUncheckedCreateWithoutOnboardedByInput> | PropertyCreateWithoutOnboardedByInput[] | PropertyUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutOnboardedByInput | PropertyCreateOrConnectWithoutOnboardedByInput[]
+    createMany?: PropertyCreateManyOnboardedByInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type LandlordUncheckedCreateNestedManyWithoutOnboardedByInput = {
+    create?: XOR<LandlordCreateWithoutOnboardedByInput, LandlordUncheckedCreateWithoutOnboardedByInput> | LandlordCreateWithoutOnboardedByInput[] | LandlordUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: LandlordCreateOrConnectWithoutOnboardedByInput | LandlordCreateOrConnectWithoutOnboardedByInput[]
+    createMany?: LandlordCreateManyOnboardedByInputEnvelope
+    connect?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+  }
+
+  export type CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput = {
+    create?: XOR<CaretakerCreateWithoutOnboardedByInput, CaretakerUncheckedCreateWithoutOnboardedByInput> | CaretakerCreateWithoutOnboardedByInput[] | CaretakerUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: CaretakerCreateOrConnectWithoutOnboardedByInput | CaretakerCreateOrConnectWithoutOnboardedByInput[]
+    createMany?: CaretakerCreateManyOnboardedByInputEnvelope
+    connect?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+  }
+
+  export type CommunicationUncheckedCreateNestedManyWithoutSenderInput = {
+    create?: XOR<CommunicationCreateWithoutSenderInput, CommunicationUncheckedCreateWithoutSenderInput> | CommunicationCreateWithoutSenderInput[] | CommunicationUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: CommunicationCreateOrConnectWithoutSenderInput | CommunicationCreateOrConnectWithoutSenderInput[]
+    createMany?: CommunicationCreateManySenderInputEnvelope
+    connect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+  }
+
+  export type CommunicationUncheckedCreateNestedManyWithoutReceiverInput = {
+    create?: XOR<CommunicationCreateWithoutReceiverInput, CommunicationUncheckedCreateWithoutReceiverInput> | CommunicationCreateWithoutReceiverInput[] | CommunicationUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: CommunicationCreateOrConnectWithoutReceiverInput | CommunicationCreateOrConnectWithoutReceiverInput[]
+    createMany?: CommunicationCreateManyReceiverInputEnvelope
+    connect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -15181,46 +23473,6 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
-  }
-
-  export type PropertyUpdateManyWithoutManagerNestedInput = {
-    create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
-    connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
-    upsert?: PropertyUpsertWithWhereUniqueWithoutManagerInput | PropertyUpsertWithWhereUniqueWithoutManagerInput[]
-    createMany?: PropertyCreateManyManagerInputEnvelope
-    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    update?: PropertyUpdateWithWhereUniqueWithoutManagerInput | PropertyUpdateWithWhereUniqueWithoutManagerInput[]
-    updateMany?: PropertyUpdateManyWithWhereWithoutManagerInput | PropertyUpdateManyWithWhereWithoutManagerInput[]
-    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
-  }
-
-  export type PropertyUpdateManyWithoutTenantsNestedInput = {
-    create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
-    connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
-    upsert?: PropertyUpsertWithWhereUniqueWithoutTenantsInput | PropertyUpsertWithWhereUniqueWithoutTenantsInput[]
-    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    update?: PropertyUpdateWithWhereUniqueWithoutTenantsInput | PropertyUpdateWithWhereUniqueWithoutTenantsInput[]
-    updateMany?: PropertyUpdateManyWithWhereWithoutTenantsInput | PropertyUpdateManyWithWhereWithoutTenantsInput[]
-    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
-  }
-
-  export type PropertyUpdateManyWithoutFavoritedByNestedInput = {
-    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
-    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
-    upsert?: PropertyUpsertWithWhereUniqueWithoutFavoritedByInput | PropertyUpsertWithWhereUniqueWithoutFavoritedByInput[]
-    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    update?: PropertyUpdateWithWhereUniqueWithoutFavoritedByInput | PropertyUpdateWithWhereUniqueWithoutFavoritedByInput[]
-    updateMany?: PropertyUpdateManyWithWhereWithoutFavoritedByInput | PropertyUpdateManyWithWhereWithoutFavoritedByInput[]
-    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
   }
 
   export type ApplicationUpdateManyWithoutTenantNestedInput = {
@@ -15251,15 +23503,7 @@ export namespace Prisma {
     deleteMany?: LeaseScalarWhereInput | LeaseScalarWhereInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type PropertyUncheckedUpdateManyWithoutManagerNestedInput = {
+  export type PropertyUpdateManyWithoutManagerNestedInput = {
     create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
     connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
     upsert?: PropertyUpsertWithWhereUniqueWithoutManagerInput | PropertyUpsertWithWhereUniqueWithoutManagerInput[]
@@ -15273,7 +23517,20 @@ export namespace Prisma {
     deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
   }
 
-  export type PropertyUncheckedUpdateManyWithoutTenantsNestedInput = {
+  export type PropertyUpdateManyWithoutFavoritedByNestedInput = {
+    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutFavoritedByInput | PropertyUpsertWithWhereUniqueWithoutFavoritedByInput[]
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutFavoritedByInput | PropertyUpdateWithWhereUniqueWithoutFavoritedByInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutFavoritedByInput | PropertyUpdateManyWithWhereWithoutFavoritedByInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type PropertyUpdateManyWithoutTenantsNestedInput = {
     create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
     connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
     upsert?: PropertyUpsertWithWhereUniqueWithoutTenantsInput | PropertyUpsertWithWhereUniqueWithoutTenantsInput[]
@@ -15286,17 +23543,82 @@ export namespace Prisma {
     deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
   }
 
-  export type PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput = {
-    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
-    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
-    upsert?: PropertyUpsertWithWhereUniqueWithoutFavoritedByInput | PropertyUpsertWithWhereUniqueWithoutFavoritedByInput[]
+  export type PropertyUpdateManyWithoutOnboardedByNestedInput = {
+    create?: XOR<PropertyCreateWithoutOnboardedByInput, PropertyUncheckedCreateWithoutOnboardedByInput> | PropertyCreateWithoutOnboardedByInput[] | PropertyUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutOnboardedByInput | PropertyCreateOrConnectWithoutOnboardedByInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutOnboardedByInput | PropertyUpsertWithWhereUniqueWithoutOnboardedByInput[]
+    createMany?: PropertyCreateManyOnboardedByInputEnvelope
     set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
     disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
     delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
     connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
-    update?: PropertyUpdateWithWhereUniqueWithoutFavoritedByInput | PropertyUpdateWithWhereUniqueWithoutFavoritedByInput[]
-    updateMany?: PropertyUpdateManyWithWhereWithoutFavoritedByInput | PropertyUpdateManyWithWhereWithoutFavoritedByInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutOnboardedByInput | PropertyUpdateWithWhereUniqueWithoutOnboardedByInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutOnboardedByInput | PropertyUpdateManyWithWhereWithoutOnboardedByInput[]
     deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type LandlordUpdateManyWithoutOnboardedByNestedInput = {
+    create?: XOR<LandlordCreateWithoutOnboardedByInput, LandlordUncheckedCreateWithoutOnboardedByInput> | LandlordCreateWithoutOnboardedByInput[] | LandlordUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: LandlordCreateOrConnectWithoutOnboardedByInput | LandlordCreateOrConnectWithoutOnboardedByInput[]
+    upsert?: LandlordUpsertWithWhereUniqueWithoutOnboardedByInput | LandlordUpsertWithWhereUniqueWithoutOnboardedByInput[]
+    createMany?: LandlordCreateManyOnboardedByInputEnvelope
+    set?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+    disconnect?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+    delete?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+    connect?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+    update?: LandlordUpdateWithWhereUniqueWithoutOnboardedByInput | LandlordUpdateWithWhereUniqueWithoutOnboardedByInput[]
+    updateMany?: LandlordUpdateManyWithWhereWithoutOnboardedByInput | LandlordUpdateManyWithWhereWithoutOnboardedByInput[]
+    deleteMany?: LandlordScalarWhereInput | LandlordScalarWhereInput[]
+  }
+
+  export type CaretakerUpdateManyWithoutOnboardedByNestedInput = {
+    create?: XOR<CaretakerCreateWithoutOnboardedByInput, CaretakerUncheckedCreateWithoutOnboardedByInput> | CaretakerCreateWithoutOnboardedByInput[] | CaretakerUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: CaretakerCreateOrConnectWithoutOnboardedByInput | CaretakerCreateOrConnectWithoutOnboardedByInput[]
+    upsert?: CaretakerUpsertWithWhereUniqueWithoutOnboardedByInput | CaretakerUpsertWithWhereUniqueWithoutOnboardedByInput[]
+    createMany?: CaretakerCreateManyOnboardedByInputEnvelope
+    set?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+    disconnect?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+    delete?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+    connect?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+    update?: CaretakerUpdateWithWhereUniqueWithoutOnboardedByInput | CaretakerUpdateWithWhereUniqueWithoutOnboardedByInput[]
+    updateMany?: CaretakerUpdateManyWithWhereWithoutOnboardedByInput | CaretakerUpdateManyWithWhereWithoutOnboardedByInput[]
+    deleteMany?: CaretakerScalarWhereInput | CaretakerScalarWhereInput[]
+  }
+
+  export type CommunicationUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<CommunicationCreateWithoutSenderInput, CommunicationUncheckedCreateWithoutSenderInput> | CommunicationCreateWithoutSenderInput[] | CommunicationUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: CommunicationCreateOrConnectWithoutSenderInput | CommunicationCreateOrConnectWithoutSenderInput[]
+    upsert?: CommunicationUpsertWithWhereUniqueWithoutSenderInput | CommunicationUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: CommunicationCreateManySenderInputEnvelope
+    set?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    disconnect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    delete?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    connect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    update?: CommunicationUpdateWithWhereUniqueWithoutSenderInput | CommunicationUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: CommunicationUpdateManyWithWhereWithoutSenderInput | CommunicationUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: CommunicationScalarWhereInput | CommunicationScalarWhereInput[]
+  }
+
+  export type CommunicationUpdateManyWithoutReceiverNestedInput = {
+    create?: XOR<CommunicationCreateWithoutReceiverInput, CommunicationUncheckedCreateWithoutReceiverInput> | CommunicationCreateWithoutReceiverInput[] | CommunicationUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: CommunicationCreateOrConnectWithoutReceiverInput | CommunicationCreateOrConnectWithoutReceiverInput[]
+    upsert?: CommunicationUpsertWithWhereUniqueWithoutReceiverInput | CommunicationUpsertWithWhereUniqueWithoutReceiverInput[]
+    createMany?: CommunicationCreateManyReceiverInputEnvelope
+    set?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    disconnect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    delete?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    connect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    update?: CommunicationUpdateWithWhereUniqueWithoutReceiverInput | CommunicationUpdateWithWhereUniqueWithoutReceiverInput[]
+    updateMany?: CommunicationUpdateManyWithWhereWithoutReceiverInput | CommunicationUpdateManyWithWhereWithoutReceiverInput[]
+    deleteMany?: CommunicationScalarWhereInput | CommunicationScalarWhereInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type ApplicationUncheckedUpdateManyWithoutTenantNestedInput = {
@@ -15327,16 +23649,140 @@ export namespace Prisma {
     deleteMany?: LeaseScalarWhereInput | LeaseScalarWhereInput[]
   }
 
+  export type PropertyUncheckedUpdateManyWithoutManagerNestedInput = {
+    create?: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput> | PropertyCreateWithoutManagerInput[] | PropertyUncheckedCreateWithoutManagerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutManagerInput | PropertyCreateOrConnectWithoutManagerInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutManagerInput | PropertyUpsertWithWhereUniqueWithoutManagerInput[]
+    createMany?: PropertyCreateManyManagerInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutManagerInput | PropertyUpdateWithWhereUniqueWithoutManagerInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutManagerInput | PropertyUpdateManyWithWhereWithoutManagerInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput = {
+    create?: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput> | PropertyCreateWithoutFavoritedByInput[] | PropertyUncheckedCreateWithoutFavoritedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutFavoritedByInput | PropertyCreateOrConnectWithoutFavoritedByInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutFavoritedByInput | PropertyUpsertWithWhereUniqueWithoutFavoritedByInput[]
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutFavoritedByInput | PropertyUpdateWithWhereUniqueWithoutFavoritedByInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutFavoritedByInput | PropertyUpdateManyWithWhereWithoutFavoritedByInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutTenantsNestedInput = {
+    create?: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput> | PropertyCreateWithoutTenantsInput[] | PropertyUncheckedCreateWithoutTenantsInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutTenantsInput | PropertyCreateOrConnectWithoutTenantsInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutTenantsInput | PropertyUpsertWithWhereUniqueWithoutTenantsInput[]
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutTenantsInput | PropertyUpdateWithWhereUniqueWithoutTenantsInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutTenantsInput | PropertyUpdateManyWithWhereWithoutTenantsInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput = {
+    create?: XOR<PropertyCreateWithoutOnboardedByInput, PropertyUncheckedCreateWithoutOnboardedByInput> | PropertyCreateWithoutOnboardedByInput[] | PropertyUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutOnboardedByInput | PropertyCreateOrConnectWithoutOnboardedByInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutOnboardedByInput | PropertyUpsertWithWhereUniqueWithoutOnboardedByInput[]
+    createMany?: PropertyCreateManyOnboardedByInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutOnboardedByInput | PropertyUpdateWithWhereUniqueWithoutOnboardedByInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutOnboardedByInput | PropertyUpdateManyWithWhereWithoutOnboardedByInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput = {
+    create?: XOR<LandlordCreateWithoutOnboardedByInput, LandlordUncheckedCreateWithoutOnboardedByInput> | LandlordCreateWithoutOnboardedByInput[] | LandlordUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: LandlordCreateOrConnectWithoutOnboardedByInput | LandlordCreateOrConnectWithoutOnboardedByInput[]
+    upsert?: LandlordUpsertWithWhereUniqueWithoutOnboardedByInput | LandlordUpsertWithWhereUniqueWithoutOnboardedByInput[]
+    createMany?: LandlordCreateManyOnboardedByInputEnvelope
+    set?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+    disconnect?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+    delete?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+    connect?: LandlordWhereUniqueInput | LandlordWhereUniqueInput[]
+    update?: LandlordUpdateWithWhereUniqueWithoutOnboardedByInput | LandlordUpdateWithWhereUniqueWithoutOnboardedByInput[]
+    updateMany?: LandlordUpdateManyWithWhereWithoutOnboardedByInput | LandlordUpdateManyWithWhereWithoutOnboardedByInput[]
+    deleteMany?: LandlordScalarWhereInput | LandlordScalarWhereInput[]
+  }
+
+  export type CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput = {
+    create?: XOR<CaretakerCreateWithoutOnboardedByInput, CaretakerUncheckedCreateWithoutOnboardedByInput> | CaretakerCreateWithoutOnboardedByInput[] | CaretakerUncheckedCreateWithoutOnboardedByInput[]
+    connectOrCreate?: CaretakerCreateOrConnectWithoutOnboardedByInput | CaretakerCreateOrConnectWithoutOnboardedByInput[]
+    upsert?: CaretakerUpsertWithWhereUniqueWithoutOnboardedByInput | CaretakerUpsertWithWhereUniqueWithoutOnboardedByInput[]
+    createMany?: CaretakerCreateManyOnboardedByInputEnvelope
+    set?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+    disconnect?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+    delete?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+    connect?: CaretakerWhereUniqueInput | CaretakerWhereUniqueInput[]
+    update?: CaretakerUpdateWithWhereUniqueWithoutOnboardedByInput | CaretakerUpdateWithWhereUniqueWithoutOnboardedByInput[]
+    updateMany?: CaretakerUpdateManyWithWhereWithoutOnboardedByInput | CaretakerUpdateManyWithWhereWithoutOnboardedByInput[]
+    deleteMany?: CaretakerScalarWhereInput | CaretakerScalarWhereInput[]
+  }
+
+  export type CommunicationUncheckedUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<CommunicationCreateWithoutSenderInput, CommunicationUncheckedCreateWithoutSenderInput> | CommunicationCreateWithoutSenderInput[] | CommunicationUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: CommunicationCreateOrConnectWithoutSenderInput | CommunicationCreateOrConnectWithoutSenderInput[]
+    upsert?: CommunicationUpsertWithWhereUniqueWithoutSenderInput | CommunicationUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: CommunicationCreateManySenderInputEnvelope
+    set?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    disconnect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    delete?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    connect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    update?: CommunicationUpdateWithWhereUniqueWithoutSenderInput | CommunicationUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: CommunicationUpdateManyWithWhereWithoutSenderInput | CommunicationUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: CommunicationScalarWhereInput | CommunicationScalarWhereInput[]
+  }
+
+  export type CommunicationUncheckedUpdateManyWithoutReceiverNestedInput = {
+    create?: XOR<CommunicationCreateWithoutReceiverInput, CommunicationUncheckedCreateWithoutReceiverInput> | CommunicationCreateWithoutReceiverInput[] | CommunicationUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: CommunicationCreateOrConnectWithoutReceiverInput | CommunicationCreateOrConnectWithoutReceiverInput[]
+    upsert?: CommunicationUpsertWithWhereUniqueWithoutReceiverInput | CommunicationUpsertWithWhereUniqueWithoutReceiverInput[]
+    createMany?: CommunicationCreateManyReceiverInputEnvelope
+    set?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    disconnect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    delete?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    connect?: CommunicationWhereUniqueInput | CommunicationWhereUniqueInput[]
+    update?: CommunicationUpdateWithWhereUniqueWithoutReceiverInput | CommunicationUpdateWithWhereUniqueWithoutReceiverInput[]
+    updateMany?: CommunicationUpdateManyWithWhereWithoutReceiverInput | CommunicationUpdateManyWithWhereWithoutReceiverInput[]
+    deleteMany?: CommunicationScalarWhereInput | CommunicationScalarWhereInput[]
+  }
+
   export type PropertyCreatephotoUrlsInput = {
     set: string[]
   }
 
   export type PropertyCreateamenitiesInput = {
-    set: $Enums.Amenity[]
+    set: string[]
   }
 
   export type PropertyCreatehighlightsInput = {
-    set: $Enums.Highlight[]
+    set: string[]
+  }
+
+  export type ApplicationCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<ApplicationCreateWithoutPropertyInput, ApplicationUncheckedCreateWithoutPropertyInput> | ApplicationCreateWithoutPropertyInput[] | ApplicationUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutPropertyInput | ApplicationCreateOrConnectWithoutPropertyInput[]
+    createMany?: ApplicationCreateManyPropertyInputEnvelope
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+  }
+
+  export type LeaseCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
+    createMany?: LeaseCreateManyPropertyInputEnvelope
+    connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
   }
 
   export type LocationCreateNestedOneWithoutPropertiesInput = {
@@ -15347,32 +23793,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutManagedPropertiesInput, UserUncheckedCreateWithoutManagedPropertiesInput>
     connectOrCreate?: UserCreateOrConnectWithoutManagedPropertiesInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type LeaseCreateNestedManyWithoutPropertyInput = {
-    create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
-    connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
-    createMany?: LeaseCreateManyPropertyInputEnvelope
-    connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
-  }
-
-  export type ApplicationCreateNestedManyWithoutPropertyInput = {
-    create?: XOR<ApplicationCreateWithoutPropertyInput, ApplicationUncheckedCreateWithoutPropertyInput> | ApplicationCreateWithoutPropertyInput[] | ApplicationUncheckedCreateWithoutPropertyInput[]
-    connectOrCreate?: ApplicationCreateOrConnectWithoutPropertyInput | ApplicationCreateOrConnectWithoutPropertyInput[]
-    createMany?: ApplicationCreateManyPropertyInputEnvelope
-    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-  }
-
-  export type UserCreateNestedManyWithoutFavoritesInput = {
-    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type UserCreateNestedManyWithoutTenantPropertiesInput = {
-    create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
   export type ViewingAvailabilityCreateNestedManyWithoutPropertyInput = {
@@ -15389,11 +23809,34 @@ export namespace Prisma {
     connect?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
   }
 
-  export type LeaseUncheckedCreateNestedManyWithoutPropertyInput = {
-    create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
-    connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
-    createMany?: LeaseCreateManyPropertyInputEnvelope
-    connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
+  export type UserCreateNestedManyWithoutFavoritesInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedManyWithoutTenantPropertiesInput = {
+    create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type LandlordCreateNestedOneWithoutPropertiesInput = {
+    create?: XOR<LandlordCreateWithoutPropertiesInput, LandlordUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: LandlordCreateOrConnectWithoutPropertiesInput
+    connect?: LandlordWhereUniqueInput
+  }
+
+  export type CaretakerCreateNestedOneWithoutPropertiesInput = {
+    create?: XOR<CaretakerCreateWithoutPropertiesInput, CaretakerUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: CaretakerCreateOrConnectWithoutPropertiesInput
+    connect?: CaretakerWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutOnboardedPropertiesInput = {
+    create?: XOR<UserCreateWithoutOnboardedPropertiesInput, UserUncheckedCreateWithoutOnboardedPropertiesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOnboardedPropertiesInput
+    connect?: UserWhereUniqueInput
   }
 
   export type ApplicationUncheckedCreateNestedManyWithoutPropertyInput = {
@@ -15403,16 +23846,11 @@ export namespace Prisma {
     connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
   }
 
-  export type UserUncheckedCreateNestedManyWithoutFavoritesInput = {
-    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
-  export type UserUncheckedCreateNestedManyWithoutTenantPropertiesInput = {
-    create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  export type LeaseUncheckedCreateNestedManyWithoutPropertyInput = {
+    create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
+    createMany?: LeaseCreateManyPropertyInputEnvelope
+    connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
   }
 
   export type ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput = {
@@ -15429,6 +23867,18 @@ export namespace Prisma {
     connect?: ViewingBookingWhereUniqueInput | ViewingBookingWhereUniqueInput[]
   }
 
+  export type UserUncheckedCreateNestedManyWithoutFavoritesInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutTenantPropertiesInput = {
+    create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -15443,13 +23893,13 @@ export namespace Prisma {
   }
 
   export type PropertyUpdateamenitiesInput = {
-    set?: $Enums.Amenity[]
-    push?: $Enums.Amenity | $Enums.Amenity[]
+    set?: string[]
+    push?: string | string[]
   }
 
   export type PropertyUpdatehighlightsInput = {
-    set?: $Enums.Highlight[]
-    push?: $Enums.Highlight | $Enums.Highlight[]
+    set?: string[]
+    push?: string | string[]
   }
 
   export type EnumPropertyTypeFieldUpdateOperationsInput = {
@@ -15480,17 +23930,18 @@ export namespace Prisma {
     set?: $Enums.PropertyStatus
   }
 
-  export type LocationUpdateOneRequiredWithoutPropertiesNestedInput = {
-    connect?: LocationWhereUniqueInput
-    update?: XOR<XOR<LocationUpdateToOneWithWhereWithoutPropertiesInput, LocationUpdateWithoutPropertiesInput>, LocationUncheckedUpdateWithoutPropertiesInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutManagedPropertiesNestedInput = {
-    create?: XOR<UserCreateWithoutManagedPropertiesInput, UserUncheckedCreateWithoutManagedPropertiesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutManagedPropertiesInput
-    upsert?: UserUpsertWithoutManagedPropertiesInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutManagedPropertiesInput, UserUpdateWithoutManagedPropertiesInput>, UserUncheckedUpdateWithoutManagedPropertiesInput>
+  export type ApplicationUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<ApplicationCreateWithoutPropertyInput, ApplicationUncheckedCreateWithoutPropertyInput> | ApplicationCreateWithoutPropertyInput[] | ApplicationUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutPropertyInput | ApplicationCreateOrConnectWithoutPropertyInput[]
+    upsert?: ApplicationUpsertWithWhereUniqueWithoutPropertyInput | ApplicationUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: ApplicationCreateManyPropertyInputEnvelope
+    set?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    disconnect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    delete?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    update?: ApplicationUpdateWithWhereUniqueWithoutPropertyInput | ApplicationUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: ApplicationUpdateManyWithWhereWithoutPropertyInput | ApplicationUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
   }
 
   export type LeaseUpdateManyWithoutPropertyNestedInput = {
@@ -15507,44 +23958,17 @@ export namespace Prisma {
     deleteMany?: LeaseScalarWhereInput | LeaseScalarWhereInput[]
   }
 
-  export type ApplicationUpdateManyWithoutPropertyNestedInput = {
-    create?: XOR<ApplicationCreateWithoutPropertyInput, ApplicationUncheckedCreateWithoutPropertyInput> | ApplicationCreateWithoutPropertyInput[] | ApplicationUncheckedCreateWithoutPropertyInput[]
-    connectOrCreate?: ApplicationCreateOrConnectWithoutPropertyInput | ApplicationCreateOrConnectWithoutPropertyInput[]
-    upsert?: ApplicationUpsertWithWhereUniqueWithoutPropertyInput | ApplicationUpsertWithWhereUniqueWithoutPropertyInput[]
-    createMany?: ApplicationCreateManyPropertyInputEnvelope
-    set?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    disconnect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    delete?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
-    update?: ApplicationUpdateWithWhereUniqueWithoutPropertyInput | ApplicationUpdateWithWhereUniqueWithoutPropertyInput[]
-    updateMany?: ApplicationUpdateManyWithWhereWithoutPropertyInput | ApplicationUpdateManyWithWhereWithoutPropertyInput[]
-    deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
+  export type LocationUpdateOneRequiredWithoutPropertiesNestedInput = {
+    connect?: LocationWhereUniqueInput
+    update?: XOR<XOR<LocationUpdateToOneWithWhereWithoutPropertiesInput, LocationUpdateWithoutPropertiesInput>, LocationUncheckedUpdateWithoutPropertiesInput>
   }
 
-  export type UserUpdateManyWithoutFavoritesNestedInput = {
-    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutFavoritesInput | UserUpsertWithWhereUniqueWithoutFavoritesInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutFavoritesInput | UserUpdateWithWhereUniqueWithoutFavoritesInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutFavoritesInput | UserUpdateManyWithWhereWithoutFavoritesInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type UserUpdateManyWithoutTenantPropertiesNestedInput = {
-    create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutTenantPropertiesInput | UserUpsertWithWhereUniqueWithoutTenantPropertiesInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutTenantPropertiesInput | UserUpdateWithWhereUniqueWithoutTenantPropertiesInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutTenantPropertiesInput | UserUpdateManyWithWhereWithoutTenantPropertiesInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  export type UserUpdateOneRequiredWithoutManagedPropertiesNestedInput = {
+    create?: XOR<UserCreateWithoutManagedPropertiesInput, UserUncheckedCreateWithoutManagedPropertiesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutManagedPropertiesInput
+    upsert?: UserUpsertWithoutManagedPropertiesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutManagedPropertiesInput, UserUpdateWithoutManagedPropertiesInput>, UserUncheckedUpdateWithoutManagedPropertiesInput>
   }
 
   export type ViewingAvailabilityUpdateManyWithoutPropertyNestedInput = {
@@ -15575,18 +23999,60 @@ export namespace Prisma {
     deleteMany?: ViewingBookingScalarWhereInput | ViewingBookingScalarWhereInput[]
   }
 
-  export type LeaseUncheckedUpdateManyWithoutPropertyNestedInput = {
-    create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
-    connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
-    upsert?: LeaseUpsertWithWhereUniqueWithoutPropertyInput | LeaseUpsertWithWhereUniqueWithoutPropertyInput[]
-    createMany?: LeaseCreateManyPropertyInputEnvelope
-    set?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
-    disconnect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
-    delete?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
-    connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
-    update?: LeaseUpdateWithWhereUniqueWithoutPropertyInput | LeaseUpdateWithWhereUniqueWithoutPropertyInput[]
-    updateMany?: LeaseUpdateManyWithWhereWithoutPropertyInput | LeaseUpdateManyWithWhereWithoutPropertyInput[]
-    deleteMany?: LeaseScalarWhereInput | LeaseScalarWhereInput[]
+  export type UserUpdateManyWithoutFavoritesNestedInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutFavoritesInput | UserUpsertWithWhereUniqueWithoutFavoritesInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutFavoritesInput | UserUpdateWithWhereUniqueWithoutFavoritesInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutFavoritesInput | UserUpdateManyWithWhereWithoutFavoritesInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type UserUpdateManyWithoutTenantPropertiesNestedInput = {
+    create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutTenantPropertiesInput | UserUpsertWithWhereUniqueWithoutTenantPropertiesInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutTenantPropertiesInput | UserUpdateWithWhereUniqueWithoutTenantPropertiesInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutTenantPropertiesInput | UserUpdateManyWithWhereWithoutTenantPropertiesInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type LandlordUpdateOneWithoutPropertiesNestedInput = {
+    create?: XOR<LandlordCreateWithoutPropertiesInput, LandlordUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: LandlordCreateOrConnectWithoutPropertiesInput
+    upsert?: LandlordUpsertWithoutPropertiesInput
+    disconnect?: LandlordWhereInput | boolean
+    delete?: LandlordWhereInput | boolean
+    connect?: LandlordWhereUniqueInput
+    update?: XOR<XOR<LandlordUpdateToOneWithWhereWithoutPropertiesInput, LandlordUpdateWithoutPropertiesInput>, LandlordUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type CaretakerUpdateOneWithoutPropertiesNestedInput = {
+    create?: XOR<CaretakerCreateWithoutPropertiesInput, CaretakerUncheckedCreateWithoutPropertiesInput>
+    connectOrCreate?: CaretakerCreateOrConnectWithoutPropertiesInput
+    upsert?: CaretakerUpsertWithoutPropertiesInput
+    disconnect?: CaretakerWhereInput | boolean
+    delete?: CaretakerWhereInput | boolean
+    connect?: CaretakerWhereUniqueInput
+    update?: XOR<XOR<CaretakerUpdateToOneWithWhereWithoutPropertiesInput, CaretakerUpdateWithoutPropertiesInput>, CaretakerUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type UserUpdateOneWithoutOnboardedPropertiesNestedInput = {
+    create?: XOR<UserCreateWithoutOnboardedPropertiesInput, UserUncheckedCreateWithoutOnboardedPropertiesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOnboardedPropertiesInput
+    upsert?: UserUpsertWithoutOnboardedPropertiesInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOnboardedPropertiesInput, UserUpdateWithoutOnboardedPropertiesInput>, UserUncheckedUpdateWithoutOnboardedPropertiesInput>
   }
 
   export type ApplicationUncheckedUpdateManyWithoutPropertyNestedInput = {
@@ -15603,30 +24069,18 @@ export namespace Prisma {
     deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
   }
 
-  export type UserUncheckedUpdateManyWithoutFavoritesNestedInput = {
-    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutFavoritesInput | UserUpsertWithWhereUniqueWithoutFavoritesInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutFavoritesInput | UserUpdateWithWhereUniqueWithoutFavoritesInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutFavoritesInput | UserUpdateManyWithWhereWithoutFavoritesInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
-  }
-
-  export type UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput = {
-    create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutTenantPropertiesInput | UserUpsertWithWhereUniqueWithoutTenantPropertiesInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutTenantPropertiesInput | UserUpdateWithWhereUniqueWithoutTenantPropertiesInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutTenantPropertiesInput | UserUpdateManyWithWhereWithoutTenantPropertiesInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  export type LeaseUncheckedUpdateManyWithoutPropertyNestedInput = {
+    create?: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput> | LeaseCreateWithoutPropertyInput[] | LeaseUncheckedCreateWithoutPropertyInput[]
+    connectOrCreate?: LeaseCreateOrConnectWithoutPropertyInput | LeaseCreateOrConnectWithoutPropertyInput[]
+    upsert?: LeaseUpsertWithWhereUniqueWithoutPropertyInput | LeaseUpsertWithWhereUniqueWithoutPropertyInput[]
+    createMany?: LeaseCreateManyPropertyInputEnvelope
+    set?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
+    disconnect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
+    delete?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
+    connect?: LeaseWhereUniqueInput | LeaseWhereUniqueInput[]
+    update?: LeaseUpdateWithWhereUniqueWithoutPropertyInput | LeaseUpdateWithWhereUniqueWithoutPropertyInput[]
+    updateMany?: LeaseUpdateManyWithWhereWithoutPropertyInput | LeaseUpdateManyWithWhereWithoutPropertyInput[]
+    deleteMany?: LeaseScalarWhereInput | LeaseScalarWhereInput[]
   }
 
   export type ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput = {
@@ -15657,6 +24111,32 @@ export namespace Prisma {
     deleteMany?: ViewingBookingScalarWhereInput | ViewingBookingScalarWhereInput[]
   }
 
+  export type UserUncheckedUpdateManyWithoutFavoritesNestedInput = {
+    create?: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput> | UserCreateWithoutFavoritesInput[] | UserUncheckedCreateWithoutFavoritesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutFavoritesInput | UserCreateOrConnectWithoutFavoritesInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutFavoritesInput | UserUpsertWithWhereUniqueWithoutFavoritesInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutFavoritesInput | UserUpdateWithWhereUniqueWithoutFavoritesInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutFavoritesInput | UserUpdateManyWithWhereWithoutFavoritesInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput = {
+    create?: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput> | UserCreateWithoutTenantPropertiesInput[] | UserUncheckedCreateWithoutTenantPropertiesInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutTenantPropertiesInput | UserCreateOrConnectWithoutTenantPropertiesInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutTenantPropertiesInput | UserUpsertWithWhereUniqueWithoutTenantPropertiesInput[]
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutTenantPropertiesInput | UserUpdateWithWhereUniqueWithoutTenantPropertiesInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutTenantPropertiesInput | UserUpdateManyWithWhereWithoutTenantPropertiesInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
   export type PropertyUpdateManyWithoutLocationNestedInput = {
     create?: XOR<PropertyCreateWithoutLocationInput, PropertyUncheckedCreateWithoutLocationInput> | PropertyCreateWithoutLocationInput[] | PropertyUncheckedCreateWithoutLocationInput[]
     connectOrCreate?: PropertyCreateOrConnectWithoutLocationInput | PropertyCreateOrConnectWithoutLocationInput[]
@@ -15685,6 +24165,12 @@ export namespace Prisma {
     deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
   }
 
+  export type LeaseCreateNestedOneWithoutApplicationInput = {
+    create?: XOR<LeaseCreateWithoutApplicationInput, LeaseUncheckedCreateWithoutApplicationInput>
+    connectOrCreate?: LeaseCreateOrConnectWithoutApplicationInput
+    connect?: LeaseWhereUniqueInput
+  }
+
   export type PropertyCreateNestedOneWithoutApplicationsInput = {
     create?: XOR<PropertyCreateWithoutApplicationsInput, PropertyUncheckedCreateWithoutApplicationsInput>
     connectOrCreate?: PropertyCreateOrConnectWithoutApplicationsInput
@@ -15697,14 +24183,18 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type LeaseCreateNestedOneWithoutApplicationInput = {
-    create?: XOR<LeaseCreateWithoutApplicationInput, LeaseUncheckedCreateWithoutApplicationInput>
-    connectOrCreate?: LeaseCreateOrConnectWithoutApplicationInput
-    connect?: LeaseWhereUniqueInput
-  }
-
   export type EnumApplicationStatusFieldUpdateOperationsInput = {
     set?: $Enums.ApplicationStatus
+  }
+
+  export type LeaseUpdateOneWithoutApplicationNestedInput = {
+    create?: XOR<LeaseCreateWithoutApplicationInput, LeaseUncheckedCreateWithoutApplicationInput>
+    connectOrCreate?: LeaseCreateOrConnectWithoutApplicationInput
+    upsert?: LeaseUpsertWithoutApplicationInput
+    disconnect?: LeaseWhereInput | boolean
+    delete?: LeaseWhereInput | boolean
+    connect?: LeaseWhereUniqueInput
+    update?: XOR<XOR<LeaseUpdateToOneWithWhereWithoutApplicationInput, LeaseUpdateWithoutApplicationInput>, LeaseUncheckedUpdateWithoutApplicationInput>
   }
 
   export type PropertyUpdateOneRequiredWithoutApplicationsNestedInput = {
@@ -15723,14 +24213,10 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTenantApplicationsInput, UserUpdateWithoutTenantApplicationsInput>, UserUncheckedUpdateWithoutTenantApplicationsInput>
   }
 
-  export type LeaseUpdateOneWithoutApplicationNestedInput = {
-    create?: XOR<LeaseCreateWithoutApplicationInput, LeaseUncheckedCreateWithoutApplicationInput>
-    connectOrCreate?: LeaseCreateOrConnectWithoutApplicationInput
-    upsert?: LeaseUpsertWithoutApplicationInput
-    disconnect?: LeaseWhereInput | boolean
-    delete?: LeaseWhereInput | boolean
-    connect?: LeaseWhereUniqueInput
-    update?: XOR<XOR<LeaseUpdateToOneWithWhereWithoutApplicationInput, LeaseUpdateWithoutApplicationInput>, LeaseUncheckedUpdateWithoutApplicationInput>
+  export type ApplicationCreateNestedOneWithoutLeaseInput = {
+    create?: XOR<ApplicationCreateWithoutLeaseInput, ApplicationUncheckedCreateWithoutLeaseInput>
+    connectOrCreate?: ApplicationCreateOrConnectWithoutLeaseInput
+    connect?: ApplicationWhereUniqueInput
   }
 
   export type PropertyCreateNestedOneWithoutLeasesInput = {
@@ -15743,12 +24229,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutTenantLeasesInput, UserUncheckedCreateWithoutTenantLeasesInput>
     connectOrCreate?: UserCreateOrConnectWithoutTenantLeasesInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type ApplicationCreateNestedOneWithoutLeaseInput = {
-    create?: XOR<ApplicationCreateWithoutLeaseInput, ApplicationUncheckedCreateWithoutLeaseInput>
-    connectOrCreate?: ApplicationCreateOrConnectWithoutLeaseInput
-    connect?: ApplicationWhereUniqueInput
   }
 
   export type PaymentCreateNestedManyWithoutLeaseInput = {
@@ -15771,6 +24251,16 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
   }
 
+  export type ApplicationUpdateOneWithoutLeaseNestedInput = {
+    create?: XOR<ApplicationCreateWithoutLeaseInput, ApplicationUncheckedCreateWithoutLeaseInput>
+    connectOrCreate?: ApplicationCreateOrConnectWithoutLeaseInput
+    upsert?: ApplicationUpsertWithoutLeaseInput
+    disconnect?: ApplicationWhereInput | boolean
+    delete?: ApplicationWhereInput | boolean
+    connect?: ApplicationWhereUniqueInput
+    update?: XOR<XOR<ApplicationUpdateToOneWithWhereWithoutLeaseInput, ApplicationUpdateWithoutLeaseInput>, ApplicationUncheckedUpdateWithoutLeaseInput>
+  }
+
   export type PropertyUpdateOneRequiredWithoutLeasesNestedInput = {
     create?: XOR<PropertyCreateWithoutLeasesInput, PropertyUncheckedCreateWithoutLeasesInput>
     connectOrCreate?: PropertyCreateOrConnectWithoutLeasesInput
@@ -15785,16 +24275,6 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutTenantLeasesInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTenantLeasesInput, UserUpdateWithoutTenantLeasesInput>, UserUncheckedUpdateWithoutTenantLeasesInput>
-  }
-
-  export type ApplicationUpdateOneWithoutLeaseNestedInput = {
-    create?: XOR<ApplicationCreateWithoutLeaseInput, ApplicationUncheckedCreateWithoutLeaseInput>
-    connectOrCreate?: ApplicationCreateOrConnectWithoutLeaseInput
-    upsert?: ApplicationUpsertWithoutLeaseInput
-    disconnect?: ApplicationWhereInput | boolean
-    delete?: ApplicationWhereInput | boolean
-    connect?: ApplicationWhereUniqueInput
-    update?: XOR<XOR<ApplicationUpdateToOneWithWhereWithoutLeaseInput, ApplicationUpdateWithoutLeaseInput>, ApplicationUncheckedUpdateWithoutLeaseInput>
   }
 
   export type PaymentUpdateManyWithoutLeaseNestedInput = {
@@ -15879,6 +24359,150 @@ export namespace Prisma {
     upsert?: PropertyUpsertWithoutViewingBookingsInput
     connect?: PropertyWhereUniqueInput
     update?: XOR<XOR<PropertyUpdateToOneWithWhereWithoutViewingBookingsInput, PropertyUpdateWithoutViewingBookingsInput>, PropertyUncheckedUpdateWithoutViewingBookingsInput>
+  }
+
+  export type PropertyCreateNestedManyWithoutLandlordInput = {
+    create?: XOR<PropertyCreateWithoutLandlordInput, PropertyUncheckedCreateWithoutLandlordInput> | PropertyCreateWithoutLandlordInput[] | PropertyUncheckedCreateWithoutLandlordInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutLandlordInput | PropertyCreateOrConnectWithoutLandlordInput[]
+    createMany?: PropertyCreateManyLandlordInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutOnboardedLandlordsInput = {
+    create?: XOR<UserCreateWithoutOnboardedLandlordsInput, UserUncheckedCreateWithoutOnboardedLandlordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOnboardedLandlordsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutLandlordInput = {
+    create?: XOR<PropertyCreateWithoutLandlordInput, PropertyUncheckedCreateWithoutLandlordInput> | PropertyCreateWithoutLandlordInput[] | PropertyUncheckedCreateWithoutLandlordInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutLandlordInput | PropertyCreateOrConnectWithoutLandlordInput[]
+    createMany?: PropertyCreateManyLandlordInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyUpdateManyWithoutLandlordNestedInput = {
+    create?: XOR<PropertyCreateWithoutLandlordInput, PropertyUncheckedCreateWithoutLandlordInput> | PropertyCreateWithoutLandlordInput[] | PropertyUncheckedCreateWithoutLandlordInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutLandlordInput | PropertyCreateOrConnectWithoutLandlordInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutLandlordInput | PropertyUpsertWithWhereUniqueWithoutLandlordInput[]
+    createMany?: PropertyCreateManyLandlordInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutLandlordInput | PropertyUpdateWithWhereUniqueWithoutLandlordInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutLandlordInput | PropertyUpdateManyWithWhereWithoutLandlordInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserUpdateOneWithoutOnboardedLandlordsNestedInput = {
+    create?: XOR<UserCreateWithoutOnboardedLandlordsInput, UserUncheckedCreateWithoutOnboardedLandlordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOnboardedLandlordsInput
+    upsert?: UserUpsertWithoutOnboardedLandlordsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOnboardedLandlordsInput, UserUpdateWithoutOnboardedLandlordsInput>, UserUncheckedUpdateWithoutOnboardedLandlordsInput>
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutLandlordNestedInput = {
+    create?: XOR<PropertyCreateWithoutLandlordInput, PropertyUncheckedCreateWithoutLandlordInput> | PropertyCreateWithoutLandlordInput[] | PropertyUncheckedCreateWithoutLandlordInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutLandlordInput | PropertyCreateOrConnectWithoutLandlordInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutLandlordInput | PropertyUpsertWithWhereUniqueWithoutLandlordInput[]
+    createMany?: PropertyCreateManyLandlordInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutLandlordInput | PropertyUpdateWithWhereUniqueWithoutLandlordInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutLandlordInput | PropertyUpdateManyWithWhereWithoutLandlordInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type PropertyCreateNestedManyWithoutCaretakerInput = {
+    create?: XOR<PropertyCreateWithoutCaretakerInput, PropertyUncheckedCreateWithoutCaretakerInput> | PropertyCreateWithoutCaretakerInput[] | PropertyUncheckedCreateWithoutCaretakerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutCaretakerInput | PropertyCreateOrConnectWithoutCaretakerInput[]
+    createMany?: PropertyCreateManyCaretakerInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutOnboardedCaretakersInput = {
+    create?: XOR<UserCreateWithoutOnboardedCaretakersInput, UserUncheckedCreateWithoutOnboardedCaretakersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOnboardedCaretakersInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type PropertyUncheckedCreateNestedManyWithoutCaretakerInput = {
+    create?: XOR<PropertyCreateWithoutCaretakerInput, PropertyUncheckedCreateWithoutCaretakerInput> | PropertyCreateWithoutCaretakerInput[] | PropertyUncheckedCreateWithoutCaretakerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutCaretakerInput | PropertyCreateOrConnectWithoutCaretakerInput[]
+    createMany?: PropertyCreateManyCaretakerInputEnvelope
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+  }
+
+  export type PropertyUpdateManyWithoutCaretakerNestedInput = {
+    create?: XOR<PropertyCreateWithoutCaretakerInput, PropertyUncheckedCreateWithoutCaretakerInput> | PropertyCreateWithoutCaretakerInput[] | PropertyUncheckedCreateWithoutCaretakerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutCaretakerInput | PropertyCreateOrConnectWithoutCaretakerInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutCaretakerInput | PropertyUpsertWithWhereUniqueWithoutCaretakerInput[]
+    createMany?: PropertyCreateManyCaretakerInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutCaretakerInput | PropertyUpdateWithWhereUniqueWithoutCaretakerInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutCaretakerInput | PropertyUpdateManyWithWhereWithoutCaretakerInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserUpdateOneWithoutOnboardedCaretakersNestedInput = {
+    create?: XOR<UserCreateWithoutOnboardedCaretakersInput, UserUncheckedCreateWithoutOnboardedCaretakersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOnboardedCaretakersInput
+    upsert?: UserUpsertWithoutOnboardedCaretakersInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOnboardedCaretakersInput, UserUpdateWithoutOnboardedCaretakersInput>, UserUncheckedUpdateWithoutOnboardedCaretakersInput>
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutCaretakerNestedInput = {
+    create?: XOR<PropertyCreateWithoutCaretakerInput, PropertyUncheckedCreateWithoutCaretakerInput> | PropertyCreateWithoutCaretakerInput[] | PropertyUncheckedCreateWithoutCaretakerInput[]
+    connectOrCreate?: PropertyCreateOrConnectWithoutCaretakerInput | PropertyCreateOrConnectWithoutCaretakerInput[]
+    upsert?: PropertyUpsertWithWhereUniqueWithoutCaretakerInput | PropertyUpsertWithWhereUniqueWithoutCaretakerInput[]
+    createMany?: PropertyCreateManyCaretakerInputEnvelope
+    set?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    disconnect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    delete?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    connect?: PropertyWhereUniqueInput | PropertyWhereUniqueInput[]
+    update?: PropertyUpdateWithWhereUniqueWithoutCaretakerInput | PropertyUpdateWithWhereUniqueWithoutCaretakerInput[]
+    updateMany?: PropertyUpdateManyWithWhereWithoutCaretakerInput | PropertyUpdateManyWithWhereWithoutCaretakerInput[]
+    deleteMany?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutSentMessagesInput = {
+    create?: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSentMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutReceivedMessagesInput = {
+    create?: XOR<UserCreateWithoutReceivedMessagesInput, UserUncheckedCreateWithoutReceivedMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReceivedMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutSentMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSentMessagesInput
+    upsert?: UserUpsertWithoutSentMessagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSentMessagesInput, UserUpdateWithoutSentMessagesInput>, UserUncheckedUpdateWithoutSentMessagesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutReceivedMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutReceivedMessagesInput, UserUncheckedCreateWithoutReceivedMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReceivedMessagesInput
+    upsert?: UserUpsertWithoutReceivedMessagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReceivedMessagesInput, UserUpdateWithoutReceivedMessagesInput>, UserUncheckedUpdateWithoutReceivedMessagesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -16199,215 +24823,6 @@ export namespace Prisma {
     _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
   }
 
-  export type PropertyCreateWithoutManagerInput = {
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    location: LocationCreateNestedOneWithoutPropertiesInput
-    leases?: LeaseCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
-    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
-  }
-
-  export type PropertyUncheckedCreateWithoutManagerInput = {
-    id?: number
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    locationId: number
-    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
-    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
-  }
-
-  export type PropertyCreateOrConnectWithoutManagerInput = {
-    where: PropertyWhereUniqueInput
-    create: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput>
-  }
-
-  export type PropertyCreateManyManagerInputEnvelope = {
-    data: PropertyCreateManyManagerInput | PropertyCreateManyManagerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PropertyCreateWithoutTenantsInput = {
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    location: LocationCreateNestedOneWithoutPropertiesInput
-    manager: UserCreateNestedOneWithoutManagedPropertiesInput
-    leases?: LeaseCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
-    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
-  }
-
-  export type PropertyUncheckedCreateWithoutTenantsInput = {
-    id?: number
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    locationId: number
-    managerUserId: string
-    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
-  }
-
-  export type PropertyCreateOrConnectWithoutTenantsInput = {
-    where: PropertyWhereUniqueInput
-    create: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput>
-  }
-
-  export type PropertyCreateWithoutFavoritedByInput = {
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    location: LocationCreateNestedOneWithoutPropertiesInput
-    manager: UserCreateNestedOneWithoutManagedPropertiesInput
-    leases?: LeaseCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationCreateNestedManyWithoutPropertyInput
-    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
-  }
-
-  export type PropertyUncheckedCreateWithoutFavoritedByInput = {
-    id?: number
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    locationId: number
-    managerUserId: string
-    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
-    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
-  }
-
-  export type PropertyCreateOrConnectWithoutFavoritedByInput = {
-    where: PropertyWhereUniqueInput
-    create: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput>
-  }
-
   export type ApplicationCreateWithoutTenantInput = {
     applicationDate: Date | string
     status: $Enums.ApplicationStatus
@@ -16415,8 +24830,8 @@ export namespace Prisma {
     email: string
     phoneNumber: string
     message?: string | null
-    property: PropertyCreateNestedOneWithoutApplicationsInput
     lease?: LeaseCreateNestedOneWithoutApplicationInput
+    property: PropertyCreateNestedOneWithoutApplicationsInput
   }
 
   export type ApplicationUncheckedCreateWithoutTenantInput = {
@@ -16446,8 +24861,8 @@ export namespace Prisma {
     endDate: Date | string
     rent: number
     deposit: number
-    property: PropertyCreateNestedOneWithoutLeasesInput
     application?: ApplicationCreateNestedOneWithoutLeaseInput
+    property: PropertyCreateNestedOneWithoutLeasesInput
     payments?: PaymentCreateNestedManyWithoutLeaseInput
   }
 
@@ -16472,82 +24887,414 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PropertyUpsertWithWhereUniqueWithoutManagerInput = {
+  export type PropertyCreateWithoutManagerInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutManagerInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutManagerInput = {
     where: PropertyWhereUniqueInput
-    update: XOR<PropertyUpdateWithoutManagerInput, PropertyUncheckedUpdateWithoutManagerInput>
     create: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput>
   }
 
-  export type PropertyUpdateWithWhereUniqueWithoutManagerInput = {
+  export type PropertyCreateManyManagerInputEnvelope = {
+    data: PropertyCreateManyManagerInput | PropertyCreateManyManagerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PropertyCreateWithoutFavoritedByInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutFavoritedByInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutFavoritedByInput = {
     where: PropertyWhereUniqueInput
-    data: XOR<PropertyUpdateWithoutManagerInput, PropertyUncheckedUpdateWithoutManagerInput>
-  }
-
-  export type PropertyUpdateManyWithWhereWithoutManagerInput = {
-    where: PropertyScalarWhereInput
-    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutManagerInput>
-  }
-
-  export type PropertyScalarWhereInput = {
-    AND?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
-    OR?: PropertyScalarWhereInput[]
-    NOT?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
-    id?: IntFilter<"Property"> | number
-    name?: StringFilter<"Property"> | string
-    slug?: StringNullableFilter<"Property"> | string | null
-    description?: StringFilter<"Property"> | string
-    pricePerMonth?: FloatFilter<"Property"> | number
-    securityDeposit?: FloatFilter<"Property"> | number
-    applicationFee?: FloatFilter<"Property"> | number
-    photoUrls?: StringNullableListFilter<"Property">
-    amenities?: EnumAmenityNullableListFilter<"Property">
-    highlights?: EnumHighlightNullableListFilter<"Property">
-    isPetsAllowed?: BoolFilter<"Property"> | boolean
-    isParkingIncluded?: BoolFilter<"Property"> | boolean
-    isSale?: BoolFilter<"Property"> | boolean
-    beds?: IntFilter<"Property"> | number
-    baths?: FloatFilter<"Property"> | number
-    squareFeet?: IntFilter<"Property"> | number
-    propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
-    postedDate?: DateTimeFilter<"Property"> | Date | string
-    averageRating?: FloatNullableFilter<"Property"> | number | null
-    numberOfReviews?: IntNullableFilter<"Property"> | number | null
-    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
-    submittedBy?: StringNullableFilter<"Property"> | string | null
-    locationId?: IntFilter<"Property"> | number
-    managerUserId?: StringFilter<"Property"> | string
-  }
-
-  export type PropertyUpsertWithWhereUniqueWithoutTenantsInput = {
-    where: PropertyWhereUniqueInput
-    update: XOR<PropertyUpdateWithoutTenantsInput, PropertyUncheckedUpdateWithoutTenantsInput>
-    create: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput>
-  }
-
-  export type PropertyUpdateWithWhereUniqueWithoutTenantsInput = {
-    where: PropertyWhereUniqueInput
-    data: XOR<PropertyUpdateWithoutTenantsInput, PropertyUncheckedUpdateWithoutTenantsInput>
-  }
-
-  export type PropertyUpdateManyWithWhereWithoutTenantsInput = {
-    where: PropertyScalarWhereInput
-    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutTenantsInput>
-  }
-
-  export type PropertyUpsertWithWhereUniqueWithoutFavoritedByInput = {
-    where: PropertyWhereUniqueInput
-    update: XOR<PropertyUpdateWithoutFavoritedByInput, PropertyUncheckedUpdateWithoutFavoritedByInput>
     create: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput>
   }
 
-  export type PropertyUpdateWithWhereUniqueWithoutFavoritedByInput = {
-    where: PropertyWhereUniqueInput
-    data: XOR<PropertyUpdateWithoutFavoritedByInput, PropertyUncheckedUpdateWithoutFavoritedByInput>
+  export type PropertyCreateWithoutTenantsInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
   }
 
-  export type PropertyUpdateManyWithWhereWithoutFavoritedByInput = {
-    where: PropertyScalarWhereInput
-    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutFavoritedByInput>
+  export type PropertyUncheckedCreateWithoutTenantsInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutTenantsInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput>
+  }
+
+  export type PropertyCreateWithoutOnboardedByInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutOnboardedByInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutOnboardedByInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutOnboardedByInput, PropertyUncheckedCreateWithoutOnboardedByInput>
+  }
+
+  export type PropertyCreateManyOnboardedByInputEnvelope = {
+    data: PropertyCreateManyOnboardedByInput | PropertyCreateManyOnboardedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type LandlordCreateWithoutOnboardedByInput = {
+    name: string
+    email: string
+    phoneNumber?: string | null
+    properties?: PropertyCreateNestedManyWithoutLandlordInput
+  }
+
+  export type LandlordUncheckedCreateWithoutOnboardedByInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
+    properties?: PropertyUncheckedCreateNestedManyWithoutLandlordInput
+  }
+
+  export type LandlordCreateOrConnectWithoutOnboardedByInput = {
+    where: LandlordWhereUniqueInput
+    create: XOR<LandlordCreateWithoutOnboardedByInput, LandlordUncheckedCreateWithoutOnboardedByInput>
+  }
+
+  export type LandlordCreateManyOnboardedByInputEnvelope = {
+    data: LandlordCreateManyOnboardedByInput | LandlordCreateManyOnboardedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CaretakerCreateWithoutOnboardedByInput = {
+    name: string
+    email: string
+    phoneNumber?: string | null
+    properties?: PropertyCreateNestedManyWithoutCaretakerInput
+  }
+
+  export type CaretakerUncheckedCreateWithoutOnboardedByInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
+    properties?: PropertyUncheckedCreateNestedManyWithoutCaretakerInput
+  }
+
+  export type CaretakerCreateOrConnectWithoutOnboardedByInput = {
+    where: CaretakerWhereUniqueInput
+    create: XOR<CaretakerCreateWithoutOnboardedByInput, CaretakerUncheckedCreateWithoutOnboardedByInput>
+  }
+
+  export type CaretakerCreateManyOnboardedByInputEnvelope = {
+    data: CaretakerCreateManyOnboardedByInput | CaretakerCreateManyOnboardedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CommunicationCreateWithoutSenderInput = {
+    message: string
+    sentAt?: Date | string
+    receiver: UserCreateNestedOneWithoutReceivedMessagesInput
+  }
+
+  export type CommunicationUncheckedCreateWithoutSenderInput = {
+    id?: number
+    receiverId: string
+    message: string
+    sentAt?: Date | string
+  }
+
+  export type CommunicationCreateOrConnectWithoutSenderInput = {
+    where: CommunicationWhereUniqueInput
+    create: XOR<CommunicationCreateWithoutSenderInput, CommunicationUncheckedCreateWithoutSenderInput>
+  }
+
+  export type CommunicationCreateManySenderInputEnvelope = {
+    data: CommunicationCreateManySenderInput | CommunicationCreateManySenderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CommunicationCreateWithoutReceiverInput = {
+    message: string
+    sentAt?: Date | string
+    sender: UserCreateNestedOneWithoutSentMessagesInput
+  }
+
+  export type CommunicationUncheckedCreateWithoutReceiverInput = {
+    id?: number
+    senderId: string
+    message: string
+    sentAt?: Date | string
+  }
+
+  export type CommunicationCreateOrConnectWithoutReceiverInput = {
+    where: CommunicationWhereUniqueInput
+    create: XOR<CommunicationCreateWithoutReceiverInput, CommunicationUncheckedCreateWithoutReceiverInput>
+  }
+
+  export type CommunicationCreateManyReceiverInputEnvelope = {
+    data: CommunicationCreateManyReceiverInput | CommunicationCreateManyReceiverInput[]
+    skipDuplicates?: boolean
   }
 
   export type ApplicationUpsertWithWhereUniqueWithoutTenantInput = {
@@ -16611,73 +25358,199 @@ export namespace Prisma {
     tenantUserId?: StringFilter<"Lease"> | string
   }
 
-  export type UserCreateWithoutManagedPropertiesInput = {
-    authId?: string
-    name: string
-    email: string
-    phoneNumber?: string
-    password: string
-    role?: $Enums.UserRole
-    isVerified?: boolean
-    verificationCode?: string | null
-    verificationCodeExpiresAt?: Date | string | null
-    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
-    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
-    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
-    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+  export type PropertyUpsertWithWhereUniqueWithoutManagerInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutManagerInput, PropertyUncheckedUpdateWithoutManagerInput>
+    create: XOR<PropertyCreateWithoutManagerInput, PropertyUncheckedCreateWithoutManagerInput>
   }
 
-  export type UserUncheckedCreateWithoutManagedPropertiesInput = {
-    id?: number
-    authId?: string
-    name: string
-    email: string
-    phoneNumber?: string
-    password: string
-    role?: $Enums.UserRole
-    isVerified?: boolean
-    verificationCode?: string | null
-    verificationCodeExpiresAt?: Date | string | null
-    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
-    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
-    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
-    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+  export type PropertyUpdateWithWhereUniqueWithoutManagerInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutManagerInput, PropertyUncheckedUpdateWithoutManagerInput>
   }
 
-  export type UserCreateOrConnectWithoutManagedPropertiesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutManagedPropertiesInput, UserUncheckedCreateWithoutManagedPropertiesInput>
+  export type PropertyUpdateManyWithWhereWithoutManagerInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutManagerInput>
   }
 
-  export type LeaseCreateWithoutPropertyInput = {
-    startDate: Date | string
-    endDate: Date | string
-    rent: number
-    deposit: number
-    tenant: UserCreateNestedOneWithoutTenantLeasesInput
-    application?: ApplicationCreateNestedOneWithoutLeaseInput
-    payments?: PaymentCreateNestedManyWithoutLeaseInput
+  export type PropertyScalarWhereInput = {
+    AND?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+    OR?: PropertyScalarWhereInput[]
+    NOT?: PropertyScalarWhereInput | PropertyScalarWhereInput[]
+    id?: IntFilter<"Property"> | number
+    name?: StringFilter<"Property"> | string
+    slug?: StringNullableFilter<"Property"> | string | null
+    description?: StringFilter<"Property"> | string
+    pricePerMonth?: FloatFilter<"Property"> | number
+    securityDeposit?: FloatFilter<"Property"> | number
+    applicationFee?: FloatFilter<"Property"> | number
+    photoUrls?: StringNullableListFilter<"Property">
+    amenities?: StringNullableListFilter<"Property">
+    highlights?: StringNullableListFilter<"Property">
+    isPetsAllowed?: BoolFilter<"Property"> | boolean
+    isParkingIncluded?: BoolFilter<"Property"> | boolean
+    isRent?: BoolFilter<"Property"> | boolean
+    beds?: IntFilter<"Property"> | number
+    baths?: FloatFilter<"Property"> | number
+    squareFeet?: IntFilter<"Property"> | number
+    propertyType?: EnumPropertyTypeFilter<"Property"> | $Enums.PropertyType
+    postedDate?: DateTimeFilter<"Property"> | Date | string
+    averageRating?: FloatNullableFilter<"Property"> | number | null
+    numberOfReviews?: IntNullableFilter<"Property"> | number | null
+    locationId?: IntFilter<"Property"> | number
+    managerUserId?: StringFilter<"Property"> | string
+    isSale?: BoolFilter<"Property"> | boolean
+    status?: EnumPropertyStatusFilter<"Property"> | $Enums.PropertyStatus
+    submittedBy?: StringNullableFilter<"Property"> | string | null
+    landlordId?: IntNullableFilter<"Property"> | number | null
+    caretakerId?: IntNullableFilter<"Property"> | number | null
+    onboardedByAgentId?: StringNullableFilter<"Property"> | string | null
   }
 
-  export type LeaseUncheckedCreateWithoutPropertyInput = {
-    id?: number
-    startDate: Date | string
-    endDate: Date | string
-    rent: number
-    deposit: number
-    tenantUserId: string
-    application?: ApplicationUncheckedCreateNestedOneWithoutLeaseInput
-    payments?: PaymentUncheckedCreateNestedManyWithoutLeaseInput
+  export type PropertyUpsertWithWhereUniqueWithoutFavoritedByInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutFavoritedByInput, PropertyUncheckedUpdateWithoutFavoritedByInput>
+    create: XOR<PropertyCreateWithoutFavoritedByInput, PropertyUncheckedCreateWithoutFavoritedByInput>
   }
 
-  export type LeaseCreateOrConnectWithoutPropertyInput = {
-    where: LeaseWhereUniqueInput
-    create: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput>
+  export type PropertyUpdateWithWhereUniqueWithoutFavoritedByInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutFavoritedByInput, PropertyUncheckedUpdateWithoutFavoritedByInput>
   }
 
-  export type LeaseCreateManyPropertyInputEnvelope = {
-    data: LeaseCreateManyPropertyInput | LeaseCreateManyPropertyInput[]
-    skipDuplicates?: boolean
+  export type PropertyUpdateManyWithWhereWithoutFavoritedByInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutFavoritedByInput>
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutTenantsInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutTenantsInput, PropertyUncheckedUpdateWithoutTenantsInput>
+    create: XOR<PropertyCreateWithoutTenantsInput, PropertyUncheckedCreateWithoutTenantsInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutTenantsInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutTenantsInput, PropertyUncheckedUpdateWithoutTenantsInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutTenantsInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutTenantsInput>
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutOnboardedByInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutOnboardedByInput, PropertyUncheckedUpdateWithoutOnboardedByInput>
+    create: XOR<PropertyCreateWithoutOnboardedByInput, PropertyUncheckedCreateWithoutOnboardedByInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutOnboardedByInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutOnboardedByInput, PropertyUncheckedUpdateWithoutOnboardedByInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutOnboardedByInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutOnboardedByInput>
+  }
+
+  export type LandlordUpsertWithWhereUniqueWithoutOnboardedByInput = {
+    where: LandlordWhereUniqueInput
+    update: XOR<LandlordUpdateWithoutOnboardedByInput, LandlordUncheckedUpdateWithoutOnboardedByInput>
+    create: XOR<LandlordCreateWithoutOnboardedByInput, LandlordUncheckedCreateWithoutOnboardedByInput>
+  }
+
+  export type LandlordUpdateWithWhereUniqueWithoutOnboardedByInput = {
+    where: LandlordWhereUniqueInput
+    data: XOR<LandlordUpdateWithoutOnboardedByInput, LandlordUncheckedUpdateWithoutOnboardedByInput>
+  }
+
+  export type LandlordUpdateManyWithWhereWithoutOnboardedByInput = {
+    where: LandlordScalarWhereInput
+    data: XOR<LandlordUpdateManyMutationInput, LandlordUncheckedUpdateManyWithoutOnboardedByInput>
+  }
+
+  export type LandlordScalarWhereInput = {
+    AND?: LandlordScalarWhereInput | LandlordScalarWhereInput[]
+    OR?: LandlordScalarWhereInput[]
+    NOT?: LandlordScalarWhereInput | LandlordScalarWhereInput[]
+    id?: IntFilter<"Landlord"> | number
+    name?: StringFilter<"Landlord"> | string
+    email?: StringFilter<"Landlord"> | string
+    phoneNumber?: StringNullableFilter<"Landlord"> | string | null
+    onboardedById?: StringNullableFilter<"Landlord"> | string | null
+  }
+
+  export type CaretakerUpsertWithWhereUniqueWithoutOnboardedByInput = {
+    where: CaretakerWhereUniqueInput
+    update: XOR<CaretakerUpdateWithoutOnboardedByInput, CaretakerUncheckedUpdateWithoutOnboardedByInput>
+    create: XOR<CaretakerCreateWithoutOnboardedByInput, CaretakerUncheckedCreateWithoutOnboardedByInput>
+  }
+
+  export type CaretakerUpdateWithWhereUniqueWithoutOnboardedByInput = {
+    where: CaretakerWhereUniqueInput
+    data: XOR<CaretakerUpdateWithoutOnboardedByInput, CaretakerUncheckedUpdateWithoutOnboardedByInput>
+  }
+
+  export type CaretakerUpdateManyWithWhereWithoutOnboardedByInput = {
+    where: CaretakerScalarWhereInput
+    data: XOR<CaretakerUpdateManyMutationInput, CaretakerUncheckedUpdateManyWithoutOnboardedByInput>
+  }
+
+  export type CaretakerScalarWhereInput = {
+    AND?: CaretakerScalarWhereInput | CaretakerScalarWhereInput[]
+    OR?: CaretakerScalarWhereInput[]
+    NOT?: CaretakerScalarWhereInput | CaretakerScalarWhereInput[]
+    id?: IntFilter<"Caretaker"> | number
+    name?: StringFilter<"Caretaker"> | string
+    email?: StringFilter<"Caretaker"> | string
+    phoneNumber?: StringNullableFilter<"Caretaker"> | string | null
+    onboardedById?: StringNullableFilter<"Caretaker"> | string | null
+  }
+
+  export type CommunicationUpsertWithWhereUniqueWithoutSenderInput = {
+    where: CommunicationWhereUniqueInput
+    update: XOR<CommunicationUpdateWithoutSenderInput, CommunicationUncheckedUpdateWithoutSenderInput>
+    create: XOR<CommunicationCreateWithoutSenderInput, CommunicationUncheckedCreateWithoutSenderInput>
+  }
+
+  export type CommunicationUpdateWithWhereUniqueWithoutSenderInput = {
+    where: CommunicationWhereUniqueInput
+    data: XOR<CommunicationUpdateWithoutSenderInput, CommunicationUncheckedUpdateWithoutSenderInput>
+  }
+
+  export type CommunicationUpdateManyWithWhereWithoutSenderInput = {
+    where: CommunicationScalarWhereInput
+    data: XOR<CommunicationUpdateManyMutationInput, CommunicationUncheckedUpdateManyWithoutSenderInput>
+  }
+
+  export type CommunicationScalarWhereInput = {
+    AND?: CommunicationScalarWhereInput | CommunicationScalarWhereInput[]
+    OR?: CommunicationScalarWhereInput[]
+    NOT?: CommunicationScalarWhereInput | CommunicationScalarWhereInput[]
+    id?: IntFilter<"Communication"> | number
+    senderId?: StringFilter<"Communication"> | string
+    receiverId?: StringFilter<"Communication"> | string
+    message?: StringFilter<"Communication"> | string
+    sentAt?: DateTimeFilter<"Communication"> | Date | string
+  }
+
+  export type CommunicationUpsertWithWhereUniqueWithoutReceiverInput = {
+    where: CommunicationWhereUniqueInput
+    update: XOR<CommunicationUpdateWithoutReceiverInput, CommunicationUncheckedUpdateWithoutReceiverInput>
+    create: XOR<CommunicationCreateWithoutReceiverInput, CommunicationUncheckedCreateWithoutReceiverInput>
+  }
+
+  export type CommunicationUpdateWithWhereUniqueWithoutReceiverInput = {
+    where: CommunicationWhereUniqueInput
+    data: XOR<CommunicationUpdateWithoutReceiverInput, CommunicationUncheckedUpdateWithoutReceiverInput>
+  }
+
+  export type CommunicationUpdateManyWithWhereWithoutReceiverInput = {
+    where: CommunicationScalarWhereInput
+    data: XOR<CommunicationUpdateManyMutationInput, CommunicationUncheckedUpdateManyWithoutReceiverInput>
   }
 
   export type ApplicationCreateWithoutPropertyInput = {
@@ -16687,8 +25560,8 @@ export namespace Prisma {
     email: string
     phoneNumber: string
     message?: string | null
-    tenant: UserCreateNestedOneWithoutTenantApplicationsInput
     lease?: LeaseCreateNestedOneWithoutApplicationInput
+    tenant: UserCreateNestedOneWithoutTenantApplicationsInput
   }
 
   export type ApplicationUncheckedCreateWithoutPropertyInput = {
@@ -16713,7 +25586,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserCreateWithoutFavoritesInput = {
+  export type LeaseCreateWithoutPropertyInput = {
+    startDate: Date | string
+    endDate: Date | string
+    rent: number
+    deposit: number
+    application?: ApplicationCreateNestedOneWithoutLeaseInput
+    tenant: UserCreateNestedOneWithoutTenantLeasesInput
+    payments?: PaymentCreateNestedManyWithoutLeaseInput
+  }
+
+  export type LeaseUncheckedCreateWithoutPropertyInput = {
+    id?: number
+    startDate: Date | string
+    endDate: Date | string
+    rent: number
+    deposit: number
+    tenantUserId: string
+    application?: ApplicationUncheckedCreateNestedOneWithoutLeaseInput
+    payments?: PaymentUncheckedCreateNestedManyWithoutLeaseInput
+  }
+
+  export type LeaseCreateOrConnectWithoutPropertyInput = {
+    where: LeaseWhereUniqueInput
+    create: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type LeaseCreateManyPropertyInputEnvelope = {
+    data: LeaseCreateManyPropertyInput | LeaseCreateManyPropertyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutManagedPropertiesInput = {
     authId?: string
     name: string
     email: string
@@ -16723,51 +25627,18 @@ export namespace Prisma {
     isVerified?: boolean
     verificationCode?: string | null
     verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
-    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
     tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
     tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
-  }
-
-  export type UserUncheckedCreateWithoutFavoritesInput = {
-    id?: number
-    authId?: string
-    name: string
-    email: string
-    phoneNumber?: string
-    password: string
-    role?: $Enums.UserRole
-    isVerified?: boolean
-    verificationCode?: string | null
-    verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
-    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
-    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
-    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
-  }
-
-  export type UserCreateOrConnectWithoutFavoritesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
-  }
-
-  export type UserCreateWithoutTenantPropertiesInput = {
-    authId?: string
-    name: string
-    email: string
-    phoneNumber?: string
-    password: string
-    role?: $Enums.UserRole
-    isVerified?: boolean
-    verificationCode?: string | null
-    verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
     favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
-    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
-    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
   }
 
-  export type UserUncheckedCreateWithoutTenantPropertiesInput = {
+  export type UserUncheckedCreateWithoutManagedPropertiesInput = {
     id?: number
     authId?: string
     name: string
@@ -16778,15 +25649,20 @@ export namespace Prisma {
     isVerified?: boolean
     verificationCode?: string | null
     verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
-    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
     tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
     tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
   }
 
-  export type UserCreateOrConnectWithoutTenantPropertiesInput = {
+  export type UserCreateOrConnectWithoutManagedPropertiesInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput>
+    create: XOR<UserCreateWithoutManagedPropertiesInput, UserUncheckedCreateWithoutManagedPropertiesInput>
   }
 
   export type ViewingAvailabilityCreateWithoutPropertyInput = {
@@ -16835,6 +25711,222 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserCreateWithoutFavoritesInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserUncheckedCreateWithoutFavoritesInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserCreateOrConnectWithoutFavoritesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
+  }
+
+  export type UserCreateWithoutTenantPropertiesInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserUncheckedCreateWithoutTenantPropertiesInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserCreateOrConnectWithoutTenantPropertiesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput>
+  }
+
+  export type LandlordCreateWithoutPropertiesInput = {
+    name: string
+    email: string
+    phoneNumber?: string | null
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedLandlordsInput
+  }
+
+  export type LandlordUncheckedCreateWithoutPropertiesInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
+    onboardedById?: string | null
+  }
+
+  export type LandlordCreateOrConnectWithoutPropertiesInput = {
+    where: LandlordWhereUniqueInput
+    create: XOR<LandlordCreateWithoutPropertiesInput, LandlordUncheckedCreateWithoutPropertiesInput>
+  }
+
+  export type CaretakerCreateWithoutPropertiesInput = {
+    name: string
+    email: string
+    phoneNumber?: string | null
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedCaretakersInput
+  }
+
+  export type CaretakerUncheckedCreateWithoutPropertiesInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
+    onboardedById?: string | null
+  }
+
+  export type CaretakerCreateOrConnectWithoutPropertiesInput = {
+    where: CaretakerWhereUniqueInput
+    create: XOR<CaretakerCreateWithoutPropertiesInput, CaretakerUncheckedCreateWithoutPropertiesInput>
+  }
+
+  export type UserCreateWithoutOnboardedPropertiesInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserUncheckedCreateWithoutOnboardedPropertiesInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserCreateOrConnectWithoutOnboardedPropertiesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutOnboardedPropertiesInput, UserUncheckedCreateWithoutOnboardedPropertiesInput>
+  }
+
+  export type ApplicationUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: ApplicationWhereUniqueInput
+    update: XOR<ApplicationUpdateWithoutPropertyInput, ApplicationUncheckedUpdateWithoutPropertyInput>
+    create: XOR<ApplicationCreateWithoutPropertyInput, ApplicationUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type ApplicationUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: ApplicationWhereUniqueInput
+    data: XOR<ApplicationUpdateWithoutPropertyInput, ApplicationUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type ApplicationUpdateManyWithWhereWithoutPropertyInput = {
+    where: ApplicationScalarWhereInput
+    data: XOR<ApplicationUpdateManyMutationInput, ApplicationUncheckedUpdateManyWithoutPropertyInput>
+  }
+
+  export type LeaseUpsertWithWhereUniqueWithoutPropertyInput = {
+    where: LeaseWhereUniqueInput
+    update: XOR<LeaseUpdateWithoutPropertyInput, LeaseUncheckedUpdateWithoutPropertyInput>
+    create: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput>
+  }
+
+  export type LeaseUpdateWithWhereUniqueWithoutPropertyInput = {
+    where: LeaseWhereUniqueInput
+    data: XOR<LeaseUpdateWithoutPropertyInput, LeaseUncheckedUpdateWithoutPropertyInput>
+  }
+
+  export type LeaseUpdateManyWithWhereWithoutPropertyInput = {
+    where: LeaseScalarWhereInput
+    data: XOR<LeaseUpdateManyMutationInput, LeaseUncheckedUpdateManyWithoutPropertyInput>
+  }
+
   export type LocationUpdateToOneWithWhereWithoutPropertiesInput = {
     where?: LocationWhereInput
     data: XOR<LocationUpdateWithoutPropertiesInput, LocationUncheckedUpdateWithoutPropertiesInput>
@@ -16878,10 +25970,15 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
     verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
-    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
     tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
     tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
   }
 
   export type UserUncheckedUpdateWithoutManagedPropertiesInput = {
@@ -16895,90 +25992,15 @@ export namespace Prisma {
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
     verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
-    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
     tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
     tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
-  }
-
-  export type LeaseUpsertWithWhereUniqueWithoutPropertyInput = {
-    where: LeaseWhereUniqueInput
-    update: XOR<LeaseUpdateWithoutPropertyInput, LeaseUncheckedUpdateWithoutPropertyInput>
-    create: XOR<LeaseCreateWithoutPropertyInput, LeaseUncheckedCreateWithoutPropertyInput>
-  }
-
-  export type LeaseUpdateWithWhereUniqueWithoutPropertyInput = {
-    where: LeaseWhereUniqueInput
-    data: XOR<LeaseUpdateWithoutPropertyInput, LeaseUncheckedUpdateWithoutPropertyInput>
-  }
-
-  export type LeaseUpdateManyWithWhereWithoutPropertyInput = {
-    where: LeaseScalarWhereInput
-    data: XOR<LeaseUpdateManyMutationInput, LeaseUncheckedUpdateManyWithoutPropertyInput>
-  }
-
-  export type ApplicationUpsertWithWhereUniqueWithoutPropertyInput = {
-    where: ApplicationWhereUniqueInput
-    update: XOR<ApplicationUpdateWithoutPropertyInput, ApplicationUncheckedUpdateWithoutPropertyInput>
-    create: XOR<ApplicationCreateWithoutPropertyInput, ApplicationUncheckedCreateWithoutPropertyInput>
-  }
-
-  export type ApplicationUpdateWithWhereUniqueWithoutPropertyInput = {
-    where: ApplicationWhereUniqueInput
-    data: XOR<ApplicationUpdateWithoutPropertyInput, ApplicationUncheckedUpdateWithoutPropertyInput>
-  }
-
-  export type ApplicationUpdateManyWithWhereWithoutPropertyInput = {
-    where: ApplicationScalarWhereInput
-    data: XOR<ApplicationUpdateManyMutationInput, ApplicationUncheckedUpdateManyWithoutPropertyInput>
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutFavoritesInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutFavoritesInput, UserUncheckedUpdateWithoutFavoritesInput>
-    create: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
-  }
-
-  export type UserUpdateWithWhereUniqueWithoutFavoritesInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutFavoritesInput, UserUncheckedUpdateWithoutFavoritesInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutFavoritesInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutFavoritesInput>
-  }
-
-  export type UserScalarWhereInput = {
-    AND?: UserScalarWhereInput | UserScalarWhereInput[]
-    OR?: UserScalarWhereInput[]
-    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
-    id?: IntFilter<"User"> | number
-    authId?: StringFilter<"User"> | string
-    name?: StringFilter<"User"> | string
-    email?: StringFilter<"User"> | string
-    phoneNumber?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
-    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
-    isVerified?: BoolFilter<"User"> | boolean
-    verificationCode?: StringNullableFilter<"User"> | string | null
-    verificationCodeExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutTenantPropertiesInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutTenantPropertiesInput, UserUncheckedUpdateWithoutTenantPropertiesInput>
-    create: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput>
-  }
-
-  export type UserUpdateWithWhereUniqueWithoutTenantPropertiesInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutTenantPropertiesInput, UserUncheckedUpdateWithoutTenantPropertiesInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutTenantPropertiesInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutTenantPropertiesInput>
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
   }
 
   export type ViewingAvailabilityUpsertWithWhereUniqueWithoutPropertyInput = {
@@ -17035,6 +26057,160 @@ export namespace Prisma {
     status?: StringFilter<"ViewingBooking"> | string
   }
 
+  export type UserUpsertWithWhereUniqueWithoutFavoritesInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutFavoritesInput, UserUncheckedUpdateWithoutFavoritesInput>
+    create: XOR<UserCreateWithoutFavoritesInput, UserUncheckedCreateWithoutFavoritesInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutFavoritesInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutFavoritesInput, UserUncheckedUpdateWithoutFavoritesInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutFavoritesInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutFavoritesInput>
+  }
+
+  export type UserScalarWhereInput = {
+    AND?: UserScalarWhereInput | UserScalarWhereInput[]
+    OR?: UserScalarWhereInput[]
+    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
+    id?: IntFilter<"User"> | number
+    authId?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    phoneNumber?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
+    isVerified?: BoolFilter<"User"> | boolean
+    verificationCode?: StringNullableFilter<"User"> | string | null
+    verificationCodeExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutTenantPropertiesInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutTenantPropertiesInput, UserUncheckedUpdateWithoutTenantPropertiesInput>
+    create: XOR<UserCreateWithoutTenantPropertiesInput, UserUncheckedCreateWithoutTenantPropertiesInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutTenantPropertiesInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutTenantPropertiesInput, UserUncheckedUpdateWithoutTenantPropertiesInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutTenantPropertiesInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutTenantPropertiesInput>
+  }
+
+  export type LandlordUpsertWithoutPropertiesInput = {
+    update: XOR<LandlordUpdateWithoutPropertiesInput, LandlordUncheckedUpdateWithoutPropertiesInput>
+    create: XOR<LandlordCreateWithoutPropertiesInput, LandlordUncheckedCreateWithoutPropertiesInput>
+    where?: LandlordWhereInput
+  }
+
+  export type LandlordUpdateToOneWithWhereWithoutPropertiesInput = {
+    where?: LandlordWhereInput
+    data: XOR<LandlordUpdateWithoutPropertiesInput, LandlordUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type LandlordUpdateWithoutPropertiesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    onboardedBy?: UserUpdateOneWithoutOnboardedLandlordsNestedInput
+  }
+
+  export type LandlordUncheckedUpdateWithoutPropertiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    onboardedById?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaretakerUpsertWithoutPropertiesInput = {
+    update: XOR<CaretakerUpdateWithoutPropertiesInput, CaretakerUncheckedUpdateWithoutPropertiesInput>
+    create: XOR<CaretakerCreateWithoutPropertiesInput, CaretakerUncheckedCreateWithoutPropertiesInput>
+    where?: CaretakerWhereInput
+  }
+
+  export type CaretakerUpdateToOneWithWhereWithoutPropertiesInput = {
+    where?: CaretakerWhereInput
+    data: XOR<CaretakerUpdateWithoutPropertiesInput, CaretakerUncheckedUpdateWithoutPropertiesInput>
+  }
+
+  export type CaretakerUpdateWithoutPropertiesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    onboardedBy?: UserUpdateOneWithoutOnboardedCaretakersNestedInput
+  }
+
+  export type CaretakerUncheckedUpdateWithoutPropertiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    onboardedById?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserUpsertWithoutOnboardedPropertiesInput = {
+    update: XOR<UserUpdateWithoutOnboardedPropertiesInput, UserUncheckedUpdateWithoutOnboardedPropertiesInput>
+    create: XOR<UserCreateWithoutOnboardedPropertiesInput, UserUncheckedCreateWithoutOnboardedPropertiesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutOnboardedPropertiesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutOnboardedPropertiesInput, UserUncheckedUpdateWithoutOnboardedPropertiesInput>
+  }
+
+  export type UserUpdateWithoutOnboardedPropertiesInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutOnboardedPropertiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
+  }
+
   export type PropertyCreateWithoutLocationInput = {
     name: string
     slug?: string | null
@@ -17043,11 +26219,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -17055,15 +26231,19 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    isSale?: boolean
     status?: $Enums.PropertyStatus
     submittedBy?: string | null
-    manager: UserCreateNestedOneWithoutManagedPropertiesInput
-    leases?: LeaseCreateNestedManyWithoutPropertyInput
     applications?: ApplicationCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
-    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
     viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
     viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
   }
 
   export type PropertyUncheckedCreateWithoutLocationInput = {
@@ -17075,11 +26255,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -17087,15 +26267,19 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    managerUserId: string
+    isSale?: boolean
     status?: $Enums.PropertyStatus
     submittedBy?: string | null
-    managerUserId: string
-    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
-    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
     viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
     viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
   }
 
   export type PropertyCreateOrConnectWithoutLocationInput = {
@@ -17124,112 +26308,6 @@ export namespace Prisma {
     data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutLocationInput>
   }
 
-  export type PropertyCreateWithoutApplicationsInput = {
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    location: LocationCreateNestedOneWithoutPropertiesInput
-    manager: UserCreateNestedOneWithoutManagedPropertiesInput
-    leases?: LeaseCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
-    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
-  }
-
-  export type PropertyUncheckedCreateWithoutApplicationsInput = {
-    id?: number
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    locationId: number
-    managerUserId: string
-    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
-    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
-  }
-
-  export type PropertyCreateOrConnectWithoutApplicationsInput = {
-    where: PropertyWhereUniqueInput
-    create: XOR<PropertyCreateWithoutApplicationsInput, PropertyUncheckedCreateWithoutApplicationsInput>
-  }
-
-  export type UserCreateWithoutTenantApplicationsInput = {
-    authId?: string
-    name: string
-    email: string
-    phoneNumber?: string
-    password: string
-    role?: $Enums.UserRole
-    isVerified?: boolean
-    verificationCode?: string | null
-    verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
-    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
-    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
-    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
-  }
-
-  export type UserUncheckedCreateWithoutTenantApplicationsInput = {
-    id?: number
-    authId?: string
-    name: string
-    email: string
-    phoneNumber?: string
-    password: string
-    role?: $Enums.UserRole
-    isVerified?: boolean
-    verificationCode?: string | null
-    verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
-    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
-    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
-    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
-  }
-
-  export type UserCreateOrConnectWithoutTenantApplicationsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTenantApplicationsInput, UserUncheckedCreateWithoutTenantApplicationsInput>
-  }
-
   export type LeaseCreateWithoutApplicationInput = {
     startDate: Date | string
     endDate: Date | string
@@ -17256,122 +26334,128 @@ export namespace Prisma {
     create: XOR<LeaseCreateWithoutApplicationInput, LeaseUncheckedCreateWithoutApplicationInput>
   }
 
-  export type PropertyUpsertWithoutApplicationsInput = {
-    update: XOR<PropertyUpdateWithoutApplicationsInput, PropertyUncheckedUpdateWithoutApplicationsInput>
+  export type PropertyCreateWithoutApplicationsInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutApplicationsInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutApplicationsInput = {
+    where: PropertyWhereUniqueInput
     create: XOR<PropertyCreateWithoutApplicationsInput, PropertyUncheckedCreateWithoutApplicationsInput>
-    where?: PropertyWhereInput
   }
 
-  export type PropertyUpdateToOneWithWhereWithoutApplicationsInput = {
-    where?: PropertyWhereInput
-    data: XOR<PropertyUpdateWithoutApplicationsInput, PropertyUncheckedUpdateWithoutApplicationsInput>
+  export type UserCreateWithoutTenantApplicationsInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
   }
 
-  export type PropertyUpdateWithoutApplicationsInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
-    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
-    leases?: LeaseUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+  export type UserUncheckedCreateWithoutTenantApplicationsInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
   }
 
-  export type PropertyUncheckedUpdateWithoutApplicationsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    locationId?: IntFieldUpdateOperationsInput | number
-    managerUserId?: StringFieldUpdateOperationsInput | string
-    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
-  }
-
-  export type UserUpsertWithoutTenantApplicationsInput = {
-    update: XOR<UserUpdateWithoutTenantApplicationsInput, UserUncheckedUpdateWithoutTenantApplicationsInput>
+  export type UserCreateOrConnectWithoutTenantApplicationsInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutTenantApplicationsInput, UserUncheckedCreateWithoutTenantApplicationsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutTenantApplicationsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTenantApplicationsInput, UserUncheckedUpdateWithoutTenantApplicationsInput>
-  }
-
-  export type UserUpdateWithoutTenantApplicationsInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
-    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
-    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
-    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutTenantApplicationsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
-    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
-    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
-    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type LeaseUpsertWithoutApplicationInput = {
@@ -17406,110 +26490,140 @@ export namespace Prisma {
     payments?: PaymentUncheckedUpdateManyWithoutLeaseNestedInput
   }
 
-  export type PropertyCreateWithoutLeasesInput = {
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    location: LocationCreateNestedOneWithoutPropertiesInput
-    manager: UserCreateNestedOneWithoutManagedPropertiesInput
-    applications?: ApplicationCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
-    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+  export type PropertyUpsertWithoutApplicationsInput = {
+    update: XOR<PropertyUpdateWithoutApplicationsInput, PropertyUncheckedUpdateWithoutApplicationsInput>
+    create: XOR<PropertyCreateWithoutApplicationsInput, PropertyUncheckedCreateWithoutApplicationsInput>
+    where?: PropertyWhereInput
   }
 
-  export type PropertyUncheckedCreateWithoutLeasesInput = {
-    id?: number
-    name: string
-    slug?: string | null
-    description: string
-    pricePerMonth: number
-    securityDeposit: number
-    applicationFee: number
-    photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: boolean
-    isParkingIncluded?: boolean
-    isSale?: boolean
-    beds: number
-    baths: number
-    squareFeet: number
-    propertyType: $Enums.PropertyType
-    postedDate?: Date | string
-    averageRating?: number | null
-    numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
-    locationId: number
-    managerUserId: string
-    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
-    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
-    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
-    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+  export type PropertyUpdateToOneWithWhereWithoutApplicationsInput = {
+    where?: PropertyWhereInput
+    data: XOR<PropertyUpdateWithoutApplicationsInput, PropertyUncheckedUpdateWithoutApplicationsInput>
   }
 
-  export type PropertyCreateOrConnectWithoutLeasesInput = {
-    where: PropertyWhereUniqueInput
-    create: XOR<PropertyCreateWithoutLeasesInput, PropertyUncheckedCreateWithoutLeasesInput>
+  export type PropertyUpdateWithoutApplicationsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
   }
 
-  export type UserCreateWithoutTenantLeasesInput = {
-    authId?: string
-    name: string
-    email: string
-    phoneNumber?: string
-    password: string
-    role?: $Enums.UserRole
-    isVerified?: boolean
-    verificationCode?: string | null
-    verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
-    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
-    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
-    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+  export type PropertyUncheckedUpdateWithoutApplicationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
   }
 
-  export type UserUncheckedCreateWithoutTenantLeasesInput = {
-    id?: number
-    authId?: string
-    name: string
-    email: string
-    phoneNumber?: string
-    password: string
-    role?: $Enums.UserRole
-    isVerified?: boolean
-    verificationCode?: string | null
-    verificationCodeExpiresAt?: Date | string | null
-    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
-    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
-    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
-    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+  export type UserUpsertWithoutTenantApplicationsInput = {
+    update: XOR<UserUpdateWithoutTenantApplicationsInput, UserUncheckedUpdateWithoutTenantApplicationsInput>
+    create: XOR<UserCreateWithoutTenantApplicationsInput, UserUncheckedCreateWithoutTenantApplicationsInput>
+    where?: UserWhereInput
   }
 
-  export type UserCreateOrConnectWithoutTenantLeasesInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTenantLeasesInput, UserUncheckedCreateWithoutTenantLeasesInput>
+  export type UserUpdateToOneWithWhereWithoutTenantApplicationsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTenantApplicationsInput, UserUncheckedUpdateWithoutTenantApplicationsInput>
+  }
+
+  export type UserUpdateWithoutTenantApplicationsInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTenantApplicationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
   }
 
   export type ApplicationCreateWithoutLeaseInput = {
@@ -17540,6 +26654,130 @@ export namespace Prisma {
     create: XOR<ApplicationCreateWithoutLeaseInput, ApplicationUncheckedCreateWithoutLeaseInput>
   }
 
+  export type PropertyCreateWithoutLeasesInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutLeasesInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutLeasesInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutLeasesInput, PropertyUncheckedCreateWithoutLeasesInput>
+  }
+
+  export type UserCreateWithoutTenantLeasesInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserUncheckedCreateWithoutTenantLeasesInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserCreateOrConnectWithoutTenantLeasesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTenantLeasesInput, UserUncheckedCreateWithoutTenantLeasesInput>
+  }
+
   export type PaymentCreateWithoutLeaseInput = {
     amountDue: number
     amountPaid: number
@@ -17565,124 +26803,6 @@ export namespace Prisma {
   export type PaymentCreateManyLeaseInputEnvelope = {
     data: PaymentCreateManyLeaseInput | PaymentCreateManyLeaseInput[]
     skipDuplicates?: boolean
-  }
-
-  export type PropertyUpsertWithoutLeasesInput = {
-    update: XOR<PropertyUpdateWithoutLeasesInput, PropertyUncheckedUpdateWithoutLeasesInput>
-    create: XOR<PropertyCreateWithoutLeasesInput, PropertyUncheckedCreateWithoutLeasesInput>
-    where?: PropertyWhereInput
-  }
-
-  export type PropertyUpdateToOneWithWhereWithoutLeasesInput = {
-    where?: PropertyWhereInput
-    data: XOR<PropertyUpdateWithoutLeasesInput, PropertyUncheckedUpdateWithoutLeasesInput>
-  }
-
-  export type PropertyUpdateWithoutLeasesInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
-    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
-    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
-  }
-
-  export type PropertyUncheckedUpdateWithoutLeasesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    locationId?: IntFieldUpdateOperationsInput | number
-    managerUserId?: StringFieldUpdateOperationsInput | string
-    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
-  }
-
-  export type UserUpsertWithoutTenantLeasesInput = {
-    update: XOR<UserUpdateWithoutTenantLeasesInput, UserUncheckedUpdateWithoutTenantLeasesInput>
-    create: XOR<UserCreateWithoutTenantLeasesInput, UserUncheckedCreateWithoutTenantLeasesInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutTenantLeasesInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTenantLeasesInput, UserUncheckedUpdateWithoutTenantLeasesInput>
-  }
-
-  export type UserUpdateWithoutTenantLeasesInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
-    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
-    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
-    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutTenantLeasesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
-    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
-    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
-    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type ApplicationUpsertWithoutLeaseInput = {
@@ -17719,6 +26839,142 @@ export namespace Prisma {
     message?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type PropertyUpsertWithoutLeasesInput = {
+    update: XOR<PropertyUpdateWithoutLeasesInput, PropertyUncheckedUpdateWithoutLeasesInput>
+    create: XOR<PropertyCreateWithoutLeasesInput, PropertyUncheckedCreateWithoutLeasesInput>
+    where?: PropertyWhereInput
+  }
+
+  export type PropertyUpdateToOneWithWhereWithoutLeasesInput = {
+    where?: PropertyWhereInput
+    data: XOR<PropertyUpdateWithoutLeasesInput, PropertyUncheckedUpdateWithoutLeasesInput>
+  }
+
+  export type PropertyUpdateWithoutLeasesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutLeasesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+  }
+
+  export type UserUpsertWithoutTenantLeasesInput = {
+    update: XOR<UserUpdateWithoutTenantLeasesInput, UserUncheckedUpdateWithoutTenantLeasesInput>
+    create: XOR<UserCreateWithoutTenantLeasesInput, UserUncheckedCreateWithoutTenantLeasesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTenantLeasesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTenantLeasesInput, UserUncheckedUpdateWithoutTenantLeasesInput>
+  }
+
+  export type UserUpdateWithoutTenantLeasesInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTenantLeasesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
+  }
+
   export type PaymentUpsertWithWhereUniqueWithoutLeaseInput = {
     where: PaymentWhereUniqueInput
     update: XOR<PaymentUpdateWithoutLeaseInput, PaymentUncheckedUpdateWithoutLeaseInput>
@@ -17753,9 +27009,9 @@ export namespace Prisma {
     endDate: Date | string
     rent: number
     deposit: number
+    application?: ApplicationCreateNestedOneWithoutLeaseInput
     property: PropertyCreateNestedOneWithoutLeasesInput
     tenant: UserCreateNestedOneWithoutTenantLeasesInput
-    application?: ApplicationCreateNestedOneWithoutLeaseInput
   }
 
   export type LeaseUncheckedCreateWithoutPaymentsInput = {
@@ -17790,9 +27046,9 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     rent?: FloatFieldUpdateOperationsInput | number
     deposit?: FloatFieldUpdateOperationsInput | number
+    application?: ApplicationUpdateOneWithoutLeaseNestedInput
     property?: PropertyUpdateOneRequiredWithoutLeasesNestedInput
     tenant?: UserUpdateOneRequiredWithoutTenantLeasesNestedInput
-    application?: ApplicationUpdateOneWithoutLeaseNestedInput
   }
 
   export type LeaseUncheckedUpdateWithoutPaymentsInput = {
@@ -17814,11 +27070,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -17826,15 +27082,19 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    isSale?: boolean
     status?: $Enums.PropertyStatus
     submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
-    leases?: LeaseCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
     tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
-    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
   }
 
   export type PropertyUncheckedCreateWithoutViewingAvailabilitiesInput = {
@@ -17846,11 +27106,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -17858,15 +27118,19 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
     locationId: number
     managerUserId: string
-    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
-    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutViewingAvailabilitiesInput = {
@@ -17893,11 +27157,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -17905,15 +27169,19 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
     submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
-    leases?: LeaseUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
-    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutViewingAvailabilitiesInput = {
@@ -17925,11 +27193,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -17937,15 +27205,19 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
-    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
-    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
   export type PropertyCreateWithoutViewingBookingsInput = {
@@ -17956,11 +27228,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -17968,15 +27240,19 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    isSale?: boolean
     status?: $Enums.PropertyStatus
     submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
     location: LocationCreateNestedOneWithoutPropertiesInput
     manager: UserCreateNestedOneWithoutManagedPropertiesInput
-    leases?: LeaseCreateNestedManyWithoutPropertyInput
-    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
     tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
   }
 
   export type PropertyUncheckedCreateWithoutViewingBookingsInput = {
@@ -17988,11 +27264,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -18000,15 +27276,19 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
-    status?: $Enums.PropertyStatus
-    submittedBy?: string | null
     locationId: number
     managerUserId: string
-    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
     applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
     favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
     tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
   }
 
   export type PropertyCreateOrConnectWithoutViewingBookingsInput = {
@@ -18035,11 +27315,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -18047,15 +27327,19 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
     submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
     location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
     manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
-    leases?: LeaseUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutViewingBookingsInput = {
@@ -18067,11 +27351,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -18079,18 +27363,57 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
     locationId?: IntFieldUpdateOperationsInput | number
     managerUserId?: StringFieldUpdateOperationsInput | string
-    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
     favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
     tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
-  export type PropertyCreateManyManagerInput = {
+  export type PropertyCreateWithoutLandlordInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    caretaker?: CaretakerCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutLandlordInput = {
     id?: number
     name: string
     slug?: string | null
@@ -18099,11 +27422,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -18111,9 +27434,550 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
     status?: $Enums.PropertyStatus
     submittedBy?: string | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutLandlordInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutLandlordInput, PropertyUncheckedCreateWithoutLandlordInput>
+  }
+
+  export type PropertyCreateManyLandlordInputEnvelope = {
+    data: PropertyCreateManyLandlordInput | PropertyCreateManyLandlordInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutOnboardedLandlordsInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserUncheckedCreateWithoutOnboardedLandlordsInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserCreateOrConnectWithoutOnboardedLandlordsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutOnboardedLandlordsInput, UserUncheckedCreateWithoutOnboardedLandlordsInput>
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutLandlordInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutLandlordInput, PropertyUncheckedUpdateWithoutLandlordInput>
+    create: XOR<PropertyCreateWithoutLandlordInput, PropertyUncheckedCreateWithoutLandlordInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutLandlordInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutLandlordInput, PropertyUncheckedUpdateWithoutLandlordInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutLandlordInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutLandlordInput>
+  }
+
+  export type UserUpsertWithoutOnboardedLandlordsInput = {
+    update: XOR<UserUpdateWithoutOnboardedLandlordsInput, UserUncheckedUpdateWithoutOnboardedLandlordsInput>
+    create: XOR<UserCreateWithoutOnboardedLandlordsInput, UserUncheckedCreateWithoutOnboardedLandlordsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutOnboardedLandlordsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutOnboardedLandlordsInput, UserUncheckedUpdateWithoutOnboardedLandlordsInput>
+  }
+
+  export type UserUpdateWithoutOnboardedLandlordsInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutOnboardedLandlordsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type PropertyCreateWithoutCaretakerInput = {
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    applications?: ApplicationCreateNestedManyWithoutPropertyInput
+    leases?: LeaseCreateNestedManyWithoutPropertyInput
+    location: LocationCreateNestedOneWithoutPropertiesInput
+    manager: UserCreateNestedOneWithoutManagedPropertiesInput
+    viewingAvailabilities?: ViewingAvailabilityCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserCreateNestedManyWithoutFavoritesInput
+    tenants?: UserCreateNestedManyWithoutTenantPropertiesInput
+    landlord?: LandlordCreateNestedOneWithoutPropertiesInput
+    onboardedBy?: UserCreateNestedOneWithoutOnboardedPropertiesInput
+  }
+
+  export type PropertyUncheckedCreateWithoutCaretakerInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
     locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    onboardedByAgentId?: string | null
+    applications?: ApplicationUncheckedCreateNestedManyWithoutPropertyInput
+    leases?: LeaseUncheckedCreateNestedManyWithoutPropertyInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedCreateNestedManyWithoutPropertyInput
+    viewingBookings?: ViewingBookingUncheckedCreateNestedManyWithoutPropertyInput
+    favoritedBy?: UserUncheckedCreateNestedManyWithoutFavoritesInput
+    tenants?: UserUncheckedCreateNestedManyWithoutTenantPropertiesInput
+  }
+
+  export type PropertyCreateOrConnectWithoutCaretakerInput = {
+    where: PropertyWhereUniqueInput
+    create: XOR<PropertyCreateWithoutCaretakerInput, PropertyUncheckedCreateWithoutCaretakerInput>
+  }
+
+  export type PropertyCreateManyCaretakerInputEnvelope = {
+    data: PropertyCreateManyCaretakerInput | PropertyCreateManyCaretakerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutOnboardedCaretakersInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserUncheckedCreateWithoutOnboardedCaretakersInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserCreateOrConnectWithoutOnboardedCaretakersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutOnboardedCaretakersInput, UserUncheckedCreateWithoutOnboardedCaretakersInput>
+  }
+
+  export type PropertyUpsertWithWhereUniqueWithoutCaretakerInput = {
+    where: PropertyWhereUniqueInput
+    update: XOR<PropertyUpdateWithoutCaretakerInput, PropertyUncheckedUpdateWithoutCaretakerInput>
+    create: XOR<PropertyCreateWithoutCaretakerInput, PropertyUncheckedCreateWithoutCaretakerInput>
+  }
+
+  export type PropertyUpdateWithWhereUniqueWithoutCaretakerInput = {
+    where: PropertyWhereUniqueInput
+    data: XOR<PropertyUpdateWithoutCaretakerInput, PropertyUncheckedUpdateWithoutCaretakerInput>
+  }
+
+  export type PropertyUpdateManyWithWhereWithoutCaretakerInput = {
+    where: PropertyScalarWhereInput
+    data: XOR<PropertyUpdateManyMutationInput, PropertyUncheckedUpdateManyWithoutCaretakerInput>
+  }
+
+  export type UserUpsertWithoutOnboardedCaretakersInput = {
+    update: XOR<UserUpdateWithoutOnboardedCaretakersInput, UserUncheckedUpdateWithoutOnboardedCaretakersInput>
+    create: XOR<UserCreateWithoutOnboardedCaretakersInput, UserUncheckedCreateWithoutOnboardedCaretakersInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutOnboardedCaretakersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutOnboardedCaretakersInput, UserUncheckedUpdateWithoutOnboardedCaretakersInput>
+  }
+
+  export type UserUpdateWithoutOnboardedCaretakersInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutOnboardedCaretakersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserCreateWithoutSentMessagesInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    receivedMessages?: CommunicationCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserUncheckedCreateWithoutSentMessagesInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    receivedMessages?: CommunicationUncheckedCreateNestedManyWithoutReceiverInput
+  }
+
+  export type UserCreateOrConnectWithoutSentMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+  }
+
+  export type UserCreateWithoutReceivedMessagesInput = {
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyCreateNestedManyWithoutManagerInput
+    favorites?: PropertyCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationCreateNestedManyWithoutSenderInput
+  }
+
+  export type UserUncheckedCreateWithoutReceivedMessagesInput = {
+    id?: number
+    authId?: string
+    name: string
+    email: string
+    phoneNumber?: string
+    password: string
+    role?: $Enums.UserRole
+    isVerified?: boolean
+    verificationCode?: string | null
+    verificationCodeExpiresAt?: Date | string | null
+    tenantApplications?: ApplicationUncheckedCreateNestedManyWithoutTenantInput
+    tenantLeases?: LeaseUncheckedCreateNestedManyWithoutTenantInput
+    managedProperties?: PropertyUncheckedCreateNestedManyWithoutManagerInput
+    favorites?: PropertyUncheckedCreateNestedManyWithoutFavoritedByInput
+    tenantProperties?: PropertyUncheckedCreateNestedManyWithoutTenantsInput
+    onboardedProperties?: PropertyUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedLandlords?: LandlordUncheckedCreateNestedManyWithoutOnboardedByInput
+    onboardedCaretakers?: CaretakerUncheckedCreateNestedManyWithoutOnboardedByInput
+    sentMessages?: CommunicationUncheckedCreateNestedManyWithoutSenderInput
+  }
+
+  export type UserCreateOrConnectWithoutReceivedMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReceivedMessagesInput, UserUncheckedCreateWithoutReceivedMessagesInput>
+  }
+
+  export type UserUpsertWithoutSentMessagesInput = {
+    update: XOR<UserUpdateWithoutSentMessagesInput, UserUncheckedUpdateWithoutSentMessagesInput>
+    create: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSentMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSentMessagesInput, UserUncheckedUpdateWithoutSentMessagesInput>
+  }
+
+  export type UserUpdateWithoutSentMessagesInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSentMessagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUpsertWithoutReceivedMessagesInput = {
+    update: XOR<UserUpdateWithoutReceivedMessagesInput, UserUncheckedUpdateWithoutReceivedMessagesInput>
+    create: XOR<UserCreateWithoutReceivedMessagesInput, UserUncheckedCreateWithoutReceivedMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReceivedMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReceivedMessagesInput, UserUncheckedUpdateWithoutReceivedMessagesInput>
+  }
+
+  export type UserUpdateWithoutReceivedMessagesInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
   }
 
   export type ApplicationCreateManyTenantInput = {
@@ -18137,273 +28001,92 @@ export namespace Prisma {
     propertyId: number
   }
 
-  export type PropertyUpdateWithoutManagerInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
-    leases?: LeaseUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+  export type PropertyCreateManyManagerInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
   }
 
-  export type PropertyUncheckedUpdateWithoutManagerInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    locationId?: IntFieldUpdateOperationsInput | number
-    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+  export type PropertyCreateManyOnboardedByInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    caretakerId?: number | null
   }
 
-  export type PropertyUncheckedUpdateManyWithoutManagerInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    locationId?: IntFieldUpdateOperationsInput | number
+  export type LandlordCreateManyOnboardedByInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
   }
 
-  export type PropertyUpdateWithoutTenantsInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
-    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
-    leases?: LeaseUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+  export type CaretakerCreateManyOnboardedByInput = {
+    id?: number
+    name: string
+    email: string
+    phoneNumber?: string | null
   }
 
-  export type PropertyUncheckedUpdateWithoutTenantsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    locationId?: IntFieldUpdateOperationsInput | number
-    managerUserId?: StringFieldUpdateOperationsInput | string
-    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+  export type CommunicationCreateManySenderInput = {
+    id?: number
+    receiverId: string
+    message: string
+    sentAt?: Date | string
   }
 
-  export type PropertyUncheckedUpdateManyWithoutTenantsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    locationId?: IntFieldUpdateOperationsInput | number
-    managerUserId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type PropertyUpdateWithoutFavoritedByInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
-    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
-    leases?: LeaseUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
-    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
-  }
-
-  export type PropertyUncheckedUpdateWithoutFavoritedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    locationId?: IntFieldUpdateOperationsInput | number
-    managerUserId?: StringFieldUpdateOperationsInput | string
-    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
-    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
-    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
-    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
-    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
-  }
-
-  export type PropertyUncheckedUpdateManyWithoutFavoritedByInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    pricePerMonth?: FloatFieldUpdateOperationsInput | number
-    securityDeposit?: FloatFieldUpdateOperationsInput | number
-    applicationFee?: FloatFieldUpdateOperationsInput | number
-    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
-    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
-    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
-    beds?: IntFieldUpdateOperationsInput | number
-    baths?: FloatFieldUpdateOperationsInput | number
-    squareFeet?: IntFieldUpdateOperationsInput | number
-    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
-    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
-    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
-    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    locationId?: IntFieldUpdateOperationsInput | number
-    managerUserId?: StringFieldUpdateOperationsInput | string
+  export type CommunicationCreateManyReceiverInput = {
+    id?: number
+    senderId: string
+    message: string
+    sentAt?: Date | string
   }
 
   export type ApplicationUpdateWithoutTenantInput = {
@@ -18413,8 +28096,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    property?: PropertyUpdateOneRequiredWithoutApplicationsNestedInput
     lease?: LeaseUpdateOneWithoutApplicationNestedInput
+    property?: PropertyUpdateOneRequiredWithoutApplicationsNestedInput
   }
 
   export type ApplicationUncheckedUpdateWithoutTenantInput = {
@@ -18446,8 +28129,8 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     rent?: FloatFieldUpdateOperationsInput | number
     deposit?: FloatFieldUpdateOperationsInput | number
-    property?: PropertyUpdateOneRequiredWithoutLeasesNestedInput
     application?: ApplicationUpdateOneWithoutLeaseNestedInput
+    property?: PropertyUpdateOneRequiredWithoutLeasesNestedInput
     payments?: PaymentUpdateManyWithoutLeaseNestedInput
   }
 
@@ -18471,13 +28154,494 @@ export namespace Prisma {
     propertyId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type LeaseCreateManyPropertyInput = {
-    id?: number
-    startDate: Date | string
-    endDate: Date | string
-    rent: number
-    deposit: number
-    tenantUserId: string
+  export type PropertyUpdateWithoutManagerInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutManagerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutManagerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PropertyUpdateWithoutFavoritedByInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutFavoritedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutFavoritedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PropertyUpdateWithoutTenantsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutTenantsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutTenantsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PropertyUpdateWithoutOnboardedByInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutOnboardedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutOnboardedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type LandlordUpdateWithoutOnboardedByInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    properties?: PropertyUpdateManyWithoutLandlordNestedInput
+  }
+
+  export type LandlordUncheckedUpdateWithoutOnboardedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    properties?: PropertyUncheckedUpdateManyWithoutLandlordNestedInput
+  }
+
+  export type LandlordUncheckedUpdateManyWithoutOnboardedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CaretakerUpdateWithoutOnboardedByInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    properties?: PropertyUpdateManyWithoutCaretakerNestedInput
+  }
+
+  export type CaretakerUncheckedUpdateWithoutOnboardedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    properties?: PropertyUncheckedUpdateManyWithoutCaretakerNestedInput
+  }
+
+  export type CaretakerUncheckedUpdateManyWithoutOnboardedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CommunicationUpdateWithoutSenderInput = {
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    receiver?: UserUpdateOneRequiredWithoutReceivedMessagesNestedInput
+  }
+
+  export type CommunicationUncheckedUpdateWithoutSenderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    receiverId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunicationUncheckedUpdateManyWithoutSenderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    receiverId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunicationUpdateWithoutReceiverInput = {
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
+  }
+
+  export type CommunicationUncheckedUpdateWithoutReceiverInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    senderId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CommunicationUncheckedUpdateManyWithoutReceiverInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    senderId?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    sentAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ApplicationCreateManyPropertyInput = {
@@ -18490,6 +28654,15 @@ export namespace Prisma {
     phoneNumber: string
     message?: string | null
     leaseId?: number | null
+  }
+
+  export type LeaseCreateManyPropertyInput = {
+    id?: number
+    startDate: Date | string
+    endDate: Date | string
+    rent: number
+    deposit: number
+    tenantUserId: string
   }
 
   export type ViewingAvailabilityCreateManyPropertyInput = {
@@ -18506,36 +28679,6 @@ export namespace Prisma {
     status?: string
   }
 
-  export type LeaseUpdateWithoutPropertyInput = {
-    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    rent?: FloatFieldUpdateOperationsInput | number
-    deposit?: FloatFieldUpdateOperationsInput | number
-    tenant?: UserUpdateOneRequiredWithoutTenantLeasesNestedInput
-    application?: ApplicationUpdateOneWithoutLeaseNestedInput
-    payments?: PaymentUpdateManyWithoutLeaseNestedInput
-  }
-
-  export type LeaseUncheckedUpdateWithoutPropertyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    rent?: FloatFieldUpdateOperationsInput | number
-    deposit?: FloatFieldUpdateOperationsInput | number
-    tenantUserId?: StringFieldUpdateOperationsInput | string
-    application?: ApplicationUncheckedUpdateOneWithoutLeaseNestedInput
-    payments?: PaymentUncheckedUpdateManyWithoutLeaseNestedInput
-  }
-
-  export type LeaseUncheckedUpdateManyWithoutPropertyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    rent?: FloatFieldUpdateOperationsInput | number
-    deposit?: FloatFieldUpdateOperationsInput | number
-    tenantUserId?: StringFieldUpdateOperationsInput | string
-  }
-
   export type ApplicationUpdateWithoutPropertyInput = {
     applicationDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
@@ -18543,8 +28686,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phoneNumber?: StringFieldUpdateOperationsInput | string
     message?: NullableStringFieldUpdateOperationsInput | string | null
-    tenant?: UserUpdateOneRequiredWithoutTenantApplicationsNestedInput
     lease?: LeaseUpdateOneWithoutApplicationNestedInput
+    tenant?: UserUpdateOneRequiredWithoutTenantApplicationsNestedInput
   }
 
   export type ApplicationUncheckedUpdateWithoutPropertyInput = {
@@ -18571,96 +28714,34 @@ export namespace Prisma {
     leaseId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type UserUpdateWithoutFavoritesInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
-    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
-    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
-    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+  export type LeaseUpdateWithoutPropertyInput = {
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    rent?: FloatFieldUpdateOperationsInput | number
+    deposit?: FloatFieldUpdateOperationsInput | number
+    application?: ApplicationUpdateOneWithoutLeaseNestedInput
+    tenant?: UserUpdateOneRequiredWithoutTenantLeasesNestedInput
+    payments?: PaymentUpdateManyWithoutLeaseNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutFavoritesInput = {
+  export type LeaseUncheckedUpdateWithoutPropertyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
-    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
-    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
-    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    rent?: FloatFieldUpdateOperationsInput | number
+    deposit?: FloatFieldUpdateOperationsInput | number
+    tenantUserId?: StringFieldUpdateOperationsInput | string
+    application?: ApplicationUncheckedUpdateOneWithoutLeaseNestedInput
+    payments?: PaymentUncheckedUpdateManyWithoutLeaseNestedInput
   }
 
-  export type UserUncheckedUpdateManyWithoutFavoritesInput = {
+  export type LeaseUncheckedUpdateManyWithoutPropertyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type UserUpdateWithoutTenantPropertiesInput = {
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
-    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
-    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
-    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutTenantPropertiesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
-    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
-    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
-    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutTenantPropertiesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    authId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    isVerified?: BoolFieldUpdateOperationsInput | boolean
-    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
-    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    rent?: FloatFieldUpdateOperationsInput | number
+    deposit?: FloatFieldUpdateOperationsInput | number
+    tenantUserId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ViewingAvailabilityUpdateWithoutPropertyInput = {
@@ -18703,6 +28784,118 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
   }
 
+  export type UserUpdateWithoutFavoritesInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    tenantProperties?: PropertyUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFavoritesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    tenantProperties?: PropertyUncheckedUpdateManyWithoutTenantsNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutFavoritesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UserUpdateWithoutTenantPropertiesInput = {
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUpdateManyWithoutFavoritedByNestedInput
+    onboardedProperties?: PropertyUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTenantPropertiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tenantApplications?: ApplicationUncheckedUpdateManyWithoutTenantNestedInput
+    tenantLeases?: LeaseUncheckedUpdateManyWithoutTenantNestedInput
+    managedProperties?: PropertyUncheckedUpdateManyWithoutManagerNestedInput
+    favorites?: PropertyUncheckedUpdateManyWithoutFavoritedByNestedInput
+    onboardedProperties?: PropertyUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedLandlords?: LandlordUncheckedUpdateManyWithoutOnboardedByNestedInput
+    onboardedCaretakers?: CaretakerUncheckedUpdateManyWithoutOnboardedByNestedInput
+    sentMessages?: CommunicationUncheckedUpdateManyWithoutSenderNestedInput
+    receivedMessages?: CommunicationUncheckedUpdateManyWithoutReceiverNestedInput
+  }
+
+  export type UserUncheckedUpdateManyWithoutTenantPropertiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationCodeExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type PropertyUpdateWithoutLocationInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18711,11 +28904,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -18723,15 +28916,19 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
     submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
-    leases?: LeaseUpdateManyWithoutPropertyNestedInput
     applications?: ApplicationUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
     viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
     viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
   }
 
   export type PropertyUncheckedUpdateWithoutLocationInput = {
@@ -18743,11 +28940,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -18755,15 +28952,19 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
     submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    managerUserId?: StringFieldUpdateOperationsInput | string
-    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
     applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
-    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
-    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
     viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
     viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
   }
 
   export type PropertyCreateManyLocationInput = {
@@ -18775,11 +28976,11 @@ export namespace Prisma {
     securityDeposit: number
     applicationFee: number
     photoUrls?: PropertyCreatephotoUrlsInput | string[]
-    amenities?: PropertyCreateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyCreatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
     isPetsAllowed?: boolean
     isParkingIncluded?: boolean
-    isSale?: boolean
+    isRent?: boolean
     beds: number
     baths: number
     squareFeet: number
@@ -18787,9 +28988,13 @@ export namespace Prisma {
     postedDate?: Date | string
     averageRating?: number | null
     numberOfReviews?: number | null
+    managerUserId: string
+    isSale?: boolean
     status?: $Enums.PropertyStatus
     submittedBy?: string | null
-    managerUserId: string
+    landlordId?: number | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
   }
 
   export type PropertyUncheckedUpdateManyWithoutLocationInput = {
@@ -18801,11 +29006,11 @@ export namespace Prisma {
     securityDeposit?: FloatFieldUpdateOperationsInput | number
     applicationFee?: FloatFieldUpdateOperationsInput | number
     photoUrls?: PropertyUpdatephotoUrlsInput | string[]
-    amenities?: PropertyUpdateamenitiesInput | $Enums.Amenity[]
-    highlights?: PropertyUpdatehighlightsInput | $Enums.Highlight[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
     isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
     isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
-    isSale?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
     beds?: IntFieldUpdateOperationsInput | number
     baths?: FloatFieldUpdateOperationsInput | number
     squareFeet?: IntFieldUpdateOperationsInput | number
@@ -18813,9 +29018,13 @@ export namespace Prisma {
     postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
     averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
     submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    managerUserId?: StringFieldUpdateOperationsInput | string
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PaymentCreateManyLeaseInput = {
@@ -18851,6 +29060,268 @@ export namespace Prisma {
     dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentDate?: DateTimeFieldUpdateOperationsInput | Date | string
     paymentStatus?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  }
+
+  export type PropertyCreateManyLandlordInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    caretakerId?: number | null
+    onboardedByAgentId?: string | null
+  }
+
+  export type PropertyUpdateWithoutLandlordInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    caretaker?: CaretakerUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutLandlordInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutLandlordInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    caretakerId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PropertyCreateManyCaretakerInput = {
+    id?: number
+    name: string
+    slug?: string | null
+    description: string
+    pricePerMonth: number
+    securityDeposit: number
+    applicationFee: number
+    photoUrls?: PropertyCreatephotoUrlsInput | string[]
+    amenities?: PropertyCreateamenitiesInput | string[]
+    highlights?: PropertyCreatehighlightsInput | string[]
+    isPetsAllowed?: boolean
+    isParkingIncluded?: boolean
+    isRent?: boolean
+    beds: number
+    baths: number
+    squareFeet: number
+    propertyType: $Enums.PropertyType
+    postedDate?: Date | string
+    averageRating?: number | null
+    numberOfReviews?: number | null
+    locationId: number
+    managerUserId: string
+    isSale?: boolean
+    status?: $Enums.PropertyStatus
+    submittedBy?: string | null
+    landlordId?: number | null
+    onboardedByAgentId?: string | null
+  }
+
+  export type PropertyUpdateWithoutCaretakerInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUpdateManyWithoutPropertyNestedInput
+    location?: LocationUpdateOneRequiredWithoutPropertiesNestedInput
+    manager?: UserUpdateOneRequiredWithoutManagedPropertiesNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUpdateManyWithoutTenantPropertiesNestedInput
+    landlord?: LandlordUpdateOneWithoutPropertiesNestedInput
+    onboardedBy?: UserUpdateOneWithoutOnboardedPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateWithoutCaretakerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
+    applications?: ApplicationUncheckedUpdateManyWithoutPropertyNestedInput
+    leases?: LeaseUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingAvailabilities?: ViewingAvailabilityUncheckedUpdateManyWithoutPropertyNestedInput
+    viewingBookings?: ViewingBookingUncheckedUpdateManyWithoutPropertyNestedInput
+    favoritedBy?: UserUncheckedUpdateManyWithoutFavoritesNestedInput
+    tenants?: UserUncheckedUpdateManyWithoutTenantPropertiesNestedInput
+  }
+
+  export type PropertyUncheckedUpdateManyWithoutCaretakerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: StringFieldUpdateOperationsInput | string
+    pricePerMonth?: FloatFieldUpdateOperationsInput | number
+    securityDeposit?: FloatFieldUpdateOperationsInput | number
+    applicationFee?: FloatFieldUpdateOperationsInput | number
+    photoUrls?: PropertyUpdatephotoUrlsInput | string[]
+    amenities?: PropertyUpdateamenitiesInput | string[]
+    highlights?: PropertyUpdatehighlightsInput | string[]
+    isPetsAllowed?: BoolFieldUpdateOperationsInput | boolean
+    isParkingIncluded?: BoolFieldUpdateOperationsInput | boolean
+    isRent?: BoolFieldUpdateOperationsInput | boolean
+    beds?: IntFieldUpdateOperationsInput | number
+    baths?: FloatFieldUpdateOperationsInput | number
+    squareFeet?: IntFieldUpdateOperationsInput | number
+    propertyType?: EnumPropertyTypeFieldUpdateOperationsInput | $Enums.PropertyType
+    postedDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    numberOfReviews?: NullableIntFieldUpdateOperationsInput | number | null
+    locationId?: IntFieldUpdateOperationsInput | number
+    managerUserId?: StringFieldUpdateOperationsInput | string
+    isSale?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumPropertyStatusFieldUpdateOperationsInput | $Enums.PropertyStatus
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    landlordId?: NullableIntFieldUpdateOperationsInput | number | null
+    onboardedByAgentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

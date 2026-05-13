@@ -692,6 +692,13 @@ export const agentSubmitProperty = async (
       agentEmail,
       agentPhone,
       availableDays,
+      landlordName,
+      landlordEmail,
+      landlordPhone,
+      caretakerName,
+      caretakerEmail,
+      caretakerPhone,
+      agentAuthId, // Link to authenticated agent if available
       latitude: reqLat,
       longitude: reqLng,
       ...propertyData
@@ -705,6 +712,44 @@ export const agentSubmitProperty = async (
     if (!files || files.length === 0) {
       res.status(400).json({ message: "At least one property photo is required" });
       return;
+    }
+
+    // Handle Landlord (optional)
+    let landlordId = undefined;
+    if (landlordEmail) {
+      const landlord = await prisma.landlord.upsert({
+        where: { email: landlordEmail },
+        update: {
+          name: landlordName || undefined,
+          phoneNumber: landlordPhone || undefined,
+        },
+        create: {
+          name: landlordName || "Unknown",
+          email: landlordEmail,
+          phoneNumber: landlordPhone || null,
+          onboardedById: agentAuthId || null,
+        },
+      });
+      landlordId = landlord.id;
+    }
+
+    // Handle Caretaker (optional)
+    let caretakerId = undefined;
+    if (caretakerEmail) {
+      const caretaker = await prisma.caretaker.upsert({
+        where: { email: caretakerEmail },
+        update: {
+          name: caretakerName || undefined,
+          phoneNumber: caretakerPhone || undefined,
+        },
+        create: {
+          name: caretakerName || "Unknown",
+          email: caretakerEmail,
+          phoneNumber: caretakerPhone || null,
+          onboardedById: agentAuthId || null,
+        },
+      });
+      caretakerId = caretaker.id;
     }
 
     // Apply watermark and upload photos to Cloudinary (pending folder)
@@ -784,6 +829,9 @@ export const agentSubmitProperty = async (
         submittedBy,
         locationId: location.id,
         managerUserId: manager.authId,
+        landlordId,
+        caretakerId,
+        onboardedByAgentId: agentAuthId || null,
         amenities:
           typeof propertyData.amenities === "string"
             ? propertyData.amenities.split(",").filter((a: string) => a.trim() !== "")
@@ -807,6 +855,7 @@ export const agentSubmitProperty = async (
         location: true,
       },
     });
+
 
     // Generate viewing availabilities for the next 60 days if availableDays is provided
     if (availableDays && typeof availableDays === "string" && availableDays.trim() !== "") {

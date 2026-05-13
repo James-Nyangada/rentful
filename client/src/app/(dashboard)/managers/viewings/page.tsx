@@ -104,31 +104,6 @@ const ManagerViewings = () => {
       
       <div className="mt-8 space-y-10">
         <section>
-          <h2 className="text-xl font-bold mb-4 text-primary-900">Manage Availability</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {managerProperties?.map((property) => (
-              <Card key={property.id} className="border-primary-200 shadow-sm hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-lg text-primary-800">{property.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Button 
-                    variant="outline" 
-                    className="w-full"
-                    onClick={() => setSelectedProperty({ id: property.id, name: property.name })}
-                  >
-                    Update Availability
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-            {managerProperties?.length === 0 && (
-              <p className="text-primary-600">No properties found.</p>
-            )}
-          </div>
-        </section>
-
-        <section>
           <h2 className="text-xl font-bold mb-4 text-primary-900">Pending Viewings</h2>
           <div className="rounded-md border border-primary-200 bg-white overflow-hidden shadow-sm">
             <Table>
@@ -167,7 +142,33 @@ const ManagerViewings = () => {
             </Table>
           </div>
         </section>
+
+        <section>
+          <h2 className="text-xl font-bold mb-4 text-primary-900">Manage Availability</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {managerProperties?.map((property) => (
+              <Card key={property.id} className="border-primary-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-lg text-primary-800">{property.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => setSelectedProperty({ id: property.id, name: property.name })}
+                  >
+                    Update Availability
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+            {managerProperties?.length === 0 && (
+              <p className="text-primary-600">No properties found.</p>
+            )}
+          </div>
+        </section>
       </div>
+
 
       {selectedProperty && (
         <AvailabilityDialog
