@@ -12,8 +12,8 @@
     "dev:watch": "concurrently \"npx tsc -w\" \"nodemon --exec ts-node src/index.ts\"",
 
     "seed": "ts-node prisma/seed.ts",
-    "prisma:generate": "prisma generate",
     "postprisma:generate": "shx cp -r node_modules/.prisma/client/index.d.ts ../client/src/types/prismaTypes.d.ts"
+
   },
   "keywords": [],
   "author": "",
@@ -49,15 +49,17 @@
     "sharp": "^0.34.5",
     "slugify": "^1.6.9",
     "typescript": "^5.7.3",
-    "uuid": "^11.0.5"
+    "uuid": "^11.0.5",
+    "npm-run-all": "^4.1.5",
+    "shx": "^0.3.4"
   },
+
   "devDependencies": {
     "concurrently": "^9.1.2",
     "nodemon": "^3.1.9",
-    "npm-run-all": "^4.1.5",
-    "shx": "^0.3.4",
     "ts-node": "^10.9.2"
   },
+
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   }
