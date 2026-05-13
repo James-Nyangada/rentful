@@ -20,7 +20,8 @@ process.chdir(root);
 console.log('--- Chestone Server Build Started ---');
 
 // 1. Prisma Generate
-run('npx prisma generate');
+run('npx prisma@6.3.0 generate');
+
 
 // 2. Clean dist
 if (fs.existsSync('dist')) {
