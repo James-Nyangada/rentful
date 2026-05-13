@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "run-s prisma:generate clean compile",
+    "build": "node scripts/build.js",
     "prisma:generate": "npx prisma generate",
     "clean": "shx rm -rf dist",
     "compile": "npx tsc",
     "start": "node dist/src/index.js",
-    "dev": "run-s build dev:watch",
-    "dev:watch": "concurrently \"npx tsc -w\" \"nodemon --exec ts-node src/index.ts\"",
+    "dev": "node scripts/build.js; concurrently \"npx tsc -w\" \"nodemon --exec ts-node src/index.ts\"",
+
 
     "seed": "ts-node prisma/seed.ts",
     "postprisma:generate": "shx cp -r node_modules/.prisma/client/index.d.ts ../client/src/types/prismaTypes.d.ts"
@@ -50,15 +50,17 @@
     "slugify": "^1.6.9",
     "typescript": "^5.7.3",
     "uuid": "^11.0.5",
-    "npm-run-all": "^4.1.5",
     "shx": "^0.3.4"
   },
+
 
   "devDependencies": {
     "concurrently": "^9.1.2",
     "nodemon": "^3.1.9",
+    "npm-run-all": "^4.1.5",
     "ts-node": "^10.9.2"
   },
+
 
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
