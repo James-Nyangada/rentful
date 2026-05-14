@@ -45,7 +45,7 @@ const SearchClient = ({ children }: SearchClientProps) => {
 
     const cleanedFilters = cleanParams(initialFilters);
     dispatch(setFilters(cleanedFilters));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [searchParams, dispatch]);
 
   useGSAP(() => {
     const mm = gsap.matchMedia();

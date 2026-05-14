@@ -13,12 +13,14 @@ import Card from "@/components/Card";
 import React from "react";
 import CardCompact from "@/components/CardCompact";
 import Loading from "@/components/Loading";
+import { useSearchParams } from "next/navigation";
 
 interface ListingsProps {
   initialProperties?: Property[];
 }
 
 const Listings = ({ initialProperties }: ListingsProps) => {
+  const searchParams = useSearchParams();
   const { data: authUser } = useGetAuthUserQuery();
   const { data: tenant } = useGetTenantQuery(
     authUser?.userInfo?.authId || "",
@@ -31,13 +33,17 @@ const Listings = ({ initialProperties }: ListingsProps) => {
   const viewMode = useAppSelector((state) => state.global.viewMode);
   const filters = useAppSelector((state) => state.global.filters);
 
+  // Prevent fetching with default Redux state if URL dictates otherwise
+  const isSaleInUrl = searchParams.get("type") === "buy" || searchParams.get("isSale") === "true";
+  const isSaleInRedux = !!filters.isSale;
+  const isFiltersSynced = isSaleInUrl === isSaleInRedux;
+
   const {
     data: properties,
     isLoading,
     isError,
   } = useGetPropertiesQuery(filters, {
-    // If we have initial properties, we don't strictly need to show "Loading..." 
-    // but RTK query will still fetch the latest.
+    skip: !isFiltersSynced && !!initialProperties
   });
 
   const displayProperties = properties || initialProperties;
@@ -70,7 +76,7 @@ const Listings = ({ initialProperties }: ListingsProps) => {
       </div>
     );
   }
-  if (isError || !displayProperties) return <div className="p-10 text-center font-bold">Failed to fetch properties</div>;
+  if ((isError && !displayProperties) || (!displayProperties && !isLoading)) return <div className="p-10 text-center font-bold">Failed to fetch properties</div>;
 
   return (
     <div className="w-full h-full">
