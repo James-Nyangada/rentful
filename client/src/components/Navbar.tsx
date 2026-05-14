@@ -268,7 +268,7 @@ const Navbar = () => {
             <div className="flex justify-between items-center">
               <Link 
                 href="/exclusive-areas" 
-                className="text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
+                className="text-primary font-bold uppercase text-[10px] tracking-[2px] py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Exclusive Areas
@@ -303,7 +303,7 @@ const Navbar = () => {
           {/* Mobile Testimonials */}
           <Link 
             href="/#testimonials" 
-            className="flex justify-between items-center text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
+            className="flex justify-between items-center text-primary font-bold uppercase text-[10px] tracking-[2px] py-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Testimonials
@@ -316,7 +316,7 @@ const Navbar = () => {
             <div className="flex justify-between items-center">
               <Link 
                 href="/exclusive-areas" 
-                className="text-secondary font-bold uppercase text-[10px] tracking-[2px] py-2"
+                className="text-primary font-bold uppercase text-[10px] tracking-[2px] py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Why Choose Us

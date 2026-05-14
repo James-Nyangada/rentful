@@ -1,13 +1,33 @@
-import { Loader2 } from "lucide-react";
-import React from "react";
+import React from 'react';
+import styles from './Loading.module.css';
 
 const Loading = () => {
   return (
-    <div className="fixed inset-0 flex gap-2 items-center justify-center bg-white/80 backdrop-blur-sm z-[100]">
-      <Loader2 className="w-10 h-10 animate-spin text-primary" />
-      <span className="text-lg font-black text-primary uppercase tracking-tighter">Loading Chestone Assets...</span>
+    <div className="flex items-center justify-center w-full py-40">
+      <div className={styles.loader}>
+        <div className={`${styles.box} ${styles.box1}`}>
+          <div className={styles.sideLeft} />
+          <div className={styles.sideRight} />
+          <div className={styles.sideTop} />
+        </div>
+        <div className={`${styles.box} ${styles.box2}`}>
+          <div className={styles.sideLeft} />
+          <div className={styles.sideRight} />
+          <div className={styles.sideTop} />
+        </div>
+        <div className={`${styles.box} ${styles.box3}`}>
+          <div className={styles.sideLeft} />
+          <div className={styles.sideRight} />
+          <div className={styles.sideTop} />
+        </div>
+        <div className={`${styles.box} ${styles.box4}`}>
+          <div className={styles.sideLeft} />
+          <div className={styles.sideRight} />
+          <div className={styles.sideTop} />
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default Loading;

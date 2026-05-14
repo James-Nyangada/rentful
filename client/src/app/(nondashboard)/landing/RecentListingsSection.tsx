@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import { useGetRecentPropertiesQuery } from "@/state/api";
 import Card from "@/components/Card";
+import Loading from "@/components/Loading";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -62,9 +63,7 @@ const RecentListingsSection = () => {
         </div>
 
         {isLoading ? (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-secondary"></div>
-          </div>
+          <Loading />
         ) : properties && properties.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {properties.map((property) => (

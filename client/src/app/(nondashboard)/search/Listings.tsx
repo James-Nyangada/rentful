@@ -10,8 +10,13 @@ import { Property } from "@/types/prismaTypes";
 import Card from "@/components/Card";
 import React from "react";
 import CardCompact from "@/components/CardCompact";
+import Loading from "@/components/Loading";
 
-const Listings = () => {
+interface ListingsProps {
+  initialProperties?: Property[];
+}
+
+const Listings = ({ initialProperties }: ListingsProps) => {
   const { data: authUser } = useGetAuthUserQuery();
   const { data: tenant } = useGetTenantQuery(
     authUser?.userInfo?.authId || "",
@@ -28,7 +33,13 @@ const Listings = () => {
     data: properties,
     isLoading,
     isError,
-  } = useGetPropertiesQuery(filters);
+  } = useGetPropertiesQuery(filters, {
+    // If we have initial properties, we don't strictly need to show "Loading..." 
+    // but RTK query will still fetch the latest.
+  });
+
+  const displayProperties = properties || initialProperties;
+  const isCurrentlyLoading = isLoading && !displayProperties;
 
   const handleFavoriteToggle = async (propertyId: number) => {
     if (!authUser) return;
@@ -50,14 +61,20 @@ const Listings = () => {
     }
   };
 
-  if (isLoading) return <>Loading...</>;
-  if (isError || !properties) return <div>Failed to fetch properties</div>;
+  if (isCurrentlyLoading) {
+    return (
+      <div className="w-full h-full flex items-center justify-center min-h-[60vh]">
+        <Loading />
+      </div>
+    );
+  }
+  if (isError || !displayProperties) return <div className="p-10 text-center font-bold">Failed to fetch properties</div>;
 
   return (
     <div className="w-full h-full">
       <div className="px-4 py-4 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
         <h3 className="text-sm font-bold">
-          {properties.length}{" "}
+          {displayProperties.length}{" "}
           <span className="text-gray-700 font-normal">
             Places in {filters.location || "Nairobi"}
           </span>
@@ -66,7 +83,7 @@ const Listings = () => {
 
       <div className="p-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          {properties?.map((property) =>
+          {displayProperties?.map((property) =>
             viewMode === "grid" ? (
               <Card
                 key={property.id}
@@ -97,7 +114,7 @@ const Listings = () => {
           )}
         </div>
         
-        {properties.length === 0 && (
+        {displayProperties.length === 0 && (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <div className="bg-gray-100 p-6 rounded-full mb-4">
               <span className="text-4xl">🏠</span>
