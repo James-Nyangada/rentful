@@ -32,6 +32,8 @@ const SearchClient = ({ children }: SearchClientProps) => {
           acc[key] = value.split(",").map(Number);
         } else if (key === "isSale") {
           acc[key] = value === "true";
+        } else if (key === "type") {
+          acc["isSale"] = value === "buy";
         } else {
           acc[key] = value === "any" ? null : value;
         }

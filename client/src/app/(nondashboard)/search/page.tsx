@@ -31,7 +31,14 @@ async function getProperties(searchParams: { [key: string]: string | undefined }
   }
   if (searchParams.amenities) urlParams.append("amenities", searchParams.amenities);
   if (searchParams.availableFrom) urlParams.append("availableFrom", searchParams.availableFrom);
-  if (searchParams.isSale) urlParams.append("isSale", searchParams.isSale);
+  if (searchParams.isSale !== undefined) {
+    urlParams.append("isSale", searchParams.isSale);
+  } else if (searchParams.type === "buy") {
+    urlParams.append("isSale", "true");
+  } else if (searchParams.type === "rent") {
+    urlParams.append("isSale", "false");
+  }
+
   if (searchParams.coordinates) {
     const coords = searchParams.coordinates.split(",");
     if (coords[0]) urlParams.append("longitude", coords[0]);
