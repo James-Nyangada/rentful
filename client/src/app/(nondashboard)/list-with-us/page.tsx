@@ -101,6 +101,7 @@ const ListWithUs = () => {
       setIsSubmitted(true);
     } catch (error: any) {
       console.error("Error submitting property:", error);
+      console.error("Server response:", error?.data);
     }
   };
 
