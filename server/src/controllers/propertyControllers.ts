@@ -742,7 +742,6 @@ export const agentSubmitProperty = async (
           name: landlordName || "Unknown",
           email: landlordEmail,
           phoneNumber: landlordPhone || null,
-          onboardedById: agentAuthId || null,
         },
       });
       landlordId = landlord.id;
@@ -761,7 +760,6 @@ export const agentSubmitProperty = async (
           name: caretakerName || "Unknown",
           email: caretakerEmail,
           phoneNumber: caretakerPhone || null,
-          onboardedById: agentAuthId || null,
         },
       });
       caretakerId = caretaker.id;
@@ -844,9 +842,9 @@ export const agentSubmitProperty = async (
         submittedBy,
         locationId: location.id,
         managerUserId: manager.authId,
-        landlordId,
-        caretakerId,
-        onboardedByAgentId: agentAuthId || null,
+        ...(landlordId ? { landlordId } : {}),
+        ...(caretakerId ? { caretakerId } : {}),
+        ...(agentAuthId ? { onboardedByAgentId: agentAuthId } : {}),
         amenities:
           typeof amenities === "string"
             ? amenities.split(",").filter((a: string) => a.trim() !== "")
