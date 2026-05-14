@@ -1,17 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import SearchClient from "./SearchClient";
+import Listings from "./Listings";
+import Loading from "@/components/Loading";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 interface SearchPageProps {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }
 
 async function getProperties(searchParams: { [key: string]: string | undefined }) {
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3002";
   
-  // Extract and map params same as RTK Query
   const urlParams = new URLSearchParams();
   
   if (searchParams.location) urlParams.append("location", searchParams.location);
@@ -39,13 +40,10 @@ async function getProperties(searchParams: { [key: string]: string | undefined }
 
   try {
     const response = await fetch(`${baseUrl}/properties?${urlParams.toString()}`, {
-      next: { revalidate: 60 }, // Cache for 1 minute
+      next: { revalidate: 60 },
     });
     
-    if (!response.ok) {
-      return [];
-    }
-    
+    if (!response.ok) return [];
     return response.json();
   } catch (error) {
     console.error("Failed to fetch properties on server:", error);
@@ -53,10 +51,21 @@ async function getProperties(searchParams: { [key: string]: string | undefined }
   }
 }
 
-const SearchPage = async ({ searchParams }: SearchPageProps) => {
+async function ListingsContainer({ searchParams }: { searchParams: { [key: string]: string | undefined } }) {
   const initialProperties = await getProperties(searchParams);
+  return <Listings initialProperties={initialProperties} />;
+}
 
-  return <SearchClient initialProperties={initialProperties} />;
+const SearchPage = async ({ searchParams }: SearchPageProps) => {
+  const resolvedParams = await searchParams;
+
+  return (
+    <SearchClient>
+      <Suspense fallback={<Loading />}>
+        <ListingsContainer searchParams={resolvedParams} />
+      </Suspense>
+    </SearchClient>
+  );
 };
 
 export default SearchPage;

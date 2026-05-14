@@ -75,6 +75,11 @@ model Property {
   caretaker             Caretaker?            @relation(fields: [caretakerId], references: [id])
   onboardedBy           User?                 @relation("OnboardedProperties", fields: [onboardedByAgentId], references: [authId])
   onboardedByAgentId    String?
+
+  @@index([status])
+  @@index([locationId])
+  @@index([isSale])
+  @@index([postedDate])
 }
 
 model Location {

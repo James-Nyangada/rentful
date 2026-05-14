@@ -8,16 +8,14 @@ import FiltersBar from "./FiltersBar";
 import FiltersFull from "./FiltersFull";
 import { cleanParams, cn } from "@/lib/utils";
 import { setFilters } from "@/state";
-import Listings from "./Listings";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Property } from "@/types/prismaTypes";
 
 interface SearchClientProps {
-  initialProperties?: Property[];
+  children: React.ReactNode;
 }
 
-const SearchClient = ({ initialProperties }: SearchClientProps) => {
+const SearchClient = ({ children }: SearchClientProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
@@ -92,7 +90,7 @@ const SearchClient = ({ initialProperties }: SearchClientProps) => {
           "search-anim flex-1 overflow-y-auto min-h-0",
           isFiltersFullOpen && "hidden md:block"
         )}>
-          <Listings initialProperties={initialProperties} />
+          {children}
         </div>
       </div>
     </div>
