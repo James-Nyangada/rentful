@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from "react";
 import FiltersBar from "./FiltersBar";
 import FiltersFull from "./FiltersFull";
 import { cleanParams, cn } from "@/lib/utils";
-import { setFilters } from "@/state";
+import { setFilters, resetFilters } from "@/state";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -24,6 +24,7 @@ const SearchClient = ({ children }: SearchClientProps) => {
   );
 
   useEffect(() => {
+    dispatch(resetFilters());
     const initialFilters = Array.from(searchParams.entries()).reduce(
       (acc: any, [key, value]) => {
         if (key === "priceRange" || key === "squareFeet") {

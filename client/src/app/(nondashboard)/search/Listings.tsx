@@ -84,7 +84,7 @@ const Listings = ({ initialProperties }: ListingsProps) => {
         <h3 className="text-sm font-bold">
           {displayProperties?.length ?? 0}{" "}
           <span className="text-gray-700 font-normal">
-            Places in {filters.location || "Nairobi"}
+            Places in {(!filters.location || filters.location === "any") ? "All Areas" : filters.location}
           </span>
         </h3>
       </div>

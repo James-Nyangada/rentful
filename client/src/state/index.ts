@@ -21,7 +21,7 @@ interface InitialStateTypes {
 
 export const initialState: InitialStateTypes = {
   filters: {
-    location: "Nairobi",
+    location: "any",
     beds: "any",
     baths: "any",
     propertyType: "any",
@@ -30,7 +30,7 @@ export const initialState: InitialStateTypes = {
     priceRange: [null, null],
     squareFeet: [null, null],
     coordinates: [36.8219, -1.2921],
-    isSale: false,
+    isSale: undefined,
   },
   isFiltersFullOpen: false,
   viewMode: "grid",
@@ -43,6 +43,9 @@ export const globalSlice = createSlice({
     setFilters: (state, action: PayloadAction<Partial<FiltersState>>) => {
       state.filters = { ...state.filters, ...action.payload };
     },
+    resetFilters: (state) => {
+      state.filters = initialState.filters;
+    },
     toggleFiltersFullOpen: (state) => {
       state.isFiltersFullOpen = !state.isFiltersFullOpen;
     },
@@ -52,7 +55,7 @@ export const globalSlice = createSlice({
   },
 });
 
-export const { setFilters, toggleFiltersFullOpen, setViewMode } =
+export const { setFilters, resetFilters, toggleFiltersFullOpen, setViewMode } =
   globalSlice.actions;
 
 export default globalSlice.reducer;
