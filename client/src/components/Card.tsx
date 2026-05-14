@@ -1,4 +1,6 @@
-import { Bath, Bed, Heart, House } from "lucide-react";
+"use client";
+
+import { Bath, Bed, Heart, House, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
