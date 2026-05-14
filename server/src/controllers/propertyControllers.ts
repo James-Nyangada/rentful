@@ -698,10 +698,25 @@ export const agentSubmitProperty = async (
       caretakerName,
       caretakerEmail,
       caretakerPhone,
-      agentAuthId, // Link to authenticated agent if available
+      agentAuthId,
       latitude: reqLat,
       longitude: reqLng,
-      ...propertyData
+      // Explicitly extract property fields
+      name,
+      description,
+      propertyType,
+      amenities,
+      highlights,
+      isPetsAllowed,
+      isParkingIncluded,
+      isSale,
+      isRent,
+      pricePerMonth,
+      securityDeposit,
+      applicationFee,
+      beds,
+      baths,
+      squareFeet,
     } = req.body;
 
     if (!agentName || !agentEmail) {
@@ -803,7 +818,7 @@ export const agentSubmitProperty = async (
       RETURNING id, address, city, state, country, "postalCode", ST_AsText(coordinates) as coordinates;
     `;
 
-    const slug = await generateUniqueSlug(propertyData.name);
+    const slug = await generateUniqueSlug(name);
 
     // Find the first manager to assign the property to
     const manager = await prisma.user.findFirst({
@@ -820,9 +835,9 @@ export const agentSubmitProperty = async (
 
     const newProperty = await prisma.property.create({
       data: {
-        name: propertyData.name,
-        description: propertyData.description,
-        propertyType: propertyData.propertyType,
+        name,
+        description,
+        propertyType,
         slug,
         photoUrls,
         status: "pending",
@@ -833,23 +848,23 @@ export const agentSubmitProperty = async (
         caretakerId,
         onboardedByAgentId: agentAuthId || null,
         amenities:
-          typeof propertyData.amenities === "string"
-            ? propertyData.amenities.split(",").filter((a: string) => a.trim() !== "")
-            : Array.isArray(propertyData.amenities) ? propertyData.amenities : [],
+          typeof amenities === "string"
+            ? amenities.split(",").filter((a: string) => a.trim() !== "")
+            : Array.isArray(amenities) ? amenities : [],
         highlights:
-          typeof propertyData.highlights === "string"
-            ? propertyData.highlights.split(",").filter((h: string) => h.trim() !== "")
-            : Array.isArray(propertyData.highlights) ? propertyData.highlights : [],
-        isPetsAllowed: propertyData.isPetsAllowed === "true" || propertyData.isPetsAllowed === true,
-        isParkingIncluded: propertyData.isParkingIncluded === "true" || propertyData.isParkingIncluded === true,
-        isSale: propertyData.isSale === "true" || propertyData.isSale === true,
-        isRent: propertyData.isRent === "true" || propertyData.isRent === true,
-        pricePerMonth: parseFloat(propertyData.pricePerMonth) || 0,
-        securityDeposit: parseFloat(propertyData.securityDeposit) || 0,
-        applicationFee: parseFloat(propertyData.applicationFee) || 0,
-        beds: parseInt(propertyData.beds) || 0,
-        baths: parseFloat(propertyData.baths) || 0,
-        squareFeet: parseInt(propertyData.squareFeet) || 0,
+          typeof highlights === "string"
+            ? highlights.split(",").filter((h: string) => h.trim() !== "")
+            : Array.isArray(highlights) ? highlights : [],
+        isPetsAllowed: isPetsAllowed === "true" || isPetsAllowed === true,
+        isParkingIncluded: isParkingIncluded === "true" || isParkingIncluded === true,
+        isSale: isSale === "true" || isSale === true,
+        isRent: isRent === "true" || isRent === true,
+        pricePerMonth: parseFloat(pricePerMonth) || 0,
+        securityDeposit: parseFloat(securityDeposit) || 0,
+        applicationFee: parseFloat(applicationFee) || 0,
+        beds: parseInt(beds) || 0,
+        baths: parseFloat(baths) || 0,
+        squareFeet: parseInt(squareFeet) || 0,
       },
       include: {
         location: true,
