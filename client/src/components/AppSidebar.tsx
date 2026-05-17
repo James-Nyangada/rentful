@@ -119,7 +119,7 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
                       <span className="text-primary font-black text-[14px] leading-none tracking-tighter">
                         Chestone Properties
                       </span>
-                      <span className="text-primary/70 font-bold text-[9px] leading-none tracking-[0.2em] mt-1 uppercase">
+                      <span className="text-secondary font-bold text-[9px] leading-none tracking-[0.2em] mt-1 uppercase">
                         Structured Properties
                       </span>
                     </div>

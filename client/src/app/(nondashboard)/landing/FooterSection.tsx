@@ -69,7 +69,7 @@ const FooterSection = () => {
                 </span>
               </div>
             </Link>
-            <p className="text-white font-bold text-base tracking-widest uppercase mb-6">
+            <p className="text-secondary font-bold text-base tracking-widest uppercase mb-6">
               Structured Property Solutions
             </p>
             <p className="text-gray-400 text-sm leading-relaxed mb-8">

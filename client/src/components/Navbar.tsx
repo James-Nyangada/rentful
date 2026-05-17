@@ -91,8 +91,8 @@ const Navbar = () => {
             <Image
               src="/logo-rentful.png"
               alt="Chestone Properties Logo"
-              width={160}
-              height={160}
+              width={200}
+              height={200}
               className="h-14 md:h-16 w-auto object-contain"
               priority
             />
@@ -100,7 +100,7 @@ const Navbar = () => {
               <span className="text-primary font-heading font-black text-[24px] md:text-[22px] leading-none tracking-tighter uppercase">
                 Chestone Properties
               </span>
-              <span className="text-primary/70 font-bold text-[10px] md:text-[9px] leading-none mt-1 uppercase tracking-[0.1em]">
+              <span className="text-secondary font-bold text-[10px] md:text-[9px] leading-none mt-1 uppercase tracking-[0.1em]">
                 Structured Property Solutions
               </span>
             </div>

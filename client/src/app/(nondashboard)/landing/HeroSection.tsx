@@ -44,7 +44,7 @@ const HeroSection = () => {
         className="hero-content relative w-full z-10 text-center"
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-8 text-center drop-shadow-sm tracking-tighter uppercase leading-tight">
+          <h1 className="text-4xl md:text-7xl font-semibold md:font-extrabold text-white/90 md:text-white mb-8 text-center drop-shadow-sm tracking-tight md:tracking-tighter uppercase leading-tight">
             Elevate Your Living
           </h1>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 px-4">
