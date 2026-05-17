@@ -75,7 +75,7 @@ const Navbar = () => {
       className="fixed top-0 left-0 w-full z-50 shadow-md transition-all duration-300"
       style={{ height: `${NAVBAR_HEIGHT}px` }}
     >
-      <div className="flex justify-between items-center w-full py-4 px-8 bg-white border-b border-gray-100">
+      <div className="flex justify-between items-center w-full h-full py-3 px-6 md:px-8 bg-white border-b border-gray-100">
         <div className="flex items-center gap-4 md:gap-6">
           {isDashboardPage && (
             <div className="md:hidden">
@@ -87,20 +87,20 @@ const Navbar = () => {
             className="cursor-pointer transition-transform hover:scale-105"
             scroll={false}
           >
-          <div className="flex items-center gap-1.2 md:gap-2">
+          <div className="flex items-center gap-2 md:gap-3">
             <Image
               src="/logo-rentful.png"
               alt="Chestone Properties Logo"
               width={200}
               height={200}
-              className="h-14 md:h-16 w-auto object-contain"
+              className="h-[52px] md:h-[62px] w-auto object-contain"
               priority
             />
             <div className="flex flex-col">
-              <span className="text-primary font-heading font-black text-[24px] md:text-[22px] leading-none tracking-tighter uppercase">
+              <span className="text-primary font-heading font-black text-[20px] md:text-[23px] leading-none tracking-tighter uppercase">
                 Chestone Properties
               </span>
-              <span className="text-secondary font-bold text-[10px] md:text-[9px] leading-none mt-1 uppercase tracking-[0.1em]">
+              <span className="text-secondary font-bold text-[9px] md:text-[10px] leading-none mt-1 uppercase tracking-[0.1em]">
                 Structured Property Solutions
               </span>
             </div>
